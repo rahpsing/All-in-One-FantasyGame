@@ -62,16 +62,59 @@ html,body {
 	width: 50%;
 	opacity: 0.5;
 }
-.colorstrip3{
+.colorstrip31{
 	position: relative;
-	width: 95%; 
-	height: 60px;
-	margin-top: -140px;
-	margin-left: 40px;
-	margin-right: 10px;
+	width: 15%; 
+	height: 40px;
+	margin-top: -220px;
+	left: 42.5%;
     border-style: none;
-    border-color: #ffffff;
-    background-color: #ffffff;
+    border-color: #c50234;
+    background-color: #c50234;
+    text-align: center;
+}
+.signupbanner{
+	position: relative;
+	bottom: 0px; 
+	color: #ffbf03;
+	font-size:3em; 
+	font-family:"Helvetica Neue";   
+}
+.colorstrip32{
+	position: relative;
+	width: 15%; 
+	height: 40px;
+	margin-top: 20px;
+	left: 42.5%;
+    border-style: none;
+    border-color: #c50234;
+    background-color: #c50234;
+    text-align: center;
+}
+.loginbanner{
+	position: relative;
+	bottom: 0px; 
+	color: #ffbf03;
+	font-size:3em; 
+	font-family:"Helvetica Neue";
+}
+.colorstrip33{
+	position: relative;
+	width: 15%; 
+	height: 20px;
+	margin-top: 20px;
+	left: 42.5%;
+    border-style: none;
+    border-color: #c50234;
+    background-color: #c50234;
+   	text-align: center;
+}
+.forgotpasswordbanner{
+	position: relative;
+	bottom: 0px; 
+	color: #ffbf03;
+	font-size:1.5em; 
+	font-family:"Helvetica Neue";
 }
 .colorstrip4{
 	position: relative;
@@ -82,8 +125,7 @@ html,body {
 	margin-right: 10px;
     border-style: none;
     border-color: #ffffff;
-    background-color: #ffffff;
-    display:inline-block;
+    background-color: #ffffff;   
 }
 .registerbanner{
 	position: relative;
@@ -94,6 +136,24 @@ html,body {
 	padding-left:20px; 
 	width:100%; 
 	text-align:left;
+}
+.colorstrip41{
+	position: relative;
+	width: 15%; 
+	height: 60px;
+    border-style: none;
+    border-color: #c50234;
+    background-color: #c50234;
+    float: right;   
+    margin-right: 100px;
+    text-align: center;
+}
+.knowmorebanner{
+	position: relative;
+	bottom: -10px; 
+	color: #ffbf03;
+	font-size:3em; 
+	font-family:"Helvetica Neue";   
 }
 .colorstrip5{
 	position: relative;
@@ -181,6 +241,7 @@ html,body {
     border-style: none;
     border-color: #91053d;
     background-color: #91053d;
+    text-align: center;
 }
 .companybanner{
 	position: relative;
@@ -190,4 +251,5 @@ html,body {
 	color: #ffffff;
 	font-size:2em; 
 	font-family:"Helvetica Neue"; 
+	top:50%;
 }

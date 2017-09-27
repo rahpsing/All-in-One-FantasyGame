@@ -28,11 +28,22 @@ body {
 				<img class="footballimage" src="UIAssets/FootballImage1.jpeg">
 	    		<img class="cricketimage" src="UIAssets/CricketImage1.jpg">
 		</div>
-		<div class="colorstrip3"></div>
+		<div class="colorstrip31">
+			<b class="signupbanner">Sign Up</b>
+		</div>
+		<div class="colorstrip32">
+			<b class="loginbanner">Log In</b>
+		</div>
+		<div class="colorstrip33">
+			<b class="forgotpasswordbanner">Forgot password? click here</b>
+		</div>
 		<div class="colorstrip4">
 			<b class="registerbanner">New player? Register with us today to get right into the action!</b>
+			<div class="colorstrip41">	
+				<b class="knowmorebanner">Know more</b>
+			</div>
 		</div>
-	</div>
+	</div> 
 	<div class="colorstrip5"></div>
 	<div class="colorstrip6"></div>
 	<div class="colorstrip7"></div>
