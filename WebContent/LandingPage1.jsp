@@ -17,7 +17,7 @@ body {
 </style>
 </head>
 <body>
-<div class="maindiv">
+<div id="mainDiv" class="maindiv">
 	<div class="colorstrip1"></div>
 	<div class="colorstrip2">
 		<b class="allinonebanner">ALL-IN-ONE</b>
@@ -28,14 +28,11 @@ body {
 				<img class="footballimage" src="UIAssets/FootballImage1.jpeg">
 	    		<img class="cricketimage" src="UIAssets/CricketImage1.jpg">
 		</div>
-		<div class="colorstrip31">
-			<b class="signupbanner">Sign Up</b>
+		<div class="signupbuttondiv">
+			<button class="signupbanner">Sign Up</button>
 		</div>
-		<div class="colorstrip32">
-			<b class="loginbanner">Log In</b>
-		</div>
-		<div class="colorstrip33">
-			<b class="forgotpasswordbanner">Forgot password? click here</b>
+		<div class="loginbuttondiv">
+			<button id="loginButton" class="loginbanner">Log In</button>
 		</div>
 		<div class="colorstrip4">
 			<b class="registerbanner">New player? Register with us today to get right into the action!</b>
@@ -58,6 +55,29 @@ body {
 		<b class="companybanner">a group 4 project ©</b>
 	</div>
 </div>
+<div id="loginModal" class="loginmodalcss">
+		 	<!-- Modal content -->
+		  	<div class="modal-content">
+			    <span class="close">&times;</span>
+			    <p>Some text in the Modal..</p>
+		  	</div>
+</div>
+<script>
+var mainDiv = document.getElementById("mainDiv");
+var loginButton = document.getElementById("loginButton");
+var loginModal = document.getElementById("loginModal");
 
+
+loginButton.onclick = function() {
+    loginModal.style.display = "block";
+    mainDiv.classList.add("blur");
+}
+
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
+</script>
 </body>
 </html>

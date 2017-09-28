@@ -66,61 +66,82 @@ html,body {
 	position: relative;
 	width: 15%; 
 	height: 40px;
-	margin-top: -220px;
+	margin-top: -180px;
 	left: 42.5%;
     border-style: none;
     border-color: #c50234;
     background-color: #c50234;
     text-align: center;
+}
+.signupbuttondiv{
+	display: flex;
+	width: 100%;
+	justify-content: center;
 }
 .signupbanner{
+	height: 40px;
+	width: 250px;
+	background-color: #c50234;
+	border: none;
+	margin-top: -180px;
 	position: relative;
 	bottom: 0px; 
 	color: #ffbf03;
+	cursor: pointer;
 	font-size:3em; 
-	font-family:"Helvetica Neue";   
+	font-family:"Helvetica Neue";  
+	font-weight: bold; 
 }
-.colorstrip32{
-	position: relative;
-	width: 15%; 
-	height: 40px;
-	margin-top: 20px;
-	left: 42.5%;
-    border-style: none;
-    border-color: #c50234;
-    background-color: #c50234;
-    text-align: center;
+.loginmodalcss{
+    display: none; /* Hidden by default */
+    max-height: calc(100% - 50px);
+  	position: fixed;
+    top: 50%;
+    left: 50%;
+  	transform: translate(-50%, -50%);
+}
+.modal-content{
+    background-color: #fefefe;
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: none;
+    width: 250px; /* Could be more or less, depending on screen size */
+    height: 300px;
+    box-shadow: 0 5px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+    -webkit-animation-name: animatetop;
+    -webkit-animation-duration: 0.4s;
+    animation-name: animatetop;
+    animation-duration: 0.4s
+}
+.blur{
+  -webkit-filter: blur(5px) grayscale(10%);
+}
+.loginbuttondiv{
+	margin-top: 60px;
+	display: flex;
+	width: 100%;
+	justify-content: center;
 }
 .loginbanner{
+	height: 40px;
+	width: 250px;
+	background-color: #c50234;
+	border: none;
+	margin-top: -180px;
 	position: relative;
 	bottom: 0px; 
 	color: #ffbf03;
+	cursor: pointer;
 	font-size:3em; 
-	font-family:"Helvetica Neue";
+	font-family:"Helvetica Neue"; 
+	font-weight: bold;
 }
-.colorstrip33{
-	position: relative;
-	width: 15%; 
-	height: 20px;
-	margin-top: 20px;
-	left: 42.5%;
-    border-style: none;
-    border-color: #c50234;
-    background-color: #c50234;
-   	text-align: center;
-}
-.forgotpasswordbanner{
-	position: relative;
-	bottom: 0px; 
-	color: #ffbf03;
-	font-size:1.5em; 
-	font-family:"Helvetica Neue";
-}
+
 .colorstrip4{
 	position: relative;
 	width: 95%; 
 	height: 60px;
-	margin-top: 40px;
+	margin-top: -120px;
 	margin-left: 40px;
 	margin-right: 10px;
     border-style: none;
