@@ -64,7 +64,7 @@ body {
 				    <input type="text" class="password" id="password" name="password" placeholder="Password..."><br>
 				    <input class="submit" type="submit" value="Submit" />
 				    <div class="forgotuorpdiv">
-					    <p class="forgotuorp">Forget username or password?</p>
+					    <p class="forgotuorp">Forgot username or password?</p>
 					    <button id="reset" class="reset">click here</button>
 				    </div>
 				</form>
