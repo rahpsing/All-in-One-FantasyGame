@@ -75,9 +75,11 @@ body {
 		  	<div id="signupModalContent" class="signup-modal-content">
 			  	<form action="sample.jsp" method="POST">
 			  		<p class="signupcred">Signup Details</p>
-				    <input type="text" class="username" id="username" name="username" placeholder="User Name..."><br>
-				    <input type="text" class="password" id="password" name="password" placeholder="Password..."><br>
-				    <input class="submit" type="submit" value="Submit" />
+			  		<input type="text" class="semail" id="email" name="email" placeholder="Email ID"..."><br>
+				    <input type="text" class="susername" id="username" name="username" placeholder="User Name..."><br>
+				    <input type="text" class="spassword" id="password" name="password" placeholder="Password..."><br>
+				    <input type="text" class="srepassword" id="repassword" name="repassword" placeholder="Reconfirm password..."><br>
+				    <input class="ssubmit" type="submit" value="Submit" />
 				</form>
 		  	</div>
 </div>

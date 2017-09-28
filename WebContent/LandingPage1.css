@@ -8,7 +8,7 @@ html,body {
 	font-size: 10px;
 }
 .blur{
-  -webkit-filter: blur(5px) grayscale(10%);
+  -webkit-filter: blur(1px) grayscale(10%);
 }
 .colorstrip1{
 	position: absolute;
@@ -95,6 +95,14 @@ html,body {
 	font-family:"Helvetica Neue";  
 	font-weight: bold; 
 }
+.signupcred{
+	position: relative;
+	margin-top: -15px;
+	color: #ffbf03;
+	font-size:30px; 
+	font-family:"Helvetica Neue";  
+	font-weight: bold;
+}
 .signupmodalcss{
     display: none; /* Hidden by default */
     max-height: calc(100% - 50px);
@@ -104,18 +112,58 @@ html,body {
   	transform: translate(-50%, -50%);
 }
 .signup-modal-content{
-    background-color: #c50234;
+    background-color: #ffffff;
     margin: 15% auto; /* 15% from the top and centered */
     padding: 20px;
     border: none;
     width: 250px; /* Could be more or less, depending on screen size */
-    height: 200px;
-    box-shadow: 0 5px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+    height: 300px;
+    box-shadow: 0 15px 18px 0 rgba(0,0,0,0.2),0 16px 30px 0 rgba(0,0,0,0.19);
     -webkit-animation-name: animatetop;
     -webkit-animation-duration: 0.4s;
     animation-name: animatetop;
     animation-duration: 0.4s;
     text-align: center;
+}
+.semail{
+	position: relative;
+	margin-left: -3px;
+	margin-top: -10px;
+	height: 30px;
+	font-size: 20px;
+}
+.susername{
+	position: relative;
+	margin-left: -3px;
+	margin-top: 20px;
+	height: 30px;
+	font-size: 20px;
+}
+.spassword{
+	position: relative;
+	margin-left: -3px;
+	margin-top: 20px;
+	height: 30px;
+	font-size: 20px;
+}
+.srepassword{
+	position: relative;
+	margin-left: -3px;
+	margin-top: 20px;
+	height: 30px;
+	font-size: 20px;
+}
+.ssubmit{
+	position: relative;
+	margin-top: 10px;
+	border: none;
+	background-color: #ffffff;
+	color: #ffbf03;
+	cursor: pointer;
+	font-size: 30px; 
+	font-family:"Helvetica Neue";  
+	font-weight: bold;
+	text-decoration: underline;
 }
 .loginmodalcss{
     display: none; /* Hidden by default */
@@ -126,13 +174,13 @@ html,body {
   	transform: translate(-50%, -50%);
 }
 .modal-content{
-    background-color: #c50234;
+    background-color: #ffffff;
     margin: 15% auto; /* 15% from the top and centered */
     padding: 20px;
     border: none;
     width: 250px; /* Could be more or less, depending on screen size */
     height: 200px;
-    box-shadow: 0 5px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+    box-shadow: 0 15px 18px 0 rgba(0,0,0,0.2),0 16px 30px 0 rgba(0,0,0,0.19);
     -webkit-animation-name: animatetop;
     -webkit-animation-duration: 0.4s;
     animation-name: animatetop;
@@ -176,7 +224,7 @@ html,body {
 	margin-top: 10px;
 	margin-left: 10px;
 	height: 20px;
-	background-color: #c50234;
+	background-color: #ffffff;
 	border: none;
 	position: absolute; 
 	color: #ffbf03;
@@ -190,10 +238,10 @@ html,body {
 	position: relative;
 	margin-top: 10px;
 	border: none;
-	background-color: #c50234;
+	background-color: #ffffff;
 	color: #ffbf03;
 	cursor: pointer;
-	font-size: 25px; 
+	font-size: 30px; 
 	font-family:"Helvetica Neue";  
 	font-weight: bold;
 	text-decoration: underline;
