@@ -29,7 +29,7 @@ body {
 	    		<img class="cricketimage" src="UIAssets/CricketImage1.jpg">
 		</div>
 		<div class="signupbuttondiv">
-			<button class="signupbanner">Sign Up</button>
+			<button id="signupButton" class="signupbanner">Sign Up</button>
 		</div>
 		<div class="loginbuttondiv">
 			<button id="loginButton" class="loginbanner">Log In</button>
@@ -57,27 +57,62 @@ body {
 </div>
 <div id="loginModal" class="loginmodalcss">
 		 	<!-- Modal content -->
-		  	<div class="modal-content">
-			    <span class="close">&times;</span>
-			    <p>Some text in the Modal..</p>
+		  	<div id="loginModalContent" class="modal-content">
+			  	<form action="sample.jsp" method="POST">
+			  		<p class="logincred">Login Details</p>
+				    <input type="text" class="username" id="username" name="username" placeholder="User Name..."><br>
+				    <input type="text" class="password" id="password" name="password" placeholder="Password..."><br>
+				    <input class="submit" type="submit" value="Submit" />
+				    <div class="forgotuorpdiv">
+					    <p class="forgotuorp">Forget username or password?</p>
+					    <button id="reset" class="reset">click here</button>
+				    </div>
+				</form>
+		  	</div>
+</div>
+<div id="signupModal" class="signupmodalcss">
+		 	<!-- Modal content -->
+		  	<div id="signupModalContent" class="signup-modal-content">
+			  	<form action="sample.jsp" method="POST">
+			  		<p class="signupcred">Signup Details</p>
+				    <input type="text" class="username" id="username" name="username" placeholder="User Name..."><br>
+				    <input type="text" class="password" id="password" name="password" placeholder="Password..."><br>
+				    <input class="submit" type="submit" value="Submit" />
+				</form>
 		  	</div>
 </div>
 <script>
 var mainDiv = document.getElementById("mainDiv");
 var loginButton = document.getElementById("loginButton");
 var loginModal = document.getElementById("loginModal");
+var loginModalContent = document.getElementById("loginModalContent");
+var signupButton = document.getElementById("signupButton");
+var signupModal = document.getElementById("signupModal");
 
+window.onclick = function(event) {
+	if(event.target.className !="loginbanner" && event.target.className != "signupbanner"){
+	    if (event.target.className != loginModal) {
+	        loginModal.style.display = "none";
+	        mainDiv.classList.remove("blur");
+	    }
+	    if (event.target.className != signupModal){
+	    	signupModal.style.display = "none";
+	        mainDiv.classList.remove("blur");
+	    }
+	}
+}
 
 loginButton.onclick = function() {
     loginModal.style.display = "block";
     mainDiv.classList.add("blur");
 }
 
-window.onclick = function(event) {
-    if (event.target == modal) {
-        modal.style.display = "none";
-    }
+signupButton.onclick = function() {
+    signupModal.style.display = "block";
+    mainDiv.classList.add("blur");
 }
+
+
 </script>
 </body>
 </html>

@@ -7,6 +7,9 @@ html,body {
 	position: relative;
 	font-size: 10px;
 }
+.blur{
+  -webkit-filter: blur(5px) grayscale(10%);
+}
 .colorstrip1{
 	position: absolute;
 	width: 100%; 
@@ -92,6 +95,28 @@ html,body {
 	font-family:"Helvetica Neue";  
 	font-weight: bold; 
 }
+.signupmodalcss{
+    display: none; /* Hidden by default */
+    max-height: calc(100% - 50px);
+  	position: fixed;
+    top: 50%;
+    left: 50%;
+  	transform: translate(-50%, -50%);
+}
+.signup-modal-content{
+    background-color: #c50234;
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: none;
+    width: 250px; /* Could be more or less, depending on screen size */
+    height: 200px;
+    box-shadow: 0 5px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+    -webkit-animation-name: animatetop;
+    -webkit-animation-duration: 0.4s;
+    animation-name: animatetop;
+    animation-duration: 0.4s;
+    text-align: center;
+}
 .loginmodalcss{
     display: none; /* Hidden by default */
     max-height: calc(100% - 50px);
@@ -101,20 +126,77 @@ html,body {
   	transform: translate(-50%, -50%);
 }
 .modal-content{
-    background-color: #fefefe;
+    background-color: #c50234;
     margin: 15% auto; /* 15% from the top and centered */
     padding: 20px;
     border: none;
     width: 250px; /* Could be more or less, depending on screen size */
-    height: 300px;
+    height: 200px;
     box-shadow: 0 5px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
     -webkit-animation-name: animatetop;
     -webkit-animation-duration: 0.4s;
     animation-name: animatetop;
-    animation-duration: 0.4s
+    animation-duration: 0.4s;
+    text-align: center;
 }
-.blur{
-  -webkit-filter: blur(5px) grayscale(10%);
+.logincred{
+	position: relative;
+	margin-top: -15px;
+	color: #ffbf03;
+	font-size:30px; 
+	font-family:"Helvetica Neue";  
+	font-weight: bold;
+}
+.username{
+	position: relative;
+	margin-left: -3px;
+	margin-top: -10px;
+	height: 30px;
+	font-size: 20px;
+}
+.password{
+	position: relative;
+	margin-left: -3px;
+	margin-top: 20px;
+	height: 30px;
+	font-size: 20px;
+}
+.forgotuorpdiv{
+	display:inline-block;
+	float: left;
+}
+.forgotuorp{
+	float: left;
+	color: #ffbf03;
+	font-size:12px; 
+	font-family:"Helvetica Neue";  
+	font-weight: bold; 
+}
+.reset{
+	margin-top: 10px;
+	margin-left: 10px;
+	height: 20px;
+	background-color: #c50234;
+	border: none;
+	position: absolute; 
+	color: #ffbf03;
+	cursor: pointer;
+	font-size:12px; 
+	font-family:"Helvetica Neue";  
+	font-weight: bold;
+	text-decoration: underline;
+}
+.submit{
+	position: relative;
+	margin-top: 10px;
+	border: none;
+	background-color: #c50234;
+	color: #ffbf03;
+	cursor: pointer;
+	font-size: 25px; 
+	font-family:"Helvetica Neue";  
+	font-weight: bold;
+	text-decoration: underline;
 }
 .loginbuttondiv{
 	margin-top: 60px;
