@@ -92,16 +92,20 @@ var signupButton = document.getElementById("signupButton");
 var signupModal = document.getElementById("signupModal");
 
 window.onclick = function(event) {
-	if(event.target.className !="loginbanner" && event.target.className != "signupbanner"){
-	    if (event.target.className != loginModal) {
-	        loginModal.style.display = "none";
-	        mainDiv.classList.remove("blur");
-	    }
-	    if (event.target.className != signupModal){
-	    	signupModal.style.display = "none";
-	        mainDiv.classList.remove("blur");
-	    }
-	}
+	if(event.target.parentNode.className != "" && event.target.parentNode.className != "signup-modal-content" && event.target.parentNode.className != "signupmodalcss" && event.target.parentNode.className != "modal-content" && event.target.parentNode.className != "loginmodalcss" && event.target.parentNode.className != "forgotuorpdiv"){
+		if(event.target.parentNode.className !="loginbuttondiv"){
+			if(event.target.parentNode.className != "signupbuttondiv"){
+			    if (event.target.parentNode.className != loginModal) {
+			        loginModal.style.display = "none";
+			        mainDiv.classList.remove("blur");
+			    }
+			    if (event.target.parentNode.className != signupModal){
+			    	signupModal.style.display = "none";
+			        mainDiv.classList.remove("blur");
+			    }
+			}
+		}
+	}		
 }
 
 loginButton.onclick = function() {
