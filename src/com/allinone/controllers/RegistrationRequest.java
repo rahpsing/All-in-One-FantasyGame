@@ -10,9 +10,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller("All-In-One-FantasyGame")
 public class RegistrationRequest {
-	@RequestMapping(value="/userregister")
+	@RequestMapping(value="/register")
 	@ResponseBody
 	public String registerrequest(HttpServletRequest objRequest, HttpServletResponse objResponse) {
 		return "Registration successful";
 	}
 }
+//http://localhost:8080/All-In-One-FantasyGame/UIAssests/CricketImage1.jpg
