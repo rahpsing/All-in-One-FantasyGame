@@ -58,7 +58,7 @@ body {
 <div id="loginModal" class="loginmodalcss">
 		 	<!-- Modal content -->
 		  	<div id="loginModalContent" class="modal-content">
-			  	<form action="sample.jsp" method="POST">
+			  	<form action="/All-In-One-FantasyGame/userlogin" method="POST">
 			  		<p class="logincred">Login Details</p>
 				    <input type="text" class="username" id="username" name="username" placeholder="User Name..."><br>
 				    <input type="text" class="password" id="password" name="password" placeholder="Password..."><br>
@@ -73,7 +73,7 @@ body {
 <div id="signupModal" class="signupmodalcss">
 		 	<!-- Modal content -->
 		  	<div id="signupModalContent" class="signup-modal-content">
-			  	<form action="sample.jsp" method="POST">
+			  	<form action="/All-In-One-FantasyGame/userregister" method="POST">
 			  		<p class="signupcred">Signup Details</p>
 			  		<input type="text" class="semail" id="email" name="email" placeholder="Email ID"..."><br>
 				    <input type="text" class="susername" id="username" name="username" placeholder="User Name..."><br>
