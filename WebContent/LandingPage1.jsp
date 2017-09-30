@@ -5,14 +5,13 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>ALL-IN-ONE</title>
-<link rel="stylesheet" type="text/css" href="./LandingPage1.css" media="screen" />
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/LandingPage1.css" media="screen" />
 <style type="text/css">
 <!--
 body { 
  padding:0;
  margin:0;
 }
-
 -->
 </style>
 </head>
@@ -25,8 +24,8 @@ body {
 	</div>
 	<div>
 		<div class="imagestripdiv">
-				<img class="footballimage" src="./UIAssets/FootballImage1.jpeg">
-	    		<img class="cricketimage" src="./UIAssets/CricketImage1.jpg">
+				<img class="footballimage" src="${pageContext.request.contextPath}/resources/UIAssets/FootballImage1.jpeg">
+	    		<img class="cricketimage" src="${pageContext.request.contextPath}/resources/UIAssets/CricketImage1.jpg">
 		</div>
 		<div class="signupbuttondiv">
 			<button id="signupButton" class="signupbanner">Sign Up</button>
