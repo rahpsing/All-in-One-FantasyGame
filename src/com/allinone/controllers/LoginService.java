@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 public class LoginService {
-	@RequestMapping(value = "/userlogin")
+	@RequestMapping(value = "/login")
 	@ResponseBody
 	public String loginrequest(HttpServletRequest objRequest, HttpServletResponse objResponse) {
 		return "Welcome";

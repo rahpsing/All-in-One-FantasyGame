@@ -5,7 +5,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>ALL-IN-ONE</title>
-<link rel="stylesheet" type="text/css" href="LandingPage1.css" media="screen" />
+<link rel="stylesheet" type="text/css" href="./LandingPage1.css" media="screen" />
 <style type="text/css">
 <!--
 body { 
@@ -25,8 +25,8 @@ body {
 	</div>
 	<div>
 		<div class="imagestripdiv">
-				<img class="footballimage" src="UIAssets/FootballImage1.jpeg">
-	    		<img class="cricketimage" src="UIAssets/CricketImage1.jpg">
+				<img class="footballimage" src="./UIAssets/FootballImage1.jpeg">
+	    		<img class="cricketimage" src="./UIAssets/CricketImage1.jpg">
 		</div>
 		<div class="signupbuttondiv">
 			<button id="signupButton" class="signupbanner">Sign Up</button>
@@ -58,7 +58,7 @@ body {
 <div id="loginModal" class="loginmodalcss">
 		 	<!-- Modal content -->
 		  	<div id="loginModalContent" class="modal-content">
-			  	<form action="/All-In-One-FantasyGame/userlogin" method="POST">
+			  	<form action="/All-In-One-FantasyGame/login" method="POST">
 			  		<p class="logincred">Login Details</p>
 				    <input type="text" class="username" id="username" name="username" placeholder="User Name..."><br>
 				    <input type="text" class="password" id="password" name="password" placeholder="Password..."><br>
@@ -73,7 +73,7 @@ body {
 <div id="signupModal" class="signupmodalcss">
 		 	<!-- Modal content -->
 		  	<div id="signupModalContent" class="signup-modal-content">
-			  	<form action="/All-In-One-FantasyGame/userregister" method="POST">
+			  	<form action="/All-In-One-FantasyGame/register" method="POST">
 			  		<p class="signupcred">Signup Details</p>
 			  		<input type="text" class="semail" id="email" name="email" placeholder="Email ID"..."><br>
 				    <input type="text" class="susername" id="username" name="username" placeholder="User Name..."><br>
