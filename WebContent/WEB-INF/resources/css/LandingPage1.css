@@ -357,6 +357,49 @@ html,body {
 	display:flex;
 	top: 60px;
 }
+.colorstrip91{
+	position: absolute;
+	top: 50px;
+    width: 15%; 
+	height: 60px;
+    border-style: none;
+    border-color: #c50234;
+    background-color: #c50234;
+    float: left;   
+    margin-left: 50px;
+    text-align: center;
+}
+.featuresbanner{
+	position: relative;
+	bottom: -10px; 
+	color: #ffbf03;
+	font-size:3em; 
+	font-family:"Helvetica Neue";   
+}
+.colorstrip92{
+	position: relative;
+	top: 450px;
+    width: 25%; 
+	height: 60px;
+    border-style: none;
+    border-color: #c50234;
+    background-color: #c50234;
+    float: left;   
+    margin-left: 50px;
+    text-align: center;
+}
+.leaguessupportedbanner{
+	position: relative;
+	bottom: -10px; 
+	color: #ffbf03;
+	font-size:3em; 
+	font-family:"Helvetica Neue";   
+}
+.leaguesimage{
+	position: relative;
+	top: 100px;
+	left: 20px;
+}
 .colorstrip10{
 	position: relative;
 	width: 100%;
