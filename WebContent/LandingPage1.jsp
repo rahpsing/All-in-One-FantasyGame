@@ -47,6 +47,13 @@ body {
 	<div class="colorstrip8"></div>
 	<div class="colorstrip9"></div>
 	<div class="infodiv">
+		<div class="colorstrip91">
+			<b class="featuresbanner">Features</b>
+		</div>
+		<div class="colorstrip92">
+			<b class="leaguessupportedbanner">Leagues Supported</b>
+			<img class="leaguesimage" src="${pageContext.request.contextPath}/resources/UIAssets/Leagues.png">
+		</div>
 	</div>
 	<div class="colorstrip10"></div>
 	<div class="colorstrip11"></div>
