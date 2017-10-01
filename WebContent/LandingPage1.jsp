@@ -58,7 +58,7 @@ body {
 <div id="loginModal" class="loginmodalcss">
 		 	<!-- Modal content -->
 		  	<div id="loginModalContent" class="modal-content">
-			  	<form action="/All-In-One-FantasyGame/login" method="POST">
+			  	<form name="loginForm" action="/All-In-One-FantasyGame/login" onsubmit="return validateLoginForm()" method="POST">
 			  		<p class="logincred">Login Details</p>
 				    <input type="text" class="username" id="username" name="username" placeholder="User Name..."><br>
 				    <input type="text" class="password" id="password" name="password" placeholder="Password..."><br>
@@ -73,7 +73,7 @@ body {
 <div id="signupModal" class="signupmodalcss">
 		 	<!-- Modal content -->
 		  	<div id="signupModalContent" class="signup-modal-content">
-			  	<form action="/All-In-One-FantasyGame/register" method="POST">
+			  	<form name="signupForm" action="/All-In-One-FantasyGame/register" onsubmit="return validateSignUpForm()" method="POST">
 			  		<p class="signupcred">Signup Details</p>
 			  		<input type="text" class="semail" id="email" name="email" placeholder="Email ID"..."><br>
 				    <input type="text" class="susername" id="username" name="username" placeholder="User Name..."><br>
@@ -118,6 +118,52 @@ signupButton.onclick = function() {
     mainDiv.classList.add("blur");
 }
 
+function validateSignUpForm(){
+	
+	var email = document.forms["signupForm"]["email"].value;
+	var username = document.forms["signupForm"]["username"].value;
+	var password = document.forms["signupForm"]["password"].value;
+	var repassword = document.forms["signupForm"]["repassword"].value;
+	var filter = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+	var pfilter1 = /^(?=.*[a-z])/;
+	var pfilter2 = /^(?=.*[A-Z])/;
+	var pfilter3 = /^(?=.*\d)/;
+	
+	if (!filter.test(email)) {
+	    alert("Please provide a valid email address");
+	    return false;
+ 	}else if(email == "" || username == "" || password == "" || repassword == ""){
+		alert("Enter all fields");
+		return false;
+	}else if(password.length < 8){
+		alert("Password must be at least 8 characters long");
+		return false;
+	}else if(!pfilter1.test(password)){
+		alert("Password must containt at least 1 lowercase letter");
+		return false;
+	}else if(!pfilter2.test(password)){
+		alert("Password must containt at least 1 uppercase letter");
+		return false;
+	}else if(!pfilter3.test(password)){
+		alert("Password must containt at least 1 number");
+		return false;
+	}else if(password != repassword){
+		alert("Passwords do not match, reconfirm password");
+		return false;
+	}
+    return true;
+}
+
+function validateLoginForm(){
+	var username = document.forms["loginForm"]["username"].value;
+	var password = document.forms["loginForm"]["password"].value;
+	
+	if(username == "" || password == ""){
+		alert("Enter all fields");
+		return false;
+	}
+    return true;
+ }
 
 </script>
 </body>
