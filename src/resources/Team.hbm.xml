@@ -4,9 +4,9 @@
 <!-- Generated Sep 30, 2017 10:23:32 PM by Hibernate Tools 3.5.0.Final -->
 <hibernate-mapping>
     <class name="com.allinone.pojos.Team" table="TEAM">
-        <id name="id" type="java.lang.String">
+        <id name="id">
             <column name="ID" />
-            <generator class="assigned" />
+            <generator class="uuid" />
         </id>
         <property name="teamName" type="java.lang.String">
             <column name="TEAMNAME" />

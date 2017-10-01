@@ -5,13 +5,13 @@
 <hibernate-configuration>
     <session-factory>
     	<property name="hbm2ddl.auto">create</property> 
-<!--         <property name="hibernate.connection.driver_class">oracle.jdbc.driver.OracleDriver</property>
-        <property name="hibernate.connection.password">system</property>
-        <property name="hibernate.connection.url">jdbc:oracle:thin:@localhost:1521:orcl</property>
+        <property name="hibernate.connection.driver_class">oracle.jdbc.driver.OracleDriver</property>
+     <!--   <property name="hibernate.connection.password">system</property>
+        <property name="hibernate.connection.url">jdbc:oracle:thin:@localhost:1521:xe</property>
         <property name="hibernate.connection.username">system</property>
-        <property name="hibernate.dialect">org.hibernate.dialect.Oracle10gDialect</property> -->
         <property name="hibernate.dialect">org.hibernate.dialect.Oracle10gDialect</property>  
-        <property name="hibernate.show_sql">true</property>  
+        <property name="hibernate.show_sql">true</property> -->  
+        <property name="hibernate.show_sql">true</property>
         <property name="hibernate.current_session_context_class">thread</property>
         
         

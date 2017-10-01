@@ -4,9 +4,9 @@
 <!-- Generated Sep 30, 2017 10:23:32 PM by Hibernate Tools 3.5.0.Final -->
 <hibernate-mapping>
     <class name="com.allinone.pojos.User" table="FANTASYUSER">
-        <id name="userId" type="java.lang.String">
+        <id name="userId">
             <column name="USERID" />
-            <generator class="assigned" />
+            <generator class="uuid" />
         </id>
         <property name="userName" type="java.lang.String">
             <column name="USERNAME" />
