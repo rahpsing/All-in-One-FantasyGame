@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Sep 30, 2017 10:23:32 PM by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="com.allinone.pojos.Game" table="GAME">
+        <id name="id" type="java.lang.String" access="field">
+            <column name="ID" />
+            <generator class="assigned" />
+        </id>
+        <property name="venue" type="java.lang.String" access="field">
+            <column name="VENUE" />
+        </property>
+        <property name="scheduledStartTime" type="java.util.Date" access="field">
+            <column name="SCHEDULEDSTARTTIME" />
+        </property>
+        <property name="scheduledendTime" type="java.util.Date" access="field">
+            <column name="SCHEDULEDENDTIME" />
+        </property>
+        <property name="homeTeam" access="field">
+            <column name="HOMETEAM" />
+        </property>
+        <property name="awayTeam" access="field">
+            <column name="AWAYTEAM" />
+        </property>
+
+        <property name="gameStatus" access="field">
+            <column name="GAMESTATUS" />
+            <type name="org.hibernate.type.EnumType">
+                <param name="type">12</param>
+                <param name="enumClass">com.allinone.util.GameStatus</param>
+            </type>
+        </property>
+        <property name="winningTeam" access="field">
+            <column name="WINNINGTEAM" />
+        </property>
+            
+       
+    </class>
+</hibernate-mapping>

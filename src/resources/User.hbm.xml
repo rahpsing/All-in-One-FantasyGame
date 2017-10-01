@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Sep 30, 2017 10:23:32 PM by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="com.allinone.pojos.User" table="FANTASYUSER">
+        <id name="userId" type="java.lang.String">
+            <column name="USERID" />
+            <generator class="assigned" />
+        </id>
+        <property name="userName" type="java.lang.String">
+            <column name="USERNAME" />
+        </property>
+        <property name="emailAddress" type="java.lang.String">
+            <column name="EMAILADDRESS" />
+        </property>
+        <property name="phoneNumber" type="java.lang.String">
+            <column name="PHONENUMBER" />
+        </property>
+        <property name="isAdmin" type="boolean" access="field">
+            <column name="ISADMIN" />
+        </property>
+        <set name="setOfLeagues" table="LEAGUE" inverse="false" lazy="true" access="field">
+            <key>
+                <column name="USERID" />
+            </key>
+            <one-to-many class="com.allinone.pojos.League" />
+        </set>
+    </class>
+</hibernate-mapping>

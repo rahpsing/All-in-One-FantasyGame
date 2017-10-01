@@ -3,6 +3,7 @@
         <wb-resource deploy-path="/" source-path="/WebContent" tag="defaultRootSource"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src"/>
         <wb-resource deploy-path="/" source-path="/WebContent/WEB-INF/lib"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/resources"/>
         <property name="context-root" value="All-In-One-FantasyGame"/>
         <property name="java-output-path" value="/All-In-One-FantasyGame/build/classes"/>
     </wb-module>
