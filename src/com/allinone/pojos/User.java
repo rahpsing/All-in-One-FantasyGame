@@ -21,6 +21,7 @@ public class User implements Serializable {
 	private String userName;
 	private String emailAddress;
 	private String phoneNumber;
+	private String password;
 	boolean isAdmin;
 	private Set<League> setOfLeagues;
 	
@@ -58,6 +59,18 @@ public class User implements Serializable {
 	public String toString() {
 		return "User [userId=" + userId + ", userName=" + userName + ", emailAddress=" + emailAddress + ", phoneNumber="
 				+ phoneNumber + ", isAdmin=" + isAdmin + "]";
+	}
+	public String getPassword() {
+		return password;
+	}
+	public void setPassword(String password) {
+		this.password = password;
+	}
+	public Set<League> getSetOfLeagues() {
+		return setOfLeagues;
+	}
+	public void setSetOfLeagues(Set<League> setOfLeagues) {
+		this.setOfLeagues = setOfLeagues;
 	}
 	
 	

@@ -10,11 +10,12 @@
     http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd
     http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd">
 
-    <context:component-scan base-package="com.allinone.controllers" />
-
     <mvc:annotation-driven />
+     <mvc:resources mapping="/resources/**" location="/WEB-INF/resources/" />
+      <context:annotation-config/>
+    <context:component-scan base-package="com.allinone" />
+  
     
-    <mvc:resources mapping="/resources/**" location="/WEB-INF/resources/" />
     
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
     	<property name="prefix" value="/WEB-INF/jsp/" />
@@ -30,17 +31,19 @@
 </bean>
 
 <bean id="objSessionFactory"
-    class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+    class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
     <property name="dataSource" ref="dataSource" />
     <property name="configLocation" value="classpath:hibernate.cfg.xml" />
 </bean>
 
 <tx:annotation-driven />
 <bean id="transactionManager"
-    class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+    class="org.springframework.orm.hibernate5.HibernateTransactionManager">
     <property name="sessionFactory" ref="objSessionFactory" />
 </bean>
 
 <!-- service and dao class configurations -->
-    
+       <bean id="objUserRegistrationDao" class="com.allinone.dao.impl.UserRegistrationDaoImpl"></bean>
+       <bean id="objUserRegistrationService" class="com.allinone.service.impl.UserRegistrationServiceImpl"></bean>
+   
 </beans>

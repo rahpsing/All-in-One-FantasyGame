@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
-<!-- Generated Sep 30, 2017 10:23:32 PM by Hibernate Tools 3.5.0.Final -->
+<!-- Generated Oct 3, 2017 2:39:34 AM by Hibernate Tools 3.5.0.Final -->
 <hibernate-mapping>
     <class name="com.allinone.pojos.Team" table="TEAM">
         <id name="id" type="java.lang.String">

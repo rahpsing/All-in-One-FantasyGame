@@ -11,6 +11,9 @@
         <property name="userName" type="java.lang.String">
             <column name="USERNAME" />
         </property>
+        <property name="password" type="java.lang.String">
+            <column name="PASSWORD" />
+        </property>
         <property name="emailAddress" type="java.lang.String">
             <column name="EMAILADDRESS" />
         </property>
