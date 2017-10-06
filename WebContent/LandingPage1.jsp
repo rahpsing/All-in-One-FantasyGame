@@ -87,7 +87,6 @@ body {
 				    <input type="password" class="spassword" id="password" name="password" placeholder="Password..."><br>
 
 				    <input type="password" class="srepassword" id="repassword" name="repassword" placeholder="Reconfirm password..."><br>
-			        <input type="text" class="sphoneNumber" id="phoneNumber" name="phoneNumber" placeholder="PhoneNumber..."><br>
 				    <input class="ssubmit" type="submit" value="Submit" />
 				</form>
 		  	</div>
