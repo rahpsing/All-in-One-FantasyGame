@@ -25,6 +25,14 @@ body {
 			<b>hello, </b>
 			<b class="name">jason borne</b>
  		</div>
+ 		<div class="userinfo">
+ 		</div>
+ 		<div class="colorstrip10"></div>
+		<div class="colorstrip11"></div>
+		<div class="colorstrip12"></div>
+		<div class="colorstrip13">
+			<b class="companybanner">a group 4 project ©</b>
+		</div>
 	</div>
 </body>
 </html>

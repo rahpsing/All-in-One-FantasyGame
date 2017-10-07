@@ -2,10 +2,12 @@
 html,body {
     overflow-x: visible;
     max-width: 100%;
+	min-width: 1500px;
 }
 .maindiv{
 	position: relative;
 	font-size: 10px;
+	
 }
 .blur{
   -webkit-filter: blur(1px) grayscale(10%);
@@ -49,4 +51,54 @@ html,body {
 	width:100%; 
 	text-align:left;
 	display: inline;
+}
+.userinfo{
+	height: 900px;
+}
+.colorstrip10{
+	position: relative;
+	width: 100%;
+	top: 40px;
+	height: 40px;
+    border-style: none;
+    border-color: #ffbf03;
+    background-color: #ffbf03;
+}
+.colorstrip11{
+	position: relative;
+	width: 100%;
+	top: 40px;
+	height: 40px;
+    border-style: none;
+    border-color: #ff5627;
+    background-color: #ff5627;
+}
+.colorstrip12{
+	position: relative;
+	width: 100%;
+	top: 40px;
+	height: 40px;
+    border-style: none;
+    border-color: #c50234;
+    background-color: #c50234;
+}
+.colorstrip13{
+	position: relative;
+	width: 100%;
+	top: 40px;
+	height: 300px;
+    border-style: none;
+    border-color: #91053d;
+    background-color: #91053d;
+    text-align: center;
+}
+.companybanner{
+	position: relative;
+	width: 100%;
+	margin-left:auto; 
+	margin-right:auto; 
+	color: #ffffff;
+	font-size:2em; 
+	font-family:"Helvetica Neue"; 
+	top:50%;
 }
