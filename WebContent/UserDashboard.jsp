@@ -17,13 +17,13 @@ body {
 </style>
 </head>
 <body>
-	<div id="mainDiv" class="maindiv">
-		<div class="colorstrip1">
+	<div class="colorstrip1">
 			<!--<tr>
 				<b>aaaaa</b>
 				<b>bbbbb</b>
 			</tr>-->
-		</div>
+	</div>
+	<div id="mainDiv" class="maindiv">
 		<div class="colorstrip2">
 			<img src="${pageContext.request.contextPath}/resources/UIAssets/FootballImage2.jpeg" class="userimage">
 			<div class="welcomemsg">

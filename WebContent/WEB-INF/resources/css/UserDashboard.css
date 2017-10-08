@@ -7,7 +7,7 @@ html,body {
 .maindiv{
 	position: relative;
 	font-size: 10px;
-	
+	z-index: 99;
 }
 .blur{
   -webkit-filter: blur(1px) grayscale(10%);
@@ -20,6 +20,7 @@ html,body {
     border-style: none;
     border-color: #91053d;
     background-color: #91053d;
+    z-index: 999;
 }
 .colorstrip2{
 	position: relative;

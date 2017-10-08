@@ -17,8 +17,8 @@ body {
 </style>
 </head>
 <body>
+<div class="colorstrip1"></div>
 <div id="mainDiv" class="maindiv">
-	<div class="colorstrip1"></div>
 	<div class="colorstrip2">
 		<b class="allinonebanner">ALL-IN-ONE</b>
 		<b class="multisportfantasyleague">multi-sport fantasy league!</b>
