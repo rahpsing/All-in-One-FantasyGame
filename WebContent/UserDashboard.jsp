@@ -24,8 +24,14 @@ body {
 			<div class="welcomemsg">
 			<b>hello, </b>
 			<b class="name">jason borne</b>
+			</div>
+			<img src="${pageContext.request.contextPath}/resources/UIAssets/bannerdesign.png" class="bannerdesign">
  		</div>
  		<div class="userinfo">
+ 			<div class="usermenu">
+	 			<button id="editProfile" class="editprofile">profile</button>
+	 			<button id="createLeague" class="createleague">create league</button>
+	 		</div>
  		</div>
  		<div class="colorstrip10"></div>
 		<div class="colorstrip11"></div>

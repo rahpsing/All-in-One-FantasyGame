@@ -52,6 +52,42 @@ html,body {
 	text-align:left;
 	display: inline;
 }
+.bannerdesign{
+	float:right;
+	margin-top: 0px;
+	margin-right: 0px;
+	height: 100%;
+}
+.usermenu{
+	margin-top: 150px;
+	margin-right: 20px;
+	float: right;
+}
+.editprofile{
+	position: absolute;
+	width: 200px;
+	height: 50px;
+	background-color: #c50234;
+	border: none;
+	color: #ffbf03;
+	cursor: pointer;
+	font-size: 2em; 
+	font-family:"Helvetica Neue";  
+	font-weight: bold; 
+}
+.createleague{
+	position: relative;
+	margin-top: 70px;
+	width: 200px;
+	height: 50px;
+	background-color: #c50234;
+	border: none;
+	color: #ffbf03;
+	cursor: pointer;
+	font-size: 2em; 
+	font-family:"Helvetica Neue";  
+	font-weight: bold; 
+}
 .userinfo{
 	height: 900px;
 }

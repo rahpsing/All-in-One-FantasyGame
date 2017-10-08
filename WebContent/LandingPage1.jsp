@@ -24,7 +24,7 @@ body {
 		<b class="multisportfantasyleague">multi-sport fantasy league!</b>
 	</div>
 	<div>
-		<div class="imagestripdiv">
+		<div class="imagestripdiv1">
 				<img class="footballimage" src="${pageContext.request.contextPath}/resources/UIAssets/FootballImage1.jpeg">
 	    		<img class="cricketimage" src="${pageContext.request.contextPath}/resources/UIAssets/CricketImage1.jpg">
 		</div>

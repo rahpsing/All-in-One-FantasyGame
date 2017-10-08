@@ -50,7 +50,7 @@ html,body {
 	width:100%; 
 	text-align:left;
 }
-.imagestripdiv{
+.imagestripdiv1{
 	position:relative;
 	height: 500px;
 	display:flex;
@@ -363,7 +363,7 @@ html,body {
 	position:relative;
 	height: 1000px;
 	display:flex;
-	top: 60px;
+	top: 40px;
 }
 .colorstrip91{
 	position: absolute;
