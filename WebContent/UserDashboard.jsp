@@ -25,7 +25,7 @@ body {
 	</div>
 	<div id="mainDiv" class="maindiv">
 		<div class="colorstrip2">
-			<img src="${pageContext.request.contextPath}/resources/UIAssets/FootballImage2.jpeg" class="userimage">
+			<img src="${pageContext.request.contextPath}/resources/UIAssets/user1.jpeg" class="userimage">
 			<div class="welcomemsg">
 			<b>hello, </b>
 			<b class="name">jason bourne</b>
