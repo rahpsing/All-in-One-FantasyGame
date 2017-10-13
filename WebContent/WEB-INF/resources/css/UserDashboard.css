@@ -3,6 +3,11 @@ html,body {
     overflow-x: visible;
     max-width: 100%;
 	min-width: 1500px;
+	background: #000000; /* For browsers that do not support gradients */
+    background: -webkit-linear-gradient(#000000, #ffffff); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(#000000, #ffffff); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(#000000, #ffffff); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(#000000, #585858);
 }
 .maindiv{
 	position: relative;
@@ -100,6 +105,139 @@ html,body {
 	font-family:"Helvetica Neue";  
 	font-weight: bold; 
 }
+.userinfo .leaguelist{
+	margin-top: 40px;
+	position: absolute;
+	left: 50%;
+}
+.userinfo .leaguelist .systemleagueslist{
+	position: relative;
+	left: -50%;
+}
+.userinfo .leaguelist .userleagueslist{
+	position: relative;
+	left: -50%;
+}
+.colorstrip22{
+	margin-top: -5px;
+	padding: 0px;
+	width: 800px;
+	height: 60px;
+	background-color: #c50234;
+	border: none;
+	color: #ffffff;
+	font-size: 4em; 
+	font-family:"Helvetica Neue";  
+	font-weight: bold; 
+	text-align: center;
+}
+.dropbtn1 {
+	position: relative;
+    background-color: #D8D8D8;
+    color: white;
+    /* padding: 16px; */
+    width: 800px;
+	height: 50px;
+    font-size: 3em; 
+	font-family:"Helvetica Neue";  
+	font-weight: bold; 
+    border: none;
+    cursor: pointer;
+    text-align: center;
+}
+
+.dropbtn2 {
+    position: relative;
+    background-color: #D8D8D8;
+    color: white;
+    /* padding: 16px; */
+    width: 800px;
+	height: 50px;
+    font-size: 3em; 
+	font-family:"Helvetica Neue";  
+	font-weight: bold; 
+    border: none;
+    cursor: pointer;
+    text-align: center;
+}
+.dropbtn3 {
+    position: relative;
+    background-color: #D8D8D8;
+    color: white;
+    /* padding: 16px; */
+    width: 800px;
+	height: 50px;
+    font-size: 3em; 
+	font-family:"Helvetica Neue";  
+	font-weight: bold; 
+    border: none;
+    cursor: pointer;
+    text-align: center;
+}
+.dropbtn4 {
+    position: relative;
+    background-color: #D8D8D8;
+    color: white;
+    /* padding: 16px; */
+    width: 800px;
+	height: 50px;
+    font-size: 3em; 
+	font-family:"Helvetica Neue";  
+	font-weight: bold; 
+    border: none;
+    cursor: pointer;
+    text-align: center;
+}
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 800px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: center;
+    font-size: 2em; 
+	font-family:"Helvetica Neue";  
+	font-weight: bold; 
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {background-color: #f1f1f1}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+/* Change the background color of the dropdown button when the dropdown content is shown */
+.dropdown:hover .dropbtn1 {
+    background-color: #ffbf03;
+}
+.dropdown:hover .dropbtn2 {
+    background-color: #ffbf03;
+}
+
+.dropdown:hover .dropbtn3 {
+    background-color: #ffbf03;
+}
+.dropdown:hover .dropbtn4 {
+    background-color: #ffbf03;
+}
 .usermenu{
 	margin-top: 40px;
 	margin-right: 20px;
@@ -143,17 +281,18 @@ html,body {
 	font-weight: bold; 
 }
 .userinfo{
+	position: relative;
 	height: 900px;
 }
 .highlights{
 	height: 940px;
-	background-color: #ffffff;
+	/* background-color: #ffffff; */
 }
 .highlightsbanner{
 	margin-top: 10px;
 	padding: 5px;
-	padding-left: 500px;
-	padding-right: 500px;
+	padding-left: 600px;
+	padding-right: 600px;
 	width: 300px;
 	height: 60px;
 	background-color: #c50234;
