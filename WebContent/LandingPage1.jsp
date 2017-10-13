@@ -17,8 +17,8 @@ body {
 </style>
 </head>
 <body>
-<div class="colorstrip1"></div>
 <div id="mainDiv" class="maindiv">
+	<div class="colorstrip1"></div>
 	<div class="colorstrip2">
 		<b class="allinonebanner">ALL-IN-ONE</b>
 		<b class="multisportfantasyleague">multi-sport fantasy league!</b>
@@ -85,7 +85,6 @@ body {
 			  		<input type="text" class="semail" id="email" name="email" placeholder="Email ID"..."><br>
 				    <input type="text" class="susername" id="username" name="username" placeholder="User Name..."><br>
 				    <input type="password" class="spassword" id="password" name="password" placeholder="Password..."><br>
-
 				    <input type="password" class="srepassword" id="repassword" name="repassword" placeholder="Reconfirm password..."><br>
 				    <input class="ssubmit" type="submit" value="Submit" />
 				</form>
