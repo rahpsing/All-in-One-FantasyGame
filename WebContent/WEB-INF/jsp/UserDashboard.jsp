@@ -131,8 +131,11 @@ body {
 		  			<img src="${pageContext.request.contextPath}/resources/UIAssets/user1.jpeg" class="profileimage"><br>
 		  			<button id="updateProfileImage" class="updateprofileimage">update profile image</button><br><br>
 		  			<div id="userProfileInfo">
+
 					  	<b>User Name:         </b><b>${name}</b><br>
-					  	<b>Password</b>${password}<br>
+					  	<b>Password</b><br>
+					  	<b>User Name:         </b><b>Jason Bourne</b><br>
+					  	<b>info</b><br>
 					  	<b>info</b><br>
 					  	<b>info</b><br>
 					 </div>
