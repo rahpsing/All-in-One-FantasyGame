@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.allinone.dao.api.UserRegistrationDaoAPI;
+import com.allinone.pojos.User;
 import com.allinone.service.api.UserRegistrationServiceAPI;
 
 /**
@@ -28,7 +29,7 @@ public class UserRegistrationServiceImpl implements UserRegistrationServiceAPI {
 	}
 
 	@Override
-	public boolean checkUserLogin(String userName, String password) {
+	public User checkUserLogin(String userName, String password) {
 		// TODO Auto-generated method stub
 		return objUserRegistrationDao.checkUserLogin(userName, password);
 	}
