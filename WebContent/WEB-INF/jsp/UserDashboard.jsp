@@ -133,11 +133,8 @@ body {
 		  			<div id="userProfileInfo">
 
 					  	<b>User Name:         </b><b>${name}</b><br>
-					  	<b>Password</b><br>
-					  	<b>User Name:         </b><b>Jason Bourne</b><br>
-					  	<b>info</b><br>
-					  	<b>info</b><br>
-					  	<b>info</b><br>
+					  	<b>Email:			  </b><b>${emailID}</b><br>
+
 					 </div>
 				  	<div style="margin-top:100px;" >
 				  	<button id="closeProfile" class="closeprofile">close</button>

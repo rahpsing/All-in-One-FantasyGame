@@ -23,7 +23,8 @@ public class LoginService {
 		// UserRegistrationServiceAPI objServiceAPI = new UserRegistrationServiceImpl();
 		User temp = objUserRegistrationService.checkUserLogin(userName, password);
 		model.put("name", temp.getUserName());
-		model.put("password", temp.getPassword());
+		model.put("emailID", temp.getEmailAddress());
+		//model.put("phone", temp.getPhoneNumber());
 		return "UserDashboard";
 	}
 
