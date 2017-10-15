@@ -48,6 +48,14 @@ html,body {
   border-radius: 72.5px;
   background-size: cover;
 }
+.profileimage{
+  margin-top: 25px;
+  object-fit: cover;
+  height: 150px;
+  width: 150px;
+  border-radius: 72.5px;
+  background-size: cover;
+}
 .welcomemsg{
     position: relative; 
 	color: #ffffff;

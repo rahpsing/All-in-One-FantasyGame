@@ -128,6 +128,8 @@ body {
 		 	<!-- Modal content -->
 		  	<div id="profilePageContent" class="profilepage-modal-content">
 		  		<div style="padding-top:100px;">
+		  			<img src="${pageContext.request.contextPath}/resources/UIAssets/user1.jpeg" class="profileimage"><br>
+		  			<button id="updateProfileImage" class="updateprofileimage">update profile image</button><br><br>
 				  	<b>User Name:         </b><b>Jason Bourne</b><br>
 				  	<b>info</b><br>
 				  	<b>info</b><br>
