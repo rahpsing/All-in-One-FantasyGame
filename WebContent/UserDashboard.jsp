@@ -52,6 +52,7 @@ body {
 						    <a href="#">League 1</a>
 						    <a href="#">League 2</a>
 						    <a href="#">League 3</a>
+						    <a href="#" style="background-color: #ffbf03">create a new private league ></a>
 					 	</div>
 					 </div>
 					 <div class="dropdown">
@@ -60,12 +61,13 @@ body {
 						    <a href="#">League 1</a>
 						    <a href="#">League 2</a>
 						    <a href="#">League 3</a>
+						    <a href="#" style="background-color: #ffbf03">create a new private league ></a>
 					 	</div>
 					</div>
 		 		</div>
 		 		<div class="userleagueslist">
 		 			<div class="dropdown">
-	  					<button class="dropbtn3">
+	  					<button class="dropbtn">
 	  						<b>User sport 1</b>
 	  					</button>
 					 	<div class="dropdown-content">
@@ -75,7 +77,7 @@ body {
 					 	</div>
 					 </div>
 					 <div class="dropdown">
-					 	<button class="dropbtn4">User sport 2</button>
+					 	<button class="dropbtn">User sport 2</button>
 					 	<div class="dropdown-content">
 						    <a href="#">League 1</a>
 						    <a href="#">League 2</a>
@@ -100,7 +102,7 @@ body {
 		 				<iframe width="1000" height="400" src="https://www.youtube.com/embed/CUI2K7jSJrw?rel=0&amp;controls=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
 		 			</div>
 		 			<div style="text-align:center;margin-top: 150px">
-		 				<b class="footballhbanner">football</b>
+		 				<b class="footballhbanner">soccer</b>
 		 			</div>
 	 			</div>
 	 		</div>
@@ -122,88 +124,54 @@ body {
 			<b class="companybanner">a group 4 project ©</b>
 		</div>
 	</div>
+	<div id="profilePageModal" class="profilepagemodalcss">
+		 	<!-- Modal content -->
+		  	<div id="profilePageContent" class="profilepage-modal-content">
+		  		<div style="padding-top:100px;">
+				  	<b>User Name:         </b><b>Jason Bourne</b><br>
+				  	<b>info</b><br>
+				  	<b>info</b><br>
+				  	<b>info</b><br>
+				  	<div style="margin-top:100px;" >
+				  	<button id="closeProfile" class="closeprofile">close</button>
+				  	</div>
+				</div>
+		  	</div>
+	</div>
 	<script>
-var mainDiv = document.getElementById("mainDiv");
-var profileButton = document.getElementById("editProfile");
-var loginModal = document.getElementById("loginModal");
-var loginModalContent = document.getElementById("loginModalContent");
-var signupButton = document.getElementById("signupButton");
-var signupModal = document.getElementById("signupModal");
-
-window.onclick = function(event) {
-	if(event.target.parentNode.className != "" && event.target.parentNode.className != "signup-modal-content" && event.target.parentNode.className != "signupmodalcss" && event.target.parentNode.className != "modal-content" && event.target.parentNode.className != "loginmodalcss" && event.target.parentNode.className != "forgotuorpdiv"){
-		if(event.target.parentNode.className !="loginbuttondiv"){
-			if(event.target.parentNode.className != "signupbuttondiv"){
-			    if (event.target.parentNode.className != loginModal) {
-			        loginModal.style.display = "none";
-			        mainDiv.classList.remove("blur");
-			    }
-			    if (event.target.parentNode.className != signupModal){
-			    	signupModal.style.display = "none";
-			        mainDiv.classList.remove("blur");
-			    }
+	var mainDiv = document.getElementById("mainDiv");
+	var profileButton = document.getElementById("editProfile");
+	var profilePageModal = document.getElementById("profilePageModal");
+	var closeProfileButton = document.getElementById("closeProfile");
+	
+	window.onclick = function(event) {
+		if(event.target.parentNode.className != "" && event.target.parentNode.className != "signup-modal-content" && event.target.parentNode.className != "signupmodalcss" && event.target.parentNode.className != "modal-content" && event.target.parentNode.className != "loginmodalcss" && event.target.parentNode.className != "forgotuorpdiv"){
+			if(event.target.parentNode.className !="loginbuttondiv"){
+				if(event.target.parentNode.className != "signupbuttondiv"){
+				    if (event.target.parentNode.className != loginModal) {
+				        loginModal.style.display = "none";
+				        mainDiv.classList.remove("blur");
+				    }
+				    if (event.target.parentNode.className != signupModal){
+				    	signupModal.style.display = "none";
+				        mainDiv.classList.remove("blur");
+				    }
+				}
 			}
-		}
-	}		
-}
-
-loginButton.onclick = function() {
-    loginModal.style.display = "block";
-    mainDiv.classList.add("blur");
-}
-
-signupButton.onclick = function() {
-    signupModal.style.display = "block";
-    mainDiv.classList.add("blur");
-}
-
-function validateSignUpForm(){
-	
-	var email = document.forms["signupForm"]["email"].value;
-	var username = document.forms["signupForm"]["username"].value;
-	var password = document.forms["signupForm"]["password"].value;
-	var repassword = document.forms["signupForm"]["repassword"].value;
-	var filter = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
-	var pfilter1 = /^(?=.*[a-z])/;
-	var pfilter2 = /^(?=.*[A-Z])/;
-	var pfilter3 = /^(?=.*\d)/;
-	
-	if (!filter.test(email)) {
-	    alert("Please provide a valid email address");
-	    return false;
- 	}else if(email == "" || username == "" || password == "" || repassword == ""){
-		alert("Enter all fields");
-		return false;
-	}else if(password.length < 8){
-		alert("Password must be at least 8 characters long");
-		return false;
-	}else if(!pfilter1.test(password)){
-		alert("Password must containt at least 1 lowercase letter");
-		return false;
-	}else if(!pfilter2.test(password)){
-		alert("Password must containt at least 1 uppercase letter");
-		return false;
-	}else if(!pfilter3.test(password)){
-		alert("Password must containt at least 1 number");
-		return false;
-	}else if(password != repassword){
-		alert("Passwords do not match, reconfirm password");
-		return false;
+		}		
 	}
-    return true;
-}
-
-function validateLoginForm(){
-	var username = document.forms["loginForm"]["username"].value;
-	var password = document.forms["loginForm"]["password"].value;
 	
-	if(username == "" || password == ""){
-		alert("Enter all fields");
-		return false;
+	profileButton.onclick = function() {
+	    profilePageModal.style.display = "block";
+	    mainDiv.classList.add("blur");
 	}
-    return true;
- }
-
-</script>
+	
+	closeProfileButton.onclick = function() {
+		profilePageModal.style.display = "none";
+	    mainDiv.classList.remove("blur");
+	}
+	
+		
+	</script>
 </body>
 </html>

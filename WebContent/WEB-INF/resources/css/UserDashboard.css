@@ -7,7 +7,7 @@ html,body {
     background: -webkit-linear-gradient(#000000, #ffffff); /* For Safari 5.1 to 6.0 */
     background: -o-linear-gradient(#000000, #ffffff); /* For Opera 11.1 to 12.0 */
     background: -moz-linear-gradient(#000000, #ffffff); /* For Firefox 3.6 to 15 */
-    background: linear-gradient(#000000, #585858);
+    background: linear-gradient(#000000, #ffffff);
 }
 .maindiv{
 	position: relative;
@@ -160,7 +160,7 @@ html,body {
     cursor: pointer;
     text-align: center;
 }
-.dropbtn3 {
+.dropbtn {
     position: relative;
     background-color: #D8D8D8;
     color: white;
@@ -232,7 +232,7 @@ html,body {
     background-color: #ffbf03;
 }
 
-.dropdown:hover .dropbtn3 {
+.dropdown:hover .dropbtn {
     background-color: #ffbf03;
 }
 .dropdown:hover .dropbtn4 {
@@ -392,4 +392,28 @@ html,body {
 	font-size:2em; 
 	font-family:"Helvetica Neue"; 
 	top:50%;
+}
+.profilepagemodalcss{
+    display: none; /* Hidden by default */
+    max-height: calc(100% - 50px);
+  	position: fixed;
+    top: 50%;
+    left: 50%;
+  	transform: translate(-50%, -50%);
+  	z-index: 199;
+}
+.profilepage-modal-content{
+	z-index: 199;
+    background-color: #ffffff;
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: -100px;
+    border: none;
+    width: 850px; /* Could be more or less, depending on screen size */
+    height: 700px;
+    box-shadow: 0 15px 18px 0 rgba(0,0,0,0.2),0 16px 30px 0 rgba(0,0,0,0.19);
+    -webkit-animation-name: animatetop;
+    -webkit-animation-duration: 0.4s;
+    animation-name: animatetop;
+    animation-duration: 0.4s;
+    text-align: center;
 }
