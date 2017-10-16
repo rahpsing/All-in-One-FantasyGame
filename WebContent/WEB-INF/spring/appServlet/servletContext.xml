@@ -28,6 +28,7 @@
    <!--  <property name="dialect" value = "org.hibernate.dialect.Oracle10gDialect"/>   -->
     <property name="username" value="SYSTEM"/>
     <property name="password" value="SYSTEM"/>
+
 </bean>
 
 <bean id="objSessionFactory"
