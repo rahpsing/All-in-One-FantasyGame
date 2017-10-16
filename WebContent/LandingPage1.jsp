@@ -24,7 +24,7 @@ body {
 		<b class="multisportfantasyleague">multi-sport fantasy league!</b>
 	</div>
 	<div>
-		<div class="imagestripdiv">
+		<div class="imagestripdiv1">
 				<img class="footballimage" src="${pageContext.request.contextPath}/resources/UIAssets/FootballImage1.jpeg">
 	    		<img class="cricketimage" src="${pageContext.request.contextPath}/resources/UIAssets/CricketImage1.jpg">
 		</div>
@@ -85,9 +85,7 @@ body {
 			  		<input type="text" class="semail" id="email" name="email" placeholder="Email ID"..."><br>
 				    <input type="text" class="susername" id="username" name="username" placeholder="User Name..."><br>
 				    <input type="password" class="spassword" id="password" name="password" placeholder="Password..."><br>
-
 				    <input type="password" class="srepassword" id="repassword" name="repassword" placeholder="Reconfirm password..."><br>
-			        <input type="text" class="sphoneNumber" id="phoneNumber" name="phoneNumber" placeholder="PhoneNumber..."><br>
 				    <input class="ssubmit" type="submit" value="Submit" />
 				</form>
 		  	</div>

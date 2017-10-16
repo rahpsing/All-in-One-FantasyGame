@@ -1,5 +1,6 @@
 package com.allinone.dao.impl;
 
+import java.util.Iterator;
 import java.util.List;
 
 import org.hibernate.Criteria;
@@ -42,7 +43,7 @@ public class UserRegistrationDaoImpl implements UserRegistrationDaoAPI {
 	}
 
 	@Override
-	public boolean checkUserLogin(String userName, String password) {
+	public User checkUserLogin(String userName, String password) {
 		// TODO Auto-generated method stub
 		try {
 				Criteria objCriteria  = objSessionFactory.getCurrentSession().createCriteria(User.class);
@@ -51,15 +52,19 @@ public class UserRegistrationDaoImpl implements UserRegistrationDaoAPI {
 				objCriteria.add(Restrictions.and(usernameCriteria, passwordCriteria));
 
 				List results = objCriteria.list();
+				Iterator iterator = results.iterator();
+				User temp=(User) iterator.next();
 				if(results == null || results.isEmpty())
-					return false;
+					return null;
+				System.out.println(temp.getUserId());
+				return temp;
 				
 				} catch(Exception e) {
 					System.out.println(e);
-					return false;
+					return null;
 				}
 				
-				return true;
+				
 	}
 
 }

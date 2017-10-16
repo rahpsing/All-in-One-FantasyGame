@@ -26,8 +26,8 @@
     <property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"/>
     <property name="url" value="jdbc:oracle:thin:@localhost:1521:xe"/>
    <!--  <property name="dialect" value = "org.hibernate.dialect.Oracle10gDialect"/>   -->
-    <property name="username" value="system"/>
-    <property name="password" value="system"/>
+    <property name="username" value="SYSTEM"/>
+    <property name="password" value="SYSTEM"/>
 </bean>
 
 <bean id="objSessionFactory"

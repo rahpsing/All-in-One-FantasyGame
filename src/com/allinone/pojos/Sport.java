@@ -20,10 +20,10 @@ public class Sport implements Serializable {
 	private String sportName;
 	private Set<String> setOfRoles;
 	private Set<Player> setOfPlayers;
-	private Set<Team> setOfTeams;
+	//private Set<Team> setOfTeams;
 	private Set<League> setOfLeagues;
 	public String getId() {
-		return id;
+		return id;	
 	}
 	public void setId(String id) {
 		this.id = id;
@@ -46,12 +46,12 @@ public class Sport implements Serializable {
 	public void setSetOfPlayers(Set<Player> setOfPlayers) {
 		this.setOfPlayers = setOfPlayers;
 	}
-	public Set<Team> getSetOfTeams() {
+/*	public Set<Team> getSetOfTeams() {
 		return setOfTeams;
 	}
 	public void setSetOfTeams(Set<Team> setOfTeams) {
 		this.setOfTeams = setOfTeams;
-	}
+	}*/
 	public Set<League> getSetOfLeagues() {
 		return setOfLeagues;
 	}

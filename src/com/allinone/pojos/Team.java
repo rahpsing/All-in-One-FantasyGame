@@ -20,7 +20,7 @@ public class Team implements Serializable {
 	private String id;
 	private String teamName;
 	private Set<Player> setOfPlayers;
-	private byte[] teamLogo;
+	//private byte[] teamLogo;
 	
 	public String getId() {
 		return id;
@@ -40,12 +40,12 @@ public class Team implements Serializable {
 	public void setSetOfPlayers(Set<Player> setOfPlayers) {
 		this.setOfPlayers = setOfPlayers;
 	}
-	public byte[] getTeamLogo() {
+/*	public byte[] getTeamLogo() {
 		return teamLogo;
 	}
 	public void setTeamLogo(byte[] teamLogo) {
 		this.teamLogo = teamLogo;
-	}
+	}*/
 	@Override
 	public String toString() {
 		return "Team [id=" + id + ", teamName=" + teamName + "]";

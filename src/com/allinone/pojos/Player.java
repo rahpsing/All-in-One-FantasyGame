@@ -20,9 +20,10 @@ public class Player implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	private String id;
-	private String playerName;
+	private String firstName;
+	private String lastName;
 	private Set<String> setOfPrimaryRoles;
-	private Set<Team> setOfTeams;
+	//private Set<Team> setOfTeams;
 	private Sport sport;
 	private byte[] profileImage;
 	public String getId() {
@@ -31,11 +32,18 @@ public class Player implements Serializable {
 	public void setId(String id) {
 		this.id = id;
 	}
-	public String getPlayerName() {
-		return playerName;
+
+	public String getFirstName() {
+		return firstName;
 	}
-	public void setPlayerName(String playerName) {
-		this.playerName = playerName;
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+	public String getLastName() {
+		return lastName;
+	}
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
 	}
 	public Set<String> getSetOfPrimaryRoles() {
 		return setOfPrimaryRoles;
@@ -43,12 +51,12 @@ public class Player implements Serializable {
 	public void setSetOfPrimaryRoles(Set<String> setOfPrimaryRoles) {
 		this.setOfPrimaryRoles = setOfPrimaryRoles;
 	}
-	public Set<Team> getSetOfTeams() {
+/*	public Set<Team> getSetOfTeams() {
 		return setOfTeams;
 	}
 	public void setSetOfTeams(Set<Team> setOfTeams) {
 		this.setOfTeams = setOfTeams;
-	}
+	}*/
 	public Sport getSport() {
 		return sport;
 	}
@@ -63,9 +71,10 @@ public class Player implements Serializable {
 	}
 	@Override
 	public String toString() {
-		return "Player [id=" + id + ", playerName=" + playerName + ", profileImage=" + Arrays.toString(profileImage)
-				+ "]";
+		return "Player [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + "]";
 	}
+
+	
 	
 	
 	

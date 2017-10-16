@@ -13,18 +13,18 @@
         </property>
         <set name="setOfPlayers" table="PLAYER" inverse="false" lazy="true">
             <key>
-                <column name="ID" />
+                <column name="PLAYER_ID" />
             </key>
             <one-to-many class="com.allinone.pojos.Player" />
         </set>
-        <primitive-array name="teamLogo" table="TEAM">
+<!--         <primitive-array name="teamLogo" table="TEAM">
             <key>
-                <column name="ID" />
+                <column name="TEAM_ID" />
             </key>
             <index></index>
             <element type="byte">
                 <column name="TEAMLOGO" />
             </element>
-        </primitive-array>
+        </primitive-array> -->
     </class>
 </hibernate-mapping>

@@ -8,10 +8,13 @@
             <column name="ID" />
             <generator class="uuid" />
         </id>
-        <property name="playerName" type="java.lang.String">
-            <column name="PLAYERNAME" />
+        <property name="firstName" type="java.lang.String">
+            <column name="FIRSTNAME" />
         </property>
-        <set name="setOfPrimaryRoles" table="PLAYER" inverse="false" lazy="true">
+        <property name="lastName" type="java.lang.String">
+            <column name="LASTNAME" />
+        </property>
+        <set name="setOfPrimaryRoles" table="PLAYER_ROLES" inverse="true" lazy="true">
             <key>
                 <column name="ID" />
             </key>
@@ -19,17 +22,12 @@
                 <column name="SETOFPRIMARYROLES" />
             </element>
         </set>
-        <set name="setOfTeams" table="TEAM" inverse="false" lazy="true">
-            <key>
-                <column name="ID" />
-            </key>
-            <one-to-many class="com.allinone.pojos.Team" />
-        </set>
+        
         <many-to-one name="sport" class="com.allinone.pojos.Sport" fetch="join">
-            <column name="SPORT" />
+            <column name="SPORT" not-null="true"/>
         </many-to-one>
         <property name="profileImage" type="binary">
-            <column name="PROFILEIMAGE" not-null="true" />
+            <column name="PROFILEIMAGE" not-null="false" />
         </property>
     </class>
 </hibernate-mapping>
