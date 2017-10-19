@@ -6,11 +6,14 @@
     <class name="com.allinone.pojos.League" table="LEAGUE">
         <id name="id" type="java.lang.String">
             <column name="ID" />
-            <generator class="assigned" />
+            <generator class="uuid" />
         </id>
         <property name="leagueName" type="java.lang.String">
             <column name="LEAGUENAME" />
         </property>
+        <many-to-one name="sport" class="com.allinone.pojos.Sport" fetch="select">
+            <column name="SPORT_ID" not-null="true" />
+        </many-to-one>
         <set name="setOfTeams" table="TEAM" inverse="false" lazy="true">
             <key>
                 <column name="ID" />

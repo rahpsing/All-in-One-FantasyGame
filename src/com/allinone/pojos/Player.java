@@ -23,8 +23,9 @@ public class Player implements Serializable {
 	private String firstName;
 	private String lastName;
 	private Set<String> setOfPrimaryRoles;
-	//private Set<Team> setOfTeams;
 	private Sport sport;
+	private League league;
+	private Team team;
 	private byte[] profileImage;
 	public String getId() {
 		return id;
@@ -32,7 +33,6 @@ public class Player implements Serializable {
 	public void setId(String id) {
 		this.id = id;
 	}
-
 	public String getFirstName() {
 		return firstName;
 	}
@@ -51,17 +51,23 @@ public class Player implements Serializable {
 	public void setSetOfPrimaryRoles(Set<String> setOfPrimaryRoles) {
 		this.setOfPrimaryRoles = setOfPrimaryRoles;
 	}
-/*	public Set<Team> getSetOfTeams() {
-		return setOfTeams;
-	}
-	public void setSetOfTeams(Set<Team> setOfTeams) {
-		this.setOfTeams = setOfTeams;
-	}*/
 	public Sport getSport() {
 		return sport;
 	}
 	public void setSport(Sport sport) {
 		this.sport = sport;
+	}
+	public League getLeague() {
+		return league;
+	}
+	public void setLeague(League league) {
+		this.league = league;
+	}
+	public Team getTeam() {
+		return team;
+	}
+	public void setTeam(Team team) {
+		this.team = team;
 	}
 	public byte[] getProfileImage() {
 		return profileImage;
@@ -71,13 +77,8 @@ public class Player implements Serializable {
 	}
 	@Override
 	public String toString() {
-		return "Player [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + "]";
+		return "Player [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", setOfPrimaryRoles="
+				+ setOfPrimaryRoles + ", sport=" + sport + ", league=" + league + ", team=" + team + "]";
 	}
-
-	
-	
-	
-	
-	
 
 }

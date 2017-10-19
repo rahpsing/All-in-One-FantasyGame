@@ -16,7 +16,7 @@ body {
 -->
 </style>
 </head>
-<body>
+<body onload='fetchLeagues()'>
 	<div class="colorstrip1">
 			<!--<tr>
 				<b>aaaaa</b>
@@ -68,7 +68,7 @@ body {
 		 		<div class="userleagueslist">
 		 			<div class="dropdown">
 	  					<button class="dropbtn">
-	  						<b>User sport 1</b>
+	  						<b>Cricket</b>
 	  					</button>
 					 	<div class="dropdown-content">
 						    <a href="#">League 1</a>
@@ -129,7 +129,9 @@ body {
 		  	<div id="profilePageContent" class="profilepage-modal-content">
 		  		<div style="padding-top:100px;">
 		  			<img src="${pageContext.request.contextPath}/resources/UIAssets/user1.jpeg" class="profileimage"><br>
+		  		
 		  			<button id="updateProfileImage" class="updateprofileimage">update profile image</button><br><br>
+		  				<input id="imageUpload" class="file-upload" type="file" accept="image/*"/>
 		  			<div id="userProfileInfo">
 
 					  	<b>User Name:         </b><b>${name}</b><br>
@@ -174,7 +176,57 @@ body {
 		profilePageModal.style.display = "none";
 	    mainDiv.classList.remove("blur");
 	}
+
 	
+	var updateProfileDiv = document.getElementById("updateProfileImage");
+	var fileUploadDiv = document.getElementById("imageUpload");
+	
+
+	updateProfileDiv.onclick = function() {
+		 readURL(fileUploadDiv);
+	}
+	
+	
+	    var readURL = function(input) {
+	        if (input.files && input.files[0]) {
+	            var reader = new FileReader();
+
+	            reader.onload = function (e) {
+	                $('.uploadprofileimage').attr('src', e.target.result);
+	            }
+	    
+	            reader.readAsDataURL(input.files[0]);
+	        }
+	    }
+	    
+
+	    $(".file-upload").on('change', function(){
+	        readURL(this);
+	    });
+	    
+	    $(".updateprofileimage").on('click', function() {
+	       $(".fileUpload").click();
+	       readURL(this);
+	    });
+
+
+	function fetchLeagues() {
+		jQuery.ajax({
+			
+		    url : "All-In-OneFantasyGame/fetchLeagues",
+		    type: "POST",
+		    data : {},
+		    success: function(data, textStatus, jqXHR)
+		    {
+		        //data - response from server
+		        jQuery("#selectedRestaurants").html(data);
+		    },
+		    error: function (jqXHR, textStatus, errorThrown)
+		    {
+		 		console.log(errorThrown);
+		    }
+		});
+		}
 		
 	</script>
 </body>

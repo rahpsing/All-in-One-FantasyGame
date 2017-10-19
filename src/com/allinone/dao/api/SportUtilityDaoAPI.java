@@ -12,6 +12,8 @@ public interface SportUtilityDaoAPI {
 	public boolean addEntriesToDatabase();
 
 	boolean addNewSportEntry();
+	
+	public boolean createLeague();
 
 
 }

@@ -5,7 +5,7 @@
 <hibernate-mapping>
     <class name="com.allinone.pojos.Player" table="PLAYER">
         <id name="id">
-            <column name="ID" />
+            <column name="PLAYER_ID" />
             <generator class="uuid" />
         </id>
         <property name="firstName" type="java.lang.String">
@@ -23,11 +23,22 @@
             </element>
         </set>
         
-        <many-to-one name="sport" class="com.allinone.pojos.Sport" fetch="join">
-            <column name="SPORT" not-null="true"/>
-        </many-to-one>
-        <property name="profileImage" type="binary">
-            <column name="PROFILEIMAGE" not-null="false" />
+         <property name="sport">
+            <column name="SPORT_ID" />
         </property>
+        
+         <property name="league">
+            <column name="LEAGUE_ID" />
+        </property>
+
+        
+        <many-to-one name="team" class="com.allinone.pojos.Team" fetch="join">
+            <column name="team" not-null="true"/>
+        </many-to-one>
+	
+
+   <!--      <property name="profileImage" type="binary">
+            <column name="PROFILEIMAGE" not-null="false" />
+        </property> -->
     </class>
 </hibernate-mapping>

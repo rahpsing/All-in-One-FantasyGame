@@ -34,6 +34,12 @@ public class SportUtilityServiceImpl implements SportUtilityServiceAPI {
 		
 		return objServiceUtilityDao.addNewSportEntry();
 	}
+
+	@Override
+	public boolean createLeague() {
+		// TODO Auto-generated method stub
+		return objServiceUtilityDao.createLeague();
+	}
 	
 	
 

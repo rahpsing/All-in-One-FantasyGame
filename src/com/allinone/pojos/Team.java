@@ -20,8 +20,15 @@ public class Team implements Serializable {
 	private String id;
 	private String teamName;
 	private Set<Player> setOfPlayers;
+	private League league;
 	//private byte[] teamLogo;
 	
+	public League getLeague() {
+		return league;
+	}
+	public void setLeague(League league) {
+		this.league = league;
+	}
 	public String getId() {
 		return id;
 	}
@@ -48,8 +55,9 @@ public class Team implements Serializable {
 	}*/
 	@Override
 	public String toString() {
-		return "Team [id=" + id + ", teamName=" + teamName + "]";
+		return "Team [id=" + id + ", teamName=" + teamName + ", league=" + league + "]";
 	}
+
 	
 	
 	

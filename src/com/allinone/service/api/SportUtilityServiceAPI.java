@@ -13,4 +13,6 @@ public interface SportUtilityServiceAPI {
 	
 	public boolean addNewSport();
 	
+	public boolean createLeague();
+	
 }

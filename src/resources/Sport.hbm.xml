@@ -31,9 +31,9 @@
             </key>
             <one-to-many class="com.allinone.pojos.Team" />
         </set> -->
-        <set name="setOfLeagues" table="LEAGUE" inverse="false" lazy="true">
+        <set name="setOfLeagues" table="league" inverse="true" lazy="true" fetch="select">
             <key>
-                <column name="ID" />
+                <column name="SPORT_ID" not-null="true"/>
             </key>
             <one-to-many class="com.allinone.pojos.League" />
         </set>
