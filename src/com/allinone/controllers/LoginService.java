@@ -28,7 +28,7 @@ public class LoginService {
 		//model.put("phone", temp.getPhoneNumber());
 		return "UserDashboard";
 		}
-		return "LandingPage1";
+		return "redirect:" + "http://localhost:8080/All-In-One-FantasyGame/LandingPage1.jsp";
 	}
 
 }
