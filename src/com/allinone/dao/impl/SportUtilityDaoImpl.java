@@ -1,5 +1,6 @@
 package com.allinone.dao.impl;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -22,7 +23,18 @@ public class SportUtilityDaoImpl implements SportUtilityDaoAPI {
 
 	@Autowired
 	private SessionFactory objSessionFactory;
-
+	
+	@Override
+	public String getsportID(String sportName) {
+		Criteria objCriteria  = objSessionFactory.getCurrentSession().createCriteria(Sport.class);
+		Criterion sportiDCriteria = Restrictions.ilike("sportName", sportName);
+		objCriteria.add(Restrictions.and(sportiDCriteria));
+		
+		List<Sport> listOfSport = new ArrayList<Sport>();
+		listOfSport = objCriteria.list();
+		return listOfSport.get(0).getId();
+				}
+	
 	@Override
 	public boolean addEntriesToDatabase() {
 		// TODO Auto-generated method stub

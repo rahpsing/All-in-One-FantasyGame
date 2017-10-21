@@ -13,9 +13,11 @@ import com.allinone.pojos.League;
  */
 public interface LeagueDaoAPI {
 
-	public List<League> fetchLeagues();
+	public List<League> fetchLeagues(String sport);
 
 	public List<League> fetchLikeLeagues(String likeLeague);
+
+	
 
 
 

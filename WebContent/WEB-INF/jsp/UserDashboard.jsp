@@ -45,23 +45,15 @@ body {
 		 				<b> Leagues </b>
 		 			</div>
 		 			<div class="dropdown">
-	  					<button class="dropbtn1">
-	  						<b>Soccer</b>
-	  					</button>
-					 	<div class="dropdown-content">
-						    <a href="#">League 1</a>
-						    <a href="#">League 2</a>
-						    <a href="#">League 3</a>
-						    <a href="#" style="background-color: #ffbf03">create a new private league ></a>
+	  					<button class="dropbtn1" onmouseover="javascript:sendFetchReq('SOCCER','systemSoccerLeagues')">Soccer</button>
+					 	<div id="systemSoccerLeagues" class="dropdown-content">
+						    
 					 	</div>
 					 </div>
 					 <div class="dropdown">
-					 	<button class="dropbtn2">Cricket</button>
-					 	<div class="dropdown-content">
-						    <a href="#">League 1</a>
-						    <a href="#">League 2</a>
-						    <a href="#">League 3</a>
-						    <a href="#" style="background-color: #ffbf03">create a new private league ></a>
+					 	<button class="dropbtn2" onmouseover="javascript:sendFetchReq('CRICKET','systemLeagues')">Cricket</button>
+					 	<div id="systemLeagues" class="dropdown-content">
+						   
 					 	</div>
 					</div>
 		 		</div>
@@ -227,7 +219,30 @@ body {
 		    }
 		});
 		}
-		
+	
 	</script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script>
+function sendFetchReq(sportName,iD){
+	$.ajax({
+	    url : '/All-In-One-FantasyGame/fetchLeagues',
+	    type: 'post',
+	    data : {SPORT_NAME:sportName},
+	    dataType : 'json',
+	    success: function(data)
+	    {	$('#'+iD).empty();
+	    	$(data.League).each(function(index,value){$('#'+iD).append('<a href=https://www.google.com >'+value.League+'</a>');})
+	    	$('#'+iD).append('<a href="#" style="background-color: #ffbf03">create a new private league ></a>');
+	    },
+	    error: function (jqXHR, textStatus, errorThrown)
+	    {
+	    	$('#'+iD).empty();
+	 		$('#'+iD).append('<a href="#" >No Leagues></a>');
+			$('#'+iD).append('<a href="#" style="background-color: #ffbf03">create a new private league ></a>');
+	    }
+	});
+}
+</script>
+
 </body>
 </html>

@@ -15,5 +15,7 @@ public interface SportUtilityDaoAPI {
 	
 	public boolean createLeague();
 
+	public String getsportID(String sportName);
+
 
 }
