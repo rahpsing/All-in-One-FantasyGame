@@ -35,6 +35,17 @@ public class LeagueServiceImpl implements LeagueServiceAPI {
 		return listOfLeagues;
 	}
 
+	@Override
+	public List<League> fetchLikeLeagues(String LikeLeague) {
+		// TODO Auto-generated method stub
+		
+		//for search functionality
+		List<League> listOfLeagues = new ArrayList<League>();
+		
+		listOfLeagues = objLeagueDao.fetchLikeLeagues(LikeLeague);
+		
+		return listOfLeagues;
+	}
 
 	
 	

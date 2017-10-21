@@ -24,13 +24,27 @@ public class LeagueDaoImpl implements LeagueDaoAPI {
 
 	@Autowired
 	private SessionFactory objSessionFactory;
-
-
-
+	
 	@Override
 	public List<League> fetchLeagues() {
 		// TODO Auto-generated method stub
 		Criteria objCriteria  = objSessionFactory.getCurrentSession().createCriteria(League.class);
+		Criterion isSystemLeagueCriteria = Restrictions.eq("isSystemLeague", Boolean.TRUE);
+		objCriteria.add(Restrictions.and(isSystemLeagueCriteria));
+		List<League> listOfLeagues = new ArrayList<League>();
+		listOfLeagues = objCriteria.list();
+		
+		
+		return listOfLeagues;
+	}
+	
+	@Override
+	public List<League> fetchLikeLeagues(String likeLeague) {
+		// TODO Auto-generated method stub
+		Criteria objCriteria  = objSessionFactory.getCurrentSession().createCriteria(League.class);
+		Criterion likeLeagueCriteria = Restrictions.like("leagueName", "%"+likeLeague.toUpperCase()+"%");
+		
+		objCriteria.add(Restrictions.and(likeLeagueCriteria));
 		List<League> listOfLeagues = new ArrayList<League>();
 		listOfLeagues = objCriteria.list();
 		

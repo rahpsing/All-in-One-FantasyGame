@@ -15,7 +15,9 @@ public interface LeagueDaoAPI {
 
 	public List<League> fetchLeagues();
 
-	
+	public List<League> fetchLikeLeagues(String likeLeague);
+
+
 
 
 }
