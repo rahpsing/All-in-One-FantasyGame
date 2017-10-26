@@ -14,26 +14,18 @@
         <property name="lastName" type="java.lang.String">
             <column name="LASTNAME" />
         </property>
-        <set name="setOfPrimaryRoles" table="PLAYER_ROLES" inverse="true" lazy="true">
-            <key>
-                <column name="ID" />
-            </key>
-            <element type="java.lang.String">
-                <column name="SETOFPRIMARYROLES" />
-            </element>
-        </set>
-        
-         <property name="sport">
-            <column name="SPORT_ID" />
+		
+		<property name="playerRole" type="java.lang.String">
+            <column name="PLAYERROLE" />
         </property>
-        
-         <property name="league">
-            <column name="LEAGUE_ID" />
-        </property>
+
+        <many-to-one name="league" class="com.allinone.pojos.League" fetch="join">
+            <column name="LEAGUE_ID" not-null="true"/>
+        </many-to-one>
 
         
         <many-to-one name="team" class="com.allinone.pojos.Team" fetch="join">
-            <column name="team" not-null="true"/>
+            <column name="TEAM_ID"/>
         </many-to-one>
 	
 

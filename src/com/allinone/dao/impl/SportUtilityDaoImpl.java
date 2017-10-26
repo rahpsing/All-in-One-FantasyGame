@@ -16,7 +16,7 @@ import com.allinone.dao.api.SportUtilityDaoAPI;
 import com.allinone.pojos.League;
 import com.allinone.pojos.Player;
 import com.allinone.pojos.Sport;
-import com.allinone.pojos.User;
+import com.allinone.pojos.Team;
 
 @Repository
 public class SportUtilityDaoImpl implements SportUtilityDaoAPI {
@@ -27,8 +27,8 @@ public class SportUtilityDaoImpl implements SportUtilityDaoAPI {
 	@Override
 	public String getsportID(String sportName) {
 		Criteria objCriteria  = objSessionFactory.getCurrentSession().createCriteria(Sport.class);
-		Criterion sportiDCriteria = Restrictions.ilike("sportName", sportName);
-		objCriteria.add(Restrictions.and(sportiDCriteria));
+		Criterion sportIdCriteria = Restrictions.ilike("sportName", sportName);
+		objCriteria.add(Restrictions.and(sportIdCriteria));
 		
 		List<Sport> listOfSport = new ArrayList<Sport>();
 		listOfSport = objCriteria.list();
@@ -44,53 +44,40 @@ public class SportUtilityDaoImpl implements SportUtilityDaoAPI {
 		
 		try {
 			
+			Criteria objCriteria  = objSessionFactory.getCurrentSession().createCriteria(League.class);
+			Criterion usernameCriteria = Restrictions.eq("leagueName", "IPL");
+			objCriteria.add(usernameCriteria);
+
+			List<League> results = objCriteria.list();
+			
+			if(results == null || results.isEmpty())
+				return false;
+			
+			League league = results.get(0);
+			
 		    Player player = new Player();
 			player.setFirstName("Virat");
 			player.setLastName("Kohli");
+			player.setPlayerRole("Batsman");
+			player.setLeague(league);
 			
 
-			Criteria objCriteria  = objSessionFactory.getCurrentSession().createCriteria(Sport.class);
-			Criterion usernameCriteria = Restrictions.eq("sportName", "Cricket");
-			objCriteria.add(usernameCriteria);
-
-			List<Sport> results = objCriteria.list();
-			
-			if(results == null || results.isEmpty())
-				return false;
-			
-			Sport sport = results.get(0);
-			Set setOfRoles = sport.getSetOfRoles();
-			
-			System.out.println(results.get(0));
-
-			player.setSport(sport);
-			Set roles = new HashSet();
-
-			player.setSetOfPrimaryRoles(roles);
-			Set playerSet = sport.getSetOfPlayers();
-			playerSet.add(player);
-			sport.setSetOfPlayers(playerSet);
-			objSessionFactory.getCurrentSession().saveOrUpdate(sport);
 			objSessionFactory.getCurrentSession().saveOrUpdate(player);
-	/*		Criteria objCriteria  = objSessionFactory.getCurrentSession().createCriteria(Sport.class);
-			Criterion usernameCriteria = Restrictions.eq("sportName", "Cricket");
-			objCriteria.add(usernameCriteria);
 
-			List<Sport> results = objCriteria.list();
-			
-			if(results == null || results.isEmpty())
-				return false;
-			
-			Sport sport = results.get(0);*/
-			
-			objSessionFactory.getCurrentSession().saveOrUpdate(player);
-			//objSessionFactory.getCurrentSession().saveOrUpdate(sport);
+
+	
 		} catch(Exception e) {
 			System.out.println(e);
 			return false;
 		}
 		
 		return true;
+	}
+	
+	private void addTeams() {
+		
+		Team team  = new Team();
+		team.setTeamName("Mumbai Indians");
 	}
 	
 	@Override
@@ -106,7 +93,7 @@ public class SportUtilityDaoImpl implements SportUtilityDaoAPI {
 			sport.setSetOfRoles(setOfRoles);
 			
 			sport.setSetOfLeagues(new HashSet<League>());
-			sport.setSetOfPlayers(new HashSet<Player>());
+		//	sport.setSetOfPlayers(new HashSet<Player>());
 			objSessionFactory.getCurrentSession().saveOrUpdate(sport);
 		} catch(Exception e) {
 			System.out.println(e);

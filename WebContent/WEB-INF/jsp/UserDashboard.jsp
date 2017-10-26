@@ -6,6 +6,8 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>User Dashboard</title>
 <!--  ${pageContext.request.contextPath} - gives you path of the project -->
+<!-- jQuery -->
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/css/jQuery.min.js"></script>
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/UserDashboard.css" media="screen" />
 <style type="text/css">
 <!--
@@ -16,7 +18,7 @@ body {
 -->
 </style>
 </head>
-<body onload='fetchLeagues()'>
+<body>
 	<div class="colorstrip1">
 			<!--<tr>
 				<b>aaaaa</b>
@@ -221,7 +223,7 @@ body {
 		}
 	
 	</script>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	
 <script>
 function sendFetchReq(sportName,iD){
 	$.ajax({

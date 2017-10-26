@@ -11,11 +11,15 @@
         <property name="teamName" type="java.lang.String">
             <column name="TEAMNAME" />
         </property>
+        
+        <property name="teamInitials" type="java.lang.String">
+            <column name="TEAM_INITIALS" />
+        </property>
 
         <set name="setOfPlayers" table="TEAM_PLAYERS"
 				inverse="false" lazy="true" fetch="select">
             <key>
-                <column name="TEAM_ID" not-null="true" />
+                <column name="TEAM_ID" />
             </key>
             <one-to-many class="com.allinone.pojos.Player" />
         </set>

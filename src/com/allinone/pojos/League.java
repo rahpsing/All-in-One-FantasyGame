@@ -21,6 +21,7 @@ public class League implements Serializable {
 	private String id;
 	private String leagueName;
 	private Sport sport;
+	private Set<Player> setOfPlayers;
 	private Set<Team> setOfTeams;
 	private List<Game> listOfGames;
 	private boolean isSystemLeague;
@@ -64,6 +65,12 @@ public class League implements Serializable {
 	public String toString() {
 		return "League [id=" + id + ", leagueName=" + leagueName + ", setOfTeams=" + setOfTeams + ", isSystemLeague="
 				+ isSystemLeague + "]";
+	}
+	public Set<Player> getSetOfPlayers() {
+		return setOfPlayers;
+	}
+	public void setSetOfPlayers(Set<Player> setOfPlayers) {
+		this.setOfPlayers = setOfPlayers;
 	}
 	
 	

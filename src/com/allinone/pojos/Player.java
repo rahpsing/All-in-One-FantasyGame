@@ -22,8 +22,8 @@ public class Player implements Serializable {
 	private String id;
 	private String firstName;
 	private String lastName;
-	private Set<String> setOfPrimaryRoles;
-	private Sport sport;
+	private String playerRole;
+	//private Sport sport;
 	private League league;
 	private Team team;
 	private byte[] profileImage;
@@ -45,18 +45,7 @@ public class Player implements Serializable {
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}
-	public Set<String> getSetOfPrimaryRoles() {
-		return setOfPrimaryRoles;
-	}
-	public void setSetOfPrimaryRoles(Set<String> setOfPrimaryRoles) {
-		this.setOfPrimaryRoles = setOfPrimaryRoles;
-	}
-	public Sport getSport() {
-		return sport;
-	}
-	public void setSport(Sport sport) {
-		this.sport = sport;
-	}
+
 	public League getLeague() {
 		return league;
 	}
@@ -77,8 +66,13 @@ public class Player implements Serializable {
 	}
 	@Override
 	public String toString() {
-		return "Player [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", setOfPrimaryRoles="
-				+ setOfPrimaryRoles + ", sport=" + sport + ", league=" + league + ", team=" + team + "]";
+		return "Player [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ",  league=" + league + ", team=" + team + "]";
+	}
+	public String getPlayerRole() {
+		return playerRole;
+	}
+	public void setPlayerRole(String playerRole) {
+		this.playerRole = playerRole;
 	}
 
 }

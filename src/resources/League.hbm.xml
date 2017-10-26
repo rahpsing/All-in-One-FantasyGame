@@ -20,6 +20,14 @@
             </key>
             <one-to-many class="com.allinone.pojos.Team" />
         </set>
+        
+        <set name="setOfPlayers" table="PLAYER" inverse="true" lazy="true">
+            <key>
+                <column name="LEAGUE_ID" />
+            </key>
+            <one-to-many class="com.allinone.pojos.Player" />
+        </set>
+        
         <list name="listOfGames" inverse="false" table="GAME" lazy="true">
             <key>
                 <column name="ID" />

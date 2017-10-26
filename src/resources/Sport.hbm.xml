@@ -19,12 +19,12 @@
                 <column name="SETOFROLES" />
             </element>
         </set>
-        <set name="setOfPlayers" table="PLAYER" lazy="true" fetch="select">
+<!--         <set name="setOfPlayers" table="PLAYER" lazy="true" fetch="select">
             <key>
                 <column name="ID" />
             </key>
             <one-to-many class="com.allinone.pojos.Player" />
-        </set>
+        </set> -->
 <!--         <set name="setOfTeams" table="TEAM" inverse="false" lazy="true">
             <key>
                 <column name="ID" />

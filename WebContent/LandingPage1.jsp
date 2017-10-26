@@ -5,6 +5,8 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>ALL-IN-ONE</title>
+<!-- jQuery -->
+<script src="${pageContext.request.contextPath}/resources/css/jQuery.min.js"></script>
 <!--  ${pageContext.request.contextPath} - gives you path of the project -->
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/LandingPage1.css" media="screen" />
 <style type="text/css">
@@ -91,6 +93,10 @@ body {
 		  	</div>
 </div>
 <script>
+$.noConflict();
+jQuery(document).ready( function() {
+  console.log("i am ready");
+});
 var mainDiv = document.getElementById("mainDiv");
 var loginButton = document.getElementById("loginButton");
 var loginModal = document.getElementById("loginModal");
