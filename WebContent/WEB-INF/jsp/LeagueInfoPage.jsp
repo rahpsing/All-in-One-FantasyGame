@@ -4,11 +4,11 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>User Dashboard</title>
+<title>League Dashboard</title>
 <!--  ${pageContext.request.contextPath} - gives you path of the project -->
 <!-- jQuery -->
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/css/jQuery.min.js"></script>
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/UserDashboard.css" media="screen" />
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/LeagueInfoPage.css" media="screen" />
 <style type="text/css">
 <!--
 body { 
@@ -29,111 +29,14 @@ body {
 		<div class="colorstrip2">
 			<img src="${pageContext.request.contextPath}/resources/UIAssets/user1.jpeg" class="userimage">
 			<div class="welcomemsg">
-			<b>hello, </b>
 			<b class="name">${name}</b>
 			</div>
 			<img src="${pageContext.request.contextPath}/resources/UIAssets/bannerdesign.png" class="bannerdesign">
  		</div>
- 		<div class="userinfo">
- 			<div class="colorstrip21">
-	 			<form>	
-	 				<input class="searchbar" type="text" name="search" placeholder="search...">
-	 			</form>
-	 			<b class="searchdisc">find custom leagues</b>
-	 		</div>
- 			<div class="leaguelist" style="display:none">
-		 		<div class="systemleagueslist">
-		 			<div class="colorstrip22">
-		 				<b> leagues </b>
-		 			</div>
-		 			<div class="dropdown">
-	  					<button class="dropbtn1" onmouseover="javascript:sendFetchReq('SOCCER','systemSoccerLeagues')">Soccer</button>
-					 	<div id="systemSoccerLeagues" class="dropdown-content">
-						    
-					 	</div>
-					 </div>
-					 <div class="dropdown">
-					 	<button class="dropbtn2" onmouseover="javascript:sendFetchReq('CRICKET','systemLeagues')">Cricket</button>
-					 	<div id="systemLeagues" class="dropdown-content">
-						   
-					 	</div>
-					</div>
-		 		</div>
-		 		<div class="userleagueslist">
-		 			<div class="dropdown">
-	  					<button class="dropbtn">
-	  						<b>Cricket</b>
-	  					</button>
-					 	<div class="dropdown-content">
-						    <a href="#">League 1</a>
-						    <a href="#">League 2</a>
-						    <a href="#">League 3</a>
-					 	</div>
-					 </div>
-					 <div class="dropdown">
-					 	<button class="dropbtn">User sport 2</button>
-					 	<div class="dropdown-content">
-						    <a href="#">League 1</a>
-						    <a href="#">League 2</a>
-						    <a href="#">League 3</a>
-					 	</div>
-					</div>
-		 		</div>
-	 		</div>
-	 		<div class="searchresult" style="display:show">
-	 			<div class="searchresultlist">
-			 		<div class="colorstrip22">
-			 			<b> search results </b>
-			 		</div>
-			 		<div class="scrollresult">
-			 			<a href="#">result 1</a>
-			 			<a href="#">result 2</a>
-			 			<a href="#">result 3</a>
-			 			<a href="#">result 4</a>
-			 			<a href="#">result 5</a>
-			 			<a href="#">result 6</a>
-			 			<a href="#">result 7</a>
-			 			<a href="#">result 8</a>
-			 			<a href="#">result 9</a>
-			 			<a href="#">result 10</a>
-			 			<a href="#">result 11</a>
-			 			<a href="#">result 12</a>
-			 			<a href="#">result 13</a>
-			 			<a href="#">result 14</a>
-			 		</div>
-			 	</div>
-	 		</div>
- 			<div class="usermenu">
-	 			<button id="editProfile" class="editprofile">profile</button>
-	 			<button id="createLeague" class="createleague">create league</button>
-	 			<button id="Stats" class="stats">statistics</button>
-	 		</div>
+ 		<div class="leagueinfo">
+ 			
 	 	</div>
- 		<div class="highlights">
- 			<div style="text-align: center">
- 				<b class="highlightsbanner">highlights</b>
- 			</div>
- 			<div style="display:inline-block">
-	 			<div class="colorstrip101">
-		 			<div class="video1">
-		 				<iframe width="1000" height="400" src="https://www.youtube.com/embed/CUI2K7jSJrw?rel=0&amp;controls=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
-		 			</div>
-		 			<div style="text-align:center;margin-top: 150px">
-		 				<b class="footballhbanner">soccer</b>
-		 			</div>
-	 			</div>
-	 		</div>
-	 		<div style="display:inline-block">
-	 			<div class="colorstrip102">
-		 			<div class="video2">
-		 				<iframe width="1000" height="400" src="https://www.youtube.com/embed/1A6RA6iJdFg?rel=0&amp;controls=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
-		 			</div>
-		 			<div style="text-align:center;margin-top: 150px">
-		 				<b class="crickethbanner">cricket</b>
-		 			</div>
-	 			</div>
-	 		</div>
- 		</div>
+ 		
  		<div class="colorstrip10"></div>
 		<div class="colorstrip11"></div>
 		<div class="colorstrip12"></div>
@@ -141,26 +44,7 @@ body {
 			<b class="companybanner">a group 4 project ©</b>
 		</div>
 	</div>
-	<div id="profilePageModal" class="profilepagemodalcss">
-		 	<!-- Modal content -->
-		  	<div id="profilePageContent" class="profilepage-modal-content">
-		  		<div style="padding-top:100px;">
-		  			<img src="${pageContext.request.contextPath}/resources/UIAssets/user1.jpeg" class="profileimage"><br>
-		  		
-		  			<button id="updateProfileImage" class="updateprofileimage">update profile image</button><br><br>
-		  				<input id="imageUpload" class="file-upload" type="file" accept="image/*"/>
-		  			<div id="userProfileInfo">
 
-					  	<b>User Name:         </b><b>${name}</b><br>
-					  	<b>Email:			  </b><b>${emailID}</b><br>
-
-					 </div>
-				  	<div style="margin-top:100px;" >
-				  	<button id="closeProfile" class="closeprofile">close</button>
-				  	</div>
-				</div>
-		  	</div>
-	</div>
 	<script>
 	var mainDiv = document.getElementById("mainDiv");
 	var profileButton = document.getElementById("editProfile");

@@ -103,7 +103,7 @@ html,body {
 	position:relative;
 	float: right;
 	margin-top: 2px;
-	margin-right: 10px;
+	margin-right: 0px;
 	width: 400px;
 	height: 60px;
 	background-color: none;
@@ -125,6 +125,36 @@ html,body {
 .userinfo .leaguelist .userleagueslist{
 	position: relative;
 	left: -50%;
+}
+.userinfo .searchresult{
+	margin-top: 40px;
+	position: absolute;
+	left: 50%;
+}
+.userinfo .searchresult .searchresultlist{
+	position: relative;
+	left: -50%;
+}
+
+.scrollresult{
+	overflow-y: scroll;
+	max-height: 650px;
+	position: absolute;
+    background-color: #f9f9f9;
+    min-width: 800px;
+}
+.scrollresult a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: center;
+    font-size: 2em; 
+	font-family:"Helvetica Neue";  
+	font-weight: bold; 
+	border-style: solid;
+	border-color: #ffbf03;
+	border-width: 0.5px;
 }
 .colorstrip22{
 	margin-top: -5px;
