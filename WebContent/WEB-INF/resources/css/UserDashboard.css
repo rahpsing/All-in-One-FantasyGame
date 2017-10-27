@@ -149,7 +149,7 @@ html,body {
 }
 .userinfo .searchresult .searchresultlist{
 	position: relative;
-	left: -50%;
+	left: -52.5%;
 }
 
 .scrollresult{
@@ -172,6 +172,7 @@ html,body {
 	border-color: #ffbf03;
 	border-width: 0.5px;
 }
+
 .colorstrip22{
 	margin-top: -5px;
 	padding: 0px;
