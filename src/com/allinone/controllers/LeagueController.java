@@ -10,13 +10,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.allinone.pojos.League;
 import com.allinone.service.api.LeagueServiceAPI;
 import com.allinone.service.api.ListToJsonTwoColumnsServiceAPI;
 import com.allinone.service.api.SportUtilityServiceAPI;
 
-@Transactional
 @Controller
 public class LeagueController {
 	
@@ -63,5 +63,13 @@ public class LeagueController {
 		
 		
 		return returnMessage;
+	}
+	
+	@RequestMapping(value="/testPage")
+	@ResponseBody
+	public ModelAndView testMyPage(HttpServletRequest objRequest, HttpServletResponse objResponse) {
+		
+	
+		return new ModelAndView("LeagueInfoPage");
 	}
 }
