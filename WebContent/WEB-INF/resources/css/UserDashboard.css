@@ -117,7 +117,7 @@ html,body {
 	margin-top: 40px;
 	position: absolute;
 	left: 50%;
-	display: none;
+	display: show;
 }
 .userinfo .leaguelist .systemleagueslist{
 	position: relative;
@@ -131,7 +131,7 @@ html,body {
 	margin-top: 40px;
 	position: absolute;
 	left: 50%;
-	display: show;
+	display: none;
 }
 .closesearch {
 	position: absolute;
