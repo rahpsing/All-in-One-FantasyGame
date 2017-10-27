@@ -442,7 +442,7 @@ html,body {
 }
 .profilepage-modal-content{
 	z-index: 199;
-    background-color: #ffffff;
+    background-color: #c50234;
     margin: 15% auto; /* 15% from the top and centered */
     padding: -100px;
     border: none;
@@ -471,4 +471,35 @@ html,body {
 
 .file-upload {
     display: none;
+}
+.userprofileinfo{
+	margin-top: 50px;
+	color: #ffffff;
+	font-size: 1em; 
+	font-family:"Helvetica Neue";  
+	font-weight: bold; 
+	
+}
+.updateprofileimage {
+	margin-top: 100px;
+	width: 200px;
+	height: 50px;
+	background-color: #ffbf03;
+	border: none;
+	color: #ffffff;
+	cursor: pointer;
+	font-size: 1em; 
+	font-family:"Helvetica Neue";  
+	font-weight: bold; 
+}
+.closeprofilebutton {
+	width: 200px;
+	height: 50px;
+	background-color: #ffbf03;
+	border: none;
+	color: #ffffff;
+	cursor: pointer;
+	font-size: 1em; 
+	font-family:"Helvetica Neue";  
+	font-weight: bold; 
 }

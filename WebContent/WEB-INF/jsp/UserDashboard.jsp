@@ -147,17 +147,16 @@ body {
 		  		<div style="padding-top:100px;">
 		  			<img src="${pageContext.request.contextPath}/resources/UIAssets/user1.jpeg" class="profileimage"><br>
 		  		
-		  			<button id="updateProfileImage" class="updateprofileimage">update profile image</button><br><br>
-		  				<input id="imageUpload" class="file-upload" type="file" accept="image/*"/>
-		  			<div id="userProfileInfo">
+		  			
+		  			<div id="userProfileInfo" class="userprofileinfo">
 
-					  	<b>User Name:         </b><b>${name}</b><br>
-					  	<b>Email:			  </b><b>${emailID}</b><br>
+					  	<b>user Name:         </b><b>${name}</b><br>
+					  	<b>email:			  </b><b>${emailID}</b><br>
 
 					 </div>
-				  	<div style="margin-top:100px;" >
-				  	<button id="closeProfile" class="closeprofile">close</button>
-				  	</div>
+					 <button id="updateProfileImage" class="updateprofileimage">update profile image</button><br><br>
+		  				<input id="imageUpload" class="file-upload" type="file" accept="image/*"/>
+				  	<button id="closeProfile" class="closeprofilebutton">close profile</button>
 				</div>
 		  	</div>
 	</div>
