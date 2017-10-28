@@ -88,7 +88,129 @@ html,body {
 
 .leagueinfo{
 	position: relative;
-	height: 900px;
+	height: 700px;
+}
+
+.leagueinfo .players {
+	margin-top: 120px;
+	position: absolute;
+	left: 5%;
+	display: show;
+}
+
+.playerlist{
+/* 	position: relative;
+	left: -50%; */
+	overflow-y: scroll;
+	max-height: 530px;
+    background-color: #f9f9f9;
+    max-width: 800px;
+    margin-top: 10px;
+}
+
+.playerlist a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+    font-size: 0.5em; 
+	font-family:"Helvetica Neue";  
+	font-weight: bold; 
+	border-style: solid;
+	border-color: #ffbf03;
+	border-width: 0.5px;
+}
+
+.leagueinfo .leaderboard {
+	margin-top: 120px;
+	position: absolute;
+	right: 7.5%;
+	display: show;
+}
+
+.leaderboardlist{
+/* 	position: relative;
+	left: -50%; */
+	overflow-y: scroll;
+	max-height: 530px;
+    background-color: #f9f9f9;
+    max-width: 400px;
+    margin-top: 10px;
+}
+
+.leaderboard a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+    font-size: 0.5em; 
+	font-family:"Helvetica Neue";  
+	font-weight: bold; 
+	border-style: solid;
+	border-color: #ffbf03;
+	border-width: 0.5px;
+}
+
+.leagueinfo .upcominggames {
+	margin-top: 120px;
+	position: absolute;
+	top: 230px;
+	right: 7.5%;
+	display: show;
+}
+
+.upcominggameslist{
+/* 	position: relative;
+	left: -50%; */
+	overflow-y: scroll;
+	max-height: 300px;
+    background-color: #f9f9f9;
+    max-width: 400px;
+    margin-top: 10px;
+}
+
+.upcominggameslist a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+    font-size: 0.5em; 
+	font-family:"Helvetica Neue";  
+	font-weight: bold; 
+	border-style: solid;
+	border-color: #ffbf03;
+	border-width: 0.5px;
+}
+
+.colorstrip22{
+	margin-top: -10px;
+	padding: 0px;
+	width: 800px;
+	height: 60px;
+	background-color: #c50234;
+	border: none;
+	color: #ffffff;
+	font-size: 4em; 
+	font-family:"Helvetica Neue";  
+	font-weight: bold; 
+	text-align: center;
+}
+
+.colorstrip23{
+	margin-top: -10px;
+	padding: 0px;
+	width: 400px;
+	height: 60px;
+	background-color: #c50234;
+	border: none;
+	color: #ffffff;
+	font-size: 4em; 
+	font-family:"Helvetica Neue";  
+	font-weight: bold; 
+	text-align: center;
 }
 
 .colorstrip10{
