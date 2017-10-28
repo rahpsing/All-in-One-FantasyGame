@@ -36,8 +36,8 @@ body {
  		</div>
  		<div class="userinfo">
  			<div class="colorstrip21">
-	 			<form>	
-	 				<input class="searchbar" type="text" name="search" placeholder="search...">
+	 			<form action="javascript:void(0);">	
+	 				<input id="searchText" class="searchbar" type="text" onkeyup="javascript:sendFetchLikeReq()"name="search" placeholder="search...">
 	 			</form>
 	 			<b class="searchdisc">find custom leagues</b>
 	 		</div>
@@ -86,21 +86,8 @@ body {
 			 			<b> search results </b>
 			 			<button id="closeSearch" class="closesearch">x</button>
 			 		</div>
-			 		<div class="scrollresult">
-			 			<a href="#">result 1</a>
-			 			<a href="#">result 2</a>
-			 			<a href="#">result 3</a>
-			 			<a href="#">result 4</a>
-			 			<a href="#">result 5</a>
-			 			<a href="#">result 6</a>
-			 			<a href="#">result 7</a>
-			 			<a href="#">result 8</a>
-			 			<a href="#">result 9</a>
-			 			<a href="#">result 10</a>
-			 			<a href="#">result 11</a>
-			 			<a href="#">result 12</a>
-			 			<a href="#">result 13</a>
-			 			<a href="#">result 14</a>
+			 		<div id="searchResultList" class="scrollresult">
+			 			
 			 		</div>
 			 	</div>
 	 		</div>
@@ -271,6 +258,35 @@ function sendFetchReq(sportName,iD){
 	    	$('#'+iD).empty();
 	 		$('#'+iD).append('<a href="#" >No Leagues></a>');
 			$('#'+iD).append('<a href="#" style="background-color: #ffbf03">create a new private league ></a>');
+	    }
+	});
+}
+</script>
+
+<script>
+function sendFetchLikeReq(){
+	searchResultDiv.style.display = "block";
+	leagueListDiv.style.display = "none";
+	var searchTxt=document.getElementById('searchText').value;
+	var iD="searchResultList";
+	console.log("Came here to func and text is  :  "+searchTxt+"  id is: "+searchResultList);
+	$.ajax({
+	    url : '/All-In-One-FantasyGame/fetchLikeLeagues',
+	    type: 'post',
+	    data : {SEARCH_TEXT:searchTxt},
+	    dataType : 'json',
+	    success: function(data)
+	   
+	    {	console.log("Came here to ajax");
+	    	$('#'+iD).empty();
+	    	$(data.League).each(function(index,value){$('#'+iD).append('<a href=https://www.google.com >'+value.League+'</a>');})
+	    	
+	    },
+	    error: function (jqXHR, textStatus, errorThrown)
+	    {
+	    	$('#'+iD).empty();
+	 		$('#'+iD).append('<a href="#" >No Leagues></a>');
+			$('#'+iD).append('<a href="#" style="background-color: #ffbf03">No leagues found with this name ></a>');
 	    }
 	});
 }
