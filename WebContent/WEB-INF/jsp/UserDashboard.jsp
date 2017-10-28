@@ -268,7 +268,8 @@ function sendFetchLikeReq(iD,value){
 	searchResultDiv.style.display = "block";
 	leagueListDiv.style.display = "none";
 	var searchTxt=document.getElementById('searchText').value;
-	
+	if(searchTxt.length>0){
+		console.log(searchTxt.length);
 	$.ajax({
 	    url : '/All-In-One-FantasyGame/fetchLeagues',
 	    type: 'post',
@@ -288,6 +289,10 @@ function sendFetchLikeReq(iD,value){
 			$('#'+iD).append('<a href="#" style="background-color: #ffbf03">No leagues found with this name ></a>');
 	    }
 	});
+	}
+	else{
+		$('#'+iD).empty();
+	}
 }
 </script>
 <script>
