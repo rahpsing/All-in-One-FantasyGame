@@ -16,7 +16,7 @@
         </many-to-one>
         <set name="setOfTeams" table="TEAM" inverse="false" lazy="true">
             <key>
-                <column name="ID" />
+                <column name="LEAGUE_ID" />
             </key>
             <one-to-many class="com.allinone.pojos.Team" />
         </set>

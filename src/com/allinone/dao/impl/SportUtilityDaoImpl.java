@@ -1,10 +1,24 @@
 package com.allinone.dao.impl;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.CellType;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.hibernate.Criteria;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Criterion;
@@ -17,6 +31,7 @@ import com.allinone.pojos.League;
 import com.allinone.pojos.Player;
 import com.allinone.pojos.Sport;
 import com.allinone.pojos.Team;
+import com.allinone.util.BulkUploadUtility;
 
 @Repository
 public class SportUtilityDaoImpl implements SportUtilityDaoAPI {
@@ -24,6 +39,19 @@ public class SportUtilityDaoImpl implements SportUtilityDaoAPI {
 	@Autowired
 	private SessionFactory objSessionFactory;
 	
+	private static final String FILE_NAME = "C:\\Users\\rahul\\workspace\\All-In-One-FantasyGame\\DataMappings.xlsx";
+	
+	
+/*	public static void main(String[] args) {
+		try {
+			InputStream stream = SportUtilityDaoImpl.class.getResourceAsStream("DataMappings.xlsx");
+			FileInputStream excelFile = new FileInputStream(stream);
+			System.out.println(excelFile);
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}*/
 	@Override
 	public String getsportID(String sportName) {
 		Criteria objCriteria  = objSessionFactory.getCurrentSession().createCriteria(Sport.class);
@@ -33,7 +61,7 @@ public class SportUtilityDaoImpl implements SportUtilityDaoAPI {
 		List<Sport> listOfSport = new ArrayList<Sport>();
 		listOfSport = objCriteria.list();
 		return listOfSport.get(0).getId();
-				}
+	}
 	
 	@Override
 	public boolean addEntriesToDatabase() {
@@ -43,8 +71,10 @@ public class SportUtilityDaoImpl implements SportUtilityDaoAPI {
 		//retrieve sport_roles and check if roles exists in that object
 		
 		try {
-			
-			Criteria objCriteria  = objSessionFactory.getCurrentSession().createCriteria(League.class);
+	        List<Team> listOfTeams = new ArrayList<Team>();
+	        List<Player> listOfPlayers = new ArrayList<Player>();
+	        
+	        Criteria objCriteria  = objSessionFactory.getCurrentSession().createCriteria(League.class);
 			Criterion usernameCriteria = Restrictions.eq("leagueName", "IPL");
 			objCriteria.add(usernameCriteria);
 
@@ -54,21 +84,110 @@ public class SportUtilityDaoImpl implements SportUtilityDaoAPI {
 				return false;
 			
 			League league = results.get(0);
-			
-		    Player player = new Player();
-			player.setFirstName("Virat");
-			player.setLastName("Kohli");
-			player.setPlayerRole("Batsman");
-			player.setLeague(league);
-			
+	        
+		      try {
+		    		
+		            FileInputStream excelFile = new FileInputStream(new File(FILE_NAME));
+		            Workbook workbook = new XSSFWorkbook(excelFile);
 
-			objSessionFactory.getCurrentSession().saveOrUpdate(player);
+		            Sheet datatypeSheet = workbook.getSheetAt(0);
+		            Iterator<Row> iterator = datatypeSheet.iterator();
+		            Row currentRow = iterator.next();
+		            Map<String,Team> mapOfCodeAndTeam = new HashMap<String,Team>();
+		            
+		            while (iterator.hasNext()) {
 
+		            	currentRow = iterator.next();
+		                Iterator<Cell> cellIterator = currentRow.iterator();
+		             	Team team = new Team();
+		                while (cellIterator.hasNext()) {
 
-	
-		} catch(Exception e) {
+		                    Cell currentCell = cellIterator.next();
+		                    int columnIndex = currentCell.getColumnIndex();
+		                    
+		                    switch (columnIndex) {
+		                    case 0:
+		                   
+		                    	team.setTeamName((String)getCellValue(currentCell));
+		                        break;
+		                    case 1:
+		                    	team.setTeamInitials((String)getCellValue(currentCell));
+		                    	break;
+
+		                    }
+		                }
+	                    
+	                    team.setLeague(league);
+	                    mapOfCodeAndTeam.put(team.getTeamInitials(), team);
+	                    listOfTeams.add(team);
+		            }
+		            
+		            
+		            datatypeSheet = workbook.getSheetAt(1);
+		            iterator = datatypeSheet.iterator();
+		            currentRow = iterator.next();
+		            
+		            while (iterator.hasNext()) {
+
+		            	currentRow = iterator.next();
+		                Iterator<Cell> cellIterator = currentRow.iterator();
+		             	Player player = new Player();
+		             	
+		                while (cellIterator.hasNext()) {
+
+		                    Cell currentCell = cellIterator.next();
+		                    int columnIndex = currentCell.getColumnIndex();
+		                    
+		                    switch (columnIndex) {
+		                    case 0:
+		                   
+		                    	player.setFirstName((String)getCellValue(currentCell));
+		                    
+		                        break;
+		                    case 1:
+		                    	player.setLastName((String)getCellValue(currentCell));
+		                    	break;
+		                    	
+		                    case 2:
+		                    	player.setPlayerRole((String)getCellValue(currentCell));
+		                    	break;
+		                    	
+		                    case 3:
+		                    	if(mapOfCodeAndTeam.containsKey((String)getCellValue(currentCell))) {
+		                    		player.setTeam(mapOfCodeAndTeam.get((String)getCellValue(currentCell)));
+		                    	} else {
+		                    		//throw exception
+		                    	}
+		                    	break;
+
+		                    }
+
+		                }
+	                    player.setLeague(league);
+	                    listOfPlayers.add(player);
+
+		            }
+		            
+		            
+		            
+		            workbook.close();
+		            
+		        } catch (FileNotFoundException e) {
+		            e.printStackTrace();
+		        } catch (IOException e) {
+		            e.printStackTrace();
+		        }
+		      
+		
+		      for(Player player : listOfPlayers) {
+	          	    objSessionFactory.getCurrentSession().saveOrUpdate(player);
+	          }
+		      
+		      for(Team team : listOfTeams) {
+		          	objSessionFactory.getCurrentSession().saveOrUpdate(team);
+		      }
+		} catch (Exception e) {
 			System.out.println(e);
-			return false;
 		}
 		
 		return true;
@@ -76,8 +195,7 @@ public class SportUtilityDaoImpl implements SportUtilityDaoAPI {
 	
 	private void addTeams() {
 		
-		Team team  = new Team();
-		team.setTeamName("Mumbai Indians");
+		
 	}
 	
 	@Override
@@ -177,6 +295,20 @@ public class SportUtilityDaoImpl implements SportUtilityDaoAPI {
 		
 		return true;
 	}
+	
+	   private static Object getCellValue(Cell currentCell) {
+		    
+		   if (currentCell.getCellTypeEnum() == CellType.STRING) {
+               return currentCell.getStringCellValue();
+           } else if (currentCell.getCellTypeEnum() == CellType.NUMERIC) {
+               return currentCell.getNumericCellValue();
+           } else if(currentCell.getCellTypeEnum() == CellType.BOOLEAN) {
+        	   return currentCell.getBooleanCellValue();
+           }
+
+		 
+		    return null;
+		}
 	
 
 }

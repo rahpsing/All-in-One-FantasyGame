@@ -36,5 +36,21 @@ public class UploadController {
 		return returnMessage;
 	}
 	
+	
+	@RequestMapping(value="/initialize")
+	@ResponseBody
+	public String initializeSystem(HttpServletRequest objRequest, HttpServletResponse objResponse) {
+		
+		String returnMessage = "";
+		//String returnMessage = objSportUtility.addNewSport()?"Success":"Failed";
+		//String returnMessage2 = objSportUtility.createLeague()?"Success":"Failed";
+		
+		if(objSportUtility.addNewSport() && objSportUtility.createLeague())
+			returnMessage = "Success";
+		
+		
+		return returnMessage;
+	}
+	
 
 }

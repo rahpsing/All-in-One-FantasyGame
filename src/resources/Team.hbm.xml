@@ -17,15 +17,15 @@
         </property>
 
         <set name="setOfPlayers" table="TEAM_PLAYERS"
-				inverse="false" lazy="true" fetch="select">
+				inverse="true" lazy="true" fetch="select">
             <key>
                 <column name="TEAM_ID" />
             </key>
             <one-to-many class="com.allinone.pojos.Player" />
         </set>
-        <property name="league">
-            <column name="LEAGUE_ID" />
-        </property>
+        <many-to-one name="league" class="com.allinone.pojos.League" fetch="join">
+            <column name="LEAGUE_ID" not-null="true"/>
+        </many-to-one>
 <!--         <primitive-array name="teamLogo" table="TEAM">
             <key>
                 <column name="TEAM_ID" />
