@@ -41,7 +41,7 @@ body {
 	 			</form>
 	 			<b class="searchdisc">find custom leagues</b>
 	 		</div>
- 			<div class="leaguelist" style="display:none">
+ 			<div id="leagueList" class="leaguelist">
 		 		<div class="systemleagueslist">
 		 			<div class="colorstrip22">
 		 				<b> leagues </b>
@@ -80,10 +80,11 @@ body {
 					</div>
 		 		</div>
 	 		</div>
-	 		<div class="searchresult" style="display:show">
+	 		<div id="searchResult" class="searchresult">
 	 			<div class="searchresultlist">
 			 		<div class="colorstrip22">
 			 			<b> search results </b>
+			 			<button id="closeSearch" class="closesearch">x</button>
 			 		</div>
 			 		<div class="scrollresult">
 			 			<a href="#">result 1</a>
@@ -165,8 +166,11 @@ body {
 	var profileButton = document.getElementById("editProfile");
 	var profilePageModal = document.getElementById("profilePageModal");
 	var closeProfileButton = document.getElementById("closeProfile");
+	var closeSearchButton = document.getElementById("closeSearch");
+	var searchResultDiv = document.getElementById("searchResult");
+	var leagueListDiv = document.getElementById("leagueList");
 	
-	window.onclick = function(event) {
+	/* window.onclick = function(event) {
 		if(event.target.parentNode.className != "" && event.target.parentNode.className != "signup-modal-content" && event.target.parentNode.className != "signupmodalcss" && event.target.parentNode.className != "modal-content" && event.target.parentNode.className != "loginmodalcss" && event.target.parentNode.className != "forgotuorpdiv"){
 			if(event.target.parentNode.className !="loginbuttondiv"){
 				if(event.target.parentNode.className != "signupbuttondiv"){
@@ -181,7 +185,7 @@ body {
 				}
 			}
 		}		
-	}
+	} */
 	
 	profileButton.onclick = function() {
 	    profilePageModal.style.display = "block";
@@ -192,7 +196,11 @@ body {
 		profilePageModal.style.display = "none";
 	    mainDiv.classList.remove("blur");
 	}
-
+	
+	closeSearchButton.onclick = function() {
+		searchResultDiv.style.display = "none";
+		leagueListDiv.style.display = "block";
+	}
 	
 	var updateProfileDiv = document.getElementById("updateProfileImage");
 	var fileUploadDiv = document.getElementById("imageUpload");
