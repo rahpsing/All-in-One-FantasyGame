@@ -269,7 +269,6 @@ function sendFetchLikeReq(){
 	leagueListDiv.style.display = "none";
 	var searchTxt=document.getElementById('searchText').value;
 	var iD="searchResultList";
-	console.log("Came here to func and text is  :  "+searchTxt+"  id is: "+searchResultList);
 	$.ajax({
 	    url : '/All-In-One-FantasyGame/fetchLikeLeagues',
 	    type: 'post',
@@ -277,7 +276,7 @@ function sendFetchLikeReq(){
 	    dataType : 'json',
 	    success: function(data)
 	   
-	    {	console.log("Came here to ajax");
+	    {	
 	    	$('#'+iD).empty();
 	    	$(data.League).each(function(index,value){$('#'+iD).append('<a href=https://www.google.com >'+value.League+'</a>');})
 	    	
