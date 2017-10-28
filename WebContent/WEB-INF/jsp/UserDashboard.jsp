@@ -37,7 +37,7 @@ body {
  		<div class="userinfo">
  			<div class="colorstrip21">
 	 			<form action="javascript:void(0);">	
-	 				<input id="searchText" class="searchbar" type="text" onkeyup="javascript:sendFetchLikeReq()"name="search" placeholder="search...">
+	 				<input id="searchText" class="searchbar" type="text" onkeyup="javascript:sendFetchLikeReq('searchResultList','searchText')"name="search" placeholder="search...">
 	 			</form>
 	 			<b class="searchdisc">find custom leagues</b>
 	 		</div>
@@ -47,13 +47,13 @@ body {
 		 				<b> leagues </b>
 		 			</div>
 		 			<div class="dropdown">
-	  					<button class="dropbtn1" onmouseover="javascript:sendFetchReq('SOCCER','systemSoccerLeagues')">Soccer</button>
+	  					<button class="dropbtn1" onmouseover="javascript:sendFetchReq('SOCCER','systemSoccerLeagues','dashboard')">Soccer</button>
 					 	<div id="systemSoccerLeagues" class="dropdown-content">
 						    
 					 	</div>
 					 </div>
 					 <div class="dropdown">
-					 	<button class="dropbtn2" onmouseover="javascript:sendFetchReq('CRICKET','systemLeagues')">Cricket</button>
+					 	<button class="dropbtn2" onmouseover="javascript:sendFetchReq('CRICKET','systemLeagues','dashboard')">Cricket</button>
 					 	<div id="systemLeagues" class="dropdown-content">
 						   
 					 	</div>
@@ -242,15 +242,15 @@ body {
 	</script>
 	
 <script>
-function sendFetchReq(sportName,iD){
+function sendFetchReq(sportName,iD,value){
 	$.ajax({
 	    url : '/All-In-One-FantasyGame/fetchLeagues',
 	    type: 'post',
-	    data : {SPORT_NAME:sportName},
+	    data : {SPORT_NAME:sportName,VALUE:value},
 	    dataType : 'json',
 	    success: function(data)
 	    {	$('#'+iD).empty();
-	    	$(data.League).each(function(index,value){$('#'+iD).append('<a href=https://www.google.com >'+value.League+'</a>');})
+	    	$(data.League).each(function(index,value){$('#'+iD).append('<a onclick=javascript:redirectLeague(\''+value.id+'\') >'+value.League+'</a>');})
 	    	$('#'+iD).append('<a href="#" style="background-color: #ffbf03">create a new private league ></a>');
 	    },
 	    error: function (jqXHR, textStatus, errorThrown)
@@ -264,21 +264,21 @@ function sendFetchReq(sportName,iD){
 </script>
 
 <script>
-function sendFetchLikeReq(){
+function sendFetchLikeReq(iD,value){
 	searchResultDiv.style.display = "block";
 	leagueListDiv.style.display = "none";
 	var searchTxt=document.getElementById('searchText').value;
-	var iD="searchResultList";
+	
 	$.ajax({
-	    url : '/All-In-One-FantasyGame/fetchLikeLeagues',
+	    url : '/All-In-One-FantasyGame/fetchLeagues',
 	    type: 'post',
-	    data : {SEARCH_TEXT:searchTxt},
+	    data : {SPORT_NAME:searchTxt,VALUE:value},
 	    dataType : 'json',
 	    success: function(data)
 	   
 	    {	
 	    	$('#'+iD).empty();
-	    	$(data.League).each(function(index,value){$('#'+iD).append('<a href=https://www.google.com >'+value.League+'</a>');})
+	    	$(data.League).each(function(index,value){$('#'+iD).append('<a onclick=javascript:redirectLeague(\''+value.id+'\') >'+value.League+'</a>');})
 	    	
 	    },
 	    error: function (jqXHR, textStatus, errorThrown)
@@ -288,6 +288,22 @@ function sendFetchLikeReq(){
 			$('#'+iD).append('<a href="#" style="background-color: #ffbf03">No leagues found with this name ></a>');
 	    }
 	});
+}
+</script>
+<script>
+function redirectLeague(valueId){
+console.log("Came here1" +valueId );
+var f = document.createElement("form");
+f.setAttribute('method',"post");
+f.setAttribute('action',"/All-In-One-FantasyGame/redirectLeague");
+
+var i = document.createElement("input"); //input element, text
+i.setAttribute('type',"hidden");
+i.setAttribute('name',"SEARCH_TEXT");
+i.setAttribute('value',valueId);
+f.appendChild(i);
+document.body.appendChild(f);
+f.submit();
 }
 </script>
 

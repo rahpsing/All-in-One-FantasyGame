@@ -58,8 +58,8 @@ public class LeagueDaoImpl implements LeagueDaoAPI {
 		// TODO Auto-generated method stub
 		Criteria objCriteria  = objSessionFactory.getCurrentSession().createCriteria(League.class);
 		Criterion likeLeagueCriteria = Restrictions.ilike("leagueName", "%"+likeLeague.toUpperCase()+"%");
-		
-		objCriteria.add(Restrictions.and(likeLeagueCriteria));
+		Criterion likeIdCriteria = Restrictions.ilike("id", "%"+likeLeague.toUpperCase()+"%");
+		objCriteria.add(Restrictions.or(likeLeagueCriteria,likeIdCriteria));
 		List<League> listOfLeagues = new ArrayList<League>();
 		listOfLeagues = objCriteria.list();
 		

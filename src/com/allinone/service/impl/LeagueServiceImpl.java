@@ -30,10 +30,16 @@ public class LeagueServiceImpl implements LeagueServiceAPI {
 	SportUtilityDaoAPI objSportUtilityDao;
 
 	@Override
-	public List<League> fetchLeagues(String sport) {
+	public List<League> fetchLeagues(String sport,String comparator) {
 		// TODO Auto-generated method stub
+		
 		List<League> listOfLeagues = new ArrayList<League>();
 		String sportId;
+		if(comparator.equals("searchText")) {
+			listOfLeagues = objLeagueDao.fetchLikeLeagues(sport);
+			System.out.println(sport);
+			return listOfLeagues;
+		}
 		if (sport.equals("CRICKET")) {
 			sportId=objSportUtilityDao.getsportID("CRICKET");
 		}
@@ -44,19 +50,6 @@ public class LeagueServiceImpl implements LeagueServiceAPI {
 		return listOfLeagues;
 	}
 
-	@Override
-	public List<League> fetchLikeLeagues(String LikeLeague) {
-		// TODO Auto-generated method stub
-		
-		//for search functionality
-		List<League> listOfLeagues = new ArrayList<League>();
-		
-		listOfLeagues = objLeagueDao.fetchLikeLeagues(LikeLeague);
-		
-		return listOfLeagues;
-	}
 
-	
-	
 
 }

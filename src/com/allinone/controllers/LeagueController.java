@@ -32,8 +32,8 @@ public class LeagueController {
 	@RequestMapping(value="/fetchLeagues")
 	@ResponseBody
 	public String fetchLeagues(HttpServletRequest objRequest, HttpServletResponse objResponse) {
-		
-		List<League> returnMessage = objLeagueService.fetchLeagues(objRequest.getParameter("SPORT_NAME"));
+		String comparator=objRequest.getParameter("VALUE");
+		List<League> returnMessage = objLeagueService.fetchLeagues(objRequest.getParameter("SPORT_NAME"),comparator);
 		
 		
 	    String jsonString = objListToJson.listToJson("League", returnMessage);
@@ -41,17 +41,20 @@ public class LeagueController {
 		return jsonString;
 	}
 	
-	@RequestMapping(value="/fetchLikeLeagues")
+	
+	
+	@RequestMapping(value="/redirectLeague")
 	@ResponseBody
-	public String fetchLikeLeagues(HttpServletRequest objRequest, HttpServletResponse objResponse) {
+	public String redirectLeague(HttpServletRequest objRequest, HttpServletResponse objResponse) {
 		//for search functionality
-		List<League> returnMessage = objLeagueService.fetchLikeLeagues(objRequest.getParameter("SEARCH_TEXT"));
-		System.out.println(objRequest.getParameter("SEARCH_TEXT"));
+		List<League> returnMessage = objLeagueService.fetchLeagues(objRequest.getParameter("redirectValue"),"searchText");
+		System.out.println(objRequest.getParameter("redirectValue"));
 		//System.out.println(returnMessage.size());
 		
-		String jsonString = objListToJson.listToJson("League", returnMessage);
-		System.out.println(jsonString);
-		return jsonString;		
+		//String jsonString = objListToJson.listToJson("League", returnMessage);
+		//System.out.println(jsonString);
+		//return jsonString;
+		return objRequest.getParameter("redirectValue")+"This is from backend";
 	}
 	
 	
