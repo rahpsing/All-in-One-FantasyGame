@@ -20,21 +20,67 @@ body {
 </head>
 <body>
 	<div class="colorstrip1">
-			<!--<tr>
-				<b>aaaaa</b>
-				<b>bbbbb</b>
-			</tr>-->
 	</div>
 	<div id="mainDiv" class="maindiv">
 		<div class="colorstrip2">
-			<img src="${pageContext.request.contextPath}/resources/UIAssets/user1.jpeg" class="userimage">
+			<img src="${pageContext.request.contextPath}/resources/UIAssets/league1pic.png" class="userimage">
 			<div class="welcomemsg">
+			<b>league: </b>
 			<b class="name">${name}</b>
 			</div>
 			<img src="${pageContext.request.contextPath}/resources/UIAssets/bannerdesign.png" class="bannerdesign">
  		</div>
  		<div class="leagueinfo">
- 			
+ 			<div class="players">
+ 				<div class="colorstrip22">
+ 					<b>players</b>
+ 					<div class="playerlist">
+ 						<a>user 1</a>
+ 						<a>user 2</a>
+ 						<a>user 3</a>
+ 						<a>user 4</a>
+ 						<a>user 5</a>
+ 						<a>user 6</a>
+ 						<a>user 7</a>
+ 						<a>user 8</a>
+ 						<a>user 9</a>
+ 						<a>user 10</a>
+ 						<a>user 11</a>
+ 						<a>user 12</a>
+ 						<a>user 13</a>
+ 						<a>user 14</a>
+ 					</div>
+ 				</div>
+ 			</div> 
+ 			<div class="leaderboard">
+ 				<div class="colorstrip23">
+ 					<b>top players</b>
+ 					<div class="leaderboardlist">
+ 						<a>user 1</a>
+ 						<a>user 2</a>
+ 						<a>user 3</a>
+ 					</div>
+ 				</div>
+ 			</div> 
+ 			<div class="upcominggames">
+ 				<div class="colorstrip23">
+ 					<b>upcoming matches</b>
+ 					<div class="upcominggameslist">
+ 						<a>team 1 v team 2</a>
+ 						<a>team 2 v team 3</a>
+ 						<a>team 3 v team 1</a>
+ 						<a>team 1 v team 2</a>
+ 						<a>team 2 v team 3</a>
+ 						<a>team 3 v team 1</a>
+ 						<a>team 1 v team 2</a>
+ 						<a>team 2 v team 3</a>
+ 						<a>team 3 v team 1</a>
+ 						<a>team 1 v team 2</a>
+ 						<a>team 2 v team 3</a>
+ 						<a>team 3 v team 1</a>
+ 					</div>
+ 				</div>
+ 			</div> 			
 	 	</div>
  		
  		<div class="colorstrip10"></div>
