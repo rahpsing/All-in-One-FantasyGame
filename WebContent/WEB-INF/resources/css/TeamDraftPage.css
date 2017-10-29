@@ -174,7 +174,7 @@ html,body {
 
 .position1table b {
     color: black;
-    padding: 12px 16px;
+    /* padding: 12px 16px; */
     text-decoration: none;
     display: block;
     text-align: center;
@@ -184,6 +184,21 @@ html,body {
 	/* border-style: solid;
 	border-color: #ffbf03;
 	border-width: 0.5px; */
+}
+
+.position1table b1 {
+    color: black;
+    padding: 10px 16px; */
+    text-decoration: none;
+    display: block;
+    text-align: center;
+    font-size: 1em; 
+	font-family:"Helvetica Neue";  
+	font-weight: bold; 
+	border-style: solid;
+	border-color: #ffffff;
+	border-top: #ffbf03 solid;
+	border-width: 0.5px;
 }
 
 .position2table {

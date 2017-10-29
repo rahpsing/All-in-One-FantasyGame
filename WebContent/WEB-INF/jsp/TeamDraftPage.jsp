@@ -35,17 +35,29 @@ body {
 				<div class="position1">
 					<div id="position1table" class="position1table">
 						<!-- <b>position 1</b> -->
+						<b1> </b1>
 						<b id="teamplayer1" ondrop="drop(event)" ondragover="allowDrop(event)">player 1</b>
+						<b1> </b1>
 						<b id="teamplayer2" ondrop="drop(event)" ondragover="allowDrop(event)">player 2</b>
+						<b1> </b1>
 						<b id="teamplayer3" ondrop="drop(event)" ondragover="allowDrop(event)">player 3</b>
+						<b1> </b1>
 						<b id="teamplayer4" ondrop="drop(event)" ondragover="allowDrop(event)">player 4</b>
+						<b1> </b1>
 						<b id="teamplayer5" ondrop="drop(event)" ondragover="allowDrop(event)">player 5</b>
+						<b1> </b1>
 						<b id="teamplayer6" ondrop="drop(event)" ondragover="allowDrop(event)">player 6</b>
+						<b1> </b1>
 						<b id="teamplayer7" ondrop="drop(event)" ondragover="allowDrop(event)">player 7</b>
+						<b1> </b1>
 						<b id="teamplayer8" ondrop="drop(event)" ondragover="allowDrop(event)">player 8</b>
+						<b1> </b1>
 						<b id="teamplayer9" ondrop="drop(event)" ondragover="allowDrop(event)">player 9</b>
+						<b1> </b1>
 						<b id="teamplayer10" ondrop="drop(event)" ondragover="allowDrop(event)">player 10</b>
+						<b1> </b1>
 						<b id="teamplayer11" ondrop="drop(event)" ondragover="allowDrop(event)">player 11</b>
+						<b1> </b1>
 					</div>
 				</div>
 				<!-- <div class="position2">
