@@ -118,17 +118,19 @@ html,body {
 }
 
 .playerrosterlist b {
+	width: 290px;
     color: #000000;
-    padding: 12px 16px;
+    padding: 5px 16px;
     text-decoration: none;
     display: block;
     text-align: left;
     font-size: 2.5em; 
 	font-family:"Helvetica Neue";  
 	font-weight: bold; 
-	/* border-style: solid;
+	background-color: #ffffff;
+	border-style: solid;
 	border-color: #ffffff;
-	border-width: 0.5px; */
+	border-width: 0.5px;
 }
 
 .teamfield {
@@ -167,20 +169,24 @@ html,body {
 }
 
 .position1table {
-	background-color: #ffffff;
+	background-color: #939393;
 	width: 300px;
-	height: 600px;
+	height: 467.5px;
 }
 
 .position1table b {
     color: black;
     /* padding: 12px 16px; */
+    height: 40px;
+    margin-bottom:2.5px;
+    margin-top:2.5px;
     text-decoration: none;
     display: block;
     text-align: center;
     font-size: 1em; 
 	font-family:"Helvetica Neue";  
 	font-weight: bold; 
+	background-color: #ffffff;
 	/* border-style: solid;
 	border-color: #ffbf03;
 	border-width: 0.5px; */
