@@ -1,6 +1,8 @@
 package com.allinone.controllers;
 
+import java.util.Iterator;
 import java.util.List;
+import java.util.Set;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -14,11 +16,14 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.allinone.pojos.League;
+import com.allinone.pojos.Player;
+import com.allinone.pojos.Team;
 import com.allinone.service.api.LeagueServiceAPI;
 import com.allinone.service.api.ListToJsonTwoColumnsServiceAPI;
 import com.allinone.service.api.SportUtilityServiceAPI;
 
 @Controller
+
 public class LeagueController {
 	
 	@Autowired
@@ -52,6 +57,21 @@ public class LeagueController {
 		return "LeagueInfoPage";
 	}
 	
+	@RequestMapping(value="/playerList")
+	@ResponseBody
+	public String playerList(HttpServletRequest objRequest, HttpServletResponse objResponse) {
+		
+		List<Player> returnList = objLeagueService.playerList("4028b8815f69d617015f69d702b90001");
+		
+		StringBuilder alpha=new StringBuilder();
+		for (Player i :returnList) {
+			alpha.append(i.getFirstName()).append("").append(i.getLastName());
+			
+			System.out.println(i.getFirstName()+"  "+i.getLastName());
+		}
+		
+		return alpha.toString();
+	}
 	
 	@RequestMapping(value="/createLeague")
 	@ResponseBody
