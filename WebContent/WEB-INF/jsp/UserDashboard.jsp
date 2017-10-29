@@ -304,10 +304,11 @@ f.setAttribute('action',"/All-In-One-FantasyGame/redirectLeague");
 
 var i = document.createElement("input"); //input element, text
 i.setAttribute('type',"hidden");
-i.setAttribute('name',"SEARCH_TEXT");
+i.setAttribute('name',"redirectValue");
 i.setAttribute('value',valueId);
 f.appendChild(i);
 document.body.appendChild(f);
+console.log(f);
 f.submit();
 }
 </script>

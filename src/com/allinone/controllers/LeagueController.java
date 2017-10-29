@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
@@ -44,17 +45,11 @@ public class LeagueController {
 	
 	
 	@RequestMapping(value="/redirectLeague")
-	@ResponseBody
-	public String redirectLeague(HttpServletRequest objRequest, HttpServletResponse objResponse) {
+	public String redirectLeague(HttpServletRequest objRequest, HttpServletResponse objResponse,ModelMap model) {
 		//for search functionality
 		List<League> returnMessage = objLeagueService.fetchLeagues(objRequest.getParameter("redirectValue"),"searchText");
-		System.out.println(objRequest.getParameter("redirectValue"));
-		//System.out.println(returnMessage.size());
-		
-		//String jsonString = objListToJson.listToJson("League", returnMessage);
-		//System.out.println(jsonString);
-		//return jsonString;
-		return objRequest.getParameter("redirectValue")+"This is from backend";
+		model.put("name",returnMessage.get(0).getLeagueName());
+		return "LeagueInfoPage";
 	}
 	
 	
