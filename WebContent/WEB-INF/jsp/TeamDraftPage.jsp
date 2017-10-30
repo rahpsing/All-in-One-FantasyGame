@@ -16,6 +16,42 @@ body {
  margin:0;
 }
 -->
+  #sortable1{
+    border-bottom: 1px solid #000000;
+    width: 300px;
+    min-height: 50px;
+    max-height: 700px;
+    list-style-type: none;
+    margin: 0;
+    padding: 5px 0 0 0;
+    float: left;
+    margin-right: 10px;
+  }
+  #sortable2 {
+    width: 300px;
+    min-height: 20px;
+    list-style-type: none;
+    margin: 0;
+    padding: 5px 0 0 0;
+    float: left;
+    margin-right: 10px;
+  }
+  #sortable1 li {
+    margin: 0 5px 5px 0;
+    padding-top: 5px;
+    font-size: 1.5em;
+    width: 300px;
+    color: #000000;
+	background-color: #ffffff;
+  }
+  #sortable2 li {
+    margin: 0 5px 5px 0;
+    padding: 5px;
+    font-size: 2em;
+    width: 300px;
+    color: #000000;
+    background-color: #ffffff;
+  }
 </style>
 </head>
 <body>
@@ -36,7 +72,7 @@ body {
 					<div id="position1table" class="position1table">
 						<!-- <b>position 1</b> -->
 						
-						<b id="teamplayer1" ondrop="drop(event)" ondragover="allowDrop(event)">player 1</b>
+						<!-- <b id="teamplayer1" ondrop="drop(event)" ondragover="allowDrop(event)">player 1</b>
 						
 						<b id="teamplayer2" ondrop="drop(event)" ondragover="allowDrop(event)">player 2</b>
 						
@@ -56,8 +92,14 @@ body {
 						
 						<b id="teamplayer10" ondrop="drop(event)" ondragover="allowDrop(event)">player 10</b>
 						
-						<b id="teamplayer11" ondrop="drop(event)" ondragover="allowDrop(event)">player 11</b>
-						
+						<b id="teamplayer11" ondrop="drop(event)" ondragover="allowDrop(event)">player 11</b> -->
+						<ul id="sortable1" class="connectedSortable">
+						  	<!-- <li class="ui-state-default">player 1</li>
+						  	<li class="ui-state-default">player 2</li>
+						  	<li class="ui-state-default">player 3</li>
+						  	<li class="ui-state-default">player 4</li>
+						  	<li class="ui-state-default">player 5</li> -->
+						</ul>
 					</div>
 				</div>
 				<!-- <div class="position2">
@@ -87,7 +129,7 @@ body {
 			</div>
 			<div class="playerroster">
 				<div id="playerRosterList" class="playerrosterlist">
-						<b id="player1" draggable="true" ondragstart="drag(event)">player a1</b>
+						<!-- <b id="player1" draggable="true" ondragstart="drag(event)">player a1</b>
 						<b id="player2" draggable="true" ondragstart="drag(event)">player a2</b>
 						<b id="player3" draggable="true" ondragstart="drag(event)">player a3</b>
 						<b id="player4" draggable="true" ondragstart="drag(event)">player a4</b>
@@ -110,7 +152,21 @@ body {
 						<b id="player21" draggable="true" ondragstart="drag(event)">player a21</b>
 						<b id="player22" draggable="true" ondragstart="drag(event)">player a22</b>
 						<b id="player23" draggable="true" ondragstart="drag(event)">player a23</b>
-						<b id="player24" draggable="true" ondragstart="drag(event)">player a24</b>		
+						<b id="player24" draggable="true" ondragstart="drag(event)">player a24</b> -->		
+						<ul id="sortable2" class="connectedSortable">
+						  <li class="ui-state-highlight">roster player 1</li>
+						  <li class="ui-state-highlight">roster player 2</li>
+						  <li class="ui-state-highlight">roster player 3</li>
+						  <li class="ui-state-highlight">roster player 4</li>
+						  <li class="ui-state-highlight">roster player 5</li>
+						  <li class="ui-state-highlight">roster player 6</li>
+						  <li class="ui-state-highlight">roster player 7</li>
+						  <li class="ui-state-highlight">roster player 8</li>
+						  <li class="ui-state-highlight">roster player 9</li>
+						  <li class="ui-state-highlight">roster player 10</li>
+						  <li class="ui-state-highlight">roster player 11</li>
+						  <li class="ui-state-highlight">roster player 12</li>
+						</ul>
 				</div>
 			</div>
 			<div id="playerRosterOverlay" class="playerrosteroverlay"></div>
@@ -169,5 +225,14 @@ body {
 
 	
 	</script>
+	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  	<script>
+  	$( function() {
+   	 $( "#sortable1, #sortable2" ).sortable({
+   	   connectWith: ".connectedSortable"
+   	 }).disableSelection();
+  	} );
+  	</script>
 </body>
 </html>

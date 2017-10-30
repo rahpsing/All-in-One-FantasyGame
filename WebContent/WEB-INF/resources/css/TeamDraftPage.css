@@ -170,8 +170,9 @@ html,body {
 
 .position1table {
 	background-color: #939393;
+	/* background-color: #ffffff; */
 	width: 300px;
-	height: 467.5px;
+	height: 700px;
 }
 
 .position1table b {
