@@ -54,7 +54,7 @@ body {
   }
 </style>
 </head>
-<body>
+<body onload="javascript:fetchPlayerList('123','sortable2')">
 	<div class="colorstrip1">
 	</div>
 	<div id="mainDiv" class="maindiv">
@@ -234,5 +234,27 @@ body {
    	 }).disableSelection();
   	} );
   	</script>
+  	<script>
+	function fetchPlayerList(value,iD){
+		$.ajax({
+		    url : '/All-In-One-FantasyGame/playerList',
+		    type: 'post',
+		    data : {VALUEID:value},
+		    dataType : 'json',
+		    success: function(data)
+		    {	
+		    	
+		    	$('#'+iD).empty();
+		    	$(data.Players).each(function(index,value){$('#'+iD).append('<li class="ui-state-highlight">'+value.player+'</a>');})
+		    	
+		    },
+		    error: function (jqXHR, textStatus, errorThrown)
+		    {
+		    	$('#'+iD).empty();
+		 		
+		    }
+		});
+	}
+</script>
 </body>
 </html>

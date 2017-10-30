@@ -37,7 +37,7 @@ body {
  		<div class="userinfo">
  			<div class="colorstrip21">
 	 			<form action="javascript:void(0);">	
-	 				<input id="searchText" class="searchbar" type="text" onkeyup="javascript:sendFetchLikeReq('searchResultList','searchText')"name="search" placeholder="search...">
+	 				<input id="searchText" class="searchbar" type="text" autocomplete=off onkeyup="javascript:sendFetchLikeReq('searchResultList','searchText')"name="search" placeholder="search...">
 	 			</form>
 	 			<b class="searchdisc">find custom leagues</b>
 	 		</div>
@@ -297,7 +297,7 @@ function sendFetchLikeReq(iD,value){
 </script>
 <script>
 function redirectLeague(valueId){
-console.log("Came here1" +valueId );
+
 var f = document.createElement("form");
 f.setAttribute('method',"post");
 f.setAttribute('action',"/All-In-One-FantasyGame/redirectLeague");
