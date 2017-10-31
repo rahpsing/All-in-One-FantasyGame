@@ -39,7 +39,7 @@ body {
 	 			<form action="javascript:void(0);">	
 	 				<input id="searchText" class="searchbar" type="text" autocomplete=off onkeyup="javascript:sendFetchLikeReq('searchResultList','searchText')"name="search" placeholder="search...">
 	 			</form>
-	 			<b class="searchdisc">find custom leagues</b>
+	 			<b class="searchdisc">search leagues</b>
 	 		</div>
  			<div id="leagueList" class="leaguelist">
 		 		<div class="systemleagueslist">
@@ -132,19 +132,23 @@ body {
 	<div id="profilePageModal" class="profilepagemodalcss">
 		 	<!-- Modal content -->
 		  	<div id="profilePageContent" class="profilepage-modal-content">
-		  		<div style="padding-top:100px;">
+		  		<button id="closeProfile" class="closeprofilebutton">X</button>
+		  		<b class="profilebanner">user profile</b>
+		  		<div style="padding-top:20px;">
 		  			<img src="${pageContext.request.contextPath}/resources/UIAssets/user1.jpeg" class="profileimage"><br>
 		  		
 		  			
 		  			<div id="userProfileInfo" class="userprofileinfo">
 
-					  	<b>user Name:         </b><b>${name}</b><br>
-					  	<b>email:			  </b><b>${emailID}</b><br>
-
+					  	<b class="formfieldname">user name</b><input class="inputform" type="text" placeholder="username"><br>
+					  	<b class="formfieldname">first name</b><input class="inputform" type="text" placeholder="first name"><br>
+					  	<b class="formfieldname">last name</b><input class="inputform" type="text" placeholder="last name"><br>
+					  	<b class="formfieldname">email</b><input class="inputform" type="text" placeholder="email ID"><br>
+						<b class="formfieldname">mobile number</b><input class="inputform" type="tel" placeholder="mobile number"><br>
 					 </div>
 					 <button id="updateProfileImage" class="updateprofileimage">update profile image</button><br><br>
 		  				<input id="imageUpload" class="file-upload" type="file" accept="image/*"/>
-				  	<button id="closeProfile" class="closeprofilebutton">close profile</button>
+		  			<button id="saveProfile" class="saveprofilebutton">save profile</button>
 				</div>
 		  	</div>
 	</div>
