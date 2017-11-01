@@ -58,6 +58,10 @@ public class LeagueController {
 	public String redirectLeague(HttpServletRequest objRequest, HttpServletResponse objResponse,ModelMap model) {
 		//for search functionality
 		List<League> returnMessage = objLeagueService.fetchLeagues(objRequest.getParameter("redirectValue"),"searchText");
+		String userId=objRequest.getParameter("userId");
+		System.out.println(userId+"   from redirect");
+		model.put("userId", objRequest.getParameter("userId"));
+		model.put("leagueId",objRequest.getParameter("redirectValue"));
 		model.put("name",returnMessage.get(0).getLeagueName());
 		return "LeagueInfoPage";
 	}
@@ -86,12 +90,16 @@ public class LeagueController {
 	
 	@RequestMapping(value="/checkLeagueMembership")
 	@ResponseBody
-	public boolean checkLeagueMembership(HttpServletRequest objRequest, HttpServletResponse objResponse) {
+	public String checkLeagueMembership(HttpServletRequest objRequest, HttpServletResponse objResponse) {
 		
 		String userId = objRequest.getParameter("userId");
 		String leagueId = objRequest.getParameter("leagueId");
-		
-		return objLeagueService.hasUserJoinedLeague(userId, leagueId);
+		System.out.println("userId is =" + userId);
+		System.out.println("league is =" + leagueId);
+		if(objLeagueService.hasUserJoinedLeague(userId, leagueId)) {
+			return "true";
+		}
+		return "false";
 	}
 	
 	@RequestMapping(value="/testPage")
