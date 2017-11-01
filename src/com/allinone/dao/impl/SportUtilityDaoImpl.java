@@ -39,7 +39,7 @@ public class SportUtilityDaoImpl implements SportUtilityDaoAPI {
 	@Autowired
 	private SessionFactory objSessionFactory;
 	
-	private static final String FILE_NAME = "C:\\Users\\prash\\gitbashnew\\All-In-One-FantasyGame\\DataMappings.xlsx";
+	private static final String FILE_NAME = "C:\\Users\\rahul\\workspace\\All-In-One-FantasyGame\\DataMappings.xlsx";
 	
 	
 /*	public static void main(String[] args) {
@@ -230,36 +230,39 @@ public class SportUtilityDaoImpl implements SportUtilityDaoAPI {
 			League league = new League();
 			league.setLeagueName("IPL");
 			league.setSystemLeague(true);
+			league.setNumSubstitutesAllowed(50);
 			
 			League league2 = new League();
 			league2.setLeagueName("PSL");
 			league2.setSystemLeague(true);
+			league2.setNumSubstitutesAllowed(50);
 			
 			
 			League league3 = new League();
 			league3.setLeagueName("Australian Summer League");
 			league3.setSystemLeague(true);
-			
+			league3.setNumSubstitutesAllowed(50);
 			
 			League league4 = new League();
 			league4.setLeagueName("Carribean League");
-			league4.setSystemLeague(true);
-			
+			league4.setSystemLeague(false);
+			league4.setNumSubstitutesAllowed(50);
 			
 			League league5 = new League();
 			league5.setLeagueName("Westeros League");
-			league5.setSystemLeague(true);
-			
+			league5.setSystemLeague(false);
+			league5.setNumSubstitutesAllowed(50);
 			
 			League league6 = new League();
 			league6.setLeagueName("ICC top 11");
-			league6.setSystemLeague(true);
-			
+			league6.setSystemLeague(false);
+			league6.setNumSubstitutesAllowed(50);
 			
 			League league7 = new League();
 			league7.setLeagueName("Westeros Champions League");
-			league7.setSystemLeague(true);
-
+			league7.setSystemLeague(false);
+			league7.setNumSubstitutesAllowed(50);
+			
 			Criteria objCriteria  = objSessionFactory.getCurrentSession().createCriteria(Sport.class);
 			Criterion usernameCriteria = Restrictions.eq("sportName", "Cricket");
 			objCriteria.add(usernameCriteria);
@@ -270,9 +273,7 @@ public class SportUtilityDaoImpl implements SportUtilityDaoAPI {
 				return false;
 			
 			Sport sport = results.get(0);
-			Set set = new HashSet();
-			set.add(league);
-			//sport.setSetOfLeagues(set);
+
 			league.setSport(sport);
 			league2.setSport(sport);
 			league3.setSport(sport);

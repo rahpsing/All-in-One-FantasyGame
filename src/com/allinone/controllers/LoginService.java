@@ -1,6 +1,8 @@
 package com.allinone.controllers;
 
 import javax.servlet.http.HttpServletRequest;
+
+import org.hibernate.hql.internal.ast.tree.IsNullLogicOperatorNode;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -24,7 +26,35 @@ public class LoginService {
 		User temp = objUserRegistrationService.checkUserLogin(userName, password);
 		if (temp!= null) {
 		model.put("name", temp.getUserName());
-		model.put("emailID", temp.getEmailAddress());
+		model.put("emailId", temp.getEmailAddress());
+		model.put("userId", temp.getUserId());
+		System.out.println(temp.getEmailAddress()+"EmailID of user");
+		if(temp.getFirstName() != null)
+		{
+			
+			model.put("firstName",temp.getFirstName());
+		}
+		else {
+			model.put("firstName","First Name");
+		}
+		
+		if(temp.getLastName()  != null)
+		{
+			model.put("lastName",temp.getLastName());
+			
+		}
+		else {
+			model.put("lastName","Last Name");
+		}
+		if(temp.getPhoneNumber() != null)
+		{
+			model.put("phoneNumber",temp.getPhoneNumber());
+		}
+		else {
+			
+			model.put("phoneNumber","Phone Number");
+		}
+		
 		//model.put("phone", temp.getPhoneNumber());
 		return "UserDashboard";
 		}

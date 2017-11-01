@@ -22,6 +22,7 @@
 	    <mapping resource="Sport.hbm.xml"/> 
 	    <mapping resource="Team.hbm.xml"/> 
 	    <mapping resource="User.hbm.xml"/> 
-
+	    <mapping resource="UserTeam.hbm.xml"/> 
+			    
     </session-factory>
 </hibernate-configuration>

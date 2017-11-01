@@ -49,20 +49,20 @@ body {
     padding: 5px;
     font-size: 2em;
     width: 300px;
-    color: #000000;
+    color: #91053d;
     background-color: #ffffff;
   }
 </style>
 </head>
-<body>
+<body onload="javascript:fetchPlayerList('123','sortable2')">
 	<div class="colorstrip1">
 	</div>
 	<div id="mainDiv" class="maindiv">
 		<div class="colorstrip2">
 			<img src="${pageContext.request.contextPath}/resources/UIAssets/league1pic.png" class="userimage">
 			<div class="welcomemsg">
-			<b>team: </b>
-			<b class="name">${name}</b>
+			<!-- <b>team: </b> -->
+			<b id="teamName">${name}</b>
 			</div>
 			<img src="${pageContext.request.contextPath}/resources/UIAssets/bannerdesign.png" class="bannerdesign">
  		</div>
@@ -123,11 +123,16 @@ body {
 				<div class="editteam">
 					<button id="editTeamButton" class="editteambutton">edit team</button>
 				</div>
+				<div class="teaminfobanner" id="teamInfoBanner">
+					<b>team info</b>
+				</div>
+				<div class="teamnameedit" id="teamNameEdit">
+					<input class="inputform" type="text" value="team name">
+				</div>
 				<div class="saveteam">
 					<button id="saveTeamButton" class="saveteambutton">save team</button>
 				</div>
-			</div>
-			<div class="playerroster">
+				<div class="playerroster" id="playerRoaster">
 				<div id="playerRosterList" class="playerrosterlist">
 						<!-- <b id="player1" draggable="true" ondragstart="drag(event)">player a1</b>
 						<b id="player2" draggable="true" ondragstart="drag(event)">player a2</b>
@@ -169,7 +174,10 @@ body {
 						</ul>
 				</div>
 			</div>
-			<div id="playerRosterOverlay" class="playerrosteroverlay"></div>
+			<!-- <div id="playerRosterOverlay" class="playerrosteroverlay"></div> -->
+			</div>
+			
+			
 	
  			<!-- <p id="p1" draggable="true" ondragstart="dragstart_handler(event);">This element is draggable.</p>
  			
@@ -189,20 +197,28 @@ body {
 
 	<script>
 	var editTeamButton = document.getElementById("editTeamButton");
-
+	var teamNameEditForm = document.getElementById("teamNameEdit");
+	var teamInfoBanner = document.getElementById("teamInfoBanner");
 	
 	editTeamButton.onclick = function() {
-	    playerRosterOverlay.style.display = "none";
+	    /* playerRosterOverlay.style.display = "none"; */
 	    editTeamButton.style.display = "none";
 	    saveTeamButton.style.display = "block";
+	    teamNameEditForm.style.display = "block";
+	    teamInfoBanner.style.display = "block";
+	    playerRoaster.style.display = "block";
 		position1table.sortable();
 		position1table.disableSelection();
+		
 	}
 	
 	saveTeamButton.onclick = function() {
-		playerRosterOverlay.style.display = "block";
+		/* playerRosterOverlay.style.display = "block"; */
 	    editTeamButton.style.display = "block";
 	    saveTeamButton.style.display = "none";
+	    teamNameEditForm.style.display = "none";
+	    teamInfoBanner.style.display = "none";
+	    playerRoaster.style.display = "none";
 	}
 	
 	function allowDrop(ev) {
@@ -234,5 +250,27 @@ body {
    	 }).disableSelection();
   	} );
   	</script>
+  	<script>
+	function fetchPlayerList(value,iD){
+		$.ajax({
+		    url : '/All-In-One-FantasyGame/playerList',
+		    type: 'post',
+		    data : {VALUEID:value},
+		    dataType : 'json',
+		    success: function(data)
+		    {	
+		    	
+		    	$('#'+iD).empty();
+		    	$(data.Players).each(function(index,value){$('#'+iD).append('<li class="ui-state-highlight">'+value.player+'</a>');})
+		    	
+		    },
+		    error: function (jqXHR, textStatus, errorThrown)
+		    {
+		    	$('#'+iD).empty();
+		 		
+		    }
+		});
+	}
+</script>
 </body>
 </html>

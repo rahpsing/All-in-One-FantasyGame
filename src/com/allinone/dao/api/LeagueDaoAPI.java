@@ -17,6 +17,8 @@ public interface LeagueDaoAPI {
 	public List<League> fetchLeagues(String sport);
 
 	public List<League> fetchLikeLeagues(String likeLeague);
+	
+	public boolean hasUserJoinedLeague(String userId, String leagueId);
 
 	
 

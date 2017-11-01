@@ -21,6 +21,7 @@ import com.allinone.pojos.Team;
 import com.allinone.service.api.LeagueServiceAPI;
 import com.allinone.service.api.ListToJsonTwoColumnsServiceAPI;
 import com.allinone.service.api.SportUtilityServiceAPI;
+import com.allinone.service.api.TeamListToJsonServiceAPI;
 
 @Controller
 
@@ -34,6 +35,9 @@ public class LeagueController {
 	
 	@Autowired
 	ListToJsonTwoColumnsServiceAPI objListToJson;
+	
+	@Autowired
+	TeamListToJsonServiceAPI objTeamListToJson;
 	
 	@RequestMapping(value="/fetchLeagues")
 	@ResponseBody
@@ -63,14 +67,9 @@ public class LeagueController {
 		
 		List<Player> returnList = objLeagueService.playerList("4028b8815f69d617015f69d702b90001");
 		
-		StringBuilder alpha=new StringBuilder();
-		for (Player i :returnList) {
-			alpha.append(i.getFirstName()).append("").append(i.getLastName());
-			
-			System.out.println(i.getFirstName()+"  "+i.getLastName());
-		}
+		String jsonString=objTeamListToJson.listToJson("Players", returnList);
 		
-		return alpha.toString();
+		return jsonString;
 	}
 	
 	@RequestMapping(value="/createLeague")
@@ -81,6 +80,17 @@ public class LeagueController {
 		
 		
 		return returnMessage;
+	}
+	
+	
+	@RequestMapping(value="/checkLeagueMembership")
+	@ResponseBody
+	public boolean checkLeagueMembership(HttpServletRequest objRequest, HttpServletResponse objResponse) {
+		
+		String userId = objRequest.getParameter("userId");
+		String leagueId = objRequest.getParameter("leagueId");
+		
+		return objLeagueService.hasUserJoinedLeague(userId, leagueId);
 	}
 	
 	@RequestMapping(value="/testPage")

@@ -67,6 +67,22 @@ html,body {
 	text-align:left;
 	display: inline;
 }
+
+.joinleague {
+	position: absolute;
+	right: 600px;
+	bottom: 50%;
+	width: 200px;
+	height: 50px;
+	border-radius: 10px;
+	background-color: #5a1646;
+	border: none;
+	color: #ffffff;
+	cursor: pointer;
+	font-size: 2em; 
+	font-family:"Helvetica Neue";  
+	font-weight: bold;
+}
 .bannerdesign{
 	float:right;
 	margin-top: 0px;
@@ -122,14 +138,15 @@ html,body {
 	border-width: 0.5px;
 }
 
-.leagueinfo .leaderboard {
+.leagueinfo .previousgames {
 	margin-top: 120px;
 	position: absolute;
+	top: 380px;
 	right: 7.5%;
 	display: show;
 }
 
-.leaderboardlist{
+.previousgameslist{
 /* 	position: relative;
 	left: -50%; */
 	overflow-y: scroll;
@@ -139,7 +156,7 @@ html,body {
     margin-top: 10px;
 }
 
-.leaderboard a {
+.previousgames a {
     color: black;
     padding: 12px 16px;
     text-decoration: none;
@@ -156,7 +173,6 @@ html,body {
 .leagueinfo .upcominggames {
 	margin-top: 120px;
 	position: absolute;
-	top: 230px;
 	right: 7.5%;
 	display: show;
 }

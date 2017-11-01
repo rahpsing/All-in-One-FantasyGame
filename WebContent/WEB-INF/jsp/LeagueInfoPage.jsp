@@ -25,10 +25,11 @@ body {
 		<div class="colorstrip2">
 			<img src="${pageContext.request.contextPath}/resources/UIAssets/league1pic.png" class="userimage">
 			<div class="welcomemsg">
-			<b>league: </b>
+			<b></b>
 			<b class="name">${name}</b>
 			</div>
 			<img src="${pageContext.request.contextPath}/resources/UIAssets/bannerdesign.png" class="bannerdesign">
+			<button id="joinLeague" class="joinleague">join league</button>
  		</div>
  		<div class="leagueinfo">
  			<div class="players">
@@ -52,10 +53,10 @@ body {
  					</div>
  				</div>
  			</div> 
- 			<div class="leaderboard">
+ 			<div class="previousgames">
  				<div class="colorstrip23">
- 					<b>top players</b>
- 					<div class="leaderboardlist">
+ 					<b>previous matches</b>
+ 					<div class="previousgameslist">
  						<a>user 1</a>
  						<a>user 2</a>
  						<a>user 3</a>

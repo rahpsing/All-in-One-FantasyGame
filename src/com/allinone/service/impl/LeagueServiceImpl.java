@@ -64,6 +64,13 @@ public class LeagueServiceImpl implements LeagueServiceAPI {
 		
 		return listOfPlayer;
 	}
+
+	@Override
+	public boolean hasUserJoinedLeague(String userId, String leagueId) {
+		// TODO Auto-generated method stub
+		
+		return objLeagueDao.hasUserJoinedLeague(userId, leagueId);
+	}
 	
 
 }
