@@ -21,7 +21,7 @@ public class UserRegistrationDaoImpl implements UserRegistrationDaoAPI {
 	private SessionFactory objSessionFactory;
 	
 	@Override
-	public boolean addUser(String userName, String password, String emailAddress, String phoneNumber) {
+	public boolean addUser(String userName, String password, String emailAddress, String phoneNumber,String firstName,String lastName) {
 		// TODO Auto-generated method stub
 		
 		User user = new User();
@@ -31,6 +31,8 @@ public class UserRegistrationDaoImpl implements UserRegistrationDaoAPI {
 		user.setPassword(password);
 		user.setEmailAddress(emailAddress);
 		user.setPhoneNumber(phoneNumber);
+		user.setFirstName(firstName);
+		user.setLastName(lastName);
 		
 		try {
 			objSessionFactory.getCurrentSession().saveOrUpdate(user);
@@ -66,5 +68,27 @@ public class UserRegistrationDaoImpl implements UserRegistrationDaoAPI {
 				
 				
 	}
+	
+	@Override
+	public String updateUser(String userId,String emailId,String phoneNum,String firstName,String lastName) {
+		
+		User temp=new User();
+		
+		temp.setFirstName(firstName);
+		temp.setLastName(lastName);
+		temp.setUserId(userId);
+		temp.setEmailAddress(emailId);
+		//temp.setPassword(password);
+		temp.setPhoneNumber(phoneNum);
+		try {
+		objSessionFactory.getCurrentSession().update(temp);
+		}
+		catch(Exception e) {
+			System.out.println(e);
+			return "failed";
+		}
+		return "success";
+	}
+	
 
 }

@@ -140,19 +140,21 @@ body {
 		  			
 		  			<div id="userProfileInfo" class="userprofileinfo">
 
-					  	<b id="xxx" class="formfieldname">user name</b><input class="inputform" type="text" placeholder='${name}'><br>
-					  	<b id="firstNameUpdate" class="formfieldname">first name</b><input class="inputform" type="text" placeholder='${firstName}'><br>
-					  	<b id="lastNameUpdate" class="formfieldname">last name</b><input class="inputform" type="text" placeholder='${lastName}'><br>
-					  	<b id="emailUpdate" class="formfieldname">email</b><input class="inputform" type="text" placeholder='${emailId}'><br>
-						<b id="phoneNumberUpdate" class="formfieldname">mobile number</b><input class="inputform" type="tel" placeholder='${phoneNumber}'><br>
+					  <%-- 	<b  class="formfieldname">user name</b><input id="xxx" class="inputform" type="text" placeholder='${name}'><br> --%>
+					  	<b  class="formfieldname">first name</b><input id="firstNameUpdate" class="inputform" type="text" value='${firstName}'><br>
+					  	<b class="formfieldname">last name</b><input id="lastNameUpdate" class="inputform" type="text" value='${lastName}'><br>
+					  	<b class="formfieldname">email</b><input id="emailUpdate" class="inputform" type="text" value='${emailId}'><br>
+						<b class="formfieldname">mobile number</b><input id="phoneNumberUpdate" class="inputform" type="tel" value='${phoneNumber}'><br>
+						
 					 </div>
 					 <button id="updateProfileImage" class="updateprofileimage">update profile image</button><br><br>
 		  				<input id="imageUpload" class="file-upload" type="file" accept="image/*"/>
-		  			<button id="saveProfile" onclick="javascript:sendUpdateProfileReq()" class="saveprofilebutton">save profile</button>
+		  			<button id="saveProfile" onclick="javascript:sendUpdateProfileReq('${userId}')" class="saveprofilebutton">save profile</button>
 				</div>
 		  	</div>
 	</div>
 	<script>
+	
 	var mainDiv = document.getElementById("mainDiv");
 	var profileButton = document.getElementById("editProfile");
 	var profilePageModal = document.getElementById("profilePageModal");
@@ -318,14 +320,30 @@ f.submit();
 </script>
 
 <script>
-function sendUpdateProfileReq(){
-		var userId=${userId};
+
+function sendUpdateProfileReq(userId){
+		
+		
 		var email=document.getElementById('emailUpdate').value;
 		var phoneNumber=document.getElementById('phoneNumberUpdate').value;
-		var firstNamer=document.getElementById('firstNameUpdate').value;
+		var firstName=document.getElementById('firstNameUpdate').value;
 		var lastName=document.getElementById('lastNameUpdate').value;
 		
-		alert (email+" "+phoneNumber+" "+firstName+" "+lastName);
+		$.ajax({
+		    url : '/All-In-One-FantasyGame/updateUser',
+		    type: 'post',
+		    data : {userId:userId,email:email,phoneNumber:phoneNumber,firstName:firstName,lastName:lastName},
+		    
+		    success: function(data)
+		   
+		    {	
+		    	alert(data);
+		    },
+		    error: function (jqXHR, textStatus, errorThrown)
+		    {
+		    	alert("something went wrong.Contact Admin");
+		    }
+		});
 }
 </script>
 </body>

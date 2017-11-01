@@ -19,6 +19,20 @@ public class User implements Serializable {
 	
 	private String userId;
 	private String userName;
+	private String firstName;
+	private String lastName;
+	public String getFirstName() {
+		return firstName;
+	}
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+	public String getLastName() {
+		return lastName;
+	}
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
 	private String emailAddress;
 	private String phoneNumber;
 	private String password;
@@ -55,13 +69,15 @@ public class User implements Serializable {
 	public void setAdmin(boolean isAdmin) {
 		this.isAdmin = isAdmin;
 	}
-	@Override
-	public String toString() {
-		return "User [userId=" + userId + ", userName=" + userName + ", emailAddress=" + emailAddress + ", phoneNumber="
-				+ phoneNumber + ", isAdmin=" + isAdmin + "]";
-	}
+	
 	public String getPassword() {
 		return password;
+	}
+	@Override
+	public String toString() {
+		return "User [userId=" + userId + ", userName=" + userName + ", firstName=" + firstName + ", lastName="
+				+ lastName + ", emailAddress=" + emailAddress + ", phoneNumber=" + phoneNumber + ", password="
+				+ password + ", isAdmin=" + isAdmin + ", setOfLeagues=" + setOfLeagues + "]";
 	}
 	public void setPassword(String password) {
 		this.password = password;
