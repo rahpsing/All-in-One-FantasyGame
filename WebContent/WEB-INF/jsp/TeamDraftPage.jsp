@@ -124,7 +124,7 @@ body {
 					<button id="editTeamButton" class="editteambutton">edit team</button>
 				</div>
 				<div class="saveteam">
-					<button id="saveTeamButton" onclick="sendPlayerList()" class="saveteambutton">save team</button>
+					<button id="saveTeamButton" onclick="sendPlayerList('${userId}','${leagueId}','${teamId}')" class="saveteambutton">save team</button>
 				</div>
 			</div>
 			<div class="playerroster">
@@ -253,16 +253,16 @@ body {
 		});
 	}
 
-	$("#saveTeamButton").click(function(){
+	function sendPlayerList(userId,leagueId,teamId){
 		var ind=0;	
-		var listOfIds=[];
+		var listOfPlayerIds=[];
 		var listItems = $("#sortable1").find("li");
 		for ( ind = 0; ind < listItems.length; ind++ ) {
 		    console.log($(listItems[ind]).attr('id'));
 		    listOfIds.push($(listItems[ind]).attr('id'));
 		}
-		console.log(listOfIds);
-	}); 
+		console.log(listOfPlayerIds);
+	})
 </script>
 </body>
 </html>

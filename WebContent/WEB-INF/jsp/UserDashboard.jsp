@@ -76,7 +76,7 @@ div.panel button {
  		<div class="userinfo">
  			<div class="colorstrip21">
 	 			<form action="javascript:void(0);">	
-	 				<input id="searchText" class="searchbar" type="text" autocomplete=off onkeyup="javascript:sendFetchLikeReq('searchResultList','searchText')"name="search" placeholder="search...">
+	 				<input id="searchText" class="searchbar" type="text" autocomplete=off onkeyup="javascript:sendFetchLikeReq('searchResultList','searchText','${userId}')"name="search" placeholder="search...">
 	 			</form>
 	 			<b class="searchdisc">search leagues</b>
 	 		</div>
@@ -85,22 +85,22 @@ div.panel button {
 		 			<div class="colorstrip22">
 		 				<b> leagues </b>
 		 			</div>
-		 			<!-- <div class="dropdown">
-	  					<button class="dropbtn1" onmouseover="javascript:sendFetchReq('SOCCER','systemSoccerLeagues','dashboard')">Soccer</button>
+		 			 <div class="dropdown">
+	  					<button class="dropbtn1" onmouseover="javascript:sendFetchReq('SOCCER','systemSoccerLeagues','dashboard','${userId}')">Soccer</button>
 					 	<div id="systemSoccerLeagues" class="dropdown-content">
 						    
 					 	</div>
 					 </div>
 					 <div class="dropdown">
-					 	<button class="dropbtn2" onmouseover="javascript:sendFetchReq('CRICKET','systemLeagues','dashboard')">Cricket</button>
+					 	<button class="dropbtn2" onmouseover="javascript:sendFetchReq('CRICKET','systemLeagues','dashboard','${userId}')">Cricket</button>
 					 	<div id="systemLeagues" class="dropdown-content">
 						   
 					 	</div>
-					</div> -->
+					</div> 
 		 		</div>
-		 		<div class="accordiandiv">
-			 		<button class="accordion">soccer</button>
-						<div class="panel">
+		 		<!---<div class="accordiandiv">
+			 		<button class="accordion" onclick="javascript:sendFetchReq('SOCCER','systemSoccerLeagues','dashboard','${userId}')">soccer</button>
+						<div id="systemSoccerLeagues" class="panel">
 						  <button onclick="" class="soccer">soccer 1</button>
 						  <button onclick="" class="soccer">soccer 2</button>
 						  <button onclick="" class="soccer">soccer 3</button>
@@ -108,8 +108,8 @@ div.panel button {
 						  <button onclick="" class="soccer">soccer 5</button>
 						</div>
 					
-					<button class="accordion">cricket</button>
-						<div class="panel">
+					<button class="accordion" onclick="javascript:sendFetchReq('CRICKET','systemLeagues','dashboard','${userId}')">cricket</button>
+						<div id="systemLeagues" class="panel">
 						  <button onclick="" class="cricket">cricket 1</button>
 						  <button onclick="" class="cricket">cricket 2</button>
 						</div>
@@ -120,7 +120,7 @@ div.panel button {
 						  <button onclick="" class="usersport">usersport 2</button>
 						</div>
 						
-				</div>
+				</div> --->
 		 		<!-- <div class="userleagueslist">
 		 			<div class="dropdown"> 
 	  					<button class="dropbtn">
@@ -326,7 +326,7 @@ div.panel button {
 	</script>
 	
 <script>
-function sendFetchReq(sportName,iD,value){
+function sendFetchReq(sportName,iD,value,userId){console.log(userId);
 	$.ajax({
 	    url : '/All-In-One-FantasyGame/fetchLeagues',
 	    type: 'post',
@@ -334,21 +334,21 @@ function sendFetchReq(sportName,iD,value){
 	    dataType : 'json',
 	    success: function(data)
 	    {	$('#'+iD).empty();
-	    	$(data.League).each(function(index,value){$('#'+iD).append('<button onclick=javascript:redirectLeague(\''+value.id+'\') >'+value.League+'</a>');})
-	    	$('#'+iD).append('<button style="background-color: #ffbf03">create a new private league ></button>');
+	    	$(data.League).each(function(index,value){$('#'+iD).append('<a onclick=javascript:redirectLeague(\''+value.id+'\',\''+userId+'\') >'+value.League+'</a>');})
+	    	$('#'+iD).append('<a style="background-color: #ffbf03">create a new private league ></a>');
 	    },
 	    error: function (jqXHR, textStatus, errorThrown)
 	    {
 	    	$('#'+iD).empty();
-	 		$('#'+iD).append('<button>No Leagues></button>');
-			$('#'+iD).append('<button style="background-color: #ffbf03">create a new private league ><button>');
+	 		$('#'+iD).append('<a>No Leagues></a>');
+			$('#'+iD).append('<a style="background-color: #ffbf03">create a new private league ></a>');
 	    }
 	});
 }
 </script>
 
 <script>
-function sendFetchLikeReq(iD,value){
+function sendFetchLikeReq(iD,value,userId){console.log(userId);
 	searchResultDiv.style.display = "block";
 	leagueListDiv.style.display = "none";
 	var searchTxt=document.getElementById('searchText').value;
@@ -363,14 +363,14 @@ function sendFetchLikeReq(iD,value){
 	   
 	    {	
 	    	$('#'+iD).empty();
-	    	$(data.League).each(function(index,value){$('#'+iD).append('<a onclick=javascript:redirectLeague(\''+value.id+'\') >'+value.League+'</a>');})
+	    	$(data.League).each(function(index,value){$('#'+iD).append('<a onclick=javascript:redirectLeague(\''+value.id+'\',\''+userId+'\') >'+value.League+'</a>');})
 	    	
 	    },
 	    error: function (jqXHR, textStatus, errorThrown)
 	    {
 	    	$('#'+iD).empty();
-	 		$('#'+iD).append('<a href="#" >No Leagues></a>');
-			$('#'+iD).append('<a href="#" style="background-color: #ffbf03">No leagues found with this name ></a>');
+	 		$('#'+iD).append('<a class="cricket" href="#" >No Leagues></a>');
+			$('#'+iD).append('<a class="cricket" href="#" style="background-color: #ffbf03">No leagues found with this name ></a>');
 	    }
 	});
 	}
@@ -380,7 +380,7 @@ function sendFetchLikeReq(iD,value){
 }
 </script>
 <script>
-function redirectLeague(valueId){
+function redirectLeague(valueId,userId){
 
 var f = document.createElement("form");
 f.setAttribute('method',"post");
@@ -391,6 +391,11 @@ i.setAttribute('type',"hidden");
 i.setAttribute('name',"redirectValue");
 i.setAttribute('value',valueId);
 f.appendChild(i);
+var j = document.createElement("input");
+j.setAttribute('type',"hidden");
+j.setAttribute('name',"userId");
+j.setAttribute('value',userId);
+f.appendChild(j);
 document.body.appendChild(f);
 console.log(f);
 f.submit();

@@ -18,7 +18,7 @@ body {
 -->
 </style>
 </head>
-<body>
+<body onload="javascript:checkJoinButton('${leagueId}','${userId}')">
 	<div class="colorstrip1">
 	</div>
 	<div id="mainDiv" class="maindiv">
@@ -29,7 +29,7 @@ body {
 			<b class="name">${name}</b>
 			</div>
 			<img src="${pageContext.request.contextPath}/resources/UIAssets/bannerdesign.png" class="bannerdesign">
-			<button id="joinLeague" class="joinleague">join league</button>
+			<button id="joinLeague" onclick="javascript:createTeam('${leagueId}','${userId}')"  class="joinleague">join league</button>
  		</div>
  		<div class="leagueinfo">
  			<div class="players">
@@ -94,9 +94,49 @@ body {
 
 	<script>
 	
+function checkJoinButton(leagueId,userId){
+	$.ajax({
+	    url : '/All-In-One-FantasyGame/checkLeagueMembership',
+	    type: 'post',
+	    data : {userId:userId,leagueId:leagueId},
+	    
+	    success: function(data)
+	   
+	    {	
+	    	
+	    	if(data == "true"){
+	    	$('#joinLeague').hide();
+	    	}
+	    	
+	    },
+	    error: function (jqXHR, textStatus, errorThrown)
+	    {
+	    	alert("something went wrong.Contact Admin");
+	    }
+	});
+}
 
 
+function createTeam(leagueId,userId){
+	alert(leagueId+"Came to league info page"+userId);
+	var f = document.createElement("form");
+	f.setAttribute('method',"post");
+	f.setAttribute('action',"/All-In-One-FantasyGame/createTeam");
+
+	var i = document.createElement("input"); //input element, text
+	i.setAttribute('type',"hidden");
+	i.setAttribute('name',"leagueId");
+	i.setAttribute('value',leagueId);
+	f.appendChild(i);
+	var j = document.createElement("input");
+	j.setAttribute('type',"hidden");
+	j.setAttribute('name',"userId");
+	j.setAttribute('value',userId);
+	f.appendChild(j);
+	document.body.appendChild(f);
+	console.log(f);
 	
+	}
 	
 	</script>
 
