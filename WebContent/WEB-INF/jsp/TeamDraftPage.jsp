@@ -124,7 +124,7 @@ body {
 					<button id="editTeamButton" class="editteambutton">edit team</button>
 				</div>
 				<div class="saveteam">
-					<button id="saveTeamButton" class="saveteambutton">save team</button>
+					<button id="saveTeamButton" onclick="sendPlayerList()" class="saveteambutton">save team</button>
 				</div>
 			</div>
 			<div class="playerroster">
@@ -154,17 +154,7 @@ body {
 						<b id="player23" draggable="true" ondragstart="drag(event)">player a23</b>
 						<b id="player24" draggable="true" ondragstart="drag(event)">player a24</b> -->		
 						<ul id="sortable2" class="connectedSortable">
-						  <li class="ui-state-highlight">roster player 1</li>
-						  <li class="ui-state-highlight">roster player 2</li>
-						  <li class="ui-state-highlight">roster player 3</li>
-						  <li class="ui-state-highlight">roster player 4</li>
-						  <li class="ui-state-highlight">roster player 5</li>
-						  <li class="ui-state-highlight">roster player 6</li>
-						  <li class="ui-state-highlight">roster player 7</li>
-						  <li class="ui-state-highlight">roster player 8</li>
-						  <li class="ui-state-highlight">roster player 9</li>
-						  <li class="ui-state-highlight">roster player 10</li>
-						  <li class="ui-state-highlight">roster player 11</li>
+						 
 						  <li class="ui-state-highlight">roster player 12</li>
 						</ul>
 				</div>
@@ -227,14 +217,13 @@ body {
 	</script>
 	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
   	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-  	<script>
+  	<script type="text/javascript">
   	$( function() {
    	 $( "#sortable1, #sortable2" ).sortable({
    	   connectWith: ".connectedSortable"
    	 }).disableSelection();
   	} );
-  	</script>
-  	<script>
+
 	function fetchPlayerList(value,iD){
 		$.ajax({
 		    url : '/All-In-One-FantasyGame/playerList',
@@ -245,7 +234,7 @@ body {
 		    {	
 		    	
 		    	$('#'+iD).empty();
-		    	$(data.Players).each(function(index,value){$('#'+iD).append('<li class="ui-state-highlight">'+value.player+'</a>');})
+		    	$(data.Players).each(function(index,value){$('#'+iD).append('<li id='+value.id+' class="ui-state-highlight">'+value.player+'</a>');})
 		    	
 		    },
 		    error: function (jqXHR, textStatus, errorThrown)
@@ -255,6 +244,17 @@ body {
 		    }
 		});
 	}
+
+	$("#saveTeamButton").click(function(){
+		var ind=0;	
+		var listOfIds=[];
+		var listItems = $("#sortable1").find("li");
+		for ( ind = 0; ind < listItems.length; ind++ ) {
+		    console.log($(listItems[ind]).attr('id'));
+		    listOfIds.push($(listItems[ind]).attr('id'));
+		}
+		console.log(listOfIds);
+	}); 
 </script>
 </body>
 </html>

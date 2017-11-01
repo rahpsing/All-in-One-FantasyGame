@@ -56,6 +56,7 @@ public class LeagueController {
 	@RequestMapping(value="/redirectLeague")
 	public String redirectLeague(HttpServletRequest objRequest, HttpServletResponse objResponse,ModelMap model) {
 		//for search functionality
+		System.out.println(objRequest.getParameter("redirectValue")+"This is value");
 		List<League> returnMessage = objLeagueService.fetchLeagues(objRequest.getParameter("redirectValue"),"searchText");
 		model.put("name",returnMessage.get(0).getLeagueName());
 		return "LeagueInfoPage";
@@ -65,7 +66,7 @@ public class LeagueController {
 	@ResponseBody
 	public String playerList(HttpServletRequest objRequest, HttpServletResponse objResponse) {
 		
-		List<Player> returnList = objLeagueService.playerList("4028b8815f69d617015f69d702b90001");
+		List<Player> returnList = objLeagueService.playerList("4028b8815f757b3c015f757b9b430001");
 		
 		String jsonString=objTeamListToJson.listToJson("Players", returnList);
 		

@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.hibernate.Criteria;
 import org.hibernate.Query;
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Criterion;
 import org.hibernate.criterion.Restrictions;
@@ -72,16 +73,16 @@ public class UserRegistrationDaoImpl implements UserRegistrationDaoAPI {
 	@Override
 	public String updateUser(String userId,String emailId,String phoneNum,String firstName,String lastName) {
 		
-		User temp=new User();
+		Session session = objSessionFactory.getCurrentSession();
 		
-		temp.setFirstName(firstName);
-		temp.setLastName(lastName);
-		temp.setUserId(userId);
-		temp.setEmailAddress(emailId);
+		User user = session.get(User.class, userId);
+		user.setFirstName(firstName);
+		user.setLastName(lastName);
+		user.setEmailAddress(emailId);
 		//temp.setPassword(password);
-		temp.setPhoneNumber(phoneNum);
+		user.setPhoneNumber(phoneNum);
 		try {
-		objSessionFactory.getCurrentSession().update(temp);
+			session.saveOrUpdate(user);
 		}
 		catch(Exception e) {
 			System.out.println(e);
