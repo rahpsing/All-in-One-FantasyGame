@@ -16,6 +16,45 @@ body {
  margin:0;
 }
 -->
+
+button.accordion {
+    background-color: #ffbf03;
+    color: #ffffff;
+    font-family:"Helvetica Neue"; ;
+    font-weight: bold; 
+    cursor: pointer;
+    height: 50px;
+    width: 100%;
+    border: none;
+    text-align: center;
+    outline: none;
+    font-size: 30px;
+    transition: 0.4s;
+}
+
+button.accordion.active, button.accordion:hover {
+    background-color: #c50234; 
+}
+
+div.panel {
+    display: none;
+    background-color: white;
+    position: relative;
+	text-align: center;
+	max-height: 180px;
+	overflow-y: auto;
+}
+div.panel button {
+	height: 50px;
+	width: 100%;
+	color: #ffffff;
+    font-family:"Helvetica Neue"; ;
+    font-weight: bold; 
+    cursor: pointer;
+    font-size: 30px;
+    background-color: #ffd867;
+    border: none;
+}
 </style>
 </head>
 <body>
@@ -46,7 +85,7 @@ body {
 		 			<div class="colorstrip22">
 		 				<b> leagues </b>
 		 			</div>
-		 			<div class="dropdown">
+		 			<!-- <div class="dropdown">
 	  					<button class="dropbtn1" onmouseover="javascript:sendFetchReq('SOCCER','systemSoccerLeagues','dashboard')">Soccer</button>
 					 	<div id="systemSoccerLeagues" class="dropdown-content">
 						    
@@ -57,10 +96,33 @@ body {
 					 	<div id="systemLeagues" class="dropdown-content">
 						   
 					 	</div>
-					</div>
+					</div> -->
 		 		</div>
-		 		<div class="userleagueslist">
-		 			<div class="dropdown">
+		 		<div class="accordiandiv">
+			 		<button class="accordion">soccer</button>
+						<div class="panel">
+						  <button onclick="" class="soccer">soccer 1</button>
+						  <button onclick="" class="soccer">soccer 2</button>
+						  <button onclick="" class="soccer">soccer 3</button>
+						  <button onclick="" class="soccer">soccer 4</button>
+						  <button onclick="" class="soccer">soccer 5</button>
+						</div>
+					
+					<button class="accordion">cricket</button>
+						<div class="panel">
+						  <button onclick="" class="cricket">cricket 1</button>
+						  <button onclick="" class="cricket">cricket 2</button>
+						</div>
+					
+					<button class="accordion">user sport 1</button>
+						<div class="panel">
+						  <button onclick="" class="usersport">usersport 1</button>
+						  <button onclick="" class="usersport">usersport 2</button>
+						</div>
+						
+				</div>
+		 		<!-- <div class="userleagueslist">
+		 			<div class="dropdown"> 
 	  					<button class="dropbtn">
 	  						<b>Cricket</b>
 	  					</button>
@@ -78,7 +140,7 @@ body {
 						    <a href="#">League 3</a>
 					 	</div>
 					</div>
-		 		</div>
+		 		</div> -->
 	 		</div>
 	 		<div id="searchResult" class="searchresult">
 	 			<div class="searchresultlist">
@@ -153,6 +215,22 @@ body {
 				</div>
 		  	</div>
 	</div>
+	<script>
+		var acc = document.getElementsByClassName("accordion");
+		var i;
+		
+		for (i = 0; i < acc.length; i++) {
+		    acc[i].onclick = function(){
+		        this.classList.toggle("active");
+		        var panel = this.nextElementSibling;
+		        if (panel.style.display === "block") {
+		            panel.style.display = "none";
+		        } else {
+		            panel.style.display = "block";
+		        }
+		    }
+		}
+	</script>
 	<script>
 	
 	var mainDiv = document.getElementById("mainDiv");
@@ -256,14 +334,14 @@ function sendFetchReq(sportName,iD,value){
 	    dataType : 'json',
 	    success: function(data)
 	    {	$('#'+iD).empty();
-	    	$(data.League).each(function(index,value){$('#'+iD).append('<a onclick=javascript:redirectLeague(\''+value.id+'\') >'+value.League+'</a>');})
-	    	$('#'+iD).append('<a href="#" style="background-color: #ffbf03">create a new private league ></a>');
+	    	$(data.League).each(function(index,value){$('#'+iD).append('<button onclick=javascript:redirectLeague(\''+value.id+'\') >'+value.League+'</a>');})
+	    	$('#'+iD).append('<button style="background-color: #ffbf03">create a new private league ></button>');
 	    },
 	    error: function (jqXHR, textStatus, errorThrown)
 	    {
 	    	$('#'+iD).empty();
-	 		$('#'+iD).append('<a href="#" >No Leagues></a>');
-			$('#'+iD).append('<a href="#" style="background-color: #ffbf03">create a new private league ></a>');
+	 		$('#'+iD).append('<button>No Leagues></button>');
+			$('#'+iD).append('<button style="background-color: #ffbf03">create a new private league ><button>');
 	    }
 	});
 }
