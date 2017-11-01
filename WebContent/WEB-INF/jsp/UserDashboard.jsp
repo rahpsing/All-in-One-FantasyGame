@@ -92,12 +92,12 @@ body {
 			 	</div>
 	 		</div>
  			<div class="usermenu">
-	 			<button id="editProfile" class="editprofile">profile</button>
-	 			<button id="createLeague" class="createleague">create league</button>
-	 			<button id="Stats" class="stats">statistics</button>
+	 			<button id="editProfile" class="editprofile">user profile</button>
+	 			<button id="createLeague" class="createleague"><a href="#Highlights" style="color: #ffffff; text-decoration: none;">highlights</a></button>
+	 			<!-- <button id="Stats" class="stats">statistics</button> -->
 	 		</div>
 	 	</div>
- 		<div class="highlights">
+ 		<div id="Highlights" class="highlights">
  			<div style="text-align: center">
  				<b class="highlightsbanner">highlights</b>
  			</div>

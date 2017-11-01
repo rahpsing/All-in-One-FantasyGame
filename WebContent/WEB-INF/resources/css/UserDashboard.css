@@ -118,7 +118,6 @@ html,body {
 	position: absolute;
 	left: 50%;
 	display: show;
-	max-height: 500px;
 }
 .userinfo .leaguelist .systemleagueslist{
 	position: relative;
@@ -296,7 +295,7 @@ html,body {
 }
 .usermenu{
 	margin-top: 40px;
-	margin-right: 20px;
+	margin-right: 220px;
 	float: right;
 }
 .editprofile{
@@ -325,6 +324,7 @@ html,body {
 	font-weight: bold; 
 }
 .stats{
+	/* display: none; */
 	margin-top: 140px;
 	width: 200px;
 	height: 50px;
@@ -338,7 +338,7 @@ html,body {
 }
 .userinfo{
 	position: relative;
-	height: 700px;
+	height: 900px;
 }
 .highlights{
 	height: 940px;
