@@ -140,15 +140,15 @@ body {
 		  			
 		  			<div id="userProfileInfo" class="userprofileinfo">
 
-					  	<b class="formfieldname">user name</b><input class="inputform" type="text" placeholder="username"><br>
-					  	<b class="formfieldname">first name</b><input class="inputform" type="text" placeholder="first name"><br>
-					  	<b class="formfieldname">last name</b><input class="inputform" type="text" placeholder="last name"><br>
-					  	<b class="formfieldname">email</b><input class="inputform" type="text" placeholder="email ID"><br>
-						<b class="formfieldname">mobile number</b><input class="inputform" type="tel" placeholder="mobile number"><br>
+					  	<b id="xxx" class="formfieldname">user name</b><input class="inputform" type="text" placeholder='${name}'><br>
+					  	<b id="firstNameUpdate" class="formfieldname">first name</b><input class="inputform" type="text" placeholder='${firstName}'><br>
+					  	<b id="lastNameUpdate" class="formfieldname">last name</b><input class="inputform" type="text" placeholder='${lastName}'><br>
+					  	<b id="emailUpdate" class="formfieldname">email</b><input class="inputform" type="text" placeholder='${emailId}'><br>
+						<b id="phoneNumberUpdate" class="formfieldname">mobile number</b><input class="inputform" type="tel" placeholder='${phoneNumber}'><br>
 					 </div>
 					 <button id="updateProfileImage" class="updateprofileimage">update profile image</button><br><br>
 		  				<input id="imageUpload" class="file-upload" type="file" accept="image/*"/>
-		  			<button id="saveProfile" class="saveprofilebutton">save profile</button>
+		  			<button id="saveProfile" onclick="javascript:sendUpdateProfileReq()" class="saveprofilebutton">save profile</button>
 				</div>
 		  	</div>
 	</div>
@@ -317,5 +317,16 @@ f.submit();
 }
 </script>
 
+<script>
+function sendUpdateProfileReq(){
+		var userId=${userId};
+		var email=document.getElementById('emailUpdate').value;
+		var phoneNumber=document.getElementById('phoneNumberUpdate').value;
+		var firstNamer=document.getElementById('firstNameUpdate').value;
+		var lastName=document.getElementById('lastNameUpdate').value;
+		
+		alert (email+" "+phoneNumber+" "+firstName+" "+lastName);
+}
+</script>
 </body>
 </html>
