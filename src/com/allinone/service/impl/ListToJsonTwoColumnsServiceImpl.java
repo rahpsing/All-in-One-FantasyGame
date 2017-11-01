@@ -20,7 +20,7 @@ public class ListToJsonTwoColumnsServiceImpl implements ListToJsonTwoColumnsServ
 			JSONObject eachData = new JSONObject();
             try {
                 eachData.put("League", returnMessage.get(i).getLeagueName());
-                eachData.put("ID", returnMessage.get(i).getId());
+                eachData.put("id", returnMessage.get(i).getId());
             } catch (JSONException e) {
                 e.printStackTrace();
             }

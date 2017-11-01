@@ -303,7 +303,7 @@ function sendFetchLikeReq(iD,value){
 </script>
 <script>
 function redirectLeague(valueId){
-
+console.log(valueId);
 var f = document.createElement("form");
 f.setAttribute('method',"post");
 f.setAttribute('action',"/All-In-One-FantasyGame/redirectLeague");
