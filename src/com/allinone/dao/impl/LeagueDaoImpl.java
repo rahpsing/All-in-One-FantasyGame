@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Set;
 
 import org.hibernate.Criteria;
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Criterion;
 import org.hibernate.criterion.Restrictions;
@@ -18,6 +19,7 @@ import com.allinone.pojos.League;
 import com.allinone.pojos.Player;
 import com.allinone.pojos.Sport;
 import com.allinone.pojos.User;
+import com.allinone.pojos.UserTeam;
 
 @Repository
 public class LeagueDaoImpl implements LeagueDaoAPI {
@@ -67,6 +69,29 @@ public class LeagueDaoImpl implements LeagueDaoAPI {
 		
 		
 		return listOfLeagues;
+	}
+
+
+
+	@Override
+	public boolean hasUserJoinedLeague(String userId, String leagueId) {
+		// TODO Auto-generated method stub
+		Session session = objSessionFactory.getCurrentSession();
+		User objUser = session.get(User.class,userId);
+		
+		if(objUser==null)
+			return false;
+		
+		League objLeague = session.get(League.class, leagueId);
+	
+			Set<UserTeam> userTeams = objLeague.getSetOfUserTeams();
+			for(UserTeam usrTeam : userTeams) {
+				if(usrTeam.getUser().getUserId().equalsIgnoreCase(userId)) {
+					return true;
+				}
+			}
+		
+		return false;
 	}
 	
 

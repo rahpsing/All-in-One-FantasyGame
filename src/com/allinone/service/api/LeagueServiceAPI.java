@@ -19,5 +19,7 @@ public interface LeagueServiceAPI {
 
 	public List<Player> playerList(String likeLeague);
 	
+	public boolean hasUserJoinedLeague(String userId, String leagueId);
+	
 	
 }

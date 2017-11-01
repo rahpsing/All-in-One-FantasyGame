@@ -178,21 +178,30 @@ body {
 	</div>
 
 	<script>
-	var editTeamButton = document.getElementById("editTeamButton");
 
+	var editTeamButton = document.getElementById("editTeamButton");
+	var teamNameEditForm = document.getElementById("teamNameEdit");
+	var teamInfoBanner = document.getElementById("teamInfoBanner");
 	
 	editTeamButton.onclick = function() {
-	    playerRosterOverlay.style.display = "none";
+	    /* playerRosterOverlay.style.display = "none"; */
 	    editTeamButton.style.display = "none";
 	    saveTeamButton.style.display = "block";
+	    teamNameEditForm.style.display = "block";
+	    teamInfoBanner.style.display = "block";
+	    playerRoaster.style.display = "block";
 		position1table.sortable();
 		position1table.disableSelection();
+		
 	}
 	
 	saveTeamButton.onclick = function() {
-		playerRosterOverlay.style.display = "block";
+		/* playerRosterOverlay.style.display = "block"; */
 	    editTeamButton.style.display = "block";
 	    saveTeamButton.style.display = "none";
+	    teamNameEditForm.style.display = "none";
+	    teamInfoBanner.style.display = "none";
+	    playerRoaster.style.display = "none";
 	}
 	
 	function allowDrop(ev) {
@@ -210,7 +219,6 @@ body {
 	    ev.target.appendChild(document.getElementById(data));
 	    ev.targert.draggable( 'disable' );
 	}
-
 	
 
 	

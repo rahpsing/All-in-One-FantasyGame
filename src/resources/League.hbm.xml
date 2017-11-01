@@ -11,6 +11,12 @@
         <property name="leagueName" type="java.lang.String">
             <column name="LEAGUENAME" />
         </property>
+        
+        
+        <property name="numSubstitutesAllowed">
+            <column name="numSubstitutesAllowed" />
+        </property>
+        
         <many-to-one name="sport" class="com.allinone.pojos.Sport" fetch="select">
             <column name="SPORT_ID" not-null="true" />
         </many-to-one>
@@ -27,6 +33,17 @@
             </key>
             <one-to-many class="com.allinone.pojos.Player" />
         </set>
+     
+       <set name="setOfUserTeams" table="USERTEAM" inverse="true" lazy="true">
+            <key>
+                <column name="LEAGUE_ID" />
+            </key>
+            <one-to-many class="com.allinone.pojos.UserTeam" />
+        </set>
+     
+ 
+ 		<many-to-one name="leagueOwner" column="leagueOwner" unique="false" not-null="false"/>
+ 
         
         <list name="listOfGames" inverse="false" table="GAME" lazy="true">
             <key>

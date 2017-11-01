@@ -113,6 +113,8 @@ html,body {
 	font-family:"Helvetica Neue";  
 	font-weight: bold; 
 }
+
+
 .userinfo .leaguelist{
 	margin-top: 40px;
 	position: absolute;
@@ -127,6 +129,18 @@ html,body {
 	position: relative;
 	left: -50%;
 }
+
+.userinfo .leaguelist .accordiandiv {
+	position: relative;
+	left: -50%;
+	max-height: 600px;
+	overflow-y: auto;
+}
+
+/* .userinfo .leaguelist .accordion{
+	position: relative;
+	left: -50%;
+} */
 .userinfo .searchresult{
 	margin-top: 40px;
 	position: absolute;

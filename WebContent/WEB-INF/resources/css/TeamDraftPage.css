@@ -89,37 +89,43 @@ html,body {
 .teaminfo{
 	position: relative;
 	height: 1000px;
+	top:60px;
+	background-image: url(../UIAssets/bg_pitch.jpg);
+	background-size:cover;
 }
 
 .playerroster{
 	position: absolute;
-	right: 10%;
-	margin-top: 100px;
-	height: 800px;
+	right: 40%;
+	margin-top: 80px;
+	height: 700px;
 	width: 300px;
-	background-color: #ffbf03;
+	background-color: #ffffff;
+	display: none;
 }
 
 .playerrosteroverlay {
 	position: absolute;
-	right: 10%;
-	margin-top: 100px;
-	height: 800px;
+	right: 40%;
+	margin-top: 80px;
+	height: 700px;
 	width: 300px;
-	background-color: rgba(255,255,255,0.8);
+	background-color: rgba(255,191,3,0.8);
+	display: none;
 	
 }
 
 .playerrosterlist {
 	overflow-y: scroll;
-	max-height: 800px;
+	margin-top: 25px;
+	max-height: 700px;
 	width: 300px;
-	background-color: #ffbf03;
+	background-color: #ffffff;
 }
 
 .playerrosterlist b {
 	width: 290px;
-    color: #000000;
+    color: #91053d;
     padding: 5px 16px;
     text-decoration: none;
     display: block;
@@ -138,8 +144,9 @@ html,body {
 	left: 10%;
 	margin-top: 100px;
 	height: 800px;
-	width: 800px;
-	background-color: #ffbf03;
+	width: 1400px;
+	/* background-color: #91053d; */
+	background-color: none;
 }
 
 .position1 {
@@ -169,14 +176,14 @@ html,body {
 }
 
 .position1table {
-	background-color: #939393;
-	/* background-color: #ffffff; */
+	/* background-color: #939393; */
+	background-color: #ffffff;
 	width: 300px;
 	height: 700px;
 }
 
 .position1table b {
-    color: black;
+    color: #91053d;
     /* padding: 12px 16px; */
     height: 40px;
     margin-bottom:2.5px;
@@ -250,10 +257,48 @@ html,body {
 
 .editteam {
 	position: absolute;
-	right: 10%;
-	bottom: 21.25%;
+	right: 15.5%;
+	top: 10%;
 }
 
+.saveteam {
+	position: absolute;
+	right: 15.5%;
+	top: 10%;
+}
+
+.teaminfobanner {
+	position: absolute;
+	right: 18.5%;
+	top: 20%;
+	display: none;
+}
+
+.teaminfobanner b {
+	font-size: 2.5em; 
+	font-family:"Helvetica Neue";  
+	font-weight: bold; 
+	color: #ffffff;
+	border-bottom: solid #ffffff;
+}
+.teamnameedit {
+	position: absolute;
+	right: 11%;
+	top: 25%;
+	border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    background-color: #F5F5F5;
+    color: #5a1646;
+    padding: 5px 5px;
+    display: none;
+}
+
+.inputform {
+	width: 300px;
+	height: 20px;
+	font-size: 2em;
+}
 .editteambutton{
 	position: absolute;
 	right: -50%;
@@ -268,11 +313,7 @@ html,body {
 	font-weight: bold; 
 }
 
-.saveteam {
-	position: absolute;
-	right: 10%;
-	bottom: 21.25%;
-}
+
 
 .saveteambutton{
 	position: absolute;
