@@ -22,7 +22,7 @@ public class UserRegistrationDaoImpl implements UserRegistrationDaoAPI {
 	private SessionFactory objSessionFactory;
 	
 	@Override
-	public boolean addUser(String userName, String password, String emailAddress, String phoneNumber,String firstName,String lastName) {
+	public String addUser(String userName, String password, String emailAddress, String phoneNumber,String firstName,String lastName) {
 		// TODO Auto-generated method stub
 		
 		User user = new User();
@@ -38,11 +38,11 @@ public class UserRegistrationDaoImpl implements UserRegistrationDaoAPI {
 		try {
 			objSessionFactory.getCurrentSession().saveOrUpdate(user);
 		} catch(Exception e) {
-			System.out.println(e);
-			return false;
+			
+			return "Username Already exists, Please try with another username";
 		}
 		
-		return true;
+		return "Success";
 	}
 
 	@Override
@@ -90,6 +90,29 @@ public class UserRegistrationDaoImpl implements UserRegistrationDaoAPI {
 		}
 		return "success";
 	}
-	
+
+	@Override
+	public User pullUser(String userName) {
+		// TODO Auto-generated method stub
+		try {
+			Criteria objCriteria  = objSessionFactory.getCurrentSession().createCriteria(User.class);
+			Criterion usernameCriteria = Restrictions.eq("userName", userName);
+			
+			objCriteria.add(usernameCriteria);
+
+			List results = objCriteria.list();
+			Iterator iterator = results.iterator();
+			User temp=(User) iterator.next();
+			if(results == null || results.isEmpty())
+				return null;
+			System.out.println(temp.getUserId());
+			return temp;
+			
+			} catch(Exception e) {
+				System.out.println(e);
+				return null;
+			
+	}
+	}
 
 }

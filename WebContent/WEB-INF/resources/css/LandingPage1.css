@@ -9,6 +9,7 @@ html,body {
 	font-size: 10px;
 	/*z-index: 99;*/
 }
+
 .blur{
   -webkit-filter: blur(1px) grayscale(10%);
 }
@@ -459,3 +460,12 @@ html,body {
 	font-family:"Helvetica Neue"; 
 	top:50%;
 }
+
+#duo_iframe {
+    width: 100%;
+    min-width: 304px;
+    max-width: 620px;
+    height: 330px;
+    border: none;
+}
+

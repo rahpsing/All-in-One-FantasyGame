@@ -54,7 +54,7 @@ body {
   }
 </style>
 </head>
-<body onload="javascript:fetchPlayerList('123','sortable2')">
+<body onload="javascript:fetchPlayerList('${leagueId}','sortable2')">
 	<div class="colorstrip1">
 	</div>
 	<div id="mainDiv" class="maindiv">
@@ -124,10 +124,10 @@ body {
 					<button id="editTeamButton" class="editteambutton">edit team</button>
 				</div>
 				<div class="saveteam">
-					<button id="saveTeamButton" onclick="sendPlayerList('${userId}','${leagueId}','${teamId}')" class="saveteambutton">save team</button>
+					<button id="saveTeamButton"  class="saveteambutton">save team</button>
 				</div>
 			</div>
-			<div class="playerroster">
+			<div id="teamNameEdit" class="playerroster">
 				<div id="playerRosterList" class="playerrosterlist">
 						<!-- <b id="player1" draggable="true" ondragstart="drag(event)">player a1</b>
 						<b id="player2" draggable="true" ondragstart="drag(event)">player a2</b>
@@ -232,15 +232,15 @@ body {
    	 }).disableSelection();
   	} );
 
-	function fetchPlayerList(value,iD){
+	function fetchPlayerList(leagueId,iD){
 		$.ajax({
 		    url : '/All-In-One-FantasyGame/playerList',
 		    type: 'post',
-		    data : {VALUEID:value},
+		    data : {LEAGUE_ID:leagueId},
 		    dataType : 'json',
 		    success: function(data)
 		    {	
-		    	
+		    	console.log(data);
 		    	$('#'+iD).empty();
 		    	$(data.Players).each(function(index,value){$('#'+iD).append('<li id='+value.id+' class="ui-state-highlight">'+value.player+'</a>');})
 		    	
@@ -253,7 +253,7 @@ body {
 		});
 	}
 
-	function sendPlayerList(userId,leagueId,teamId){
+	function sendPlayerList(userId,leagueId){
 		var ind=0;	
 		var listOfPlayerIds=[];
 		var listItems = $("#sortable1").find("li");
@@ -262,7 +262,7 @@ body {
 		    listOfIds.push($(listItems[ind]).attr('id'));
 		}
 		console.log(listOfPlayerIds);
-	})
+	}
 </script>
 </body>
 </html>

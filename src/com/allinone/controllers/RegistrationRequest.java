@@ -22,30 +22,19 @@ public class RegistrationRequest {
 	
 	
 	@RequestMapping(value="/register")
-	
+	@ResponseBody
 	public String registerrequest(HttpServletRequest objRequest, HttpServletResponse objResponse,ModelMap model) {
 		
-		String userName = objRequest.getParameter("username");
-		String password = objRequest.getParameter("password");
-		String emailAddress = objRequest.getParameter("email");
+		String userName = objRequest.getParameter("userName");
+		String password = objRequest.getParameter("passWord");
+		String emailAddress = objRequest.getParameter("emailId");
 		String phoneNumber = objRequest.getParameter("phoneNumber");
 		String firstName = objRequest.getParameter("firstName");
 		String lastName = objRequest.getParameter("lastName");
 		//UserRegistrationServiceAPI objServiceAPI = new UserRegistrationServiceImpl();
-		String returnMessage = objUserRegistrationService.addUser(userName, password, emailAddress, phoneNumber,firstName,lastName)?"Registration successful":"Failed";
-		
-		if (returnMessage.equals("Registration successful")) {
-			User temp = objUserRegistrationService.checkUserLogin(userName, password);
-			if (temp!= null) {
-			model.put("name", temp.getUserName());
-			model.put("emailID", temp.getEmailAddress());
-			//model.put("phone", temp.getPhoneNumber());
-			return "UserDashboard";
-			}
-			
-		}
+		String returnMessage = objUserRegistrationService.addUser(userName, password, emailAddress, phoneNumber,firstName,lastName);	
 				
-		return "redirect:" + "http://localhost:8080/All-In-One-FantasyGame/LandingPage1.jsp";
+		return returnMessage;
 		
 		
 	}

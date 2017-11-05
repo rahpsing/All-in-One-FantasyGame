@@ -8,8 +8,8 @@
             <column name="USERID" />
             <generator class="uuid" />
         </id>
-        <property name="userName" type="java.lang.String">
-            <column name="USERNAME" />
+        <property name="userName" type="java.lang.String" >
+            <column name="USERNAME" unique="true"/>
         </property>
         <property name="firstName" type="java.lang.String">
             <column name="FIRSTNAME" />

@@ -60,6 +60,7 @@ public class LeagueDaoImpl implements LeagueDaoAPI {
 	@Override
 	public List<League> fetchLikeLeagues(String likeLeague) {
 		// TODO Auto-generated method stub
+		System.out.println(likeLeague+"  Like League at dao");
 		Criteria objCriteria  = objSessionFactory.getCurrentSession().createCriteria(League.class);
 		Criterion likeLeagueCriteria = Restrictions.ilike("leagueName", "%"+likeLeague.toUpperCase()+"%");
 		Criterion likeIdCriteria = Restrictions.ilike("id", "%"+likeLeague.toUpperCase()+"%");
@@ -86,7 +87,7 @@ public class LeagueDaoImpl implements LeagueDaoAPI {
 	
 			Set<UserTeam> userTeams = objLeague.getSetOfUserTeams();
 			for(UserTeam usrTeam : userTeams) {
-				if(usrTeam.getUser().getUserId().equalsIgnoreCase(userId)) {
+				if(usrTeam.getUsert().getUserId().equalsIgnoreCase(userId)) {
 					return true;
 				}
 			}

@@ -24,11 +24,11 @@ public class UserRegistrationServiceImpl implements UserRegistrationServiceAPI {
 	UserRegistrationDaoAPI objUserRegistrationDao;
 	
 	@Override
-	public boolean addUser(String userName, String password, String emailAddress, String phoneNumber,String firstName,String lastName) {
+	public String addUser(String userName, String password, String emailAddress, String phoneNumber,String firstName,String lastName) {
 		// TODO Auto-generated method stub
-		boolean status = objUserRegistrationDao.addUser(userName, password, emailAddress, phoneNumber,firstName,lastName);
+		String status = objUserRegistrationDao.addUser(userName, password, emailAddress, phoneNumber,firstName,lastName);
 		
-		if(status)
+		if(status.equals("Success"))
 			EmailUtility.sendEmail(emailAddress, userName);
 		
 		return status;
@@ -39,6 +39,12 @@ public class UserRegistrationServiceImpl implements UserRegistrationServiceAPI {
 	public User checkUserLogin(String userName, String password) {
 		// TODO Auto-generated method stub
 		return objUserRegistrationDao.checkUserLogin(userName, password);
+	}
+	
+	@Override
+	public User pullUser(String userName) {
+		// TODO Auto-generated method stub
+		return objUserRegistrationDao.pullUser(userName);
 	}
 	
 	@Override

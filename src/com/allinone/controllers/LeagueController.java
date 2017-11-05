@@ -70,11 +70,19 @@ public class LeagueController {
 	@ResponseBody
 	public String playerList(HttpServletRequest objRequest, HttpServletResponse objResponse) {
 		
-		List<Player> returnList = objLeagueService.playerList("4028b8815f69d617015f69d702b90001");
+		List<Player> returnList = objLeagueService.playerList(objRequest.getParameter("LEAGUE_ID"));
 		
 		String jsonString=objTeamListToJson.listToJson("Players", returnList);
-		
+		System.out.println(objRequest.getParameter("leagueId") +"  Like League at service");
 		return jsonString;
+	}
+	
+	@RequestMapping(value="/redirectToTeam")
+	public String redirectToTeam(HttpServletRequest objRequest, HttpServletResponse objResponse,ModelMap model) {
+		
+		model.put("leagueId", objRequest.getParameter("leagueId"));
+		model.put("userId", objRequest.getParameter("userId"));
+		return "TeamDraftPage";
 	}
 	
 	@RequestMapping(value="/createLeague")

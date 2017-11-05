@@ -18,7 +18,7 @@ public class UserTeam implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	private String id;
-	private User user;
+	private User usert;
 	private int numSubstitutesLeft;
 	private League league;
 	private double score;
@@ -31,11 +31,11 @@ public class UserTeam implements Serializable {
 	public void setId(String id) {
 		this.id = id;
 	}
-	public User getUser() {
-		return user;
+	public User getUsert() {
+		return usert;
 	}
-	public void setUser(User user) {
-		this.user = user;
+	public void setUsert(User usert) {
+		this.usert = usert;
 	}
 	public int getNumSubstitutesLeft() {
 		return numSubstitutesLeft;
@@ -64,7 +64,7 @@ public class UserTeam implements Serializable {
 	
 	@Override
 	public String toString() {
-		return "UserTeam [id=" + id + ", user=" + user + ", numSubstitutesLeft=" + numSubstitutesLeft + ", score="
+		return "UserTeam [id=" + id + ", user=" + usert + ", numSubstitutesLeft=" + numSubstitutesLeft + ", score="
 				+ score + ", listOfPlayers=" + setOfPlayers + ", teamName=" + teamName + "]";
 	}
 	public League getLeague() {

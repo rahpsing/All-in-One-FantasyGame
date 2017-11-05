@@ -23,12 +23,20 @@ body {
 	<div class="colorstrip1"></div>
 	<div class="colorstrip2">
 		<b class="allinonebanner">ALL-IN-ONE</b>
+		
 		<b class="multisportfantasyleague">multi-sport fantasy league!</b>
 	</div>
 	<div>
 		<div class="imagestripdiv1">
+		<!-- This is the DUO iframe. This must be hidden on load.This must be shown at line 240 in this page -->
+				<div id="duoPlacementDiv">
+				<iframe id="duo_iframe" width="1000" height="500">
+				</iframe>
+				</div>
 				<img class="footballimage" src="${pageContext.request.contextPath}/resources/UIAssets/FootballImage1.jpeg">
+				
 	    		<img class="cricketimage" src="${pageContext.request.contextPath}/resources/UIAssets/CricketImage1.jpg">
+	    		
 		</div>
 		<div class="signupbuttondiv">
 			<button id="signupButton" class="signupbanner">Sign Up</button>
@@ -42,7 +50,9 @@ body {
 				<b class="knowmorebanner">Know more</b>
 			</div>
 		</div>
+		
 	</div> 
+	
 	<div class="colorstrip5"></div>
 	<div class="colorstrip6"></div>
 	<div class="colorstrip7"></div>
@@ -67,11 +77,11 @@ body {
 <div id="loginModal" class="loginmodalcss">
 		 	<!-- Modal content -->
 		  	<div id="loginModalContent" class="modal-content">
-			  	<form name="loginForm" action="/All-In-One-FantasyGame/login" onsubmit="return validateLoginForm()" method="POST">
+			  	<form name="loginForm"  >
 			  		<p class="logincred">Login Details</p>
 				    <input type="text" class="username" id="username" name="username" placeholder="User Name..."><br>
 				    <input type="password" class="password" id="password" name="password" placeholder="Password..."><br>
-				    <input class="submit" type="submit" value="Submit" />
+				    <input class="submit" type="button" value="Submit" onclick="javascript:validateLoginForm()"/>
 				    <div class="forgotuorpdiv">
 					    <p class="forgotuorp">Forgot username or password?</p>
 					    <button id="reset" class="reset">click here</button>
@@ -82,21 +92,25 @@ body {
 <div id="signupModal" class="signupmodalcss">
 		 	<!-- Modal content -->
 		  	<div id="signupModalContent" class="signup-modal-content">
-			  	<form name="signupForm" action="/All-In-One-FantasyGame/register" onsubmit="return validateSignUpForm()" method="POST">
+			  	<form name="signupForm" >
 			  		<p class="signupcred">Signup Details</p>
 			  		<input type="text" class="semail" id="email" name="email" placeholder="Email ID"..."><br>
 				    <input type="text" class="susername" id="username" name="username" placeholder="User Name..."><br>
 				    <input type="password" class="spassword" id="password" name="password" placeholder="Password..."><br>
 				    <input type="password" class="srepassword" id="repassword" name="repassword" placeholder="Reconfirm password..."><br>
-				    <input class="ssubmit" type="submit" value="Submit" />
+				    <input class="ssubmit" type="button" value="Submit" onclick="javascript:validateSignUpForm()" />
 				</form>
 		  	</div>
 </div>
-<script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/Duo-Web-v2.min.js"></script>
+<script type="text/javascript">
 $.noConflict();
 jQuery(document).ready( function() {
   console.log("i am ready");
+  document.getElementById('duo_iframe').hide();
 });
+
 var mainDiv = document.getElementById("mainDiv");
 var loginButton = document.getElementById("loginButton");
 var loginModal = document.getElementById("loginModal");
@@ -164,19 +178,93 @@ function validateSignUpForm(){
 		alert("Passwords do not match, reconfirm password");
 		return false;
 	}
-    return true;
+	jQuery.ajax({
+	    url : '/All-In-One-FantasyGame/register',
+	    type: 'post',
+	    data : {userName:username,passWord:password,emailId:email},
+	    success: function(data)
+	    {	
+	    	console.log("Came from backend");
+		if(data=="Success"){
+			alert("Congratulations..! Please Login to fantastic world of sports")
+		}
+	    },
+	    error: function (jqXHR, textStatus, errorThrown)
+	    {	
+		alert("Username already in use. Please try a different username")
+	    }
+	});
 }
 
 function validateLoginForm(){
-	var username = document.forms["loginForm"]["username"].value;
-	var password = document.forms["loginForm"]["password"].value;
-	
-	if(username == "" || password == ""){
+	var userName = document.forms["loginForm"]["username"].value;
+	var passWord = document.forms["loginForm"]["password"].value;
+	console.log("Came here 1");
+	console.log(userName);
+	console.log(passWord);
+	if(userName == "" || passWord == ""){
 		alert("Enter all fields");
 		return false;
 	}
+	jQuery.ajax({
+	    url : '/All-In-One-FantasyGame/loginCheck',
+	    type: 'post',
+	    data : {username:userName,password:passWord},
+	    success: function(data)
+	    {	
+		if(data=="true")
+			{
+			
+			duo(userName);
+			
+			}
+		else{alert("Please signup for fantastic Leagues")}
+	    },
+	    error: function (jqXHR, textStatus, errorThrown)
+	    {	
+		alert("please try again.Contact administrator")
+	    }
+	});
     return true;
  }
+
+ function duo(userName){
+	 console.log("Ready for dual auth");
+	 console.log(userName);
+	 jQuery.ajax({
+		    url : '/All-In-One-FantasyGame/duoSignRequest',
+		    type: 'post',
+		    data : {username:userName},
+		    success: function(data)
+		    {	 
+				 			 
+				 alpha = Duo.init({
+					 'host':'api-35d604b9.duosecurity.com',
+					 'post_action':'/All-In-One-FantasyGame/duoSignResponse',
+					 'sig_request':data
+					 
+				 });
+				 
+				 loginModal.style.display = "none";
+				 mainDiv.classList.remove("blur");
+				 document.getElementById('duo_iframe').show();
+				// var ifrm=document.createElement('iframe');
+				// ifrm.setAttribute('id', 'duo_iframe');
+				 //ifrm.setAttribute('width', '620');
+				 //ifrm.setAttribute('height', '500');
+				 //ifrm.setAttribute('frameborder', '0');
+				 //ifrm.setAttribute('allowtransparency', 'true');
+				// document.getElementById('duoPlacementDiv').appendChild(ifrm);
+				 
+		    },
+		    error: function (jqXHR, textStatus, errorThrown)
+		    {	
+			alert("please try again.Contact administrator")
+		    }
+		});
+ }
+ 
+
 
 </script>
 </body>

@@ -121,7 +121,7 @@ function createTeam(leagueId,userId){
 	alert(leagueId+"Came to league info page"+userId);
 	var f = document.createElement("form");
 	f.setAttribute('method',"post");
-	f.setAttribute('action',"/All-In-One-FantasyGame/createTeam");
+	f.setAttribute('action',"/All-In-One-FantasyGame/redirectToTeam");
 
 	var i = document.createElement("input"); //input element, text
 	i.setAttribute('type',"hidden");
@@ -135,7 +135,7 @@ function createTeam(leagueId,userId){
 	f.appendChild(j);
 	document.body.appendChild(f);
 	console.log(f);
-	
+	f.submit();
 	}
 	
 	</script>

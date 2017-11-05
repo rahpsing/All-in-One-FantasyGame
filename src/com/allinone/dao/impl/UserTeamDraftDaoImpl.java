@@ -47,7 +47,7 @@ public class UserTeamDraftDaoImpl implements UserTeamDraftDaoAPI {
 		userTeam.setSetOfPlayers(setOfUserTeamPlayers);
 		userTeam.setNumSubstitutesLeft(numSubstitutesLeft);
 		userTeam.setScore(score);
-		userTeam.setUser(objUser);
+		userTeam.setUsert(objUser);
 		userTeam.setLeague(objLeague);
 		
 		session.saveOrUpdate(userTeam);
@@ -71,7 +71,7 @@ public class UserTeamDraftDaoImpl implements UserTeamDraftDaoAPI {
 		userTeam.setSetOfPlayers(setOfUserTeamPlayers);
 		userTeam.setNumSubstitutesLeft(objLeague.getNumSubstitutesAllowed());
 		userTeam.setScore(0);
-		userTeam.setUser(objUser);
+		userTeam.setUsert(objUser);
 		userTeam.setLeague(objLeague);
 		
 		session.saveOrUpdate(userTeam);
@@ -100,7 +100,7 @@ public class UserTeamDraftDaoImpl implements UserTeamDraftDaoAPI {
 
 		
 		userTeam.setSetOfPlayers(setOfUserTeamPlayers);
-		userTeam.setUser(objUser);
+		userTeam.setUsert(objUser);
 		userTeam.setTeamName(teamName);
 		userTeam.setLeague(objLeague);
 		

@@ -20,7 +20,7 @@
             <column name="score" />
         </property>
         
-       <many-to-one name="user" column="user" unique="false" not-null="true"/>
+       <many-to-one name="usert" column="usert" unique="false" not-null="true"/>
 
         <set name="setOfPlayers" table="USERTEAM_PLAYERS">
             <key>
