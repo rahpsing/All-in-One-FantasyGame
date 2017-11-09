@@ -9,6 +9,9 @@
 <!-- jQuery -->
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/css/jQuery.min.js"></script>
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/UserDashboard.css" media="screen" />
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/materialize.min.css"  media="screen,projection"/>
+<link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
 <style type="text/css">
 <!--
 body { 
@@ -63,6 +66,15 @@ div.panel button {
 				<b>aaaaa</b>
 				<b>bbbbb</b>
 			</tr>-->
+		<div class="higlightsbutton">
+			<button id="higlightsButton" class="waves-effect waves-light btn" href="#Highlights" style="background-color:#ffbf03;height:40px;font-size:1.5em;text-transform: lowercase;padding-top:2.5px;font-family:'Raleway', sans-serif;">highlights</button>
+		</div>
+		<div class="editprofile">
+			<button id="editProfile" class="waves-effect waves-light btn" style="background-color:#ffbf03;height:40px;font-size:1.5em;text-transform: lowercase;padding-top:2.5px;font-family:'Raleway', sans-serif;">profile</button>
+		</div>
+		<div class="logout">
+			<button id="logOut" class="waves-effect waves-light btn" style="background-color:#ffbf03;height:40px;font-size:1.5em;text-transform: lowercase;padding-top:2.5px;font-family:'Raleway', sans-serif;">logout</button>
+		</div>
 	</div>
 	<div id="mainDiv" class="maindiv">
 		<div class="colorstrip2">
@@ -71,92 +83,106 @@ div.panel button {
 			<b>hello, </b>
 			<b class="name">${name}</b>
 			</div>
-			<img src="${pageContext.request.contextPath}/resources/UIAssets/bannerdesign.png" class="bannerdesign">
+			<%-- <img src="${pageContext.request.contextPath}/resources/UIAssets/bannerdesign.png" class="bannerdesign"> --%>
  		</div>
  		<div class="userinfo">
  			<div class="colorstrip21">
 	 			<form action="javascript:void(0);">	
-	 				<input id="searchText" class="searchbar" type="text" autocomplete=off onkeyup="javascript:sendFetchLikeReq('searchResultList','searchText','${userId}')"name="search" placeholder="search...">
+	 				<%-- <input id="searchText" class="searchbar" type="text" autocomplete=off onkeyup="javascript:sendFetchLikeReq('searchResultList','searchText','${userId}')"name="search" placeholder="search for leagues"> --%>
+	 			<div class="wrap">
+				   <div class="search">
+				      <input id="searchText" autocomplete=off type="text" onkeyup="javascript:sendFetchLikeReq('searchResultList','searchText','${userId}')"name="search" class="searchTerm" placeholder="search for leagues">
+				      <!-- <button type="submit" class="searchButton" style="background-color:#ffbf03;width:100px;">
+				        <i class="fa fa-search"></i>
+				        <p>search</p>
+				     </button> -->
+				   </div>
+				</div>
 	 			</form>
-	 			<b class="searchdisc">search leagues</b>
+	 			<!-- <b class="searchdisc">search leagues</b> -->
 	 		</div>
  			<div id="leagueList" class="leaguelist">
 		 		<div class="systemleagueslist">
 		 			<div class="colorstrip22">
-		 				<b> leagues </b>
+		 				<b style="font-family:'Raleway', sans-serif;"> leagues </b>
 		 			</div>
-		 			 <div class="dropdown">
-	  					<button class="dropbtn1" onmouseover="javascript:sendFetchReq('SOCCER','systemSoccerLeagues','dashboard','${userId}')">Soccer</button>
-					 	<div id="systemSoccerLeagues" class="dropdown-content">
+					<ul class="collapsible" data-collapsible="accordion">
+					  <li>
+					    <div class="collapsible-header" style="font-size:2em;font-family:'Raleway', sans-serif; ">
+					      soccer
+					      <span class="badge">4</span></div> <!-- replace with number of leagues in list -->
+					      <div class="collapsible-body" style="overflow:auto; max-height:500px;">
+					      	<div class="content">
+							  <div class="card" style="height:80px;">
+							      <div class="profileinfo">
+							        <p style="font-size:2em;font-family:'Raleway', sans-serif; ">league 1 name</p>
+							        <p class="bio" style="font-size: 1.5em;margin-top:-20px;font-family:'Raleway', sans-serif; ">deatils 11  13</p>
+							      </div>
+							    </div>
+							  </div>
+							  <div class="content">
+							  <div class="card" style="height:80px;">
+							      <div class="profileinfo">
+							        <p style="font-size:2em;font-family:'Raleway', sans-serif; ">league 2 name</p>
+							        <p class="bio" style="font-size: 1.5em;margin-top:-20px;font-family:'Raleway', sans-serif; ">deatils 11  13</p>
+							      </div>
+							    </div>
+							  </div>
+							  <div class="content">
+							  <div class="card" style="height:80px;">
+							      <div class="profileinfo">
+							        <p style="font-size:2em;font-family:'Raleway', sans-serif; ">league 3 name</p>
+							        <p class="bio" style="font-size: 1.5em;margin-top:-20px;font-family:'Raleway', sans-serif; ">deatils 11  13</p>
+							      </div>
+							    </div>
+							  </div>
+							  <div class="content">
+							  <div class="card" style="height:80px;">
+							      <div class="profileinfo">
+							        <p style="font-size:2em;font-family:'Raleway', sans-serif; ">league 4 name</p>
+							        <p class="bio" style="font-size: 1.5em;margin-top:-20px;font-family:'Raleway', sans-serif; ">deatils 11  13</p>
+							      </div>
+							    </div>
+							  </div>
 						    
-					 	</div>
-					 </div>
-					 <div class="dropdown">
-					 	<button class="dropbtn2" onmouseover="javascript:sendFetchReq('CRICKET','systemLeagues','dashboard','${userId}')">Cricket</button>
-					 	<div id="systemLeagues" class="dropdown-content">
-						   
-					 	</div>
-					</div> 
+						  </div>
+					  </li>
+					  <li>
+					    <div class="collapsible-header" style="font-size:2em;font-family:'Raleway', sans-serif; ">
+					      cricket
+					      <span class="badge">1</span></div>
+					      <div class="collapsible-body" style="overflow:auto; max-height:500px;">
+					      	<div class="content">
+							  <div class="card" style="height:80px;">
+							      <div class="profileinfo">
+							        <p style="font-size:2em;font-family:'Raleway', sans-serif; ">league 1 name</p>
+							        <p class="bio" style="font-size: 1.5em;margin-top:-20px;font-family:'Raleway', sans-serif; ">deatils 11  13</p>
+							      </div>
+							    </div>
+							  </div>
+							</div>
+					  </li>
+					</ul>
 		 		</div>
-		 		<!---<div class="accordiandiv">
-			 		<button class="accordion" onclick="javascript:sendFetchReq('SOCCER','systemSoccerLeagues','dashboard','${userId}')">soccer</button>
-						<div id="systemSoccerLeagues" class="panel">
-						  <button onclick="" class="soccer">soccer 1</button>
-						  <button onclick="" class="soccer">soccer 2</button>
-						  <button onclick="" class="soccer">soccer 3</button>
-						  <button onclick="" class="soccer">soccer 4</button>
-						  <button onclick="" class="soccer">soccer 5</button>
-						</div>
-					
-					<button class="accordion" onclick="javascript:sendFetchReq('CRICKET','systemLeagues','dashboard','${userId}')">cricket</button>
-						<div id="systemLeagues" class="panel">
-						  <button onclick="" class="cricket">cricket 1</button>
-						  <button onclick="" class="cricket">cricket 2</button>
-						</div>
-					
-					<button class="accordion">user sport 1</button>
-						<div class="panel">
-						  <button onclick="" class="usersport">usersport 1</button>
-						  <button onclick="" class="usersport">usersport 2</button>
-						</div>
-						
-				</div> --->
-		 		<!-- <div class="userleagueslist">
-		 			<div class="dropdown"> 
-	  					<button class="dropbtn">
-	  						<b>Cricket</b>
-	  					</button>
-					 	<div class="dropdown-content">
-						    <a href="#">League 1</a>
-						    <a href="#">League 2</a>
-						    <a href="#">League 3</a>
-					 	</div>
-					 </div>
-					 <div class="dropdown">
-					 	<button class="dropbtn">User sport 2</button>
-					 	<div class="dropdown-content">
-						    <a href="#">League 1</a>
-						    <a href="#">League 2</a>
-						    <a href="#">League 3</a>
-					 	</div>
-					</div>
-		 		</div> -->
+
 	 		</div>
 	 		<div id="searchResult" class="searchresult">
 	 			<div class="searchresultlist">
 			 		<div class="colorstrip22">
 			 			<b> search results </b>
-			 			<button id="closeSearch" class="closesearch">x</button>
+			 			<button id="closeSearch" class="waves-effect waves-light btn" style="position:absolute; right:0px;background-color:#ffbf03;height:60px;width: 60px;font-size:1.5em;text-transform: lowercase;padding-top:-15px;text-align:left;">X</button>
 			 		</div>
 			 		<div id="searchResultList" class="scrollresult">
-			 			
+			 			<div class="content">
+							<div class="card" style="height:80px;">
+								<div class="profileinfo">
+							        <p style="font-size:2em;">league 1 name</p>
+							        <p class="bio" style="font-size: 1.5em;margin-top:-20px;">deatils 11  13</p>
+							    </div>
+							</div>
+						</div>
 			 		</div>
 			 	</div>
-	 		</div>
- 			<div class="usermenu">
-	 			<button id="editProfile" class="editprofile">user profile</button>
-	 			<button id="createLeague" class="createleague"><a href="#Highlights" style="color: #ffffff; text-decoration: none;">highlights</a></button>
-	 			<!-- <button id="Stats" class="stats">statistics</button> -->
 	 		</div>
 	 	</div>
  		<div id="Highlights" class="highlights">
@@ -184,18 +210,22 @@ div.panel button {
 	 			</div>
 	 		</div>
  		</div>
- 		<div class="colorstrip10"></div>
+ 		<!-- <div class="colorstrip10"></div>
 		<div class="colorstrip11"></div>
-		<div class="colorstrip12"></div>
-		<div class="colorstrip13">
+		<div class="colorstrip12"></div> -->
+		<div class="colorstrip13" style="background-color:#ffbf03">
 			<b class="companybanner">a group 4 project ©</b>
 		</div>
 	</div>
 	<div id="profilePageModal" class="profilepagemodalcss">
 		 	<!-- Modal content -->
 		  	<div id="profilePageContent" class="profilepage-modal-content">
-		  		<button id="closeProfile" class="closeprofilebutton">X</button>
-		  		<b class="profilebanner">user profile</b>
+		  		<div class="closebutton">
+		  			<button id="closeProfile" class="waves-effect waves-light btn" style="background-color:#5a1646;height:50px;font-size:1.5em;text-transform: lowercase;padding-top:2.5px;">X</button>
+		  		</div>
+		  		<div class="profileheader">
+		  			<b class="profilebanner">user profile</b>
+		  		</div>
 		  		<div style="padding-top:20px;">
 		  			<img src="${pageContext.request.contextPath}/resources/UIAssets/user1.jpeg" class="profileimage"><br>
 		  		
@@ -203,15 +233,15 @@ div.panel button {
 		  			<div id="userProfileInfo" class="userprofileinfo">
 
 					  <%-- 	<b  class="formfieldname">user name</b><input id="xxx" class="inputform" type="text" placeholder='${name}'><br> --%>
-					  	<b  class="formfieldname">first name</b><input id="firstNameUpdate" class="inputform" type="text" value='${firstName}'><br>
-					  	<b class="formfieldname">last name</b><input id="lastNameUpdate" class="inputform" type="text" value='${lastName}'><br>
-					  	<b class="formfieldname">email</b><input id="emailUpdate" class="inputform" type="text" value='${emailId}'><br>
-						<b class="formfieldname">mobile number</b><input id="phoneNumberUpdate" class="inputform" type="tel" value='${phoneNumber}'><br>
+					  	<b  class="formfieldname">first name</b><input id="firstNameUpdate" class="inputform" type="text" style="width: 80%;" value='${firstName}'><br>
+					  	<b class="formfieldname">last name</b><input id="lastNameUpdate" class="inputform" type="text" style="width: 80%;" value='${lastName}'><br>
+					  	<b class="formfieldname">email</b><input id="emailUpdate" class="inputform" type="text" style="width: 80%;" value='${emailId}'><br>
+						<b class="formfieldname">mobile number</b><input id="phoneNumberUpdate" class="inputform" type="tel"  style="width: 80%;" value='${phoneNumber}'><br>
 						
 					 </div>
-					 <button id="updateProfileImage" class="updateprofileimage">update profile image</button><br><br>
+					 <button id="updateProfileImage" class="waves-effect waves-light btn" style="background-color:#5a1646;height:40px;font-size:1.5em;text-transform: lowercase;padding-top:2.5px;">update profile image</button><br><br>
 		  				<input id="imageUpload" class="file-upload" type="file" accept="image/*"/>
-		  			<button id="saveProfile" onclick="javascript:sendUpdateProfileReq('${userId}')" class="saveprofilebutton">save profile</button>
+		  			<button id="saveProfile" onclick="javascript:sendUpdateProfileReq('${userId}')" class="waves-effect waves-light btn" style="background-color:#5a1646;height:40px;font-size:1.5em;text-transform: lowercase;padding-top:2.5px;">save profile</button>
 				</div>
 		  	</div>
 	</div>
@@ -429,5 +459,7 @@ function sendUpdateProfileReq(userId){
 		});
 }
 </script>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/materialize.min.js"></script>
 </body>
 </html>

@@ -90,7 +90,7 @@ body {
 			  		<p class="logincred">Login Details</p>
 				    <input type="text" class="username" id="username" name="username" placeholder="User Name..."><br>
 				    <input type="password" class="password" id="password" name="password" placeholder="Password..."><br>
-				    <input class="waves-effect waves-light btn" style="background-color:#ffbf03;height:40px;width:100%;font-size:2em" type="button" value="Submit" onclick="javascript:validateLoginForm()"/>
+				    <input class="waves-effect waves-light btn" style="background-color:#ffbf03;height:40px;width:100%;font-size:2em;text-transform: lowercase;" type="button" value="Submit" onclick="javascript:validateLoginForm()"/>
 				    <div class="forgotuorpdiv">
 					    <p class="forgotuorp">Forgot username or password?</p>
 					    <button id="reset" class="reset">click here</button>
@@ -107,7 +107,7 @@ body {
 				    <input type="text" class="susername" id="username" name="username" placeholder="User Name..."><br>
 				    <input type="password" class="spassword" id="password" name="password" placeholder="Password..."><br>
 				    <input type="password" class="srepassword" id="repassword" name="repassword" placeholder="Reconfirm password..."><br>
-				    <input class="waves-effect waves-light btn" style="background-color:#ffbf03;height:40px;width:100%;font-size:2em" type="button" value="Submit" onclick="javascript:validateSignUpForm()" />
+				    <input class="waves-effect waves-light btn" style="background-color:#ffbf03;height:40px;width:100%;font-size:2em;text-transform: lowercase;" type="button" value="Submit" onclick="javascript:validateSignUpForm()" />
 				</form>
 		  	</div>
 </div>
