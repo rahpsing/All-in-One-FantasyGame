@@ -5,9 +5,10 @@ html,body {
 	min-width: 1500px;
 }
 .maindiv{
-	position: relative;
+	position: absolute;
+	top: 0px;
 	font-size: 10px;
-	/*z-index: 99;*/
+	/* z-index: 99; */
 }
 
 .blur{
@@ -40,7 +41,7 @@ html,body {
 	bottom: -30px; 
 	color: #ffffff;
 	font-size:15em; 
-	font-family:"Helvetica Neue"; 
+	font-family:"roboto-thin"; 
 	padding-left:20px; 
 	width:100%; 
 	text-align:left;
@@ -50,7 +51,7 @@ html,body {
 	bottom: -30px; 
 	color: #ffffff;
 	font-size:3em; 
-	font-family:"Helvetica Neue"; 
+	font-family:"roboto-thin"; 
 	padding-left: 20px; 
 	width:100%; 
 	text-align:left;
@@ -82,23 +83,39 @@ html,body {
     background-color: #c50234;
     text-align: center;
 }
+.duomodal {
+	/* z-index: 999; */
+	/* display: block; */
+	position: fixed;
+	top: 62.5%;
+	left: 41%;
+	/* transform: translate(-50%, -50%); */
+	z-index: 199;
+	height: 700px;
+}
 .signupbuttondiv{
-	display: flex;
-	width: 100%;
-	justify-content: center;
+	position: relative;
+	width: 15%; 
+	height: 60px;
+    border-style: none;
+    border-color: #c50234;
+    background-color: #c50234;
+    float: right;   
+    margin-right: 50px;
+    text-align: center;
 }
 .signupbanner{
-	height: 40px;
+	height: 60px;
 	width: 250px;
 	background-color: #c50234;
 	border: none;
-	margin-top: -180px;
+	/* margin-top: -180px; */
 	position: relative;
 	bottom: 0px; 
 	color: #ffffff;
 	cursor: pointer;
 	font-size:3em; 
-	font-family:"Helvetica Neue";  
+	font-family:"roboto";  
 	font-weight: bold; 
 }
 .signupcred{
@@ -106,7 +123,7 @@ html,body {
 	margin-top: -15px;
 	color: #ffbf03;
 	font-size:30px; 
-	font-family:"Helvetica Neue";  
+	font-family:"roboto";  
 	font-weight: bold;
 }
 .signupmodalcss{
@@ -120,10 +137,11 @@ html,body {
 .signup-modal-content{
     background-color: #ffffff;
     margin: 15% auto; /* 15% from the top and centered */
+    margin-top: -60px;
     padding: 20px;
     border: none;
     width: 250px; /* Could be more or less, depending on screen size */
-    height: 300px;
+    height: 400px;
     box-shadow: 0 15px 18px 0 rgba(0,0,0,0.2),0 16px 30px 0 rgba(0,0,0,0.19);
     -webkit-animation-name: animatetop;
     -webkit-animation-duration: 0.4s;
@@ -174,7 +192,7 @@ html,body {
 	color: #ffbf03;
 	cursor: pointer;
 	font-size: 30px; 
-	font-family:"Helvetica Neue";  
+	font-family:"roboto";  
 	font-weight: bold;
 	text-decoration: underline;
 }
@@ -192,7 +210,7 @@ html,body {
     padding: 20px;
     border: none;
     width: 250px; /* Could be more or less, depending on screen size */
-    height: 200px;
+    height: 300px;
     box-shadow: 0 15px 18px 0 rgba(0,0,0,0.2),0 16px 30px 0 rgba(0,0,0,0.19);
     -webkit-animation-name: animatetop;
     -webkit-animation-duration: 0.4s;
@@ -203,9 +221,10 @@ html,body {
 .logincred{
 	position: relative;
 	margin-top: -15px;
+	margin-left: 15px;
 	color: #ffbf03;
 	font-size:30px; 
-	font-family:"Helvetica Neue";  
+	font-family:"roboto";  
 	font-weight: bold;
 }
 .username{
@@ -230,12 +249,12 @@ html,body {
 	float: left;
 	color: #ffbf03;
 	font-size:12px; 
-	font-family:"Helvetica Neue";  
+	font-family:"roboto";  
 	font-weight: bold; 
 }
 .reset{
 	margin-top: 10px;
-	margin-left: 10px;
+	margin-left: -7px;
 	height: 20px;
 	background-color: #ffffff;
 	border: none;
@@ -243,7 +262,7 @@ html,body {
 	color: #ffbf03;
 	cursor: pointer;
 	font-size:12px; 
-	font-family:"Helvetica Neue";  
+	font-family:"roboto";  
 	font-weight: bold;
 	text-decoration: underline;
 }
@@ -255,28 +274,33 @@ html,body {
 	color: #ffbf03;
 	cursor: pointer;
 	font-size: 30px; 
-	font-family:"Helvetica Neue";  
+	font-family:"roboto";  
 	font-weight: bold;
 	text-decoration: underline;
 }
 .loginbuttondiv{
-	margin-top: 60px;
-	display: flex;
-	width: 100%;
-	justify-content: center;
+	position: relative;
+	width: 15%; 
+	height: 60px;
+    border-style: none;
+    border-color: #c50234;
+    background-color: #c50234;
+    float: right;   
+    margin-right: 80px;
+    text-align: center;
 }
 .loginbanner{
-	height: 40px;
+	height: 60px;
 	width: 250px;
 	background-color: #c50234;
 	border: none;
-	margin-top: -180px;
+	/* margin-top: -180px; */
 	position: relative;
 	bottom: 0px; 
 	color: #ffffff;
 	cursor: pointer;
 	font-size:3em; 
-	font-family:"Helvetica Neue"; 
+	font-family:"roboto"; 
 	font-weight: bold;
 }
 
@@ -295,8 +319,8 @@ html,body {
 	position: relative;
 	bottom: -10px; 
 	color: #c50234;
-	font-size:3em; 
-	font-family:"Helvetica Neue"; 
+	font-size:2.5em; 
+	font-family:"roboto-thin"; 
 	padding-left:20px; 
 	width:100%; 
 	text-align:left;
@@ -317,11 +341,12 @@ html,body {
 	bottom: -10px; 
 	color: #ffffff;
 	font-size:3em; 
-	font-family:"Helvetica Neue";   
+	font-family:"roboto";   
 }
 .colorstrip5{
 	position: relative;
 	width: 100%;
+	margin-top: 40px;
 	top: 40px;
 	height: 40px;
     border-style: none;
@@ -387,7 +412,7 @@ html,body {
 	bottom: -10px; 
 	color: #ffffff;
 	font-size:3em; 
-	font-family:"Helvetica Neue";   
+	font-family:"roboto";   
 }
 .colorstrip92{
 	position: relative;
@@ -406,7 +431,7 @@ html,body {
 	bottom: -10px; 
 	color: #ffffff;
 	font-size:3em; 
-	font-family:"Helvetica Neue";   
+	font-family:"roboto";   
 }
 .leaguesimage{
 	position: relative;
@@ -457,7 +482,7 @@ html,body {
 	margin-right:auto; 
 	color: #ffffff;
 	font-size:2em; 
-	font-family:"Helvetica Neue"; 
+	font-family:"roboto"; 
 	top:50%;
 }
 
