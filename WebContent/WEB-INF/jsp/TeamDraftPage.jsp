@@ -69,7 +69,7 @@ body {
  		<div class="teaminfo">
 			<div class="teamfield">
 				<div class="position1">
-					<div id="position1table" class="position1table">
+					<div id="position1table" ondrop="drop(event)" class="position1table">
 						<!-- <b>position 1</b> -->
 						
 						<!-- <b id="teamplayer1" ondrop="drop(event)" ondragover="allowDrop(event)">player 1</b>
@@ -124,7 +124,7 @@ body {
 					<button id="editTeamButton" class="editteambutton">edit team</button>
 				</div>
 				<div class="saveteam">
-					<button id="saveTeamButton"  class="saveteambutton">save team</button>
+					<button id="saveTeamButton" onclick="javascript:saveTeamButtonOnClick('${leagueId}','${userId}')" class="saveteambutton">save team</button>
 				</div>
 			</div>
 			<div id="teamNameEdit" class="playerroster">
@@ -181,27 +181,30 @@ body {
 
 	var editTeamButton = document.getElementById("editTeamButton");
 	var teamNameEditForm = document.getElementById("teamNameEdit");
-	var teamInfoBanner = document.getElementById("teamInfoBanner");
+	/*var teamInfoBanner = document.getElementById("teamInfoBanner");*/
 	
 	editTeamButton.onclick = function() {
 	    /* playerRosterOverlay.style.display = "none"; */
 	    editTeamButton.style.display = "none";
 	    saveTeamButton.style.display = "block";
 	    teamNameEditForm.style.display = "block";
-	    teamInfoBanner.style.display = "block";
+	    /*teamInfoBanner.style.display = "block";*/
 	    playerRoaster.style.display = "block";
 		position1table.sortable();
 		position1table.disableSelection();
 		
 	}
 	
-	saveTeamButton.onclick = function() {
+	function saveTeamButtonOnClick(leagueId,userId) {
 		/* playerRosterOverlay.style.display = "block"; */
 	    editTeamButton.style.display = "block";
 	    saveTeamButton.style.display = "none";
 	    teamNameEditForm.style.display = "none";
-	    teamInfoBanner.style.display = "none";
-	    playerRoaster.style.display = "none";
+	    /*teamInfoBanner.style.display = "none";*/
+	    /*playerRoaster.style.display = "none";*/
+	    console.log("Hi Prash  " + leagueId);
+	    console.log("Hi Prash " + userId);
+	    sendPlayerList(userId,leagueId);
 	}
 	
 	function allowDrop(ev) {
@@ -242,7 +245,7 @@ body {
 		    {	
 		    	console.log(data);
 		    	$('#'+iD).empty();
-		    	$(data.Players).each(function(index,value){$('#'+iD).append('<li id='+value.id+' class="ui-state-highlight">'+value.player+'</a>');})
+		    	$(data.Players).each(function(index,value){$('#'+iD).append('<li id='+value.id+'   class="ui-state-highlight">'+value.player+'</a>');})
 		    	
 		    },
 		    error: function (jqXHR, textStatus, errorThrown)
@@ -259,10 +262,74 @@ body {
 		var listItems = $("#sortable1").find("li");
 		for ( ind = 0; ind < listItems.length; ind++ ) {
 		    console.log($(listItems[ind]).attr('id'));
-		    listOfIds.push($(listItems[ind]).attr('id'));
+		    listOfPlayerIds.push($(listItems[ind]).attr('id'));
 		}
 		console.log(listOfPlayerIds);
+		console.log(listOfPlayerIds.length);
+		if(listOfPlayerIds.length < 11 ){
+			alert("Please select atleast 11 players")
+		}
+		else if(listOfPlayerIds.length > 11){
+			alert("Please select 11 players only")
+		}
+		else{
+			listOfPlayerIds=JSON.stringify(listOfPlayerIds);
+			console.log("Thanks");
+			$.ajax({
+			    url : '/All-In-One-FantasyGame/createTeam',
+			    type: 'post',
+			    data : {userId:userId,leagueId:leagueId,listOfPlayerIds:listOfPlayerIds},
+			    
+			    success: function(data)
+			   
+			    {	
+			    	if (data=="true")
+			    	var f = document.createElement("form");
+					f.setAttribute('method',"post");
+					f.setAttribute('action',"/All-In-One-FantasyGame/redirectLeague");
+
+					var i = document.createElement("input"); //input element, text
+					i.setAttribute('type',"hidden");
+					i.setAttribute('name',"redirectValue");
+					i.setAttribute('value',leagueId);
+					f.appendChild(i);
+					var j = document.createElement("input");
+					j.setAttribute('type',"hidden");
+					j.setAttribute('name',"userId");
+					j.setAttribute('value',userId);
+					f.appendChild(j);
+					document.body.appendChild(f);
+					console.log(f);
+					f.submit();
+			    },
+			    error: function (jqXHR, textStatus, errorThrown)
+			    {
+			    	alert("something went wrong.Contact Admin");
+			    }
+			});
+		}
 	}
+	
+	
+
+		var f = document.createElement("form");
+		f.setAttribute('method',"post");
+		f.setAttribute('action',"/All-In-One-FantasyGame/redirectLeague");
+
+		var i = document.createElement("input"); //input element, text
+		i.setAttribute('type',"hidden");
+		i.setAttribute('name',"redirectValue");
+		i.setAttribute('value',valueId);
+		f.appendChild(i);
+		var j = document.createElement("input");
+		j.setAttribute('type',"hidden");
+		j.setAttribute('name',"userId");
+		j.setAttribute('value',userId);
+		f.appendChild(j);
+		document.body.appendChild(f);
+		console.log(f);
+		f.submit();
+		
 </script>
 </body>
 </html>

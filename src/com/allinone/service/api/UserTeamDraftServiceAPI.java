@@ -16,7 +16,9 @@ public interface UserTeamDraftServiceAPI {
 
 	public boolean updateTeamName(String leagueId, String userId, String userTeamId, String teamName);
 
-	public boolean createTeam(String leagueId, String userId);
+	
+
+	public String createTeam(Set<String> setOfPlayerIds, String leagueId, String userId);
 
 	
 
