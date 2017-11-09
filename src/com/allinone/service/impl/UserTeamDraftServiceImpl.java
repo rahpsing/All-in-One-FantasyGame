@@ -33,7 +33,7 @@ public class UserTeamDraftServiceImpl implements UserTeamDraftServiceAPI {
 	public boolean updateTeam(Set<String> setOfPlayerIds, String leagueId, String userId, String userTeamId,
 			int numSubstitutesLeft, double score) {
 		// TODO Auto-generated method stub
-		Set<String> playerIds = new HashSet<String>();
+		/*Set<String> playerIds = new HashSet<String>();
 		playerIds.add("152043f85f7554d4015f7555e1c70008");
 		
 		setOfPlayerIds = playerIds;
@@ -43,7 +43,8 @@ public class UserTeamDraftServiceImpl implements UserTeamDraftServiceAPI {
 		numSubstitutesLeft = 50;
 		score = 0;
 		
-	
+	*/
+		
 		return objTeamDraftDaoImpl.updateTeam(setOfPlayerIds, leagueId, userId, userTeamId, numSubstitutesLeft, score);
 	}
 
@@ -55,9 +56,18 @@ public class UserTeamDraftServiceImpl implements UserTeamDraftServiceAPI {
 	}
 
 	@Override
-	public boolean createTeam(String leagueId, String userId) {
+	public String createTeam(Set<String> playerSet,String leagueId, String userId) {
 		// TODO Auto-generated method stub
-		return objTeamDraftDaoImpl.createTeam(leagueId, userId);
+		String returnString= objTeamDraftDaoImpl.createTeam(leagueId, userId);
+		if(!returnString.equals("false"))
+		{
+			
+			if(updateTeam(playerSet,leagueId,userId,returnString,50,(double) 50)) {
+				return "true";
+			}
+			return "false";
+		}
+		return "false";
 	}
 
 	

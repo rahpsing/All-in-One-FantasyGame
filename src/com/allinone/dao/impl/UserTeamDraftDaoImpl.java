@@ -1,10 +1,18 @@
 package com.allinone.dao.impl;
 
 import java.util.HashSet;
+import java.util.Iterator;
+import java.util.List;
 import java.util.Set;
 
+
+import org.apache.xmlbeans.impl.xb.xsdschema.RestrictionDocument.Restriction;
+import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Criterion;
+import org.hibernate.criterion.Restrictions;
+import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -43,7 +51,7 @@ public class UserTeamDraftDaoImpl implements UserTeamDraftDaoAPI {
 		for(String playerId : setOfPlayerIds) {
 			setOfUserTeamPlayers.add(session.get(Player.class, playerId));
 		}
-		
+		try {
 		userTeam.setSetOfPlayers(setOfUserTeamPlayers);
 		userTeam.setNumSubstitutesLeft(numSubstitutesLeft);
 		userTeam.setScore(score);
@@ -53,10 +61,15 @@ public class UserTeamDraftDaoImpl implements UserTeamDraftDaoAPI {
 		session.saveOrUpdate(userTeam);
 		
 		return true;
+		}
+		catch (Exception e) {
+			System.out.println(e);
+			return false;
+		}
 	}
 	
 	@Override
-	public boolean createTeam(String leagueId, String userId) {
+	public String createTeam(String leagueId, String userId) {
 		// TODO Auto-generated method stub
 		
 		Session session = objSessionFactory.getCurrentSession();
@@ -75,9 +88,35 @@ public class UserTeamDraftDaoImpl implements UserTeamDraftDaoAPI {
 		userTeam.setLeague(objLeague);
 		
 		session.saveOrUpdate(userTeam);
+		System.out.println("_______Seperation------------------");
+		try {
+			
+			//Query q = session.createQuery("from USER_TEAM as e join "+"where e.USERT.");
+			Query q = session.createQuery("from UserTeam as e where e.league.id = :id and e.usert.userId = :userId");
+			q.setParameter("id", leagueId);
+			q.setParameter("userId", userId);
+			List<UserTeam> results = q.list();
+			for (UserTeam userTeam2 : results) {
+				System.out.println("Look Here");
+				System.out.println(userTeam2.getUsert().toString());
+				System.out.println(userTeam2.getLeague().getId());
+				return userTeam2.getId();
+			}
+			
+			//Iterator iterator = results.iterator();
+			//UserTeam temp=(UserTeam) iterator.next();
+			if(results == null || results.isEmpty())
+				return "false";
+			//System.out.println(temp.getId());
+			
+			
+			} catch(Exception e) {
+				System.out.println(e);
+				return "false";
+			}
+		return "false";
 		
-		return true;
-	}
+		}
 	
 	@Override
 	public boolean updateTeamName(String leagueId, String userId, String userTeamId, String teamName) {
@@ -98,7 +137,7 @@ public class UserTeamDraftDaoImpl implements UserTeamDraftDaoAPI {
 		
 		Set<Player> setOfUserTeamPlayers = new HashSet<Player>();
 
-		
+		try {
 		userTeam.setSetOfPlayers(setOfUserTeamPlayers);
 		userTeam.setUsert(objUser);
 		userTeam.setTeamName(teamName);
@@ -107,5 +146,10 @@ public class UserTeamDraftDaoImpl implements UserTeamDraftDaoAPI {
 		session.saveOrUpdate(userTeam);
 		
 		return true;
+		}
+		catch(Exception e) {
+			System.out.println(e);
+			return false;
+		}
 	}
 	}

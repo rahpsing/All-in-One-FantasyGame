@@ -19,7 +19,7 @@ public interface UserTeamDraftDaoAPI {
 
 	public boolean updateTeamName(String leagueId, String userId, String userTeamId, String teamName);
 
-	public boolean createTeam(String leagueId, String userId);
+	public String createTeam(String leagueId, String userId);
 
 	
 

@@ -66,6 +66,8 @@ public class LeagueController {
 		return "LeagueInfoPage";
 	}
 	
+	
+	
 	@RequestMapping(value="/playerList")
 	@ResponseBody
 	public String playerList(HttpServletRequest objRequest, HttpServletResponse objResponse) {

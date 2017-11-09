@@ -195,6 +195,7 @@ function validateSignUpForm(){
 	    data : {userName:username,passWord:password,emailId:email},
 	    success: function(data)
 	    {	
+	    	signupModal.style.display = "none";
 	    	console.log("Came from backend");
 		if(data=="Success"){
 			alert("Congratulations..! Please Login to fantastic world of sports")
