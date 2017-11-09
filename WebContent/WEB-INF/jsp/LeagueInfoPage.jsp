@@ -118,7 +118,7 @@ function checkJoinButton(leagueId,userId){
 
 
 function createTeam(leagueId,userId){
-	alert(leagueId+"Came to league info page"+userId);
+	
 	var f = document.createElement("form");
 	f.setAttribute('method',"post");
 	f.setAttribute('action',"/All-In-One-FantasyGame/redirectToTeam");
