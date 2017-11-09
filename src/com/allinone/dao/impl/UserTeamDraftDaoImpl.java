@@ -51,7 +51,7 @@ public class UserTeamDraftDaoImpl implements UserTeamDraftDaoAPI {
 		for(String playerId : setOfPlayerIds) {
 			setOfUserTeamPlayers.add(session.get(Player.class, playerId));
 		}
-		
+		try {
 		userTeam.setSetOfPlayers(setOfUserTeamPlayers);
 		userTeam.setNumSubstitutesLeft(numSubstitutesLeft);
 		userTeam.setScore(score);
@@ -61,6 +61,11 @@ public class UserTeamDraftDaoImpl implements UserTeamDraftDaoAPI {
 		session.saveOrUpdate(userTeam);
 		
 		return true;
+		}
+		catch (Exception e) {
+			System.out.println(e);
+			return false;
+		}
 	}
 	
 	@Override
@@ -132,7 +137,7 @@ public class UserTeamDraftDaoImpl implements UserTeamDraftDaoAPI {
 		
 		Set<Player> setOfUserTeamPlayers = new HashSet<Player>();
 
-		
+		try {
 		userTeam.setSetOfPlayers(setOfUserTeamPlayers);
 		userTeam.setUsert(objUser);
 		userTeam.setTeamName(teamName);
@@ -141,5 +146,10 @@ public class UserTeamDraftDaoImpl implements UserTeamDraftDaoAPI {
 		session.saveOrUpdate(userTeam);
 		
 		return true;
+		}
+		catch(Exception e) {
+			System.out.println(e);
+			return false;
+		}
 	}
 	}

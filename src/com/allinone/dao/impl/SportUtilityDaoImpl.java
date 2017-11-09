@@ -173,9 +173,11 @@ public class SportUtilityDaoImpl implements SportUtilityDaoAPI {
 		            workbook.close();
 		            
 		        } catch (FileNotFoundException e) {
-		            e.printStackTrace();
+		            System.out.println(e);
+		            return false;
 		        } catch (IOException e) {
-		            e.printStackTrace();
+		        	System.out.println(e);
+		        	return false;
 		        }
 		      
 		
