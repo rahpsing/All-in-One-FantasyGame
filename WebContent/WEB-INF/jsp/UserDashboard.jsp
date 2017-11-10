@@ -170,7 +170,7 @@ div.panel button {
 	 			<div class="searchresultlist">
 			 		<div class="colorstrip22">
 			 			<b> search results </b>
-			 			<button id="closeSearch" class="waves-effect waves-light btn" style="position:absolute; right:0px;background-color:#ffbf03;height:60px;width: 60px;font-size:1.5em;text-transform: lowercase;padding-top:-15px;text-align:left;">X</button>
+			 			<button id="closeSearch" class="waves-effect waves-light btn" style="position:absolute; right:10px;background-color:#ffbf03;height:60px;width: 130px;font-size:0.4em;text-transform: lowercase;padding-top:-25px;text-align:center;">close</button>
 			 		</div>
 			 		<div id="searchResultList" class="scrollresult">
 			 			<div class="content">

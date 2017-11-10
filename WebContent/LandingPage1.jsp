@@ -32,7 +32,7 @@ body {
 	
 		<div class="diagonal" id="d0">
 		   
-		  <img src="${pageContext.request.contextPath}/resources/UIAssets/footballmatch.jpeg" />
+		  <img  src="${pageContext.request.contextPath}/resources/UIAssets/footballmatch.jpeg" />
 		
 		 
 		  </div>
