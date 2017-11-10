@@ -60,7 +60,7 @@ div.panel button {
 }
 </style>
 </head>
-<body>
+<body onload="javascript:sendAllFetch('${userId}')">
 	<div class="colorstrip1">
 			<!--<tr>
 				<b>aaaaa</b>
@@ -111,47 +111,15 @@ div.panel button {
 					    <div class="collapsible-header" style="font-size:2em;font-family:'Raleway', sans-serif; ">
 					      soccer
 					      <span class="badge">4</span></div> <!-- replace with number of leagues in list -->
-					      <div class="collapsible-body" style="overflow:auto; max-height:500px;">
-					      	<div class="content">
-							  <div class="card" style="height:80px;">
-							      <div class="profileinfo">
-							        <p style="font-size:2em;font-family:'Raleway', sans-serif; ">league 1 name</p>
-							        <p class="bio" style="font-size: 1.5em;margin-top:-20px;font-family:'Raleway', sans-serif; ">deatils 11  13</p>
-							      </div>
-							    </div>
-							  </div>
-							  <div class="content">
-							  <div class="card" style="height:80px;">
-							      <div class="profileinfo">
-							        <p style="font-size:2em;font-family:'Raleway', sans-serif; ">league 2 name</p>
-							        <p class="bio" style="font-size: 1.5em;margin-top:-20px;font-family:'Raleway', sans-serif; ">deatils 11  13</p>
-							      </div>
-							    </div>
-							  </div>
-							  <div class="content">
-							  <div class="card" style="height:80px;">
-							      <div class="profileinfo">
-							        <p style="font-size:2em;font-family:'Raleway', sans-serif; ">league 3 name</p>
-							        <p class="bio" style="font-size: 1.5em;margin-top:-20px;font-family:'Raleway', sans-serif; ">deatils 11  13</p>
-							      </div>
-							    </div>
-							  </div>
-							  <div class="content">
-							  <div class="card" style="height:80px;">
-							      <div class="profileinfo">
-							        <p style="font-size:2em;font-family:'Raleway', sans-serif; ">league 4 name</p>
-							        <p class="bio" style="font-size: 1.5em;margin-top:-20px;font-family:'Raleway', sans-serif; ">deatils 11  13</p>
-							      </div>
-							    </div>
-							  </div>
-						    
+					      <div id="systemSoccerLeagues" class="collapsible-body" style="overflow:auto; max-height:500px;">
+					      	
 						  </div>
 					  </li>
 					  <li>
 					    <div class="collapsible-header" style="font-size:2em;font-family:'Raleway', sans-serif; ">
 					      cricket
 					      <span class="badge">1</span></div>
-					      <div class="collapsible-body" style="overflow:auto; max-height:500px;">
+					      <div id="systemLeagues" class="collapsible-body" style="overflow:auto; max-height:500px;">
 					      	<div class="content">
 							  <div class="card" style="height:80px;">
 							      <div class="profileinfo">
@@ -356,6 +324,12 @@ div.panel button {
 	</script>
 	
 <script>
+function sendAllFetch(userId){
+	console.log("Success 1");
+	sendFetchReq('CRICKET','systemLeagues','dashboard',userId);
+	alert("going next");
+	sendFetchReq('SOCCER','systemSoccerLeagues','dashboard',userId);
+}
 function sendFetchReq(sportName,iD,value,userId){console.log(userId);
 	$.ajax({
 	    url : '/All-In-One-FantasyGame/fetchLeagues',
@@ -364,14 +338,17 @@ function sendFetchReq(sportName,iD,value,userId){console.log(userId);
 	    dataType : 'json',
 	    success: function(data)
 	    {	$('#'+iD).empty();
-	    	$(data.League).each(function(index,value){$('#'+iD).append('<a onclick=javascript:redirectLeague(\''+value.id+'\',\''+userId+'\') >'+value.League+'</a>');})
-	    	$('#'+iD).append('<a style="background-color: #ffbf03">create a new private league ></a>');
+	    	alert("Please" + sportName);
+	    	console.log(data);
+	    	$(data.League).each(function(index,value){$('#'+iD).append('<div onclick=javascript:redirectLeague(\''+value.id+'\',\''+userId+'\') class="content"><div class="card" style="height:80px;"><div class="profileinfo"><p style="font-size:2em;font-family:"Raleway", sans-serif; ">'+value.League+'</p><p class="bio" style="font-size: 1.5em;margin-top:-20px;font-family:"Raleway", sans-serif; ">deatils 11  13</p></div></div></div>');})
+	 		$('#'+iD).append('<div  class="content"><div class="card" style="height:80px;"><div class="profileinfo"><p style="font-size:2em;font-family:"Raleway", sans-serif; ">create league</p><p class="bio" style="font-size: 1.5em;margin-top:-20px;font-family:"Raleway", sans-serif; "></div></div></div>');
+
 	    },
 	    error: function (jqXHR, textStatus, errorThrown)
 	    {
 	    	$('#'+iD).empty();
-	 		$('#'+iD).append('<a>No Leagues></a>');
-			$('#'+iD).append('<a style="background-color: #ffbf03">create a new private league ></a>');
+	 		$('#'+iD).append('<div  class="content"><div class="card" style="height:80px;"><div class="profileinfo"><p style="font-size:2em;font-family:"Raleway", sans-serif; ">create league</p><p class="bio" style="font-size: 1.5em;margin-top:-20px;font-family:"Raleway", sans-serif; "></div></div></div>');
+			
 	    }
 	});
 }
@@ -393,6 +370,7 @@ function sendFetchLikeReq(iD,value,userId){console.log(userId);
 	   
 	    {	
 	    	$('#'+iD).empty();
+	    	
 	    	$(data.League).each(function(index,value){$('#'+iD).append('<a onclick=javascript:redirectLeague(\''+value.id+'\',\''+userId+'\') >'+value.League+'</a>');})
 	    	
 	    },

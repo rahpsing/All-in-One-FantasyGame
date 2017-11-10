@@ -46,9 +46,9 @@ public class LeagueController {
 		String comparator=objRequest.getParameter("VALUE");
 		List<League> returnMessage = objLeagueService.fetchLeagues(objRequest.getParameter("SPORT_NAME"),comparator);
 		
-		
+		System.out.println(comparator);
 	    String jsonString = objListToJson.listToJson("League", returnMessage);
-		//System.out.println(jsonString);
+		System.out.println(jsonString + "returning result " + comparator);
 		return jsonString;
 	}
 	
