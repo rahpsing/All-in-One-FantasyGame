@@ -11,6 +11,9 @@
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/LandingPage1.css" media="screen" />
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/materialize.min.css"  media="screen,projection"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/materialize.min.css"  media="screen,projection"/>
+<link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
 <style type="text/css">
 <!--
 body { 
@@ -24,19 +27,63 @@ body {
 <div class="duomodal" id="duoPlacementDiv">
 			<iframe id="duo_iframe" width="100%" height="800"></iframe>
 </div>
+
+<div class="container1">
+	
+		<div class="diagonal" id="d0">
+		   
+		  <img src="${pageContext.request.contextPath}/resources/UIAssets/footballmatch.jpeg" />
+		
+		 
+		  </div>
+		  
+		   <div class="diagonal" id="d1">
+		    
+		  <img src="${pageContext.request.contextPath}/resources/UIAssets/basketballmatch.jpg" />
+		  </div>
+		  
+		  <%-- <div class="diagonal" id="d2">
+		    
+		  <img src="${pageContext.request.contextPath}/resources/UIAssets/soccermatch.jpg" />
+		  </div> --%>
+		  
+		  <div class="diagonal" id="d3">
+		    
+		  <img src="${pageContext.request.contextPath}/resources/UIAssets/cricketmatch.jpg" />
+		  </div> 
+</div>
+<div class="container2">
+	
+</div>
 <div id="mainDiv" class="maindiv">
-	<div class="colorstrip1"></div>
+	<!-- <div class="colorstrip1"></div> -->
+	
 	<div class="colorstrip2">
 		<b class="allinonebanner">all-in-one</b>
 		
-		<b class="multisportfantasyleague">multi-sport fantasy league!</b>
+		<b class="multisportfantasyleague">multi-sport fantasy league</b>
+		
+		<div class="signupbuttondiv">
+			 <button id="signupButton" class="waves-effect waves-light btn" style="background-color:#ffbf03;height:60px;width:100%;font-size:2em">Sign Up</button>
+		</div>
+		<div class="loginbuttondiv">
+			<button id="loginButton" class="waves-effect waves-light btn" style="background-color:#ffbf03;height:60px;width:100%;font-size:2em">Log In</button>
+		</div>
+		<div style="position:fixed; color:#ffffff; font-size:1.75em; bottom: 50px; left: 175px;">
+			a group 4 project
+		</div>
+		
+		
 	</div>
+	<%-- <div class="colorstrip21">
+		<img class="leaguesimage" src="${pageContext.request.contextPath}/resources/UIAssets/Leagues.png">
+	</div> --%>
 	<div>
-		<div class="imagestripdiv1">
+		<%-- <div class="imagestripdiv1">
 				<img class="footballimage" src="${pageContext.request.contextPath}/resources/UIAssets/FootballImage1.jpeg">
 				
 	    		<img class="cricketimage" src="${pageContext.request.contextPath}/resources/UIAssets/CricketImage1.jpg">
-		</div>
+		</div> --%>
 		<!-- This is the DUO iframe. This must be hidden on load.This must be shown at line 240 in this page -->
 		
 		<!-- <div class="signupbuttondiv">
@@ -46,27 +93,27 @@ body {
 			<button id="loginButton" class="loginbanner">Log In</button>
 		</div> -->
 		
-		<div class="colorstrip4">
+		 <!-- <div class="colorstrip4">
 			<b class="registerbanner">doesn't matter if you're a new or returning player, let's get right into the action!</b>
-			<!-- <div class="colorstrip41">	
+			<div class="colorstrip41">	
 				<b class="knowmorebanner">Know more</b>
-			</div> -->
+			</div>
 			<div class="signupbuttondiv">
 			 <button id="signupButton" class="waves-effect waves-light btn" style="background-color:#c50234;height:60px;width:100%;font-size:2em">Sign Up</button>
 			</div>
-			<!-- <a id="signupButton" class="waves-effect waves-light btn" >Sign Up</a> -->
+			<a id="signupButton" class="waves-effect waves-light btn" >Sign Up</a>
 		<div class="loginbuttondiv">
 			<button id="loginButton" class="waves-effect waves-light btn" style="background-color:#c50234;height:60px;width:100%;font-size:2em">Log In</button>
 		</div>
-		</div>
+		</div>  -->
 		
 	</div> 
 	
-	<div class="colorstrip5"></div>
+<!-- 	<div class="colorstrip5"></div>
 	<div class="colorstrip6"></div>
 	<div class="colorstrip7"></div>
 	<div class="colorstrip8"></div>
-	<div class="colorstrip9"></div>
+	<div class="colorstrip9"></div> -->
 	<%-- <div class="infodiv">
 		<div class="colorstrip91">
 			<b class="featuresbanner">Features</b>
@@ -257,7 +304,7 @@ function validateLoginForm(){
 					 
 				 });
 				 
-				 loginModal.style.display = "block";
+				 loginModal.style.display = none;
 				 mainDiv.classList.remove("blur");
 				 document.getElementById('duo_iframe').show();
 				// var ifrm=document.createElement('iframe');
