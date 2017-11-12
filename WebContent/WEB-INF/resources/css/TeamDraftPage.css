@@ -429,3 +429,137 @@ html,body {
 	right: 50px;
 	width: 100px;
 }
+
+/* body {
+  font-family: "Helvetica Neue", Helvetica, Arial;
+  color: #333;
+} */
+#player-lists {
+	width: 1000px;
+	margin: 10 auto;
+}
+h2 {
+  padding: 0;
+  margin: 0 0 .5em 0;
+  font-size: 1.3em;
+}
+
+#player-roster, #user-team {
+	float: left;
+	width: 400px;
+	height: 700px;
+	padding: 5px 10px;
+	margin-right: 10px;
+	background: #eee;
+	text-align: center;
+  background: #fff;
+  box-shadow: 
+    0px 0px 0px 5px rgba( 255,255,255,0.4 ), 
+    0px 0px 12px rgba( 0,0,0,0.33 );
+  border-radius: 5px;
+  border: 1px solid #cacaca;
+}
+.user {
+	width: 300px;
+	padding: 3px 5px;
+	display: block;
+	margin: 0 auto 3px;
+	text-align: center;
+	border: 1px solid #aaa;
+	background: #ddd;	
+	cursor: move;
+  border-radius: 5px;
+}
+
+.clear {
+	clear: both;
+}
+
+
+  @import 'https://fonts.googleapis.com/css?family=Open+Sans:300,400';
+
+%reset { margin: 0; padding: 0; }
+%flex { display: flex; justify-content: center;	align-items: center; }
+ 
+@mixin animated($timein: null, $delay: null) { 
+ transition: all $timein ease-in-out;
+  transition-delay: $delay; 
+}
+@mixin dimensions($width: null, $height: null) { width: $width; min-height: $height; }
+.content1{
+  position: relative; 
+  animation: animatop 0.9s  cubic-bezier(0.425, 1.140, 0.470, 1.125) forwards ;
+}
+
+.card1{  
+ @include dimensions( 500px,  30px);
+  padding: 0px 10px;
+  border-radius: 3px;
+  background-color: white;
+  box-shadow: 0px 10px 20px rgba(0,0,0,0.2);
+  position: relative;
+  overflow: hidden;
+  &:after {
+    content: '';
+    display: block;
+    width: 50px;
+    height: 30px;
+    background: cadetblue;
+    
+    position: absolute;
+    animation: rotatemagic 0.75s cubic-bezier(0.425, 1.040, 0.470, 1.105) 1s both;
+}
+}
+
+  .badgescard1{
+    padding: 10px 20px;
+    border-radius: 3px;
+    background-color: #ECECEC;
+    width: 580px; 
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
+    position: absolute;
+    z-index: -1; 
+    left: 10px; 
+    bottom: 10px;
+    @extend %flex; 
+    animation: animainfos 0.5s cubic-bezier(0.425, 1.040, 0.470, 1.105) 0.75s forwards;
+    span {
+    font-size: 1.6em;
+    margin: 0px 6px;
+    opacity: 0.6;
+    }
+  }   
+
+.firstinfo1{
+  @extend %flex;
+  flex-direction: row;  
+  z-index:2;
+  position: relative;
+  img{ 
+    border-radius: 10%;
+    width: 120px;
+	height: 120px;
+  }
+  .profileinfo1{
+    padding: 0px 0px;
+    h1{ font-size: 1.8em;}
+    h3{ font-size: 1.2em;
+        color: $maincolor;
+        font-style: italic;
+    }
+    p.bio1{
+      padding: 0px 0px;
+      color: #5A5A5A;
+      line-height: 1.2;
+      font-style: initial;
+    }  
+  }
+}
+
+.userimage1 {
+	position: absolute;
+	right: 10px;
+	top: 5px;
+	height: 30px;
+	width: 30px;
+}
