@@ -77,7 +77,8 @@ html,body {
 
 .joinleague {
 	position: absolute;
-	right: 40%;
+	left: 0px;
+	display: inline;
 	
 	  
 }
@@ -168,7 +169,7 @@ html,body {
 	border-width: 0.5px;
 }
 
-.leagueinfo .upcominggames {
+.leagueinfo .myteam {
 	margin-top: 120px;
 	position: absolute;
 	right: 7.5%;
@@ -223,10 +224,8 @@ html,body {
 	color: #ffffff;
 	font-size: 4em; 
 	font-family:'Raleway', sans-serif;  
-	   
-	text-align: center;
+	text-align: left;
 }
-
 .colorstrip10{
 	position: relative;
 	width: 100%;
@@ -429,4 +428,92 @@ $maincolor: #009688;
     top: -24px;
     left: -78px;
   }
+}
+
+  @import 'https://fonts.googleapis.com/css?family=Open+Sans:300,400';
+
+%reset { margin: 0; padding: 0; }
+%flex { display: flex; justify-content: center;	align-items: center; }
+ 
+@mixin animated($timein: null, $delay: null) { 
+ transition: all $timein ease-in-out;
+  transition-delay: $delay; 
+}
+
+.content1{
+  position: relative; 
+  animation: animatop 0.9s  cubic-bezier(0.425, 1.140, 0.470, 1.125) forwards ;
+}
+
+.card1{  
+ @include dimensions( 500px,  30px);
+  padding: 0px 10px;
+  border-radius: 3px;
+  background-color: white;
+  box-shadow: 0px 10px 20px rgba(0,0,0,0.2);
+  position: relative;
+  overflow: hidden;
+  &:after {
+    content: '';
+    display: block;
+    width: 50px;
+    height: 30px;
+    background: cadetblue;
+    
+    position: absolute;
+    animation: rotatemagic 0.75s cubic-bezier(0.425, 1.040, 0.470, 1.105) 1s both;
+}
+}
+
+  .badgescard1{
+    padding: 10px 20px;
+    border-radius: 3px;
+    background-color: #ECECEC;
+    width: 580px; 
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
+    position: absolute;
+    z-index: -1; 
+    left: 10px; 
+    bottom: 10px;
+    @extend %flex; 
+    animation: animainfos 0.5s cubic-bezier(0.425, 1.040, 0.470, 1.105) 0.75s forwards;
+    span {
+    font-size: 1.6em;
+    margin: 0px 6px;
+    opacity: 0.6;
+    }
+  }   
+
+.firstinfo1{
+  @extend %flex;
+  flex-direction: row;  
+  z-index:2;
+  position: relative;
+  img{ 
+    border-radius: 10%;
+    width: 120px;
+	height: 120px;
+  }
+  .profileinfo1{
+    padding: 0px 0px;
+    h1{ font-size: 1.8em;}
+    h3{ font-size: 1.2em;
+        color: $maincolor;
+        font-style: italic;
+    }
+    p.bio1{
+      padding: 0px 0px;
+      color: #5A5A5A;
+      line-height: 1.2;
+      font-style: initial;
+    }  
+  }
+}
+
+.userimage1 {
+	position: absolute;
+	right: 10px;
+	top: 5px;
+	height: 30px;
+	width: 30px;
 }

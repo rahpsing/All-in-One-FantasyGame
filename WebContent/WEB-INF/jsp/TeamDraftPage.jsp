@@ -9,6 +9,9 @@
 <!-- jQuery -->
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/css/jQuery.min.js"></script>
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/TeamDraftPage.css" media="screen" />
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/materialize.min.css"  media="screen,projection"/>
+<link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
 <style type="text/css">
 <!--
 body { 
@@ -56,6 +59,9 @@ body {
 </head>
 <body onload="javascript:fetchPlayerList('${leagueId}','sortable2')">
 	<div class="colorstrip1">
+		<div class="logout">
+			<button id="logOut" class="waves-effect waves-light btn" style="background-color:#ffbf03;height:40px;font-size:1.5em;text-transform: lowercase;padding-top:2.5px;font-family:'Raleway', sans-serif;">logout</button>
+		</div>
 	</div>
 	<div id="mainDiv" class="maindiv">
 		<div class="colorstrip2">
@@ -64,10 +70,11 @@ body {
 			<b>team: </b>
 			<b class="name">${name}</b>
 			</div>
-			<img src="${pageContext.request.contextPath}/resources/UIAssets/bannerdesign.png" class="bannerdesign">
+			<%-- <img src="${pageContext.request.contextPath}/resources/UIAssets/bannerdesign.png" class="bannerdesign"> --%>
  		</div>
  		<div class="teaminfo">
-			<div class="teamfield">
+ 			
+			<%-- <div class="teamfield">
 				<div class="position1">
 					<div id="position1table" ondrop="drop(event)" class="position1table">
 						<!-- <b>position 1</b> -->
@@ -166,12 +173,12 @@ body {
  			<div id="target" ondrop="drop_handler(event);" ondragover="dragover_handler(event);">Drop Zone</div> -->
 			<div class="playerlist">
 				
-			</div>
+			</div> --%>
 	 	</div>
  		
- 		<div class="colorstrip10"></div>
+ 		<!-- <div class="colorstrip10"></div>
 		<div class="colorstrip11"></div>
-		<div class="colorstrip12"></div>
+		<div class="colorstrip12"></div> -->
 		<div class="colorstrip13">
 			<b class="companybanner">a group 4 project ©</b>
 		</div>

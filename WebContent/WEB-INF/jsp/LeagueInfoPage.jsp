@@ -8,6 +8,8 @@
 <!--  ${pageContext.request.contextPath} - gives you path of the project -->
 <!-- jQuery -->
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/css/jQuery.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/materialize.min.js"></script>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/LeagueInfoPage.css" media="screen" />
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/materialize.min.css"  media="screen,projection"/>
@@ -26,9 +28,6 @@ body {
 		<div class="logout">
 			<button id="logOut" class="waves-effect waves-light btn" style="background-color:#ffbf03;height:40px;font-size:1.5em;text-transform: lowercase;padding-top:2.5px;font-family:'Raleway', sans-serif;">logout</button>
 		</div>
-		<div class="joinleague">
-			<button id="joinLeague" onclick="javascript:createTeam('${leagueId}','${userId}')" class="waves-effect waves-light btn" style="background-color:#ffbf03;height:40px;width: 400px; font-size:1.5em;text-transform: lowercase;padding-top:2.5px;font-family:'Raleway', sans-serif;">join league</button>
-		</div>
 	</div>
 	<div id="mainDiv" class="maindiv">
 		<div class="colorstrip2">
@@ -43,7 +42,10 @@ body {
  		<div class="leagueinfo">
  			<div class="players">
  				<div class="colorstrip22">
- 					<b>players</b>
+ 					<div class="joinleague" id="joinLeagueDiv">
+ 						<b style="margin-left:10px;">players</b>
+						<button id="joinLeague" onclick="javascript:createTeam('${leagueId}','${userId}')" class="waves-effect waves-light btn" style="border-radius:10px;background-color:#021A42;height:50px;width: 200px; font-size:0.5em;text-transform: lowercase;margin-top:-7px;margin-left:425px;font-family:'Raleway', sans-serif;">join league</button>
+					</div>
  				</div>
  					<div class="playerlist">
  						<div class="content">
@@ -116,21 +118,36 @@ body {
  					</div>
  				
  			</div> 
- 			
- 			<div class="previousgames">
+ 			<div class="myteam">
  				<div class="colorstrip23">
- 					<b>previous matches</b>
- 						
+ 					<b style="margin-left:10px;">my team</b>
+ 					<div class="editteam" id="editTeamDiv">
+						<button id="editTeam" class="waves-effect waves-light btn" style="background-color:#021A42;height:40px;font-size:0.4em;text-transform: lowercase;padding-bottom:10px;font-family:'Raleway', sans-serif;width:90px;positon:absolute;top:-50px;left:290px;border-radius:10px">edit</button>
+					</div>
  				</div>
- 			</div> 
- 			<div class="upcominggames">
- 				<div class="colorstrip23">
- 					<b>upcoming matches</b>
- 						
- 				</div>
- 			</div> 			
+ 				<div class="content1" style="margin-top:2px;">
+						<div class="card1" style="height:40px;">
+							  	<div class="userimage1">
+							     	<img class="circle responsive-img" src="${pageContext.request.contextPath}/resources/UIAssets/user1.jpeg"/>
+							 	</div>
+							      <div class="profileinfo1">
+							        <p style="font-size:2em;font-family:'Raleway', sans-serif; color:#000000;margin-top:3px;">player 1</p>
+							        <!-- <p class="bio1" style="font-size: 1em;margin-top:-20px;font-family:'Raleway', sans-serif; ">deatils 11  13</p> -->
+							      </div>
+						</div>
+					</div>
+ 			</div> 	
+ 			<div class="fixed-action-btn">
+    			<a class="btn-floating btn-large red">
+			      <i class="large material-icons">mode_edit</i>
+			    </a>
+			    <ul>
+			      <li><a class="btn-floating yellow darken-1" href="#"><i class="material-icons">format_quote</i></a><p style="color:#ffffff;position:absolute;top:0px;left:-100px;">edit league members</p></li>
+			      <li><a class="btn-floating green" href="#"><i class="material-icons">publish</i></a><p style="color:#ffffff;position:absolute;top:60px;left:-100px;">update weekly points</p></li>
+			      <li><a class="btn-floating blue" href="#"><i class="material-icons">attach_file</i></a><p style="color:#ffffff;position:absolute;top:110px;left:-98px;">edit your team</p></li>
+			    </ul>
+  			</div>		
 	 	</div>
- 		
  		<!-- <div class="colorstrip10"></div>
 		<div class="colorstrip11"></div>
 		<div class="colorstrip12"></div> -->
