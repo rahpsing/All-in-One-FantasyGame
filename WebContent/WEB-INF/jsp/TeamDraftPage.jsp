@@ -75,15 +75,15 @@ body {
  		</div>
  		<div class="teaminfo"> 
 	 		<section id="player-lists">
-				<div id="user-team" ondrop="dropUser(this, event)" ondragenter="return false" ondragover="return false">
+				<div id="user-team" ondrop="dropPlayer(this, event)" ondragenter="return false" ondragover="return false">
 			    <p>team</p>
 			    <!--These are all the draggable peices-->
 			    		
 				</div>
 			
-				<div id="player-roster" ondrop="dropUser(this, event)" ondragenter="return false" ondragover="return false">
+				<div id="player-roster" ondrop="dropPlayer(this, event)" ondragenter="return false" ondragover="return false">
 			    <p>player roster</p>
-			    	<div draggable="true" class="user" id="player1" ondragstart="dragUser(this, event)">
+			    	<div draggable="true" class="player" id="player1" ondragstart="dragPlayer(this, event)">
 			    		<div class="content1" style="margin-top:2px;">
 							<div class="card1" style="height:40px;">
 							  	<div class="userimage1">
@@ -96,7 +96,7 @@ body {
 							</div>
 					</div>
 			    	</div>
-					<a draggable="true" class="user" id="player2" ondragstart="dragUser(this, event)">
+					<a draggable="true" class="player" id="player2" ondragstart="dragPlayer(this, event)">
 						<div class="content1" style="margin-top:2px;">
 							<div class="card1" style="height:40px;">
 							  	<div class="userimage1">
@@ -109,7 +109,7 @@ body {
 							</div>
 						</div>
 					</a> 
-					<a draggable="true" class="user" id="player3" ondragstart="dragUser(this, event)">
+					<a draggable="true" class="player" id="player3" ondragstart="dragPlayer(this, event)">
 						<div class="content1" style="margin-top:2px;">
 							<div class="card1" style="height:40px;">
 							  	<div class="userimage1">
@@ -122,7 +122,7 @@ body {
 							</div>
 						</div>
 					</a> 
-					<a draggable="true" class="user" id="player4" ondragstart="dragUser(this, event)">
+					<a draggable="true" class="player" id="player4" ondragstart="dragPlayer(this, event)">
 						<div class="content1" style="margin-top:2px;">
 							<div class="card1" style="height:40px;">
 							  	<div class="userimage1">
@@ -135,7 +135,7 @@ body {
 							</div>
 						</div>
 					</a> 
-					<a draggable="true" class="user" id="player5" ondragstart="dragUser(this, event)">
+					<a draggable="true" class="player" id="player5" ondragstart="dragPlayer(this, event)">
 						<div class="content1" style="margin-top:2px;">
 							<div class="card1" style="height:40px;">
 							  	<div class="userimage1">
@@ -148,7 +148,7 @@ body {
 							</div>
 						</div>
 					</a> 
-					<a draggable="true" class="user" id="player6" ondragstart="dragUser(this, event)">
+					<a draggable="true" class="player" id="player6" ondragstart="dragPlayer(this, event)">
 						<div class="content1" style="margin-top:2px;">
 							<div class="card1" style="height:40px;">
 							  	<div class="userimage1">
@@ -176,12 +176,13 @@ body {
 		</div>
 	</div>
 	<script>
-	function dragUser(user, event) {
-	    event.dataTransfer.setData('User', user.id);
+	/* New DRAG AND DROP SCRIPT , disregard all of my previous scripts. will edit it out later */
+	function dragPlayer(player, event) {
+	    event.dataTransfer.setData('Players', player.id);
 	}
-	function dropUser(target, event) {
-	    var user = event.dataTransfer.getData('User');
-	    target.appendChild(document.getElementById(user)); 
+	function dropPlayer(target, event) {
+	    var player = event.dataTransfer.getData('Players');
+	    target.appendChild(document.getElementById(player)); 
 	}
 	</script>
 	<script>

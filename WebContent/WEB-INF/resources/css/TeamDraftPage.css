@@ -459,14 +459,14 @@ h2 {
   border-radius: 5px;
   border: 1px solid #cacaca;
 }
-.user {
+.player {
 	width: 300px;
 	padding: 3px 5px;
 	display: block;
 	margin: 0 auto 3px;
 	text-align: center;
-	border: 1px solid #aaa;
-	background: #ddd;	
+	border: 0px solid none;
+	background: none;	
 	cursor: move;
   border-radius: 5px;
 }
