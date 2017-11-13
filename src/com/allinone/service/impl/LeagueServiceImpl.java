@@ -16,6 +16,7 @@ import com.allinone.dao.api.SportUtilityDaoAPI;
 import com.allinone.pojos.League;
 import com.allinone.pojos.Player;
 import com.allinone.service.api.LeagueServiceAPI;
+import com.allinone.service.api.ListToJsonTwoColumnsServiceAPI;
 
 /**
  * @author rahul
@@ -26,13 +27,16 @@ import com.allinone.service.api.LeagueServiceAPI;
 public class LeagueServiceImpl implements LeagueServiceAPI {
 
 	@Autowired
+	ListToJsonTwoColumnsServiceAPI objListToJson;
+	
+	@Autowired
 	LeagueDaoAPI objLeagueDao;
 	
 	@Autowired
 	SportUtilityDaoAPI objSportUtilityDao;
 
 	@Override
-	public List<League> fetchLeagues(String sport,String comparator) {
+	public String fetchLeagues(String sport,String comparator) {
 		// TODO Auto-generated method stub
 		
 		List<League> listOfLeagues = new ArrayList<League>();
@@ -40,7 +44,7 @@ public class LeagueServiceImpl implements LeagueServiceAPI {
 		if(comparator.equals("searchText")) {
 			listOfLeagues = objLeagueDao.fetchLikeLeagues(sport);
 			System.out.println(sport);
-			return listOfLeagues;
+			return listOfLeagues.get(0).getLeagueName();
 		}
 		if (sport.equals("CRICKET")) {
 			sportId=objSportUtilityDao.getsportID("CRICKET");
@@ -49,7 +53,11 @@ public class LeagueServiceImpl implements LeagueServiceAPI {
 		
 		listOfLeagues = objLeagueDao.fetchLeagues(sportId);
 		
-		return listOfLeagues;
+		String jsonString = objListToJson.listToJson("League", listOfLeagues);
+		System.out.println(jsonString + "returning result " + comparator);
+		
+		return jsonString;
+		
 	}
 
 	@Override

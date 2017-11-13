@@ -15,7 +15,7 @@ import com.allinone.pojos.Player;
  */
 public interface LeagueServiceAPI {
 
-	public List<League> fetchLeagues(String sport,String Comparator);
+	public String fetchLeagues(String sport,String Comparator);
 
 	public List<Player> playerList(String likeLeague);
 	

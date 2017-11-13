@@ -277,7 +277,7 @@ function validateLoginForm(){
 			duo(userName);
 			
 			}
-		else{alert("Please signup for fantastic Leagues")}
+		else{alert("Username/Password doesn't match")}
 	    },
 	    error: function (jqXHR, textStatus, errorThrown)
 	    {	

@@ -23,6 +23,7 @@ import com.allinone.service.api.LeagueServiceAPI;
 import com.allinone.service.api.ListToJsonTwoColumnsServiceAPI;
 import com.allinone.service.api.SportUtilityServiceAPI;
 import com.allinone.service.api.TeamListToJsonServiceAPI;
+import com.google.gson.Gson;
 
 @Controller
 
@@ -44,12 +45,11 @@ public class LeagueController {
 	@ResponseBody
 	public String fetchLeagues(HttpServletRequest objRequest, HttpServletResponse objResponse) {
 		String comparator=objRequest.getParameter("VALUE");
-		List<League> returnMessage = objLeagueService.fetchLeagues(objRequest.getParameter("SPORT_NAME"),comparator);
+		String returnMessage = objLeagueService.fetchLeagues(objRequest.getParameter("SPORT_NAME"),comparator);
 		
-		System.out.println(comparator);
-	    String jsonString = objListToJson.listToJson("League", returnMessage);
-		System.out.println(jsonString + "returning result " + comparator);
-		return jsonString;
+		//System.out.println(comparator);
+	
+		return returnMessage;
 	}
 	
 	
@@ -57,12 +57,13 @@ public class LeagueController {
 	@RequestMapping(value="/redirectLeague")
 	public String redirectLeague(HttpServletRequest objRequest, HttpServletResponse objResponse,ModelMap model) {
 		//for search functionality
-		List<League> returnMessage = objLeagueService.fetchLeagues(objRequest.getParameter("redirectValue"),"searchText");
+		String returnMessage = objLeagueService.fetchLeagues(objRequest.getParameter("redirectValue"),"searchText");
+		
 		String userId=objRequest.getParameter("userId");
 		System.out.println(userId+"   from redirect");
 		model.put("userId", objRequest.getParameter("userId"));
 		model.put("leagueId",objRequest.getParameter("redirectValue"));
-		model.put("name",returnMessage.get(0).getLeagueName());
+		model.put("name",returnMessage);
 		return "LeagueInfoPage";
 	}
 	

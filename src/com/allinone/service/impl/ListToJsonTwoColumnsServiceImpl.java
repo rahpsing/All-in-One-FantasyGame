@@ -6,10 +6,11 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.allinone.pojos.League;
 import com.allinone.service.api.ListToJsonTwoColumnsServiceAPI;
-
+@Transactional
 @Service
 public class ListToJsonTwoColumnsServiceImpl implements ListToJsonTwoColumnsServiceAPI {
 
@@ -21,6 +22,7 @@ public class ListToJsonTwoColumnsServiceImpl implements ListToJsonTwoColumnsServ
             try {
                 eachData.put("League", returnMessage.get(i).getLeagueName());
                 eachData.put("id", returnMessage.get(i).getId());
+                eachData.put("numOfPlayers", returnMessage.get(i).getSetOfUserTeams().size());
             } catch (JSONException e) {
                 e.printStackTrace();
             }
