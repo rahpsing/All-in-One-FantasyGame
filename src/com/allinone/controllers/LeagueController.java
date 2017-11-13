@@ -80,6 +80,17 @@ public class LeagueController {
 		return jsonString;
 	}
 	
+	@RequestMapping(value="/userTeamList")
+	@ResponseBody
+	public String userTeamList(HttpServletRequest objRequest, HttpServletResponse objResponse) {
+		
+		
+		String returnMessage = objLeagueService.userTeamSet(objRequest.getParameter("leagueId"),objRequest.getParameter("userId"));
+		
+		
+		return returnMessage;
+	}
+	
 	@RequestMapping(value="/redirectToTeam")
 	public String redirectToTeam(HttpServletRequest objRequest, HttpServletResponse objResponse,ModelMap model) {
 		
@@ -111,6 +122,18 @@ public class LeagueController {
 			return "true";
 		}
 		return "false";
+	}
+	
+	@RequestMapping(value="/fetchUserTeams")
+	@ResponseBody
+	public String fetchUserTeams(HttpServletRequest objRequest, HttpServletResponse objResponse) {
+		
+		
+		String leagueId = objRequest.getParameter("leagueId");
+		
+		
+			return objLeagueService.fetchUserTeams(leagueId);
+		
 	}
 	
 	@RequestMapping(value="/testPage")

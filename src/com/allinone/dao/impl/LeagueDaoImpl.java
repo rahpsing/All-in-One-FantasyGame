@@ -72,6 +72,33 @@ public class LeagueDaoImpl implements LeagueDaoAPI {
 		return listOfLeagues;
 	}
 
+	@Override
+	public Set<Player> userTeamSet(String leagueId,String userId) {
+		// TODO Auto-generated method stub
+		
+		Session session = objSessionFactory.getCurrentSession();
+		League objLeague = session.get(League.class, leagueId);
+		Set<UserTeam> userTeams = objLeague.getSetOfUserTeams();
+		
+		for(UserTeam usrTeam : userTeams) {
+			if(usrTeam.getUsert().getUserId().equalsIgnoreCase(userId)) {
+				return usrTeam.getSetOfPlayers();
+			}
+		}
+		return null;
+	}
+	
+	@Override
+	public Set<UserTeam> fetchUserTeams(String leagueId) {
+		// TODO Auto-generated method stub
+		
+		Session session = objSessionFactory.getCurrentSession();
+		League objLeague = session.get(League.class, leagueId);
+		Set<UserTeam> userTeams = objLeague.getSetOfUserTeams();
+		
+		
+		return userTeams;
+	}
 
 
 	@Override
