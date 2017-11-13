@@ -57,7 +57,7 @@ public class LeagueController {
 	@RequestMapping(value="/redirectLeague")
 	public String redirectLeague(HttpServletRequest objRequest, HttpServletResponse objResponse,ModelMap model) {
 		//for search functionality
-		String returnMessage = objLeagueService.fetchLeagues(objRequest.getParameter("redirectValue"),"searchText");
+		String returnMessage = objLeagueService.fetchLeagues(objRequest.getParameter("redirectValue"),"redirectText");
 		
 		String userId=objRequest.getParameter("userId");
 		System.out.println(userId+"   from redirect");

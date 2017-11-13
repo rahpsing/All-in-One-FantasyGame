@@ -41,10 +41,19 @@ public class LeagueServiceImpl implements LeagueServiceAPI {
 		
 		List<League> listOfLeagues = new ArrayList<League>();
 		String sportId;
-		if(comparator.equals("searchText")) {
+		if(comparator.equals("redirectText")) {
 			listOfLeagues = objLeagueDao.fetchLikeLeagues(sport);
 			System.out.println(sport);
 			return listOfLeagues.get(0).getLeagueName();
+		}
+		if(comparator.equals("searchText")) {
+			listOfLeagues = objLeagueDao.fetchLikeLeagues(sport);
+			System.out.println(sport);
+						
+			String jsonString = objListToJson.listToJson("League", listOfLeagues);
+			System.out.println(jsonString + "returning result " + comparator);
+			
+			return jsonString;
 		}
 		if (sport.equals("CRICKET")) {
 			sportId=objSportUtilityDao.getsportID("CRICKET");
