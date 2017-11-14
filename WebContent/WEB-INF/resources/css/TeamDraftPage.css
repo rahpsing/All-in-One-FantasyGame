@@ -89,6 +89,7 @@ html,body {
 .teaminfo{
 	position: relative;
 	height: 1000px;
+	width: 1250px;
 	top:100px;
 	left:25%;
 	/* background-image: url(../UIAssets/bg_pitch.jpg); */

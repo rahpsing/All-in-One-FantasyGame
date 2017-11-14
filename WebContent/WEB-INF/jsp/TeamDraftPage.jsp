@@ -182,12 +182,12 @@ body {
 						</div>
 					</a> 	
 				</div>
-				
-			
 				<div class="clear"></div>
 			</section>
 	 	</div>
- 		
+ 		<div style="position:absolute;display:none;top:500px; right:200px; width: 200px;" id="teamSaveButton">
+					<input class="waves-effect waves-light btn" style="background-color:#ffbf03;height:40px;width:100%;font-size:2em;text-transform: lowercase; font-family:'Raleway', sans-serif;" type="button" value="save" onclick=""/>
+		</div>
  		<!-- <div class="colorstrip10"></div>
 		<div class="colorstrip11"></div>
 		<div class="colorstrip12"></div> -->
@@ -213,15 +213,16 @@ body {
 	var userTeam = document.getElementById("user-team");
 	var editNameModal = document.getElementById("editNameModal");
 	var teamName = document.getElementById("teamName");	
+	var teamSaveButton = document.getElementById("teamSaveButton");
 	
 	editTeamButton.onclick = function() {
 		playerRoster.style.display = "block";
+		teamSaveButton.style.display = "block";
 	}
 	
 	updateTeamNameButton.onclick = function(){
 		editNameModal.style.display = "block";
 		teamName.style.display = "none";
-		
 	}
 	
 
@@ -232,7 +233,7 @@ body {
 	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
   	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
   	<script type="text/javascript">
-/*   	$( function() {
+   	$( function() {
    	 $( "#sortable1, #sortable2" ).sortable({
    	   connectWith: ".connectedSortable"
    	 }).disableSelection();
@@ -282,7 +283,7 @@ body {
 		 		
 		    }
 		});
-	} */
+	} 
 
 	function sendPlayerList(userId,leagueId){
 		var ind=0;	
