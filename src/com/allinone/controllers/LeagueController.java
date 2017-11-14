@@ -73,7 +73,7 @@ public class LeagueController {
 	@ResponseBody
 	public String playerList(HttpServletRequest objRequest, HttpServletResponse objResponse) {
 		
-		List<Player> returnList = objLeagueService.playerList(objRequest.getParameter("LEAGUE_ID"));
+		List<Player> returnList = objLeagueService.playerList(objRequest.getParameter("leagueId"),objRequest.getParameter("userId"));
 		
 		String jsonString=objTeamListToJson.listToJson("Players", returnList);
 		System.out.println(objRequest.getParameter("leagueId") +"  Like League at service");
@@ -96,6 +96,7 @@ public class LeagueController {
 		
 		model.put("leagueId", objRequest.getParameter("leagueId"));
 		model.put("userId", objRequest.getParameter("userId"));
+		model.put("flag", objRequest.getParameter("flag"));
 		return "TeamDraftPage";
 	}
 	

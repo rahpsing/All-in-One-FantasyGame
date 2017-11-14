@@ -17,13 +17,15 @@ public interface LeagueServiceAPI {
 
 	public String fetchLeagues(String sport,String Comparator);
 
-	public List<Player> playerList(String likeLeague);
+	
 	
 	public boolean hasUserJoinedLeague(String userId, String leagueId);
 
 	public String fetchUserTeams(String leagueId);
 
 	public String userTeamSet(String leagueId, String userId);
+
+	public List<Player> playerList(String leagueId, String userId);
 	
 	
 }

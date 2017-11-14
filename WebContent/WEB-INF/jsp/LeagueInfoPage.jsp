@@ -44,7 +44,7 @@ body {
  				<div class="colorstrip22">
  					<div class="joinleague" id="joinLeagueDiv">
  						<b style="margin-left:10px;">players</b>
-						<button id="joinLeague" onclick="javascript:createTeam('${leagueId}','${userId}')" class="waves-effect waves-light btn" style="border-radius:10px;background-color:#021A42;height:50px;width: 200px; font-size:0.5em;text-transform: lowercase;margin-top:-7px;margin-left:425px;font-family:'Raleway', sans-serif;">join league</button>
+						<button id="joinLeague" onclick="javascript:createTeam('${leagueId}','${userId}','create')" class="waves-effect waves-light btn" style="border-radius:10px;background-color:#021A42;height:50px;width: 200px; font-size:0.5em;text-transform: lowercase;margin-top:-7px;margin-left:425px;font-family:'Raleway', sans-serif;">join league</button>
 					</div>
  				</div>
  					<div id="populateUserList" class="playerlist">
@@ -70,7 +70,7 @@ body {
  				<div class="colorstrip23">
  					<b style="margin-left:10px;">my team</b>
  					<div class="editteam" id="editTeamDiv">
-						<button id="editTeam" onclick="javascript:createTeam('${leagueId}','${userId}')" class="waves-effect waves-light btn" style="background-color:#021A42;height:40px;font-size:0.4em;text-transform: lowercase;padding-bottom:10px;font-family:'Raleway', sans-serif;width:90px;positon:absolute;top:-50px;left:290px;border-radius:10px">edit</button>
+						<button id="editTeam" onclick="javascript:createTeam('${leagueId}','${userId}','edit')" class="waves-effect waves-light btn" style="background-color:#021A42;height:40px;font-size:0.4em;text-transform: lowercase;padding-bottom:10px;font-family:'Raleway', sans-serif;width:90px;positon:absolute;top:-50px;left:290px;border-radius:10px">edit</button>
 					</div>
  				</div>
  				<div id = "populateUserTeam" class="content1" style="margin-top:2px;">
@@ -187,7 +187,7 @@ function checkJoinButton(leagueId,userId){
 }
 
 
-function createTeam(leagueId,userId){
+function createTeam(leagueId,userId,flag){
 	
 	var f = document.createElement("form");
 	f.setAttribute('method',"post");
@@ -203,6 +203,11 @@ function createTeam(leagueId,userId){
 	j.setAttribute('name',"userId");
 	j.setAttribute('value',userId);
 	f.appendChild(j);
+	var k = document.createElement("input");
+	k.setAttribute('type',"hidden");
+	k.setAttribute('name',"flag");
+	k.setAttribute('value',flag);
+	f.appendChild(k);
 	document.body.appendChild(f);
 	console.log(f);
 	f.submit();

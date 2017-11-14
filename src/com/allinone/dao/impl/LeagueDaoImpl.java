@@ -85,7 +85,8 @@ public class LeagueDaoImpl implements LeagueDaoAPI {
 				return usrTeam.getSetOfPlayers();
 			}
 		}
-		return null;
+		
+		return new HashSet<Player>();
 	}
 	
 	@Override

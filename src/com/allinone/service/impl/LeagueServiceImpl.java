@@ -79,15 +79,17 @@ public class LeagueServiceImpl implements LeagueServiceAPI {
 	}
 
 	@Override
-	public List<Player> playerList(String likeLeague){
+	public List<Player> playerList(String leagueId,String userId){
 		List<Player> listOfPlayer=new ArrayList<Player>();
 		List<League> listOfLeagues = new ArrayList<League>();
-		listOfLeagues = objLeagueDao.fetchLikeLeagues(likeLeague);
+		listOfLeagues = objLeagueDao.fetchLikeLeagues(leagueId);
 		
 		for(Player i: listOfLeagues.get(0).getSetOfPlayers()) {
 			listOfPlayer.add(i);
 		}
-		
+		Set<Player> returnSet = objLeagueDao.userTeamSet(leagueId, userId);
+		List<Player> returnList = new ArrayList<Player>(returnSet);
+		listOfPlayer.removeAll(returnList);
 		return listOfPlayer;
 	}
 
