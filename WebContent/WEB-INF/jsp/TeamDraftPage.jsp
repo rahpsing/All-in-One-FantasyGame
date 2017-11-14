@@ -58,7 +58,7 @@ body {
   }
 </style>
 </head>
-<body onload="javascript:fetchPlayerList('${leagueId}','sortable2')">
+<body onload="javascript:onLoadCalls('${leagueId}','${userId}','${flag}')">
 	<div class="colorstrip1">
 		<div class="logout">
 			<button id="logOut" class="waves-effect waves-light btn" style="background-color:#ffbf03;height:40px;font-size:1.5em;text-transform: lowercase;padding-top:2.5px;font-family:'Raleway', sans-serif;">logout</button>
@@ -87,13 +87,13 @@ body {
  		<div class="teaminfo"> 
 	 		<section id="player-lists">
 				<div id="user-team" ondrop="dropPlayer(this, event)" ondragenter="return false" ondragover="return false">
-			    <p>team</p>
+			   <!-- <p>team</p> Line 280/259-->
 			    <!--These are all the draggable peices-->
 			    		
 				</div>
 			
 				<div id="player-roster" ondrop="dropPlayer(this, event)" ondragenter="return false" ondragover="return false">
-			    <p>player roster</p>
+			    <!-- <p>player roster</p> Line 280/259-->
 			    	<div draggable="true" class="player" id="player1" ondragstart="dragPlayer(this, event)">
 			    		<div class="content1" style="margin-top:2px;">
 							<div class="card1" style="height:40px;">
@@ -253,18 +253,43 @@ body {
    	   connectWith: ".connectedSortable"
    	 }).disableSelection();
   	} );
-
-	function fetchPlayerList(leagueId,iD){
+	function onLoadCalls(leagueId,userId,flag){
+		populateTeam(userId,leagueId);
+		fetchPlayerList(leagueId,'player-roster',userId);
+	}
+	function populateTeam(userId,leagueId)
+	{
+		$.ajax({
+			url : '/All-In-One-FantasyGame/userTeamList',
+		    type: 'post',
+		    data : {leagueId:leagueId,userId:userId},
+		    dataType : 'json',
+		    success: function(data){
+		    	console.log(data);
+		    	$('#user-team').empty();
+		    	$('#user-team').append('<p>Team</p>');
+		    	$(data.usersTeam).each(function(index,value){$('#user-team').append('<div draggable="true" class="player" id="player1" ondragstart="dragPlayer(this, event)"><div class="content1" style="margin-top:2px;"><div class="card1" style="height:40px;"><div class="userimage1"><img class="circle responsive-img" src="${pageContext.request.contextPath}/resources/UIAssets/user1.jpeg"/></div><div  class="profileinfo1"><p id='+value.id+' style="font-size:2em;font-family:"Raleway", sans-serif; color:#000000;margin-top:3px;">'+value.player+'</p></div></div></div></div>');})
+		    	//fetchPlayerList(leagueId,'player-roster',userId);
+		    },
+		    error: function (jqXHR, textStatus, errorThrown)
+		    {
+		    	//alert("something went wrong.Contact Admin");
+		    	//fetchPlayerList(leagueId,'player-roster',userId);
+		    }
+		});
+		}
+	function fetchPlayerList(leagueId,iD,userId){
 		$.ajax({
 		    url : '/All-In-One-FantasyGame/playerList',
 		    type: 'post',
-		    data : {LEAGUE_ID:leagueId},
+		    data : {leagueId:leagueId,userId:userId},
 		    dataType : 'json',
 		    success: function(data)
 		    {	
 		    	console.log(data);
 		    	$('#'+iD).empty();
-		    	$(data.Players).each(function(index,value){$('#'+iD).append('<li id='+value.id+'   class="ui-state-highlight">'+value.player+'</a>');})
+		    	$('#'+iD).append('<p>player roster</p>');
+		    	$(data.Players).each(function(index,value){$('#'+iD).append('<div draggable="true" class="player" id="player1" ondragstart="dragPlayer(this, event)"><div class="content1" style="margin-top:2px;"><div class="card1" style="height:40px;"><div class="userimage1"><img class="circle responsive-img" src="${pageContext.request.contextPath}/resources/UIAssets/user1.jpeg"/></div><div  class="profileinfo1"><p id='+value.id+' style="font-size:2em;font-family:"Raleway", sans-serif; color:#000000;margin-top:3px;">'+value.player+'</p></div></div></div></div>');})
 		    	
 		    },
 		    error: function (jqXHR, textStatus, errorThrown)
@@ -331,7 +356,7 @@ body {
 	
 	
 
-		var f = document.createElement("form");
+	/*	var f = document.createElement("form");
 		f.setAttribute('method',"post");
 		f.setAttribute('action',"/All-In-One-FantasyGame/redirectLeague");
 
@@ -347,7 +372,7 @@ body {
 		f.appendChild(j);
 		document.body.appendChild(f);
 		console.log(f);
-		f.submit();
+		f.submit();*/
 		
 </script>
 </body>

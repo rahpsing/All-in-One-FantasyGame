@@ -23,6 +23,7 @@ import com.allinone.service.api.LeagueServiceAPI;
 import com.allinone.service.api.ListToJsonTwoColumnsServiceAPI;
 import com.allinone.service.api.SportUtilityServiceAPI;
 import com.allinone.service.api.TeamListToJsonServiceAPI;
+import com.google.gson.Gson;
 
 @Controller
 
@@ -44,12 +45,11 @@ public class LeagueController {
 	@ResponseBody
 	public String fetchLeagues(HttpServletRequest objRequest, HttpServletResponse objResponse) {
 		String comparator=objRequest.getParameter("VALUE");
-		List<League> returnMessage = objLeagueService.fetchLeagues(objRequest.getParameter("SPORT_NAME"),comparator);
+		String returnMessage = objLeagueService.fetchLeagues(objRequest.getParameter("SPORT_NAME"),comparator);
 		
-		System.out.println(comparator);
-	    String jsonString = objListToJson.listToJson("League", returnMessage);
-		System.out.println(jsonString + "returning result " + comparator);
-		return jsonString;
+		//System.out.println(comparator);
+	
+		return returnMessage;
 	}
 	
 	
@@ -57,12 +57,13 @@ public class LeagueController {
 	@RequestMapping(value="/redirectLeague")
 	public String redirectLeague(HttpServletRequest objRequest, HttpServletResponse objResponse,ModelMap model) {
 		//for search functionality
-		List<League> returnMessage = objLeagueService.fetchLeagues(objRequest.getParameter("redirectValue"),"searchText");
+		String returnMessage = objLeagueService.fetchLeagues(objRequest.getParameter("redirectValue"),"redirectText");
+		
 		String userId=objRequest.getParameter("userId");
 		System.out.println(userId+"   from redirect");
 		model.put("userId", objRequest.getParameter("userId"));
 		model.put("leagueId",objRequest.getParameter("redirectValue"));
-		model.put("name",returnMessage.get(0).getLeagueName());
+		model.put("name",returnMessage);
 		return "LeagueInfoPage";
 	}
 	
@@ -72,11 +73,22 @@ public class LeagueController {
 	@ResponseBody
 	public String playerList(HttpServletRequest objRequest, HttpServletResponse objResponse) {
 		
-		List<Player> returnList = objLeagueService.playerList(objRequest.getParameter("LEAGUE_ID"));
+		List<Player> returnList = objLeagueService.playerList(objRequest.getParameter("leagueId"),objRequest.getParameter("userId"));
 		
 		String jsonString=objTeamListToJson.listToJson("Players", returnList);
 		System.out.println(objRequest.getParameter("leagueId") +"  Like League at service");
 		return jsonString;
+	}
+	
+	@RequestMapping(value="/userTeamList")
+	@ResponseBody
+	public String userTeamList(HttpServletRequest objRequest, HttpServletResponse objResponse) {
+		
+		
+		String returnMessage = objLeagueService.userTeamSet(objRequest.getParameter("leagueId"),objRequest.getParameter("userId"));
+		
+		
+		return returnMessage;
 	}
 	
 	@RequestMapping(value="/redirectToTeam")
@@ -84,6 +96,7 @@ public class LeagueController {
 		
 		model.put("leagueId", objRequest.getParameter("leagueId"));
 		model.put("userId", objRequest.getParameter("userId"));
+		model.put("flag", objRequest.getParameter("flag"));
 		return "TeamDraftPage";
 	}
 	
@@ -110,6 +123,18 @@ public class LeagueController {
 			return "true";
 		}
 		return "false";
+	}
+	
+	@RequestMapping(value="/fetchUserTeams")
+	@ResponseBody
+	public String fetchUserTeams(HttpServletRequest objRequest, HttpServletResponse objResponse) {
+		
+		
+		String leagueId = objRequest.getParameter("leagueId");
+		
+		
+			return objLeagueService.fetchUserTeams(leagueId);
+		
 	}
 	
 	@RequestMapping(value="/testPage")

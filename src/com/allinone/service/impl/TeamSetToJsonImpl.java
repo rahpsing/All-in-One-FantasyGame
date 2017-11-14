@@ -1,6 +1,8 @@
 package com.allinone.service.impl;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -8,21 +10,23 @@ import org.json.JSONObject;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.allinone.pojos.League;
-import com.allinone.service.api.ListToJsonTwoColumnsServiceAPI;
+import com.allinone.pojos.UserTeam;
+import com.allinone.service.api.TeamSetToJsonAPI;
+
 @Transactional
 @Service
-public class ListToJsonTwoColumnsServiceImpl implements ListToJsonTwoColumnsServiceAPI {
-
+public class TeamSetToJsonImpl implements TeamSetToJsonAPI {
+	
 	@Override
-	public String listToJson(String rootName, List<League> returnMessage) {
+	public String listToJson(String rootName, Set<UserTeam>returnSet) {
 		JSONArray allData = new JSONArray();
-		for(int i=0;i<returnMessage.size();i++) {
+		List<UserTeam> returnList= new ArrayList<UserTeam>(returnSet);
+		for(int i=0;i<returnList.size();i++) {
 			JSONObject eachData = new JSONObject();
             try {
-                eachData.put("League", returnMessage.get(i).getLeagueName());
-                eachData.put("id", returnMessage.get(i).getId());
-                eachData.put("numOfPlayers", returnMessage.get(i).getSetOfUserTeams().size());
+                eachData.put("userName", returnList.get(i).getUsert().getUserName());
+                eachData.put("id", returnList.get(i).getId());
+                eachData.put("points", returnList.get(i).getScore());
             } catch (JSONException e) {
                 e.printStackTrace();
             }
@@ -36,6 +40,4 @@ public class ListToJsonTwoColumnsServiceImpl implements ListToJsonTwoColumnsServ
 	    }
 	    return root.toString();	
 	}
-
-	
 }

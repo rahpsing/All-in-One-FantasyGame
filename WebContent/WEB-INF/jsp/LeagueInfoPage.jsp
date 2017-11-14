@@ -23,7 +23,7 @@ body {
 -->
 </style>
 </head>
-<body onload="javascript:checkJoinButton('${leagueId}','${userId}')">
+<body onload="javascript:onLoadCalls('${leagueId}','${userId}')">
 	<div class="colorstrip1">
 		<div class="logout">
 			<button id="logOut" class="waves-effect waves-light btn" style="background-color:#ffbf03;height:40px;font-size:1.5em;text-transform: lowercase;padding-top:2.5px;font-family:'Raleway', sans-serif;">logout</button>
@@ -44,10 +44,10 @@ body {
  				<div class="colorstrip22">
  					<div class="joinleague" id="joinLeagueDiv">
  						<b style="margin-left:10px;">players</b>
-						<button id="joinLeague" onclick="javascript:createTeam('${leagueId}','${userId}')" class="waves-effect waves-light btn" style="border-radius:10px;background-color:#021A42;height:50px;width: 200px; font-size:0.5em;text-transform: lowercase;margin-top:-7px;margin-left:425px;font-family:'Raleway', sans-serif;">join league</button>
+						<button id="joinLeague" onclick="javascript:createTeam('${leagueId}','${userId}','create')" class="waves-effect waves-light btn" style="border-radius:10px;background-color:#021A42;height:50px;width: 200px; font-size:0.5em;text-transform: lowercase;margin-top:-7px;margin-left:425px;font-family:'Raleway', sans-serif;">join league</button>
 					</div>
  				</div>
- 					<div class="playerlist">
+ 					<div id="populateUserList" class="playerlist">
  						<div class="content">
 							  <div class="card" style="height:80px;">
 							  	<div class="userimage">
@@ -60,81 +60,31 @@ body {
 							      
 							 </div>
 						</div>
-						<div class="content">
-							  <div class="card" style="height:80px;">
-							  	<div class="userimage">
-							     	<img class="circle responsive-img" src="${pageContext.request.contextPath}/resources/UIAssets/user1.jpeg"/>
-							 	</div>
-							      <div class="profileinfo">
-							        <p style="font-size:2em;font-family:'Raleway', sans-serif; color:#000000;">user 2 name</p>
-							        <p class="bio" style="font-size: 1.5em;margin-top:-20px;font-family:'Raleway', sans-serif; ">deatils 11  13</p>
-							      </div>
-							 </div>
-						</div>
-						<div class="content">
-							  <div class="card" style="height:80px;">
-							  	<div class="userimage">
-							     	<img class="circle responsive-img" src="${pageContext.request.contextPath}/resources/UIAssets/user1.jpeg"/>
-							 	</div>
-							      <div class="profileinfo">
-							        <p style="font-size:2em;font-family:'Raleway', sans-serif; color:#000000;">user 3 name</p>
-							        <p class="bio" style="font-size: 1.5em;margin-top:-20px;font-family:'Raleway', sans-serif; ">deatils 11  13</p>
-							      </div>
-							 </div>
-						</div>
-						<div class="content">
-							  <div class="card" style="height:80px;">
-							  	<div class="userimage">
-							     	<img class="circle responsive-img" src="${pageContext.request.contextPath}/resources/UIAssets/user1.jpeg"/>
-							 	</div>
-							      <div class="profileinfo">
-							        <p style="font-size:2em;font-family:'Raleway', sans-serif; color:#000000;">user 4 name</p>
-							        <p class="bio" style="font-size: 1.5em;margin-top:-20px;font-family:'Raleway', sans-serif; ">deatils 11  13</p>
-							      </div>
-							 </div>
-						</div>
-						<div class="content">
-							  <div class="card" style="height:80px;">
-							  	<div class="userimage">
-							     	<img class="circle responsive-img" src="${pageContext.request.contextPath}/resources/UIAssets/user1.jpeg"/>
-							 	</div>
-							      <div class="profileinfo">
-							        <p style="font-size:2em;font-family:'Raleway', sans-serif; color:#000000;">user 5 name</p>
-							        <p class="bio" style="font-size: 1.5em;margin-top:-20px;font-family:'Raleway', sans-serif; ">deatils 11  13</p>
-							      </div>
-							 </div>
-						</div>
-						<div class="content">
-							  <div class="card" style="height:80px;">
-							  	<div class="userimage">
-							     	<img class="circle responsive-img" src="${pageContext.request.contextPath}/resources/UIAssets/user1.jpeg"/>
-							 	</div>
-							      <div class="profileinfo">
-							        <p style="font-size:2em;font-family:'Raleway', sans-serif; color:#000000;">user 6 name</p>
-							        <p class="bio" style="font-size: 1.5em;margin-top:-20px;font-family:'Raleway', sans-serif; ">deatils 11  13</p>
-							      </div>
-							 </div>
-						</div>	
+						
+						
+							
  					</div>
  				
  			</div> 
- 			<div class="myteam">
+ 			<div id="myTeamId" class="myteam">
  				<div class="colorstrip23">
  					<b style="margin-left:10px;">my team</b>
  					<div class="editteam" id="editTeamDiv">
-						<button id="editTeam" class="waves-effect waves-light btn" style="background-color:#021A42;height:40px;font-size:0.4em;text-transform: lowercase;padding-bottom:10px;font-family:'Raleway', sans-serif;width:90px;positon:absolute;top:-50px;left:290px;border-radius:10px">edit</button>
+						<button id="editTeam" onclick="javascript:createTeam('${leagueId}','${userId}','edit')" class="waves-effect waves-light btn" style="background-color:#021A42;height:40px;font-size:0.4em;text-transform: lowercase;padding-bottom:10px;font-family:'Raleway', sans-serif;width:90px;positon:absolute;top:-50px;left:290px;border-radius:10px">edit</button>
 					</div>
  				</div>
- 				<div class="content1" style="margin-top:2px;">
-						<div class="card1" style="height:40px;">
+ 				<div id = "populateUserTeam" class="content1" style="margin-top:2px;">
+						  <!-- Changes must be done on line 154<div class="card1" style="height:40px;">
 							  	<div class="userimage1">
 							     	<img class="circle responsive-img" src="${pageContext.request.contextPath}/resources/UIAssets/user1.jpeg"/>
 							 	</div>
 							      <div class="profileinfo1">
-							        <p style="font-size:2em;font-family:'Raleway', sans-serif; color:#000000;margin-top:3px;">player 1</p>
+							        <p style="font-size:2em;font-family:'Raleway', sans-serif; color:#000000;margin-top:3px;">player 1</p>-->
 							        <!-- <p class="bio1" style="font-size: 1em;margin-top:-20px;font-family:'Raleway', sans-serif; ">deatils 11  13</p> -->
-							      </div>
-						</div>
+							      <!-- </div>
+						</div> -->
+						
+						
 					</div>
  			</div> 	
  			<div class="fixed-action-btn">
@@ -163,6 +113,53 @@ body {
 	
 	$('.carousel.carousel-slider').carousel({fullWidth: true});
 	
+function onLoadCalls(leagueId,userId){
+	checkJoinButton(leagueId,userId);
+	populateUserTeams(leagueId,userId);
+	
+}
+
+function populateUserTeams(leagueId,userId){
+	$.ajax({
+		url : '/All-In-One-FantasyGame/fetchUserTeams',
+	    type: 'post',
+	    data : {leagueId:leagueId},
+	    dataType : 'json',
+	    success: function(data){
+	    	//alert(data);
+	    	$('#populateUserList').empty();
+	    	console.log("done1");
+	    	console.log(data);	
+	    	$(data.userTeam).each(function(index,value){$('#populateUserList').append('<div class="content"><div class="card" style="height:80px;"><div class="userimage"><img class="circle responsive-img" src="${pageContext.request.contextPath}/resources/UIAssets/user1.jpeg"/></div><div class="profileinfo"><p style="font-size:2em;font-family:"Raleway", sans-serif; color:#000000;">'+value.userName+'</p><p class="bio" style="font-size: 1.5em;margin-top:-20px;font-family:"Raleway", sans-serif; ">points : '+value.points+'</p></div></div></div>');})
+	    	console.log("done2");
+	    	populateTeam(userId,leagueId);
+	    },
+	    error: function (jqXHR, textStatus, errorThrown)
+	    {
+	    	alert("something went wrong.Contact Admin");
+	    }
+	});
+}
+
+function populateTeam(userId,leagueId)
+{
+	$.ajax({
+		url : '/All-In-One-FantasyGame/userTeamList',
+	    type: 'post',
+	    data : {leagueId:leagueId,userId:userId},
+	    dataType : 'json',
+	    success: function(data){
+	    	console.log(data);
+	    	$('#populateUserTeam').empty();
+	    	$(data.usersTeam).each(function(index,value){$('#populateUserTeam').append('<div class="card1" style="height:40px;"><div class="userimage1"><img class="circle responsive-img" src="${pageContext.request.contextPath}/resources/UIAssets/user1.jpeg"/></div><div class="profileinfo1"><p style="font-size:2em;font-family:"Raleway", sans-serif; color:#000000;margin-top:3px;">'+value.player+'</p></div></div>');})
+
+	    },
+	    error: function (jqXHR, textStatus, errorThrown)
+	    {
+	    	alert("something went wrong.Contact Admin");
+	    }
+	});
+	}
 function checkJoinButton(leagueId,userId){
 	$.ajax({
 	    url : '/All-In-One-FantasyGame/checkLeagueMembership',
@@ -176,6 +173,10 @@ function checkJoinButton(leagueId,userId){
 	    	if(data == "true"){
 	    	$('#joinLeague').hide();
 	    	}
+	    	else
+	    		{
+	    		$('#myTeamId').hide();
+	    		}
 	    	
 	    },
 	    error: function (jqXHR, textStatus, errorThrown)
@@ -186,7 +187,7 @@ function checkJoinButton(leagueId,userId){
 }
 
 
-function createTeam(leagueId,userId){
+function createTeam(leagueId,userId,flag){
 	
 	var f = document.createElement("form");
 	f.setAttribute('method',"post");
@@ -202,6 +203,11 @@ function createTeam(leagueId,userId){
 	j.setAttribute('name',"userId");
 	j.setAttribute('value',userId);
 	f.appendChild(j);
+	var k = document.createElement("input");
+	k.setAttribute('type',"hidden");
+	k.setAttribute('name',"flag");
+	k.setAttribute('value',flag);
+	f.appendChild(k);
 	document.body.appendChild(f);
 	console.log(f);
 	f.submit();
