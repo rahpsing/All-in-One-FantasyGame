@@ -73,6 +73,17 @@ body {
 			</div>
 			<%-- <img src="${pageContext.request.contextPath}/resources/UIAssets/bannerdesign.png" class="bannerdesign"> --%>
  		</div>
+ 		<div class="fixed-action-btn toolbar" >
+		    <a class="btn-floating btn-large red" style="height:100px;width: 100px;bottom:50px;">
+		      <i class="large material-icons" style="position:absolute;top:20px;left:0px;">mode_edit</i>
+		    </a>
+		    <ul>
+		      <li class="waves-effect waves-light"><a href="#!"><i class="material-icons">insert_chart</i></a></li>
+		      <li class="waves-effect waves-light"><a href="#!"><i class="material-icons">format_quote</i></a></li>
+		      <li class="waves-effect waves-light"><a href="#!"><i class="material-icons">publish</i></a></li>
+		      <li class="waves-effect waves-light"><a href="#!"><i class="material-icons">attach_file</i></a></li>
+		    </ul>
+	  	</div>
  		<div class="teaminfo"> 
 	 		<section id="player-lists">
 				<div id="user-team" ondrop="dropPlayer(this, event)" ondragenter="return false" ondragover="return false">
