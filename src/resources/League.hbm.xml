@@ -33,6 +33,13 @@
             </key>
             <one-to-many class="com.allinone.pojos.Player" />
         </set>
+        
+        
+		<map name="mapSportConstraints" table="leagueConstraints" cascade="all">  
+			<key column="leagueId"></key>  
+			<index column="roleName" type="string"></index>  
+			<element column="roleCount" type="integer"></element>  
+		</map> 
      
        <set name="setOfUserTeams" table="USERTEAM" inverse="true" lazy="true">
             <key>

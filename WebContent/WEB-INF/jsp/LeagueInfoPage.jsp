@@ -88,8 +88,8 @@ body {
 					</div>
  			</div> 	
  			<div class="fixed-action-btn">
-    			<a class="btn-floating btn-large red">
-			      <i class="large material-icons">mode_edit</i>
+    			<a class="btn-floating btn-large red " style="height:100px;width: 100px;bottom:50px;">
+			      <i class="large material-icons" style="position:absolute;left:0px;background-color:#ffbf03;height:200px;padding-top:20px;">mode_edit</i>
 			    </a>
 			    <ul>
 			      <li><a class="btn-floating yellow darken-1" href="#"><i class="material-icons">format_quote</i></a><p style="color:#ffffff;position:absolute;top:0px;left:-100px;">edit league members</p></li>

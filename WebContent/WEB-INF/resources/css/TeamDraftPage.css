@@ -89,7 +89,9 @@ html,body {
 .teaminfo{
 	position: relative;
 	height: 1000px;
-	top:60px;
+	width: 1250px;
+	top:100px;
+	left:25%;
 	/* background-image: url(../UIAssets/bg_pitch.jpg); */
 	background-size:cover;
 }
@@ -459,13 +461,16 @@ h2 {
   border-radius: 5px;
   border: 1px solid #cacaca;
 }
+#player-roster{
+	display:none;
+}
 .player {
 	width: 300px;
 	padding: 3px 5px;
 	display: block;
 	margin: 0 auto 3px;
 	text-align: center;
-	border: 0px solid none;
+	border: 0 px solid none;
 	background: none;	
 	cursor: move;
   border-radius: 5px;
@@ -562,4 +567,12 @@ h2 {
 	top: 5px;
 	height: 30px;
 	width: 30px;
+}
+
+.editnamecss{
+	position: absolute;
+	top: 175px;
+	left: 200px;
+	width: 40%;
+	
 }

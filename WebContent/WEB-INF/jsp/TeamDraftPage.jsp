@@ -67,22 +67,42 @@ body {
 	<div id="mainDiv" class="maindiv">
 		<div class="colorstrip2">
 			<img src="${pageContext.request.contextPath}/resources/UIAssets/league1pic.png" class="userimage">
-			<div class="welcomemsg">
+			<div class="welcomemsg" id="teamName">
 			<b>team: </b>
 			<b class="name">${name}</b>
 			</div>
 			<%-- <img src="${pageContext.request.contextPath}/resources/UIAssets/bannerdesign.png" class="bannerdesign"> --%>
  		</div>
+ 		<div id="editNameModal" class="editnamecss" style="display:none;">
+			  	<form name="loginForm"  >
+				    <input type="text" class="teamname" id="teamName" name="teamname" style="color:#ffffff;font-size:2em;" placeholder="Update Team Name..."><br>
+				    <input class="waves-effect waves-light btn" style="background-color:#ffbf03;height:40px;width:30%;font-size:2em;text-transform: lowercase; top:-60px; left:500px;font-family:'Raleway', sans-serif;" type="button" value="Submit" onclick="javascript:validateLoginForm()"/>
+				</form>
+		</div>
+ 		<div class="fixed-action-btn toolbar" >
+		    <a class="btn-floating btn-large red" style="height:100px;width: 100px;bottom:50px;">
+		      <!-- <i class="large material-icons" style="position:absolute;left:0px;background-color:#ffbf03;height:200px;padding-top:20px;">mode_edit</i> -->
+		      <div style="position:absolute;top:-25px;left: -17.5px;background-color:#ffbf03;padding:50px;">
+		      	<b>edit</b>
+		      </div>
+		    </a>
+		    <ul>
+		      <li class="waves-effect waves-light"  style="background-color:#ffbf03;font-size:2.5em;"><a id="updateTeamNameButton">update team name</a></li>
+		      <li class="waves-effect waves-light"  style="background-color:#ffbf03;font-size:2.5em;"><a id="editTeamButton">edit team</a></li>
+		      <!-- <li class="waves-effect waves-light"  style="background-color:#ffbf03;"><a href="#!"><i class="material-icons">publish</i></a></li>
+		      <li class="waves-effect waves-light"  style="background-color:#ffbf03;"><a href="#!"><i class="material-icons">attach_file</i></a></li> -->
+		    </ul>
+	  	</div>
  		<div class="teaminfo"> 
 	 		<section id="player-lists">
 				<div id="user-team" ondrop="dropPlayer(this, event)" ondragenter="return false" ondragover="return false">
-			   <!-- <p>team</p> Line 280/259-->
+			   <p style="color:#ffbf03;height:40px;font-size:3em;text-transform: lowercase;margin-top:-5px;font-family:'Raleway', sans-serif;">team</p>
 			    <!--These are all the draggable peices-->
 			    		
 				</div>
 			
 				<div id="player-roster" ondrop="dropPlayer(this, event)" ondragenter="return false" ondragover="return false">
-			    <!-- <p>player roster</p> Line 280/259-->
+			   	<p style="color:#ffbf03;height:40px;font-size:3em;text-transform: lowercase;margin-top:-5px;font-family:'Raleway', sans-serif;">player roster</p>
 			    	<div draggable="true" class="player" id="player1" ondragstart="dragPlayer(this, event)">
 			    		<div class="content1" style="margin-top:2px;">
 							<div class="card1" style="height:40px;">
@@ -109,7 +129,7 @@ body {
 							</div>
 						</div>
 					</a> 
-					<a draggable="true" class="player" id="player3" ondragstart="dragPlayer(this, event)">
+					<a draggable="true" class="player" id="player3" ondragstart="dragPlayer(this, event)" style="overflow-y:auto;">
 						<div class="content1" style="margin-top:2px;">
 							<div class="card1" style="height:40px;">
 							  	<div class="userimage1">
@@ -162,12 +182,12 @@ body {
 						</div>
 					</a> 	
 				</div>
-				
-			
 				<div class="clear"></div>
 			</section>
 	 	</div>
- 		
+ 		<div style="position:absolute;display:none;top:500px; right:200px; width: 200px;" id="teamSaveButton">
+					<input class="waves-effect waves-light btn" style="background-color:#ffbf03;height:40px;width:100%;font-size:2em;text-transform: lowercase; font-family:'Raleway', sans-serif;" type="button" value="save" onclick=""/>
+		</div>
  		<!-- <div class="colorstrip10"></div>
 		<div class="colorstrip11"></div>
 		<div class="colorstrip12"></div> -->
@@ -187,49 +207,25 @@ body {
 	</script>
 	<script>
 
-	var editTeamButton = document.getElementById("editTeamButton");
+	var updateTeamNameButton = document.getElementById("updateTeamNameButton");
 	var teamNameEditForm = document.getElementById("teamNameEdit");
-	/*var teamInfoBanner = document.getElementById("teamInfoBanner");*/
+	var playerRoster = document.getElementById("player-roster");
+	var userTeam = document.getElementById("user-team");
+	var editNameModal = document.getElementById("editNameModal");
+	var teamName = document.getElementById("teamName");	
+	var teamSaveButton = document.getElementById("teamSaveButton");
 	
 	editTeamButton.onclick = function() {
-	    /* playerRosterOverlay.style.display = "none"; */
-	    editTeamButton.style.display = "none";
-	    saveTeamButton.style.display = "block";
-	    teamNameEditForm.style.display = "block";
-	    /*teamInfoBanner.style.display = "block";*/
-	    playerRoaster.style.display = "block";
-		position1table.sortable();
-		position1table.disableSelection();
-		
+		playerRoster.style.display = "block";
+		teamSaveButton.style.display = "block";
 	}
 	
-	function saveTeamButtonOnClick(leagueId,userId) {
-		/* playerRosterOverlay.style.display = "block"; */
-	    editTeamButton.style.display = "block";
-	    saveTeamButton.style.display = "none";
-	    teamNameEditForm.style.display = "none";
-	    /*teamInfoBanner.style.display = "none";*/
-	    /*playerRoaster.style.display = "none";*/
-	    console.log("Hi Prash  " + leagueId);
-	    console.log("Hi Prash " + userId);
-	    sendPlayerList(userId,leagueId);
+	updateTeamNameButton.onclick = function(){
+		editNameModal.style.display = "block";
+		teamName.style.display = "none";
 	}
 	
-	function allowDrop(ev) {
-	    ev.preventDefault();
-	}
 
-	function drag(ev) {
-	    ev.dataTransfer.setData("newPlayerName", ev.target.id);
-	}
-
-	function drop(ev) {
-	    ev.preventDefault();
-	    var data = ev.dataTransfer.getData("newPlayerName");
-	    ev.target.removeChild(ev.target.childNodes[0]);
-	    ev.target.appendChild(document.getElementById(data));
-	    ev.targert.draggable( 'disable' );
-	}
 	
 
 	
@@ -237,7 +233,7 @@ body {
 	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
   	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
   	<script type="text/javascript">
-  	$( function() {
+   	$( function() {
    	 $( "#sortable1, #sortable2" ).sortable({
    	   connectWith: ".connectedSortable"
    	 }).disableSelection();
@@ -287,7 +283,7 @@ body {
 		 		
 		    }
 		});
-	}
+	} 
 
 	function sendPlayerList(userId,leagueId){
 		var ind=0;	

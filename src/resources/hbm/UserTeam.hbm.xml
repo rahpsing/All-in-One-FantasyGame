@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Sep 30, 2017 10:23:32 PM by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="com.allinone.pojos.UserTeam" table="FANTASY_USER_TEAM">
+        <id name="id">
+            <column name="ID" />
+            <generator class="uuid" />
+        </id>
+        <property name="teamName" type="java.lang.String">
+            <column name="TEAMNAME" />
+        </property>
+        
+        <property name="numSubstitutesLeft">
+            <column name="SubstitutesLeft" />
+        </property>
+        
+        <property name="score">
+            <column name="score" />
+        </property>
+        
+       <many-to-one name="user" column="user" unique="false" not-null="true"/>
+
+        <set name="setOfPlayers" table="USERTEAM_PLAYERS">
+            <key>
+                <column name="USERTEAM_ID" />
+            </key>
+            <one-to-many class="com.allinone.pojos.Player" />
+        </set>
+        
+        
+        <many-to-one name="league" class="com.allinone.pojos.League" fetch="join">
+            <column name="LEAGUE_ID" not-null="true"/>
+        </many-to-one>
+
+    </class>
+</hibernate-mapping>
