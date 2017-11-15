@@ -23,6 +23,7 @@ import com.allinone.service.api.LeagueServiceAPI;
 import com.allinone.service.api.ListToJsonTwoColumnsServiceAPI;
 import com.allinone.service.api.SportUtilityServiceAPI;
 import com.allinone.service.api.TeamListToJsonServiceAPI;
+import com.allinone.service.api.UserTeamDraftServiceAPI;
 import com.google.gson.Gson;
 
 @Controller
@@ -34,6 +35,9 @@ public class LeagueController {
 	
 	@Autowired
 	LeagueServiceAPI objLeagueService;
+	
+	@Autowired
+	UserTeamDraftServiceAPI objTeamService;
 	
 	@Autowired
 	ListToJsonTwoColumnsServiceAPI objListToJson;
@@ -93,10 +97,19 @@ public class LeagueController {
 	
 	@RequestMapping(value="/redirectToTeam")
 	public String redirectToTeam(HttpServletRequest objRequest, HttpServletResponse objResponse,ModelMap model) {
-		
-		model.put("leagueId", objRequest.getParameter("leagueId"));
-		model.put("userId", objRequest.getParameter("userId"));
-		model.put("flag", objRequest.getParameter("flag"));
+		String flag=objRequest.getParameter("flag");
+		String leagueId=objRequest.getParameter("leagueId");
+		String userId=objRequest.getParameter("userId");
+		model.put("leagueId", leagueId);
+		model.put("userId", userId);
+		model.put("flag", flag);
+		if(flag.equals("create")) {
+			model.put("teamName", "Playing Eleven");
+		}
+		else if(flag.equals("edit")) {
+			String teamName=objTeamService.getUserTeamName(leagueId, userId);
+			model.put("teamName", teamName);
+		}
 		return "TeamDraftPage";
 	}
 	
@@ -142,7 +155,7 @@ public class LeagueController {
 	public ModelAndView testMyPage(HttpServletRequest objRequest, HttpServletResponse objResponse) {
 		
 	
-		return new ModelAndView("LeagueInfoPage");
+		return new ModelAndView("TeamDraftPage");
 	}
 }
 

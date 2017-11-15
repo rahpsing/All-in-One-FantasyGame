@@ -1,4 +1,4 @@
-package com.allinone.dao.impl;
+package com.allinone.service.impl;
 
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;

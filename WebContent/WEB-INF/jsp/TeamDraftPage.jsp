@@ -69,13 +69,13 @@ body {
 			<img src="${pageContext.request.contextPath}/resources/UIAssets/league1pic.png" class="userimage">
 			<div class="welcomemsg" id="teamName">
 			<b>team: </b>
-			<b class="name">${name}</b>
+			<b id="teamName1" class="name">${teamName}</b>
 			</div>
 			<%-- <img src="${pageContext.request.contextPath}/resources/UIAssets/bannerdesign.png" class="bannerdesign"> --%>
  		</div>
  		<div id="editNameModal" class="editnamecss" style="display:none;">
 			  	<form name="loginForm"  >
-				    <input type="text" class="teamname" id="teamName" name="teamname" style="color:#ffffff;font-size:2em;" placeholder="Update Team Name..."><br>
+				    <input type="text" class="teamname" id="teamName" name="teamname" style="color:#ffffff;font-size:2em;" placeholder="Update Team Name..." value='${teamName}'><br>
 				    <input class="waves-effect waves-light btn" style="background-color:#ffbf03;height:40px;width:30%;font-size:2em;text-transform: lowercase; top:-60px; left:500px;font-family:'Raleway', sans-serif;" type="button" value="Submit" onclick="javascript:validateLoginForm()"/>
 				</form>
 		</div>
@@ -186,7 +186,7 @@ body {
 			</section>
 	 	</div>
  		<div style="position:absolute;display:none;top:500px; right:200px; width: 200px;" id="teamSaveButton">
-					<input class="waves-effect waves-light btn" style="background-color:#ffbf03;height:40px;width:100%;font-size:2em;text-transform: lowercase; font-family:'Raleway', sans-serif;" type="button" value="save" onclick=""/>
+					<input onclick="javascript:sendPlayerList('${userId}','${leagueId}','${flag}')"class="waves-effect waves-light btn" style="background-color:#ffbf03;height:40px;width:100%;font-size:2em;text-transform: lowercase; font-family:'Raleway', sans-serif;" type="button" value="save" onclick=""/>
 		</div>
  		<!-- <div class="colorstrip10"></div>
 		<div class="colorstrip11"></div>
@@ -252,8 +252,8 @@ body {
 		    success: function(data){
 		    	console.log(data);
 		    	$('#user-team').empty();
-		    	$('#user-team').append('<p>Team</p>');
-		    	$(data.usersTeam).each(function(index,value){$('#user-team').append('<div draggable="true" class="player" id="player1" ondragstart="dragPlayer(this, event)"><div class="content1" style="margin-top:2px;"><div class="card1" style="height:40px;"><div class="userimage1"><img class="circle responsive-img" src="${pageContext.request.contextPath}/resources/UIAssets/user1.jpeg"/></div><div  class="profileinfo1"><p id='+value.id+' style="font-size:2em;font-family:"Raleway", sans-serif; color:#000000;margin-top:3px;">'+value.player+'</p></div></div></div></div>');})
+		    	$('#user-team').append('<p style="color:#ffbf03;height:40px;font-size:3em;text-transform: lowercase;margin-top:-5px;font-family:"Raleway", sans-serif;">team</p>');
+		    	$(data.usersTeam).each(function(index,value){$('#user-team').append('<a draggable="true" class="player" id='+value.id+'+123  ondragstart="dragPlayer(this, event)"><div class="content1" style="margin-top:2px;"><div class="card1" style="height:40px;"><div class="userimage1"><img class="circle responsive-img" src="${pageContext.request.contextPath}/resources/UIAssets/user1.jpeg"/></div><div  class="profileinfo1"><p id='+value.id+' style="font-size:2em;font-family:Raleway, sans-serif; color:#000000;margin-top:3px;">'+value.player+'</p></div></div></div></a>');})
 		    	//fetchPlayerList(leagueId,'player-roster',userId);
 		    },
 		    error: function (jqXHR, textStatus, errorThrown)
@@ -273,8 +273,8 @@ body {
 		    {	
 		    	console.log(data);
 		    	$('#'+iD).empty();
-		    	$('#'+iD).append('<p>player roster</p>');
-		    	$(data.Players).each(function(index,value){$('#'+iD).append('<div draggable="true" class="player" id="player1" ondragstart="dragPlayer(this, event)"><div class="content1" style="margin-top:2px;"><div class="card1" style="height:40px;"><div class="userimage1"><img class="circle responsive-img" src="${pageContext.request.contextPath}/resources/UIAssets/user1.jpeg"/></div><div  class="profileinfo1"><p id='+value.id+' style="font-size:2em;font-family:"Raleway", sans-serif; color:#000000;margin-top:3px;">'+value.player+'</p></div></div></div></div>');})
+		    	$('#'+iD).append('<p style="color:#ffbf03;height:40px;font-size:3em;text-transform: lowercase;margin-top:-5px;font-family:"Raleway", sans-serif;">player-roster</p>');
+		    	$(data.Players).each(function(index,value){$('#'+iD).append('<a draggable="true" class="player" id='+value.id+'+123 ondragstart="dragPlayer(this, event)"><div class="content1" style="margin-top:2px;"><div class="card1" style="height:40px;"><div class="userimage1"><img class="circle responsive-img" src="${pageContext.request.contextPath}/resources/UIAssets/user1.jpeg"/></div><div  class="profileinfo1"><p id='+value.id+' style="font-size:2em;font-family:Raleway, sans-serif; color:#000000;margin-top:3px;">'+value.player+'</p></div></div></div></a>');})
 		    	
 		    },
 		    error: function (jqXHR, textStatus, errorThrown)
@@ -285,29 +285,38 @@ body {
 		});
 	} 
 
-	function sendPlayerList(userId,leagueId){
+	function sendPlayerList(userId,leagueId,flag){
+		//var teamName=document.getElementById("teamName").value;
+		//var teamName=('#teamName').val();
+		//alert(teamName);
 		var ind=0;	
 		var listOfPlayerIds=[];
-		var listItems = $("#sortable1").find("li");
+		var listItems = $("#user-team").find("p");
+		listItems.splice(0,1);
 		for ( ind = 0; ind < listItems.length; ind++ ) {
 		    console.log($(listItems[ind]).attr('id'));
 		    listOfPlayerIds.push($(listItems[ind]).attr('id'));
 		}
 		console.log(listOfPlayerIds);
 		console.log(listOfPlayerIds.length);
+		
 		if(listOfPlayerIds.length < 11 ){
 			alert("Please select atleast 11 players")
 		}
 		else if(listOfPlayerIds.length > 11){
 			alert("Please select 11 players only")
 		}
+		else if(teamName==""){
+			alert("Please Enter Team name.")
+		}
 		else{
+			
 			listOfPlayerIds=JSON.stringify(listOfPlayerIds);
 			console.log("Thanks");
 			$.ajax({
 			    url : '/All-In-One-FantasyGame/createTeam',
 			    type: 'post',
-			    data : {userId:userId,leagueId:leagueId,listOfPlayerIds:listOfPlayerIds},
+			    data : {userId:userId,leagueId:leagueId,listOfPlayerIds:listOfPlayerIds,flag:flag},
 			    
 			    success: function(data)
 			   
@@ -327,6 +336,11 @@ body {
 					j.setAttribute('name',"userId");
 					j.setAttribute('value',userId);
 					f.appendChild(j);
+					var k = document.createElement("input");
+					k.setAttribute('type',"hidden");
+					k.setAttribute('name',"flag");
+					k.setAttribute('value',flag);
+					f.appendChild(k);
 					document.body.appendChild(f);
 					console.log(f);
 					f.submit();

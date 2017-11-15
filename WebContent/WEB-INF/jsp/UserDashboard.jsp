@@ -341,7 +341,7 @@ function sendFetchReq(sportName,iD,value,userId){console.log(userId);
 	    	//alert("Please" + sportName);
 	    	
 	    	var count = 0;
-	    	$(data.League).each(function(index,value){$('#'+iD).append('<div onclick=javascript:redirectLeague(\''+value.id+'\',\''+userId+'\') class="content"><div class="card" style="height:80px;"><div class="profileinfo"><p style="font-size:2em;font-family:"Raleway", sans-serif; ">'+value.League+'</p><p class="bio" style="font-size: 1.5em;margin-top:-20px;font-family:"Raleway", sans-serif; ">Users : '+value.numOfPlayers+'</p></div></div></div>');count++;})
+	    	$(data.League).each(function(index,value){$('#'+iD).append('<div onclick=javascript:redirectLeague(\''+value.id+'\',\''+userId+'\') class="content"><div class="card" style="height:80px;"><div class="profileinfo"><p style="font-size:2em;font-family:Raleway, sans-serif; ">'+value.League+'</p><p class="bio" style="font-size: 1.5em;margin-top:-20px;font-family:"Raleway", sans-serif; ">Users : '+value.numOfPlayers+'</p></div></div></div>');count++;})
 	 		$('#'+iD).append('<div  class="content"><div class="card" style="height:80px;"><div class="profileinfo"><p style="font-size:2em;font-family:"Raleway", sans-serif; ">create league</p><p class="bio" style="font-size: 1.5em;margin-top:-20px;font-family:"Raleway", sans-serif; "></div></div></div>');
 	    	document.getElementById(iD+"Number").innerHTML=count;
 	    	console.log(count);
@@ -351,7 +351,7 @@ function sendFetchReq(sportName,iD,value,userId){console.log(userId);
 	    {
 	    	$('#'+iD).empty();
 	    	document.getElementById(iD+"Number").innerHTML="0";
-	 		$('#'+iD).append('<div  class="content"><div class="card" style="height:80px;"><div class="profileinfo"><p style="font-size:2em;font-family:"Raleway", sans-serif; ">create league</p><p class="bio" style="font-size: 1.5em;margin-top:-20px;font-family:"Raleway", sans-serif; "></div></div></div>');
+	 		$('#'+iD).append('<div  class="content"><div class="card" style="height:80px;"><div class="profileinfo"><p style="font-size:2em;font-family:"Raleway", sans-serif; ">create league</p><p class="bio" style="font-size: 1.5em;margin-top:-20px;font-family:Raleway, sans-serif; "></div></div></div>');
 	    	
 	    }
 	});

@@ -12,11 +12,11 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.allinone.dao.impl.Base64;
 import com.allinone.dao.impl.DuoWebException;
-import com.allinone.dao.impl.Util;
 import com.allinone.pojos.User;
 import com.allinone.service.api.UserRegistrationServiceAPI;
+import com.allinone.service.impl.Base64;
+import com.allinone.service.impl.Util;
 
 @Controller
 public final class DuoWeb {
@@ -67,7 +67,7 @@ public final class DuoWeb {
 		String returnString;
 		try {
 			returnString = verifyResponse(iKeyP, sKeyP, aKeyP, signResponse);
-			if(!returnString.equalsIgnoreCase("invalid")) {
+			if(!returnString.equals(null)) {
 			User temp = objUserRegistrationService.pullUser(returnString);
 			if (temp!= null) {
 			model.put("name", temp.getUserName());

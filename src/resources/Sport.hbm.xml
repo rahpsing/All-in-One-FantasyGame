@@ -19,6 +19,16 @@
                 <column name="SETOFROLES" />
             </element>
         </set>
+        
+        <set name="setOfMetrics" table="SPORT_METRICS" inverse="false" lazy="true">
+            <key>
+                <column name="ID" />
+            </key>
+            <element type="java.lang.String">
+                <column name="SETOFMETRICS" />
+            </element>
+        </set>
+        
 <!--         <set name="setOfPlayers" table="PLAYER" lazy="true" fetch="select">
             <key>
                 <column name="ID" />
