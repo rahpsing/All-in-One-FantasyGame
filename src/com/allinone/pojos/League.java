@@ -4,8 +4,10 @@
 package com.allinone.pojos;
 
 import java.io.Serializable;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 /**
@@ -26,9 +28,11 @@ public class League implements Serializable {
 	private Sport sport;
 	private Set<Player> setOfPlayers = new HashSet<Player>();
 	private Set<Team> setOfTeams = new HashSet<Team>();
+	private Map<String,Integer> mapSportConstraints = new HashMap<String,Integer>();
 	private List<Game> listOfGames;
 	private Set<UserTeam> setOfUserTeams;
 	private boolean isSystemLeague;
+	private Map<String,Set<RuleHelper>> mapOfMetricsAndRules = new HashMap<String,Set<RuleHelper>>();
 	
 	
 	public String getId() {
@@ -97,6 +101,18 @@ public class League implements Serializable {
 	}
 	public void setNumSubstitutesAllowed(int numSubstitutesAllowed) {
 		this.numSubstitutesAllowed = numSubstitutesAllowed;
+	}
+	public Map<String,Integer> getMapSportConstraints() {
+		return mapSportConstraints;
+	}
+	public void setMapSportConstraints(Map<String,Integer> mapSportConstraints) {
+		this.mapSportConstraints = mapSportConstraints;
+	}
+	public Map<String,Set<RuleHelper>> getMapOfMetricsAndRules() {
+		return mapOfMetricsAndRules;
+	}
+	public void setMapOfMetricsAndRules(Map<String,Set<RuleHelper>> mapOfMetricsAndRules) {
+		this.mapOfMetricsAndRules = mapOfMetricsAndRules;
 	}
 	
 

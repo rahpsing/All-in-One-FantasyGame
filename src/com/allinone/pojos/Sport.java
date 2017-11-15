@@ -19,6 +19,7 @@ public class Sport implements Serializable {
 	private String id;
 	private String sportName;
 	private Set<String> setOfRoles;
+	private Set<String> setOfMetrics;
 	//private Set<Player> setOfPlayers;
 	//private Set<Team> setOfTeams;
 	private Set<League> setOfLeagues;
@@ -61,6 +62,12 @@ public class Sport implements Serializable {
 	@Override
 	public String toString() {
 		return "Sport [id=" + id + ", sportName=" + sportName + "]";
+	}
+	public Set<String> getSetOfMetrics() {
+		return setOfMetrics;
+	}
+	public void setSetOfMetrics(Set<String> setOfMetrics) {
+		this.setOfMetrics = setOfMetrics;
 	}
 	
 	
