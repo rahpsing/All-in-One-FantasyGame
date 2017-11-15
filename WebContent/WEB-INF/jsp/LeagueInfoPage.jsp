@@ -87,16 +87,30 @@ body {
 						
 					</div>
  			</div> 	
- 			<div class="fixed-action-btn">
-    			<a class="btn-floating btn-large red " style="height:100px;width: 100px;bottom:50px;">
-			      <i class="large material-icons" style="position:absolute;left:0px;background-color:#ffbf03;height:200px;padding-top:20px;">mode_edit</i>
+ 			<!-- <div class="fixed-action-btn">
+    			<a class="btn-floating btn-large red ">
+			      <i class="large material-icons" style="position:absolute;left:0px;background-color:#ffbf03;height:200px;">mode_edit</i>
 			    </a>
 			    <ul>
 			      <li><a class="btn-floating yellow darken-1" href="#"><i class="material-icons">format_quote</i></a><p style="color:#ffffff;position:absolute;top:0px;left:-100px;">edit league members</p></li>
 			      <li><a class="btn-floating green" href="#"><i class="material-icons">publish</i></a><p style="color:#ffffff;position:absolute;top:60px;left:-100px;">update weekly points</p></li>
 			      <li><a class="btn-floating blue" href="#"><i class="material-icons">attach_file</i></a><p style="color:#ffffff;position:absolute;top:110px;left:-98px;">edit your team</p></li>
 			    </ul>
-  			</div>		
+  			</div> -->	
+  			<div class="fixed-action-btn toolbar" >
+		    <a class="btn-floating btn-large red" style="height:100px;width: 100px;bottom:50px;">
+		      <!-- <i class="large material-icons" style="position:absolute;left:0px;background-color:#ffbf03;height:200px;padding-top:20px;">mode_edit</i> -->
+		      <div style="position:absolute;top:-25px;left: -17.5px;background-color:#ffbf03;padding:50px;">
+		      	<b>edit</b>
+		      </div>
+		    </a>
+		    <ul>
+		      <li class="waves-effect waves-light"  style="background-color:#ffbf03;font-size:2.5em;"><a href="#!">edit league members</a></li>
+		      <li class="waves-effect waves-light"  style="background-color:#ffbf03;font-size:2.5em;"><a href="#!">upload weekly points</a></li>
+		      <li class="waves-effect waves-light"  style="background-color:#ffbf03;font-size:2.5em;"><a href="#!">edit your team</a></li>
+		      <!-- <li class="waves-effect waves-light"  style="background-color:#ffbf03;"><a href="#!"><i class="material-icons">attach_file</i></a></li> -->
+		    </ul>
+	  	</div>	
 	 	</div>
  		<!-- <div class="colorstrip10"></div>
 		<div class="colorstrip11"></div>
