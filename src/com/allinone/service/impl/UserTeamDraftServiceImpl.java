@@ -30,7 +30,7 @@ public class UserTeamDraftServiceImpl implements UserTeamDraftServiceAPI {
 	UserTeamDraftDaoAPI objTeamDraftDaoImpl;
 
 	@Override
-	public boolean updateTeam(Set<String> setOfPlayerIds, String leagueId, String userId, String userTeamId,
+	public String updateTeam(Set<String> setOfPlayerIds, String leagueId, String userId, String userTeamId,
 			int numSubstitutesLeft, double score) {
 		// TODO Auto-generated method stub
 		/*Set<String> playerIds = new HashSet<String>();
@@ -62,14 +62,21 @@ public class UserTeamDraftServiceImpl implements UserTeamDraftServiceAPI {
 		if(!returnString.equals("false"))
 		{
 			
-			if(updateTeam(playerSet,leagueId,userId,returnString,50,(double) 50)) {
+			if(updateTeam(playerSet,leagueId,userId,returnString,50,(double) 50).equals("true")) {
 				return "true";
 			}
 			return "false";
 		}
 		return "false";
 	}
-
+	@Override
+	public String getUserTeamId(String leagueId,String userId) {
+		return objTeamDraftDaoImpl.getUserTeamId(leagueId, userId);
+	}
 	
+	@Override
+	public String getUserTeamName(String leagueId,String userId) {
+		return objTeamDraftDaoImpl.getUserTeamName(leagueId, userId);
+	}
 
 }

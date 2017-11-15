@@ -30,7 +30,7 @@ public class UserTeamDraftDaoImpl implements UserTeamDraftDaoAPI {
 
 	
 	@Override
-	public boolean updateTeam(Set<String> setOfPlayerIds, String leagueId, String userId, String userTeamId, int numSubstitutesLeft, double score) {
+	public String updateTeam(Set<String> setOfPlayerIds, String leagueId, String userId, String userTeamId, int numSubstitutesLeft, double score) {
 		// TODO Auto-generated method stub
 		
 		Session session = objSessionFactory.getCurrentSession();
@@ -60,11 +60,11 @@ public class UserTeamDraftDaoImpl implements UserTeamDraftDaoAPI {
 		
 		session.saveOrUpdate(userTeam);
 		
-		return true;
+		return "true";
 		}
 		catch (Exception e) {
 			System.out.println(e);
-			return false;
+			return "false";
 		}
 	}
 	
@@ -151,5 +151,48 @@ public class UserTeamDraftDaoImpl implements UserTeamDraftDaoAPI {
 			System.out.println(e);
 			return false;
 		}
+	}
+	@Override
+	public String getUserTeamId(String leagueId,String userId) {
+		try{
+		Session session = objSessionFactory.getCurrentSession();
+		Query q = session.createQuery("from UserTeam as e where e.league.id = :id and e.usert.userId = :userId");
+		q.setParameter("id", leagueId);
+		q.setParameter("userId", userId);
+		List<UserTeam> results = q.list();
+		for (UserTeam userTeam2 : results) {
+			System.out.println("Look Here");
+			System.out.println(userTeam2.getUsert().toString());
+			System.out.println(userTeam2.getLeague().getId());
+			return userTeam2.getId();
+		}
+		return "No user Team";
+	}
+		catch (Exception e) {
+			System.out.println(e);
+			return "No user Team";
+		}
+	}
+	
+	@Override
+	public String getUserTeamName(String leagueId,String userId) {
+		try{
+			Session session = objSessionFactory.getCurrentSession();
+			Query q = session.createQuery("from UserTeam as e where e.league.id = :id and e.usert.userId = :userId");
+			q.setParameter("id", leagueId);
+			q.setParameter("userId", userId);
+			List<UserTeam> results = q.list();
+			for (UserTeam userTeam2 : results) {
+				System.out.println("Look Here");
+				System.out.println(userTeam2.getUsert().toString());
+				System.out.println(userTeam2.getLeague().getId());
+				return userTeam2.getTeamName();
+			}
+			return "Playing Eleven";
+		}
+			catch (Exception e) {
+				System.out.println(e);
+				return "Playing Eleven";
+			}
 	}
 	}

@@ -43,17 +43,30 @@ public class TeamDraftController {
 		String userId = objRequest.getParameter("userId");
 		String leagueId = objRequest.getParameter("leagueId");
 		String listOfPlayerIds = objRequest.getParameter("listOfPlayerIds");
+		String flag = objRequest.getParameter("flag");
+		//String teamName = objRequest.getParameter("teamName");
 		List<String> listOfPlayerIdsList = new Gson().fromJson( listOfPlayerIds, List.class);
 		Set playerSet=new HashSet(listOfPlayerIdsList);
 		System.out.println("Done");
-		String returnString =objUserTeamDraftAPI.createTeam(playerSet,leagueId, userId);
+		String returnString;
+		//Boolean teamNameBoolean;
+		if(flag.equals("create")) {
+		returnString =objUserTeamDraftAPI.createTeam(playerSet,leagueId, userId);
+		//teamNameBoolean=objUserTeamDraftAPI.updateTeamName(leagueId, userId, returnString, teamName);
+		}
+		else {
+			
+			String userTeamId=objUserTeamDraftAPI.getUserTeamId(leagueId, userId);
+			
+			returnString=objUserTeamDraftAPI.updateTeam(playerSet, leagueId, userId, userTeamId, 50, 50);
+			//teamNameBoolean=objUserTeamDraftAPI.updateTeamName(leagueId, userId, returnString, teamName);
+		}
 		if(returnString.equals("false"))
 		{
 			return "false";
 		}
+		
 		return "true";
 	}
 	
-	
-
 }

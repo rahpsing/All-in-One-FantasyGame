@@ -130,7 +130,7 @@ function populateUserTeams(leagueId,userId){
 	    	$('#populateUserList').empty();
 	    	console.log("done1");
 	    	console.log(data);	
-	    	$(data.userTeam).each(function(index,value){$('#populateUserList').append('<div class="content"><div class="card" style="height:80px;"><div class="userimage"><img class="circle responsive-img" src="${pageContext.request.contextPath}/resources/UIAssets/user1.jpeg"/></div><div class="profileinfo"><p style="font-size:2em;font-family:"Raleway", sans-serif; color:#000000;">'+value.userName+'</p><p class="bio" style="font-size: 1.5em;margin-top:-20px;font-family:"Raleway", sans-serif; ">points : '+value.points+'</p></div></div></div>');})
+	    	$(data.userTeam).each(function(index,value){$('#populateUserList').append('<div class="content"><div class="card" style="height:80px;"><div class="userimage"><img class="circle responsive-img" src="${pageContext.request.contextPath}/resources/UIAssets/user1.jpeg"/></div><div class="profileinfo"><p style="font-size:2em;font-family:Raleway, sans-serif; color:#000000;">'+value.userName+'</p><p class="bio" style="font-size: 1.5em;margin-top:-20px;font-family:"Raleway", sans-serif; ">points : '+value.points+'</p></div></div></div>');})
 	    	console.log("done2");
 	    	populateTeam(userId,leagueId);
 	    },
@@ -151,7 +151,7 @@ function populateTeam(userId,leagueId)
 	    success: function(data){
 	    	console.log(data);
 	    	$('#populateUserTeam').empty();
-	    	$(data.usersTeam).each(function(index,value){$('#populateUserTeam').append('<div class="card1" style="height:40px;"><div class="userimage1"><img class="circle responsive-img" src="${pageContext.request.contextPath}/resources/UIAssets/user1.jpeg"/></div><div class="profileinfo1"><p style="font-size:2em;font-family:"Raleway", sans-serif; color:#000000;margin-top:3px;">'+value.player+'</p></div></div>');})
+	    	$(data.usersTeam).each(function(index,value){$('#populateUserTeam').append('<div class="card1" style="height:40px;"><div class="userimage1"><img class="circle responsive-img" src="${pageContext.request.contextPath}/resources/UIAssets/user1.jpeg"/></div><div class="profileinfo1"><p style="font-size:2em;font-family:Raleway, sans-serif; color:#000000;margin-top:3px;">'+value.player+'</p></div></div>');})
 
 	    },
 	    error: function (jqXHR, textStatus, errorThrown)
