@@ -1,4 +1,4 @@
-package com.allinone.dao.impl;
+package com.allinone.service.impl;
 
 public class Base64 {
 
