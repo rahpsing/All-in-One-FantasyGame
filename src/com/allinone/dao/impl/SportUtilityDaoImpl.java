@@ -4,8 +4,10 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.io.InputStream;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -13,7 +15,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import org.apache.poi.ss.format.CellDateFormatter;
 import org.apache.poi.ss.usermodel.Cell;
+
 import org.apache.poi.ss.usermodel.CellType;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
@@ -24,14 +28,16 @@ import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Criterion;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.stereotype.Repository;
 
 import com.allinone.dao.api.SportUtilityDaoAPI;
+import com.allinone.pojos.Game;
 import com.allinone.pojos.League;
 import com.allinone.pojos.Player;
 import com.allinone.pojos.Sport;
 import com.allinone.pojos.Team;
-import com.allinone.util.BulkUploadUtility;
+import com.allinone.util.GameStatus;
 
 @Repository
 public class SportUtilityDaoImpl implements SportUtilityDaoAPI {
@@ -39,7 +45,7 @@ public class SportUtilityDaoImpl implements SportUtilityDaoAPI {
 	@Autowired
 	private SessionFactory objSessionFactory;
 	
-	private static final String FILE_NAME = "C:\\Users\\prash\\gitbashnew2\\All-In-One-FantasyGame\\DataMappings.xlsx";
+	private static final String FILE_NAME = "C:\\Users\\rahul\\workspace\\All-In-One-FantasyGame\\DataMappings.xlsx";
 	
 	
 /*	public static void main(String[] args) {
@@ -169,14 +175,24 @@ public class SportUtilityDaoImpl implements SportUtilityDaoAPI {
 		            }
 		            
 		            
+		            //WORK ON SHEET3--RULES
+		      //      iterator = openSheetIterator(workbook,2);
+		      //      populateRules(iterator,league);
+		            
+		            
+		            //WORK ON SHEET4--GAMES
+		            iterator = openSheetIterator(workbook,3);
+		            populateGames(iterator,league,mapOfCodeAndTeam);
 		            
 		            workbook.close();
 		            
 		        } catch (FileNotFoundException e) {
 		            System.out.println(e);
+		        	e.printStackTrace();
 		            return false;
 		        } catch (IOException e) {
 		        	System.out.println(e);
+		        	e.printStackTrace();
 		        	return false;
 		        }
 		      
@@ -188,16 +204,103 @@ public class SportUtilityDaoImpl implements SportUtilityDaoAPI {
 		      for(Team team : listOfTeams) {
 		          	objSessionFactory.getCurrentSession().saveOrUpdate(team);
 		      }
+		  	objSessionFactory.getCurrentSession().saveOrUpdate(league);
 		} catch (Exception e) {
-			System.out.println(e);
+			e.printStackTrace();
 		}
 		
 		return true;
 	}
 	
+	private void populateGames(Iterator<Row> iterator, League league, Map<String,Team> mapOfCodeAndTeam) {
+		// TODO Auto-generated method stub
+		Row currentRow;
+		String scheduledStartTime = "";
+		List<Game> listOfGames = new ArrayList<Game>();
+		  while (iterator.hasNext()) {
+
+          	currentRow = iterator.next();
+            Iterator<Cell> cellIterator = currentRow.iterator();
+           	Game objGame = new Game();
+           	
+              while (cellIterator.hasNext()) {
+
+                  Cell currentCell = cellIterator.next();
+                  int columnIndex = currentCell.getColumnIndex();
+                  
+                  switch (columnIndex) {
+                  case 0:
+                	  Team homeTeam = mapOfCodeAndTeam.get((String)getCellValue(currentCell));
+                	  objGame.setHomeTeam(homeTeam);
+                      break;
+                  case 1:
+                	  Team awayTeam = mapOfCodeAndTeam.get((String)getCellValue(currentCell));
+                	  objGame.setAwayTeam(awayTeam);
+                  	break;
+                  	
+                  case 2:
+                	  CellDateFormatter df = new CellDateFormatter("MM/DD/YYYY");
+                	 String date =  df.format(currentCell.getDateCellValue());
+                	 System.out.println("*******************************************************");
+                	 System.out.println(date);
+                	//scheduledStartTime =  currentCell.getDateCellValue() + " ";
+                  	break;
+                  	
+                  case 3:
+                	 
+                	//  scheduledStartTime +=  currentCell.getDateCellValue();
+                	  break;
+                	  
+                  case 4:
+                	 
+                	  objGame.setVenue((String)getCellValue(currentCell));
+                	  break;
+                
+                  }
+              }
+              if(!scheduledStartTime.isEmpty()) {
+            	Date objDate = getSimplifiedDate(scheduledStartTime);
+            	objGame.setScheduledStartTime(objDate);
+              }
+              objGame.setGameStatus(GameStatus.TO_BE_PLAYED);
+              
+              listOfGames.add(objGame);
+
+          }
+		  
+	}
+
+	private Date getSimplifiedDate(String cellValue) {
+		// TODO Auto-generated method stub
+		DateFormat df = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss"); 
+		Date startDate;
+		try {
+		    startDate = df.parse(cellValue);
+		    String newDateString = df.format(startDate);
+		    System.out.println(newDateString);
+		} catch (Exception e) {
+		    e.printStackTrace();
+		}
+		return null;
+	}
+
+	private void populateRules(Iterator<Row> iterator, League league) {
+		// TODO Auto-generated method stub
+		
+	}
+
 	private void addTeams() {
 		
 		
+	}
+	
+	private Iterator<Row> openSheetIterator(Workbook objWorkbook, int sheetIndex) {
+		
+    	Sheet datatypeSheet = objWorkbook.getSheetAt(sheetIndex);
+    	Iterator<Row> iterator = datatypeSheet.iterator();
+    	iterator.next(); //skipping row header
+    	
+        return iterator;
 	}
 	
 	@Override
@@ -210,7 +313,14 @@ public class SportUtilityDaoImpl implements SportUtilityDaoAPI {
 			setOfRoles.add("Bowler");
 			setOfRoles.add("Batsman");
 			setOfRoles.add("WicketKeeper");
+			Set<String> setOfMetrics = new HashSet<String>();
+			setOfMetrics.add("RUNS");
+			setOfMetrics.add("WICKETS");
+			setOfMetrics.add("CATCHES");
+			setOfMetrics.add("STUMPINGS");
+			
 			sport.setSetOfRoles(setOfRoles);
+			sport.setSetOfMetrics(setOfMetrics);
 			
 			sport.setSetOfLeagues(new HashSet<League>());
 		//	sport.setSetOfPlayers(new HashSet<Player>());

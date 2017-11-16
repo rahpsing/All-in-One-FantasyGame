@@ -12,7 +12,7 @@ import com.allinone.util.GameStatus;
  * @author rahul
  *
  */
-public class Game implements Serializable {
+public class Game implements Serializable,Comparable<Game> {
 
 	/**
 	 * 
@@ -27,6 +27,7 @@ public class Game implements Serializable {
 	private Team awayTeam;
 	private GameStatus gameStatus;
 	private Team winningTeam;
+	private League league;
 	//----scorecard function/object to be decided upon-------//
 	public String getId() {
 		return id;
@@ -83,5 +84,21 @@ public class Game implements Serializable {
 				+ ", gameStatus=" + gameStatus + ", winningTeam=" + winningTeam + "]";
 	}
 	
+	@Override
+	public int compareTo(Game game) {
+		// TODO Auto-generated method stub
+		if(scheduledStartTime.equals(game.scheduledStartTime))  
+			return 0;  
+		else if(scheduledStartTime.after(game.scheduledStartTime))  
+			return 1;  
+		else  
+			return -1;  
+	}
+	public League getLeague() {
+		return league;
+	}
+	public void setLeague(League league) {
+		this.league = league;
+	}
    
 }
