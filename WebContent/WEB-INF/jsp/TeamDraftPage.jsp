@@ -101,7 +101,7 @@ body {
 			    		
 				</div>
 			
-				<div id="player-roster" ondrop="dropPlayer(this, event)" ondragenter="return false" ondragover="return false">
+				<div id="player-roster" ondrop="dropPlayer1(this, event)" ondragenter="return false" ondragover="return false">
 			   	<p style="color:#ffbf03;height:40px;font-size:3em;text-transform: lowercase;margin-top:-5px;font-family:'Raleway', sans-serif;">player roster</p>
 			    	<div draggable="true" class="player" id="player1" ondragstart="dragPlayer(this, event)">
 			    		<div class="content1" style="margin-top:2px;">
@@ -199,10 +199,70 @@ body {
 	/* New DRAG AND DROP SCRIPT , disregard all of my previous scripts. will edit it out later */
 	function dragPlayer(player, event) {
 	    event.dataTransfer.setData('Players', player.id);
+	    
 	}
 	function dropPlayer(target, event) {
 	    var player = event.dataTransfer.getData('Players');
-	    target.appendChild(document.getElementById(player)); 
+	   	target.appendChild(document.getElementById(player)); 
+		var ind=0;	
+		var listOfPlayerIds=[];
+		var listItems = $("#user-team").find("p");
+		listItems.splice(0,1);
+		for ( ind = 0; ind < listItems.length; ind++ ) {
+		   // console.log($(listItems[ind]).attr('id'));
+		    listOfPlayerIds.push($(listItems[ind]).attr('id'));
+		}
+		//console.log(listItems[0]);
+		//console.log(listOfPlayerIds);
+		//console.log(listOfPlayerIds.length+"Here ");
+		
+		
+		if(listOfPlayerIds.length > 11){
+			alert("Please select 11 players only")
+			
+			document.getElementById("player-roster").append(document.getElementById(player));
+			//target.removeChild(document.getElementById(player));
+			
+			
+		}
+		
+		else{
+			var ind=0;	
+			var rolesList=[];
+			var roles = $("#user-team").find("p");
+			roles.splice(0,1);
+			for ( ind = 0; ind < roles.length; ind++ ) {
+			  // console.log($(listItems[ind]).attr('id'));
+			    rolesList.push($(roles[ind]).attr('role'));
+			}
+			console.log(rolesList+"here 1");
+			//console.log(rolesList.length);
+			var counts = {};
+			for (var i = 0; i < rolesList.length; i++) {
+    			counts[rolesList[i]] = 1 + (counts[rolesList[i]] || 0);
+			}
+			console.log(counts);
+			for (var key in counts){
+				console.log(key);
+				if(!key.includes("eeper")){
+					if(counts[key]>4){
+						alert("Only four "+key);
+						document.getElementById("player-roster").append(document.getElementById(player));
+					}
+					
+				}
+				else{
+					if(counts[key]>2){
+						alert("Only two "+ key);
+						document.getElementById("player-roster").append(document.getElementById(player));
+					}
+				}
+			}
+		}
+	}
+	function dropPlayer1(target,event){
+		var player = event.dataTransfer.getData('Players');
+		target.appendChild(document.getElementById(player));
 	}
 	</script>
 	<script>
@@ -253,7 +313,7 @@ body {
 		    	console.log(data);
 		    	$('#user-team').empty();
 		    	$('#user-team').append('<p style="color:#ffbf03;height:40px;font-size:3em;text-transform: lowercase;margin-top:-5px;font-family:"Raleway", sans-serif;">team</p>');
-		    	$(data.usersTeam).each(function(index,value){$('#user-team').append('<a draggable="true" class="player" id='+value.id+'+123  ondragstart="dragPlayer(this, event)"><div class="content1" style="margin-top:2px;"><div class="card1" style="height:40px;"><div class="userimage1"><img class="circle responsive-img" src="${pageContext.request.contextPath}/resources/UIAssets/user1.jpeg"/></div><div  class="profileinfo1"><p id='+value.id+' style="font-size:2em;font-family:Raleway, sans-serif; color:#000000;margin-top:3px;">'+value.player+'</p></div></div></div></a>');})
+		    	$(data.usersTeam).each(function(index,value){$('#user-team').append('<a draggable="true" class="player" id='+value.id+'+123  ondragstart="dragPlayer(this, event)"><div class="content1" style="margin-top:2px;"><div class="card1" style="height:40px;"><div class="userimage1"><img class="circle responsive-img" src="${pageContext.request.contextPath}/resources/UIAssets/user1.jpeg"/></div><div  class="profileinfo1"><p id='+value.id+' role = '+value.role+'  style="font-size:2em;font-family:Raleway, sans-serif; color:#000000;margin-top:3px;">'+value.player+'</p></div></div></div></a>');})
 		    	//fetchPlayerList(leagueId,'player-roster',userId);
 		    },
 		    error: function (jqXHR, textStatus, errorThrown)
@@ -274,7 +334,7 @@ body {
 		    	console.log(data);
 		    	$('#'+iD).empty();
 		    	$('#'+iD).append('<p style="color:#ffbf03;height:40px;font-size:3em;text-transform: lowercase;margin-top:-5px;font-family:"Raleway", sans-serif;">player-roster</p>');
-		    	$(data.Players).each(function(index,value){$('#'+iD).append('<a draggable="true" class="player" id='+value.id+'+123 ondragstart="dragPlayer(this, event)"><div class="content1" style="margin-top:2px;"><div class="card1" style="height:40px;"><div class="userimage1"><img class="circle responsive-img" src="${pageContext.request.contextPath}/resources/UIAssets/user1.jpeg"/></div><div  class="profileinfo1"><p id='+value.id+' style="font-size:2em;font-family:Raleway, sans-serif; color:#000000;margin-top:3px;">'+value.player+'</p></div></div></div></a>');})
+		    	$(data.Players).each(function(index,value){$('#'+iD).append('<a draggable="true" class="player" id='+value.id+'+123 ondragstart="dragPlayer(this, event)"><div class="content1" style="margin-top:2px;"><div class="card1" style="height:40px;"><div class="userimage1"><img class="circle responsive-img" src="${pageContext.request.contextPath}/resources/UIAssets/user1.jpeg"/></div><div  class="profileinfo1"><p id='+value.id+' role = '+value.role+' style="font-size:2em;font-family:Raleway, sans-serif; color:#000000;margin-top:3px;">'+value.player+'</p></div></div></div></a>');})
 		    	
 		    },
 		    error: function (jqXHR, textStatus, errorThrown)
@@ -291,14 +351,22 @@ body {
 		//alert(teamName);
 		var ind=0;	
 		var listOfPlayerIds=[];
+		var rolesList=[];
 		var listItems = $("#user-team").find("p");
 		listItems.splice(0,1);
 		for ( ind = 0; ind < listItems.length; ind++ ) {
 		    console.log($(listItems[ind]).attr('id'));
 		    listOfPlayerIds.push($(listItems[ind]).attr('id'));
+		    rolesList.push($(listItems[ind]).attr('role'));
 		}
-		console.log(listOfPlayerIds);
-		console.log(listOfPlayerIds.length);
+		
+		//console.log(rolesList.length);
+		var counts = {};
+		for (var i = 0; i < rolesList.length; i++) {
+			counts[rolesList[i]] = 1 + (counts[rolesList[i]] || 0);
+		}
+		console.log(Object.keys(counts).length);
+		var countOfRoles=Object.keys(counts).length;
 		
 		if(listOfPlayerIds.length < 11 ){
 			alert("Please select atleast 11 players")
@@ -308,6 +376,9 @@ body {
 		}
 		else if(teamName==""){
 			alert("Please Enter Team name.")
+		}
+		else if(countOfRoles<4){
+			alert("Select atleast one of each type")
 		}
 		else{
 			
