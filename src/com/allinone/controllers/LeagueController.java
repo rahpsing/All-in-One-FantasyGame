@@ -155,7 +155,7 @@ public class LeagueController {
 	public ModelAndView testMyPage(HttpServletRequest objRequest, HttpServletResponse objResponse) {
 		
 	
-		return new ModelAndView("TeamDraftPage");
+		return new ModelAndView("UserDashboard");
 	}
 }
 

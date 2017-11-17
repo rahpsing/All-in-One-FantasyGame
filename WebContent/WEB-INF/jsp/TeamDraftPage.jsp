@@ -59,6 +59,7 @@ body {
 </style>
 </head>
 <body onload="javascript:onLoadCalls('${leagueId}','${userId}','${flag}')">
+
 	<div class="colorstrip1">
 		<div class="logout">
 			<button id="logOut" class="waves-effect waves-light btn" style="background-color:#ffbf03;height:40px;font-size:1.5em;text-transform: lowercase;padding-top:2.5px;font-family:'Raleway', sans-serif;">logout</button>
@@ -194,6 +195,9 @@ body {
 		<div class="colorstrip13">
 			<b class="companybanner">a group 4 project ©</b>
 		</div>
+	</div>
+	<div class="bgimage">
+		<img src="${pageContext.request.contextPath}/resources/UIAssets/bgimage.jpg">
 	</div>
 	<script>
 	/* New DRAG AND DROP SCRIPT , disregard all of my previous scripts. will edit it out later */
