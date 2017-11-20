@@ -52,9 +52,9 @@
  		<many-to-one name="leagueOwner" column="leagueOwner" unique="false" not-null="false"/>
  
         
-        <list name="listOfGames" inverse="false" table="GAME" lazy="true">
+        <list name="listOfGames" inverse="true" table="GAME" lazy="true">
             <key>
-                <column name="ID" />
+                <column name="LEAGUE_ID" />
             </key>
             <list-index></list-index>
             <one-to-many class="com.allinone.pojos.Game" />

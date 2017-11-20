@@ -119,7 +119,9 @@ body {
 			<b class="companybanner">a group 4 project ©</b>
 		</div>
 	</div>
-
+	<div class="bgimage">
+		<img src="${pageContext.request.contextPath}/resources/UIAssets/bgimage.jpg">
+	</div>
 	<script>
 	$(document).ready(function(){
 	      $('.carousel').carousel();

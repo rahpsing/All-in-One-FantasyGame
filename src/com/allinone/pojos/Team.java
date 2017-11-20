@@ -4,6 +4,7 @@
 package com.allinone.pojos;
 
 import java.io.Serializable;
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -21,6 +22,7 @@ public class Team implements Serializable {
 	private String teamName;
 	private String teamInitials;
 	private Set<Player> setOfPlayers;
+	//private List<Game> listOfGames;
 	private League league;
 	//private byte[] teamLogo;
 	
@@ -64,6 +66,12 @@ public class Team implements Serializable {
 	public void setTeamInitials(String teamInitials) {
 		this.teamInitials = teamInitials;
 	}
+/*	public List<Game> getListOfGames() {
+		return listOfGames;
+	}
+	public void setListOfGames(List<Game> listOfGames) {
+		this.listOfGames = listOfGames;
+	}*/
 
 	
 	

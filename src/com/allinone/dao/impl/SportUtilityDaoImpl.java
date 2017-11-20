@@ -79,6 +79,7 @@ public class SportUtilityDaoImpl implements SportUtilityDaoAPI {
 		try {
 	        List<Team> listOfTeams = new ArrayList<Team>();
 	        List<Player> listOfPlayers = new ArrayList<Player>();
+	        List<Game> listOfGames  = new ArrayList<Game>();
 	        
 	        Criteria objCriteria  = objSessionFactory.getCurrentSession().createCriteria(League.class);
 			Criterion usernameCriteria = Restrictions.eq("leagueName", "IPL");
@@ -182,7 +183,8 @@ public class SportUtilityDaoImpl implements SportUtilityDaoAPI {
 		            
 		            //WORK ON SHEET4--GAMES
 		            iterator = openSheetIterator(workbook,3);
-		            populateGames(iterator,league,mapOfCodeAndTeam);
+		            listOfGames = populateGames(iterator,league,mapOfCodeAndTeam);
+		            addConstraints(league);
 		            
 		            workbook.close();
 		            
@@ -204,6 +206,10 @@ public class SportUtilityDaoImpl implements SportUtilityDaoAPI {
 		      for(Team team : listOfTeams) {
 		          	objSessionFactory.getCurrentSession().saveOrUpdate(team);
 		      }
+		      
+		      for(Game game : listOfGames) {
+	          	    objSessionFactory.getCurrentSession().saveOrUpdate(game);
+	          }
 		  	objSessionFactory.getCurrentSession().saveOrUpdate(league);
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -212,19 +218,33 @@ public class SportUtilityDaoImpl implements SportUtilityDaoAPI {
 		return true;
 	}
 	
-	private void populateGames(Iterator<Row> iterator, League league, Map<String,Team> mapOfCodeAndTeam) {
+	private void addConstraints(League league) {
+		// TODO Auto-generated method stub
+		Map<String,Integer> mapSportConstraints = new HashMap<String,Integer>();
+		//Use this object to populate roles
+	/*	Sport objSport = league.getSport();
+		objSport.getSetOfRoles();*/
+		mapSportConstraints.put("WicketKeeper", 1);
+		mapSportConstraints.put("Bowler", 5);
+		mapSportConstraints.put("Batsman", 5);
+		
+		league.setMapSportConstraints(mapSportConstraints);
+		
+	}
+
+	private List<Game> populateGames(Iterator<Row> iterator, League league, Map<String,Team> mapOfCodeAndTeam) {
 		// TODO Auto-generated method stub
 		Row currentRow;
-		String scheduledStartTime = "";
+		
 		List<Game> listOfGames = new ArrayList<Game>();
 		  while (iterator.hasNext()) {
-
+		    String scheduledStartTime = "";
           	currentRow = iterator.next();
             Iterator<Cell> cellIterator = currentRow.iterator();
            	Game objGame = new Game();
+           	objGame.setLeague(league);
            	
               while (cellIterator.hasNext()) {
-
                   Cell currentCell = cellIterator.next();
                   int columnIndex = currentCell.getColumnIndex();
                   
@@ -243,12 +263,19 @@ public class SportUtilityDaoImpl implements SportUtilityDaoAPI {
                 	 String date =  df.format(currentCell.getDateCellValue());
                 	 System.out.println("*******************************************************");
                 	 System.out.println(date);
+                	 scheduledStartTime += date;
+                	// objGame.setScheduledStartTime(new Date(date));
                 	//scheduledStartTime =  currentCell.getDateCellValue() + " ";
                   	break;
                   	
                   case 3:
                 	 
                 	//  scheduledStartTime +=  currentCell.getDateCellValue();
+                	  CellDateFormatter df2 = new CellDateFormatter("HH:MM:SS");
+                	 String date2 =  df2.format(currentCell.getDateCellValue());
+                	 System.out.println("*******************************************************");
+                	 System.out.println(date2);
+                	 scheduledStartTime += " " + date2;
                 	  break;
                 	  
                   case 4:
@@ -268,12 +295,16 @@ public class SportUtilityDaoImpl implements SportUtilityDaoAPI {
 
           }
 		  
+		//  league.setListOfGames(listOfGames);
+		  
+	    return listOfGames;
+		  
 	}
 
 	private Date getSimplifiedDate(String cellValue) {
 		// TODO Auto-generated method stub
 		DateFormat df = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss"); 
-		Date startDate;
+		Date startDate = null;
 		try {
 		    startDate = df.parse(cellValue);
 		    String newDateString = df.format(startDate);
@@ -281,7 +312,7 @@ public class SportUtilityDaoImpl implements SportUtilityDaoAPI {
 		} catch (Exception e) {
 		    e.printStackTrace();
 		}
-		return null;
+		return startDate;
 	}
 
 	private void populateRules(Iterator<Row> iterator, League league) {

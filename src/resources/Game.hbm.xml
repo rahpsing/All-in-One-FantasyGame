@@ -17,12 +17,14 @@
         <property name="scheduledendTime" type="java.util.Date">
             <column name="SCHEDULEDENDTIME" />
         </property>
-        <one-to-one name="homeTeam" class="com.allinone.pojos.Team" fetch="join">
-           
-        </one-to-one>
-        <one-to-one name="awayTeam" class="com.allinone.pojos.Team" fetch="join">
-           
-        </one-to-one>
+
+        <many-to-one name="homeTeam" class="com.allinone.pojos.Team" fetch="join">
+            <column name="HOME_TEAM_ID" not-null="true"/>
+        </many-to-one>
+        
+        <many-to-one name="awayTeam" class="com.allinone.pojos.Team" fetch="join">
+            <column name="AWAY_TEAM_ID" not-null="true"/>
+        </many-to-one>
         
         <many-to-one name="league" class="com.allinone.pojos.League" fetch="join">
             <column name="LEAGUE_ID" not-null="true"/>

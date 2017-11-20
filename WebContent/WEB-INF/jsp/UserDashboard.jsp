@@ -185,6 +185,9 @@ div.panel button {
 			<b class="companybanner">a group 4 project ©</b>
 		</div>
 	</div>
+	<div class="bgimage">
+		<img src="${pageContext.request.contextPath}/resources/UIAssets/bgimage.jpg">
+	</div>
 	<div id="profilePageModal" class="profilepagemodalcss">
 		 	<!-- Modal content -->
 		  	<div id="profilePageContent" class="profilepage-modal-content">
