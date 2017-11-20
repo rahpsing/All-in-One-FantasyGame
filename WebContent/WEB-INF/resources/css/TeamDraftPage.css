@@ -100,7 +100,7 @@ html,body {
 	height: 1000px;
 	width: 1250px;
 	top:100px;
-	left:25%;
+	left:20%;
 	/* background-image: url(../UIAssets/bg_pitch.jpg); */
 	background-size:cover;
 }
@@ -470,9 +470,9 @@ h2 {
   border-radius: 5px;
   border: 1px solid #cacaca;
 }
-#player-roster{
+/* #player-roster{
 	display:none;
-}
+} */
 .player {
 	width: 300px;
 	padding: 3px 5px;
@@ -584,4 +584,21 @@ h2 {
 	left: 200px;
 	width: 40%;
 	
+}
+.search{
+  	margin-top: -20px;
+  	margin-left: 15px;	
+  	width: 350px;	
+  	text-align: center;
+  	display: inline;
+}
+.userteamoverlay{
+	position:absolute;
+	height:70%;
+	width: 400px;
+	background: rgba(2,26,66,0.4); 
+}
+.editbutton{
+	position: absolute;
+	top: 50%;
 }

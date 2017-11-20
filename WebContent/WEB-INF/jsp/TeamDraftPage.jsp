@@ -59,7 +59,6 @@ body {
 </style>
 </head>
 <body onload="javascript:onLoadCalls('${leagueId}','${userId}','${flag}')">
-
 	<div class="colorstrip1">
 		<div class="logout">
 			<button id="logOut" class="waves-effect waves-light btn" style="background-color:#ffbf03;height:40px;font-size:1.5em;text-transform: lowercase;padding-top:2.5px;font-family:'Raleway', sans-serif;">logout</button>
@@ -80,9 +79,9 @@ body {
 				    <input class="waves-effect waves-light btn" style="background-color:#ffbf03;height:40px;width:30%;font-size:2em;text-transform: lowercase; top:-60px; left:500px;font-family:'Raleway', sans-serif;" type="button" value="Submit" onclick="javascript:validateLoginForm()"/>
 				</form>
 		</div>
- 		<div class="fixed-action-btn toolbar" >
+ 		<!-- <div class="fixed-action-btn toolbar" >
 		    <a class="btn-floating btn-large red" style="height:100px;width: 100px;bottom:50px;">
-		      <!-- <i class="large material-icons" style="position:absolute;left:0px;background-color:#ffbf03;height:200px;padding-top:20px;">mode_edit</i> -->
+		      <i class="large material-icons" style="position:absolute;left:0px;background-color:#ffbf03;height:200px;padding-top:20px;">mode_edit</i>
 		      <div style="position:absolute;top:-25px;left: -17.5px;background-color:#ffbf03;padding:50px;">
 		      	<b>edit</b>
 		      </div>
@@ -90,11 +89,16 @@ body {
 		    <ul>
 		      <li class="waves-effect waves-light"  style="background-color:#ffbf03;font-size:2.5em;"><a id="updateTeamNameButton">update team name</a></li>
 		      <li class="waves-effect waves-light"  style="background-color:#ffbf03;font-size:2.5em;"><a id="editTeamButton">edit team</a></li>
-		      <!-- <li class="waves-effect waves-light"  style="background-color:#ffbf03;"><a href="#!"><i class="material-icons">publish</i></a></li>
-		      <li class="waves-effect waves-light"  style="background-color:#ffbf03;"><a href="#!"><i class="material-icons">attach_file</i></a></li> -->
+		      <li class="waves-effect waves-light"  style="background-color:#ffbf03;"><a href="#!"><i class="material-icons">publish</i></a></li>
+		      <li class="waves-effect waves-light"  style="background-color:#ffbf03;"><a href="#!"><i class="material-icons">attach_file</i></a></li>
 		    </ul>
-	  	</div>
+	  	</div> -->
  		<div class="teaminfo"> 
+ 			<div class="userteamoverlay">
+ 				<div class="editbutton">
+ 					<button id="editTeamButton" class="waves-effect waves-light btn" style="background-color:#ffbf03;height:40px;font-size:2em;text-transform: lowercase;padding-top:2.5px;font-family:'Raleway', sans-serif;">edit team</button>
+ 				</div>
+ 			</div>
 	 		<section id="player-lists">
 				<div id="user-team" ondrop="dropPlayer(this, event)" ondragenter="return false" ondragover="return false">
 			   <p style="color:#ffbf03;height:40px;font-size:3em;text-transform: lowercase;margin-top:-5px;font-family:'Raleway', sans-serif;">team</p>
@@ -102,8 +106,23 @@ body {
 			    		
 				</div>
 			
-				<div id="player-roster" ondrop="dropPlayer1(this, event)" ondragenter="return false" ondragover="return false">
-			   	<p style="color:#ffbf03;height:40px;font-size:3em;text-transform: lowercase;margin-top:-5px;font-family:'Raleway', sans-serif;">player roster</p>
+				<div id="player-roster" ondrop="dropPlayer1(this, event)" ondragenter="return false" ondragover="return false" style="float:right;">
+			   		<p style="color:#ffbf03;height:40px;font-size:3em;text-transform: lowercase;margin-top:-5px;font-family:'Raleway', sans-serif;">player roster</p>
+			   		<div class="search">
+			   			<div style="float:left;width:295px;">
+				      		<input id="searchText" autocomplete=off type="text" onkeyup="" name="search" class="searchTerm" style="width:100%;"placeholder="search for players">
+				   		</div>
+				   		<a class='dropdown-button btn' href='#' data-activates='dropdown1' style="color:#ffbf03;background-color:#ffffff;width:20%;margin-top:5px;margin-bottom:30px;"><i class="material-icons center">edit</i> </a>
+				    	<ul id='dropdown1' class='dropdown-content' style="text-align:center;margin-left:-20px;">
+						    <li><a href="#!" style="color:#ffbf03;">forward</a></li>
+						    <li class="divider"></li>
+						    <li><a href="#!" style="color:#ffbf03;">midfielder</a></li>
+						    <li class="divider"></li>
+						    <li><a href="#!" style="color:#ffbf03;">defender</a></li>
+						    <li class="divider"></li>
+						    <li><a href="#!" style="color:#ffbf03;">goalie</a></li>
+					 	 </ul>
+			    	</div>	
 			    	<div draggable="true" class="player" id="player1" ondragstart="dragPlayer(this, event)">
 			    		<div class="content1" style="margin-top:2px;">
 							<div class="card1" style="height:40px;">
