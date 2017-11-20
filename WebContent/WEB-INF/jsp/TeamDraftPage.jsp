@@ -94,9 +94,9 @@ body {
 		    </ul>
 	  	</div> -->
  		<div class="teaminfo"> 
- 			<div class="userteamoverlay">
+ 			<div class="userteamoverlay" id="userTeamOverlay">
  				<div class="editbutton">
- 					<button id="editTeamButton" class="waves-effect waves-light btn" style="background-color:#ffbf03;height:40px;font-size:2em;text-transform: lowercase;padding-top:2.5px;font-family:'Raleway', sans-serif;">edit team</button>
+ 					<button id="editTeamButton" class="waves-effect waves-light btn" style="background-color:#ffbf03;height:40px;font-size:2em;text-transform: lowercase;padding-top:2.5px;font-family:'Raleway', sans-serif;border-radius:5px;">edit team</button>
  				</div>
  			</div>
 	 		<section id="player-lists">
@@ -122,91 +122,93 @@ body {
 						    <li class="divider"></li>
 						    <li><a href="#!" style="color:#ffbf03;">goalie</a></li>
 					 	 </ul>
-			    	</div>	
-			    	<div draggable="true" class="player" id="player1" ondragstart="dragPlayer(this, event)">
-			    		<div class="content1" style="margin-top:2px;">
-							<div class="card1" style="height:40px;">
-							  	<div class="userimage1">
-							     	<img class="circle responsive-img" src="${pageContext.request.contextPath}/resources/UIAssets/user1.jpeg"/>
-							 	</div>
-							      <div class="profileinfo1">
-							        <p style="font-size:2em;font-family:'Raleway', sans-serif; color:#000000;margin-top:3px;">player 1</p>
-							        <!-- <p class="bio1" style="font-size: 1em;margin-top:-20px;font-family:'Raleway', sans-serif; ">deatils 11  13</p> -->
-							      </div>
-							</div>
-					</div>
 			    	</div>
-					<a draggable="true" class="player" id="player2" ondragstart="dragPlayer(this, event)">
-						<div class="content1" style="margin-top:2px;">
-							<div class="card1" style="height:40px;">
-							  	<div class="userimage1">
-							     	<img class="circle responsive-img" src="${pageContext.request.contextPath}/resources/UIAssets/user1.jpeg"/>
-							 	</div>
-							      <div class="profileinfo1">
-							        <p style="font-size:2em;font-family:'Raleway', sans-serif; color:#000000;margin-top:3px;">player 2</p>
-							        <!-- <p class="bio1" style="font-size: 1em;margin-top:-20px;font-family:'Raleway', sans-serif; ">deatils 11  13</p> -->
-							      </div>
-							</div>
+			    	<div id="rosterList">
+				    	<div draggable="true" class="player" id="player1" ondragstart="dragPlayer(this, event)">
+				    		<div class="content1" style="margin-top:2px;">
+								<div class="card1" style="height:40px;">
+								  	<div class="userimage1">
+								     	<img class="circle responsive-img" src="${pageContext.request.contextPath}/resources/UIAssets/user1.jpeg"/>
+								 	</div>
+								      <div class="profileinfo1">
+								        <p style="font-size:2em;font-family:'Raleway', sans-serif; color:#000000;margin-top:3px;">player 1</p>
+								        <!-- <p class="bio1" style="font-size: 1em;margin-top:-20px;font-family:'Raleway', sans-serif; ">deatils 11  13</p> -->
+								      </div>
+								</div>
 						</div>
-					</a> 
-					<a draggable="true" class="player" id="player3" ondragstart="dragPlayer(this, event)" style="overflow-y:auto;">
-						<div class="content1" style="margin-top:2px;">
-							<div class="card1" style="height:40px;">
-							  	<div class="userimage1">
-							     	<img class="circle responsive-img" src="${pageContext.request.contextPath}/resources/UIAssets/user1.jpeg"/>
-							 	</div>
-							      <div class="profileinfo1">
-							        <p style="font-size:2em;font-family:'Raleway', sans-serif; color:#000000;margin-top:3px;">player 3</p>
-							        <!-- <p class="bio1" style="font-size: 1em;margin-top:-20px;font-family:'Raleway', sans-serif; ">deatils 11  13</p> -->
-							      </div>
+				    	</div>
+						<a draggable="true" class="player" id="player2" ondragstart="dragPlayer(this, event)">
+							<div class="content1" style="margin-top:2px;">
+								<div class="card1" style="height:40px;">
+								  	<div class="userimage1">
+								     	<img class="circle responsive-img" src="${pageContext.request.contextPath}/resources/UIAssets/user1.jpeg"/>
+								 	</div>
+								      <div class="profileinfo1">
+								        <p style="font-size:2em;font-family:'Raleway', sans-serif; color:#000000;margin-top:3px;">player 2</p>
+								        <!-- <p class="bio1" style="font-size: 1em;margin-top:-20px;font-family:'Raleway', sans-serif; ">deatils 11  13</p> -->
+								      </div>
+								</div>
 							</div>
-						</div>
-					</a> 
-					<a draggable="true" class="player" id="player4" ondragstart="dragPlayer(this, event)">
-						<div class="content1" style="margin-top:2px;">
-							<div class="card1" style="height:40px;">
-							  	<div class="userimage1">
-							     	<img class="circle responsive-img" src="${pageContext.request.contextPath}/resources/UIAssets/user1.jpeg"/>
-							 	</div>
-							      <div class="profileinfo1">
-							        <p style="font-size:2em;font-family:'Raleway', sans-serif; color:#000000;margin-top:3px;">player 4</p>
-							        <!-- <p class="bio1" style="font-size: 1em;margin-top:-20px;font-family:'Raleway', sans-serif; ">deatils 11  13</p> -->
-							      </div>
+						</a> 
+						<a draggable="true" class="player" id="player3" ondragstart="dragPlayer(this, event)" style="overflow-y:auto;">
+							<div class="content1" style="margin-top:2px;">
+								<div class="card1" style="height:40px;">
+								  	<div class="userimage1">
+								     	<img class="circle responsive-img" src="${pageContext.request.contextPath}/resources/UIAssets/user1.jpeg"/>
+								 	</div>
+								      <div class="profileinfo1">
+								        <p style="font-size:2em;font-family:'Raleway', sans-serif; color:#000000;margin-top:3px;">player 3</p>
+								        <!-- <p class="bio1" style="font-size: 1em;margin-top:-20px;font-family:'Raleway', sans-serif; ">deatils 11  13</p> -->
+								      </div>
+								</div>
 							</div>
-						</div>
-					</a> 
-					<a draggable="true" class="player" id="player5" ondragstart="dragPlayer(this, event)">
-						<div class="content1" style="margin-top:2px;">
-							<div class="card1" style="height:40px;">
-							  	<div class="userimage1">
-							     	<img class="circle responsive-img" src="${pageContext.request.contextPath}/resources/UIAssets/user1.jpeg"/>
-							 	</div>
-							      <div class="profileinfo1">
-							        <p style="font-size:2em;font-family:'Raleway', sans-serif; color:#000000;margin-top:3px;">player 5</p>
-							        <!-- <p class="bio1" style="font-size: 1em;margin-top:-20px;font-family:'Raleway', sans-serif; ">deatils 11  13</p> -->
-							      </div>
+						</a> 
+						<a draggable="true" class="player" id="player4" ondragstart="dragPlayer(this, event)">
+							<div class="content1" style="margin-top:2px;">
+								<div class="card1" style="height:40px;">
+								  	<div class="userimage1">
+								     	<img class="circle responsive-img" src="${pageContext.request.contextPath}/resources/UIAssets/user1.jpeg"/>
+								 	</div>
+								      <div class="profileinfo1">
+								        <p style="font-size:2em;font-family:'Raleway', sans-serif; color:#000000;margin-top:3px;">player 4</p>
+								        <!-- <p class="bio1" style="font-size: 1em;margin-top:-20px;font-family:'Raleway', sans-serif; ">deatils 11  13</p> -->
+								      </div>
+								</div>
 							</div>
-						</div>
-					</a> 
-					<a draggable="true" class="player" id="player6" ondragstart="dragPlayer(this, event)">
-						<div class="content1" style="margin-top:2px;">
-							<div class="card1" style="height:40px;">
-							  	<div class="userimage1">
-							     	<img class="circle responsive-img" src="${pageContext.request.contextPath}/resources/UIAssets/user1.jpeg"/>
-							 	</div>
-							      <div class="profileinfo1">
-							        <p style="font-size:2em;font-family:'Raleway', sans-serif; color:#000000;margin-top:3px;">player 6</p>
-							        <!-- <p class="bio1" style="font-size: 1em;margin-top:-20px;font-family:'Raleway', sans-serif; ">deatils 11  13</p> -->
-							      </div>
+						</a> 
+						<a draggable="true" class="player" id="player5" ondragstart="dragPlayer(this, event)">
+							<div class="content1" style="margin-top:2px;">
+								<div class="card1" style="height:40px;">
+								  	<div class="userimage1">
+								     	<img class="circle responsive-img" src="${pageContext.request.contextPath}/resources/UIAssets/user1.jpeg"/>
+								 	</div>
+								      <div class="profileinfo1">
+								        <p style="font-size:2em;font-family:'Raleway', sans-serif; color:#000000;margin-top:3px;">player 5</p>
+								        <!-- <p class="bio1" style="font-size: 1em;margin-top:-20px;font-family:'Raleway', sans-serif; ">deatils 11  13</p> -->
+								      </div>
+								</div>
 							</div>
-						</div>
-					</a> 	
+						</a> 
+						<a draggable="true" class="player" id="player6" ondragstart="dragPlayer(this, event)">
+							<div class="content1" style="margin-top:2px;">
+								<div class="card1" style="height:40px;">
+								  	<div class="userimage1">
+								     	<img class="circle responsive-img" src="${pageContext.request.contextPath}/resources/UIAssets/user1.jpeg"/>
+								 	</div>
+								      <div class="profileinfo1">
+								        <p style="font-size:2em;font-family:'Raleway', sans-serif; color:#000000;margin-top:3px;">player 6</p>
+								        <!-- <p class="bio1" style="font-size: 1em;margin-top:-20px;font-family:'Raleway', sans-serif; ">deatils 11  13</p> -->
+								      </div>
+								</div>
+							</div>
+						</a> 	
+					</div>
 				</div>
 				<div class="clear"></div>
 			</section>
 	 	</div>
- 		<div style="position:absolute;display:none;top:500px; right:200px; width: 200px;" id="teamSaveButton">
-					<input onclick="javascript:sendPlayerList('${userId}','${leagueId}','${flag}')"class="waves-effect waves-light btn" style="background-color:#ffbf03;height:40px;width:100%;font-size:2em;text-transform: lowercase; font-family:'Raleway', sans-serif;" type="button" value="save" onclick=""/>
+ 		<div style="position:absolute;display:none;top:304px; left:615px; width: 115px;" id="teamSaveButton">
+					<input onclick="javascript:sendPlayerList('${userId}','${leagueId}','${flag}')"class="waves-effect waves-light btn" style="background-color:#ffbf03;height:40px;width:100%;font-size:2.5em;text-transform: lowercase; font-family:'Raleway', sans-serif;" type="button" value="save" onclick=""/>
 		</div>
  		<!-- <div class="colorstrip10"></div>
 		<div class="colorstrip11"></div>
@@ -297,9 +299,10 @@ body {
 	var editNameModal = document.getElementById("editNameModal");
 	var teamName = document.getElementById("teamName");	
 	var teamSaveButton = document.getElementById("teamSaveButton");
+	var userTeamOverlay = document.getElementById("userTeamOverlay");
 	
 	editTeamButton.onclick = function() {
-		playerRoster.style.display = "block";
+		userTeamOverlay.style.display = "none";
 		teamSaveButton.style.display = "block";
 	}
 	
