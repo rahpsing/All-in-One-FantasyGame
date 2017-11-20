@@ -220,7 +220,7 @@ body {
 		//console.log(listOfPlayerIds);
 		//console.log(listOfPlayerIds.length+"Here ");
 		
-		
+		searchPlayerList();
 		if(listOfPlayerIds.length > 11){
 			alert("Please select 11 players only")
 			
@@ -297,6 +297,7 @@ body {
 	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
   	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
   	<script type="text/javascript">
+  	var playerData="";
    	$( function() {
    	 $( "#sortable1, #sortable2" ).sortable({
    	   connectWith: ".connectedSortable"
@@ -304,7 +305,9 @@ body {
   	} );
 	function onLoadCalls(leagueId,userId,flag){
 		populateTeam(userId,leagueId);
+		
 		fetchPlayerList(leagueId,'player-roster',userId);
+		console.log(playerData+ " Look here123");
 	}
 	function populateTeam(userId,leagueId)
 	{
@@ -339,7 +342,8 @@ body {
 		    	$('#'+iD).empty();
 		    	$('#'+iD).append('<p style="color:#ffbf03;height:40px;font-size:3em;text-transform: lowercase;margin-top:-5px;font-family:"Raleway", sans-serif;">player-roster</p>');
 		    	$(data.Players).each(function(index,value){$('#'+iD).append('<a draggable="true" class="player" id='+value.id+'+123 ondragstart="dragPlayer(this, event)"><div class="content1" style="margin-top:2px;"><div class="card1" style="height:40px;"><div class="userimage1"><img class="circle responsive-img" src="${pageContext.request.contextPath}/resources/UIAssets/user1.jpeg"/></div><div  class="profileinfo1"><p id='+value.id+' role = '+value.role+' style="font-size:2em;font-family:Raleway, sans-serif; color:#000000;margin-top:3px;">'+value.player+'</p></div></div></div></a>');})
-		    	
+		    	//console.log(JSON.stringify(data));
+		    	passPlayerList(data);
 		    },
 		    error: function (jqXHR, textStatus, errorThrown)
 		    {
@@ -348,6 +352,12 @@ body {
 		    }
 		});
 	} 
+	
+	function passPlayerList(data){
+		
+		playerData=data;
+		//console.log(playerData);
+	}
 
 	function sendPlayerList(userId,leagueId,flag){
 		//var teamName=document.getElementById("teamName").value;
@@ -428,7 +438,17 @@ body {
 		}
 	}
 	
-	
+	function searchPlayerList(){
+		var searchText="";
+		var playerType="";
+		$(playerData.Players).each(
+				function(index,value){
+					if(value.role.includes(playerType)){
+						console.log(value.player+" great");
+					}
+				})
+		
+	}
 
 	/*	var f = document.createElement("form");
 		f.setAttribute('method',"post");
