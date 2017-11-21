@@ -596,10 +596,10 @@ h2 {
 	position:absolute;
 	height:70%;
 	width: 400px;
-	background: rgba(2,26,66,0.4); 
+	background: rgba(2,26,66,0); 
 }
 .editbutton{
 	position: absolute;
-	top: 50%;
-	left:32.5%;
+	top: 1%;
+	right:40px;
 }

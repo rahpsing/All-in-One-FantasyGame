@@ -26,6 +26,16 @@
         <many-to-one name="league" class="com.allinone.pojos.League" fetch="join">
             <column name="LEAGUE_ID" not-null="true"/>
         </many-to-one>
+        
+<!--          <list name="listOfGames" inverse="true" table="GAME" lazy="true">
+            <key>
+                <column name="TEAM_ID" />
+            </key>
+            <list-index></list-index>
+            <one-to-many class="com.allinone.pojos.Game" />
+        </list> -->
+        
+        
 <!--         <primitive-array name="teamLogo" table="TEAM">
             <key>
                 <column name="TEAM_ID" />
