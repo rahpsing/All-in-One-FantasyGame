@@ -112,7 +112,7 @@ body {
 			    		
 				</div>
 			
-				<div id="player-roster" ondrop="dropPlayer1(this, event)" ondragenter="return false" ondragover="return false" style="float:right;">
+				<div id="player-roster" ondrop="dropPlayer1(this, event)" ondragenter="return false" ondragover="return false" style="float:right;overflow-y:auto;">
 			   		<p style="color:#ffbf03;height:40px;font-size:3em;text-transform: lowercase;margin-top:-5px;font-family:'Raleway', sans-serif;">player roster</p>
 			   		<div class="search">
 			   			<div style="float:left;width:295px;">
@@ -157,7 +157,7 @@ body {
 								</div>
 							</div>
 						</a> 
-						<a draggable="true" class="player" id="player3" ondragstart="dragPlayer(this, event)" style="overflow-y:auto;">
+						<a draggable="true" class="player" id="player3" ondragstart="dragPlayer(this, event)">
 							<div class="content1" style="margin-top:2px;">
 								<div class="card1" style="height:40px;">
 								  	<div class="userimage1">

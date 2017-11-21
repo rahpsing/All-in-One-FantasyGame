@@ -23,8 +23,9 @@ body {
 -->
 </style>
 </head>
-<body onload="javascript:onLoadCalls('${leagueId}','${userId}')">
+<body onload="javascript:onLoadCalls('${leagueId}','${userId}')"> 
 	<div class="colorstrip1">
+		<button class="allinonebanner">all-in-one</button>
 		<div class="logout">
 			<button id="logOut" class="waves-effect waves-light btn" style="background-color:#ffbf03;height:40px;font-size:1.5em;text-transform: lowercase;padding-top:2.5px;font-family:'Raleway', sans-serif;">logout</button>
 		</div>
@@ -97,9 +98,9 @@ body {
 			      <li><a class="btn-floating blue" href="#"><i class="material-icons">attach_file</i></a><p style="color:#ffffff;position:absolute;top:110px;left:-98px;">edit your team</p></li>
 			    </ul>
   			</div> -->	
-  			<div class="fixed-action-btn toolbar" >
+  			<!-- <div class="fixed-action-btn toolbar" >
 		    <a class="btn-floating btn-large red" style="height:100px;width: 100px;bottom:50px;">
-		      <!-- <i class="large material-icons" style="position:absolute;left:0px;background-color:#ffbf03;height:200px;padding-top:20px;">mode_edit</i> -->
+		      <i class="large material-icons" style="position:absolute;left:0px;background-color:#ffbf03;height:200px;padding-top:20px;">mode_edit</i>
 		      <div style="position:absolute;top:-25px;left: -17.5px;background-color:#ffbf03;padding:50px;">
 		      	<b>edit</b>
 		      </div>
@@ -108,9 +109,9 @@ body {
 		      <li class="waves-effect waves-light"  style="background-color:#ffbf03;font-size:2.5em;"><a href="#!">edit league members</a></li>
 		      <li class="waves-effect waves-light"  style="background-color:#ffbf03;font-size:2.5em;"><a href="#!">upload weekly points</a></li>
 		      <li class="waves-effect waves-light"  style="background-color:#ffbf03;font-size:2.5em;"><a href="#!">edit your team</a></li>
-		      <!-- <li class="waves-effect waves-light"  style="background-color:#ffbf03;"><a href="#!"><i class="material-icons">attach_file</i></a></li> -->
+		      <li class="waves-effect waves-light"  style="background-color:#ffbf03;"><a href="#!"><i class="material-icons">attach_file</i></a></li>
 		    </ul>
-	  	</div>	
+	  	</div>	 -->
 	 	</div>
  		<!-- <div class="colorstrip10"></div>
 		<div class="colorstrip11"></div>
@@ -123,12 +124,6 @@ body {
 		<img src="${pageContext.request.contextPath}/resources/UIAssets/bgimage.jpg">
 	</div>
 	<script>
-	$(document).ready(function(){
-	      $('.carousel').carousel();
-	    });
-	
-	$('.carousel.carousel-slider').carousel({fullWidth: true});
-	
 function onLoadCalls(leagueId,userId){
 	checkJoinButton(leagueId,userId);
 	populateUserTeams(leagueId,userId);
