@@ -68,15 +68,20 @@ body {
 		<div class="colorstrip2">
 			<img src="${pageContext.request.contextPath}/resources/UIAssets/league1pic.png" class="userimage">
 			<div class="welcomemsg" id="teamName">
-			<b>team: </b>
-			<b id="teamName1" class="name">${teamName}</b>
+				<b>team: </b>
+				<b id="teamName1" class="name">${teamName}</b>
+				<a class="btn-floating btn-large waves-effect waves-light" id="updateTeamNameButton" style="height:30px;width:30px;margin-top:-25px;background:rgba(255,255,255,0.1);">
+					<div style="margin-top:-12px;">
+						<i class="material-icons">edit</i>
+					</div>
+				</a>
 			</div>
 			<%-- <img src="${pageContext.request.contextPath}/resources/UIAssets/bannerdesign.png" class="bannerdesign"> --%>
  		</div>
  		<div id="editNameModal" class="editnamecss" style="display:none;">
 			  	<form name="loginForm"  >
 				    <input type="text" class="teamname" id="teamName" name="teamname" style="color:#ffffff;font-size:2em;" placeholder="Update Team Name..." value='${teamName}'><br>
-				    <input class="waves-effect waves-light btn" style="background-color:#ffbf03;height:40px;width:30%;font-size:2em;text-transform: lowercase; top:-60px; left:500px;font-family:'Raleway', sans-serif;" type="button" value="Submit" onclick="javascript:validateLoginForm()"/>
+				    <input class="waves-effect waves-light btn" style="background-color:#ffbf03;height:40px;width:30%;font-size:2em;text-transform: lowercase; top:-60px; left:500px;padding-top:5px;font-family:'Raleway', sans-serif;" type="button" value="Submit" onclick="javascript:validateLoginForm()"/>
 				</form>
 		</div>
  		<!-- <div class="fixed-action-btn toolbar" >
@@ -112,6 +117,7 @@ body {
 			   			<div style="float:left;width:295px;">
 				      		<input id="searchText" autocomplete=off type="text" onkeyup="" name="search" class="searchTerm" style="width:100%;"placeholder="search for players">
 				   		</div>
+				   		<button class="clearsearch"><i class="material-icons center">close</i></button>
 				   		<a class='dropdown-button btn' href='#' data-activates='dropdown1' style="color:#ffbf03;background-color:#ffffff;width:20%;margin-top:5px;margin-bottom:30px;"><i class="material-icons center">edit</i> </a>
 				    	<ul id='dropdown1' class='dropdown-content' style="text-align:center;margin-left:-20px;">
 						    <li><a href="#!" style="color:#ffbf03;">forward</a></li>
