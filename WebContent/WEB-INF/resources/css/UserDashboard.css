@@ -463,10 +463,10 @@ html,body {
 	position: relative;
 	width: 100%;
 	top: 40px;
-	height: 300px;
+	height: 80px;
     border-style: none;
     border-color: #91053d;
-    background-color: #91053d;
+    background-color: #ffbf03;
     text-align: center;
 }
 .companybanner{
@@ -775,4 +775,18 @@ $maincolor: #009688;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+}
+
+.allinonebanner{
+	position: absolute; 
+	top: -3px;
+	left: 0px;
+	color: #ffbf03;
+	font-size:2em; 
+	font-family:'Raleway', sans-serif; 
+	padding-left:20px; 
+	width:200px; 
+	text-align:left;
+	border: none;
+	background: none;
 }
