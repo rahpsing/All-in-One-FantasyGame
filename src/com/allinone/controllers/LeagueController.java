@@ -1,8 +1,10 @@
 
 package com.allinone.controllers;
 
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 import javax.servlet.http.HttpServletRequest;
@@ -156,6 +158,15 @@ public class LeagueController {
 		
 	
 		return new ModelAndView("UserDashboard");
+	}
+	@RequestMapping(value="/rulesMap")
+	@ResponseBody
+	public String rulesMap(HttpServletRequest objRequest, HttpServletResponse objResponse){
+		
+		return objLeagueService.rulesMap(objRequest.getParameter("leagueId"));
+		/*for(String key:rulesMap.keySet()) {
+			System.out.println("Key value=  "+ key + "  Pair value =  "+ rulesMap.get(key));
+		}*/
 	}
 }
 

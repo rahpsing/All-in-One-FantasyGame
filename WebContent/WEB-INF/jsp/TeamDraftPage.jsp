@@ -252,7 +252,7 @@ body {
 			
 		}
 		
-		else{
+		/*else{
 			var ind=0;	
 			var rolesList=[];
 			var roles = $("#user-team").find("p");
@@ -284,7 +284,7 @@ body {
 					}
 				}
 			}
-		}
+		}*/
 	}
 	function dropPlayer1(target,event){
 		var player = event.dataTransfer.getData('Players');
@@ -331,7 +331,29 @@ body {
 		populateTeam(userId,leagueId);
 		
 		fetchPlayerList(leagueId,'rosterList',userId);
-		console.log(playerData+ " Look here123");
+		//fetchRules(leagueId);
+	}
+	var rulesMap="";
+	function fetchrules(leagueId){
+		$.ajax({
+			url : '/All-In-One-FantasyGame/rulesMap',
+		    type: 'post',
+		    data : {leagueId:leagueId},
+		    dataType : 'json',
+		    success: function(data){
+		    	console.log(data);
+		    	populateRules(data);
+		    },
+		    error: function (jqXHR, textStatus, errorThrown)
+		    {
+		    	populateRules("");
+				console.log("Error while fetching rules");
+		    }
+		});
+	}
+	function populateRules(rules){
+		rulesMap=rules;
+		console.log(rulesMap);
 	}
 	function populateTeam(userId,leagueId)
 	{
@@ -365,7 +387,8 @@ body {
 		    	console.log(data);
 		    	$('#'+iD).empty();
 		    	//$('#'+iD).append('<p style="color:#ffbf03;height:40px;font-size:3em;text-transform: lowercase;margin-top:-5px;font-family:"Raleway", sans-serif;">player-roster</p>');
-		    	$(data.Players).each(function(index,value){$('#'+iD).append('<a draggable="true" class="player" id='+value.id+'+123 ondragstart="dragPlayer(this, event)"><div class="content1" style="margin-top:2px;"><div class="card1" style="height:40px;"><div class="userimage1"><img class="circle responsive-img" src="${pageContext.request.contextPath}/resources/UIAssets/user1.jpeg"/></div><div  class="profileinfo1"><p id='+value.id+' role = '+value.role+' style="font-size:2em;font-family:Raleway, sans-serif; color:#000000;margin-top:3px;">'+value.player+'</p></div></div></div></a>');})
+		    	$(data.Players).each(function(index,value){$('#'+iD).append('<a draggable="true" class="player" id='+value.id+'+123'+
+		    			'ondragstart="dragPlayer(this, event)"><div class="content1" style="margin-top:2px;"><div class="card1" style="height:40px;"><div class="userimage1"><img class="circle responsive-img" src="${pageContext.request.contextPath}/resources/UIAssets/user1.jpeg"/></div><div  class="profileinfo1"><p id='+value.id+' role = '+value.role+' style="font-size:2em;font-family:Raleway, sans-serif; color:#000000;margin-top:3px;">'+value.player+'</p></div></div></div></a>');})
 		    	//console.log(JSON.stringify(data));
 		    	passPlayerList(data);
 		    },
@@ -407,6 +430,12 @@ body {
 					}
 				})
 	}
+	function rulesCheck(counts){
+		for (key in counts){
+			console.log(rulesMap.rulesMap.Batsman);
+		}
+		return true;
+	}
 	function sendPlayerList(userId,leagueId,flag){
 		//var teamName=document.getElementById("teamName").value;
 		//var teamName=('#teamName').val();
@@ -439,8 +468,8 @@ body {
 		else if(teamName==""){
 			alert("Please Enter Team name.")
 		}
-		else if(countOfRoles<4){
-			alert("Select atleast one of each type")
+		else if(rulesCheck(counts)){
+			
 		}
 		else{
 			

@@ -45,7 +45,7 @@ public class SportUtilityDaoImpl implements SportUtilityDaoAPI {
 	@Autowired
 	private SessionFactory objSessionFactory;
 	
-	private static final String FILE_NAME = "C:\\Users\\rahul\\workspace\\All-In-One-FantasyGame\\DataMappings.xlsx";
+	private static final String FILE_NAME = "C:\\Users\\prash\\gitbashnew2\\All-In-One-FantasyGame\\DataMappings.xlsx";
 	
 	
 /*	public static void main(String[] args) {

@@ -5,8 +5,13 @@ package com.allinone.service.impl;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
+import org.hibernate.Session;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -120,5 +125,23 @@ public class LeagueServiceImpl implements LeagueServiceAPI {
 		return jsonString;
 	}
 	
+	@Override
+	public String rulesMap(String leagueId){
+		
+		Map<String,Integer> rulesMap = objLeagueDao.rulesMap(leagueId);
+		System.out.println(rulesMap.size());
+		for(String key:rulesMap.keySet()) {
+			System.out.println("Key value=  "+ key + "  Pair value =  "+ rulesMap.get(key));
+		}
+		JSONObject returnString=new JSONObject(rulesMap);
+		JSONObject root= new JSONObject();
+		try {
+			root.put("rulesMap", returnString);
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			return "false";
+		}
+		return root.toString();
+	}
 
 }
