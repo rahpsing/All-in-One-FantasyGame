@@ -110,7 +110,7 @@ body {
 			   		<p style="color:#ffbf03;height:40px;font-size:3em;text-transform: lowercase;margin-top:-5px;font-family:'Raleway', sans-serif;">player roster</p>
 			   		<div class="search">
 			   			<div style="float:left;width:295px;">
-				      		<input id="searchText" autocomplete=off type="text" onkeyup="" name="search" class="searchTerm" style="width:100%;"placeholder="search for players">
+				      		<input id="searchText" autocomplete=off type="text" onkeyup="javascript:searchPlayerList()" name="search" class="searchTerm" style="width:100%;"placeholder="search for players">
 				   		</div>
 				   		<a class='dropdown-button btn' href='#' data-activates='dropdown1' style="color:#ffbf03;background-color:#ffffff;width:20%;margin-top:5px;margin-bottom:30px;"><i class="material-icons center">edit</i> </a>
 				    	<ul id='dropdown1' class='dropdown-content' style="text-align:center;margin-left:-20px;">
@@ -245,7 +245,7 @@ body {
 		if(listOfPlayerIds.length > 11){
 			alert("Please select 11 players only")
 			
-			document.getElementById("player-roster").append(document.getElementById(player));
+			document.getElementById("rosterList").append(document.getElementById(player));
 			//target.removeChild(document.getElementById(player));
 			
 			
@@ -260,26 +260,26 @@ body {
 			  // console.log($(listItems[ind]).attr('id'));
 			    rolesList.push($(roles[ind]).attr('role'));
 			}
-			console.log(rolesList+"here 1");
+			//console.log(rolesList+"here 1");
 			//console.log(rolesList.length);
 			var counts = {};
 			for (var i = 0; i < rolesList.length; i++) {
     			counts[rolesList[i]] = 1 + (counts[rolesList[i]] || 0);
 			}
-			console.log(counts);
+			//console.log(counts);
 			for (var key in counts){
 				console.log(key);
 				if(!key.includes("eeper")){
 					if(counts[key]>4){
 						alert("Only four "+key);
-						document.getElementById("player-roster").append(document.getElementById(player));
+						document.getElementById("rosterList").append(document.getElementById(player));
 					}
 					
 				}
 				else{
 					if(counts[key]>2){
 						alert("Only two "+ key);
-						document.getElementById("player-roster").append(document.getElementById(player));
+						document.getElementById("rosterList").append(document.getElementById(player));
 					}
 				}
 			}
@@ -328,7 +328,7 @@ body {
 	function onLoadCalls(leagueId,userId,flag){
 		populateTeam(userId,leagueId);
 		
-		fetchPlayerList(leagueId,'player-roster',userId);
+		fetchPlayerList(leagueId,'rosterList',userId);
 		console.log(playerData+ " Look here123");
 	}
 	function populateTeam(userId,leagueId)
@@ -343,12 +343,12 @@ body {
 		    	$('#user-team').empty();
 		    	$('#user-team').append('<p style="color:#ffbf03;height:40px;font-size:3em;text-transform: lowercase;margin-top:-5px;font-family:"Raleway", sans-serif;">team</p>');
 		    	$(data.usersTeam).each(function(index,value){$('#user-team').append('<a draggable="true" class="player" id='+value.id+'+123  ondragstart="dragPlayer(this, event)"><div class="content1" style="margin-top:2px;"><div class="card1" style="height:40px;"><div class="userimage1"><img class="circle responsive-img" src="${pageContext.request.contextPath}/resources/UIAssets/user1.jpeg"/></div><div  class="profileinfo1"><p id='+value.id+' role = '+value.role+'  style="font-size:2em;font-family:Raleway, sans-serif; color:#000000;margin-top:3px;">'+value.player+'</p></div></div></div></a>');})
-		    	//fetchPlayerList(leagueId,'player-roster',userId);
+		    	//fetchPlayerList(leagueId,'rosterList',userId);
 		    },
 		    error: function (jqXHR, textStatus, errorThrown)
 		    {
 		    	//alert("something went wrong.Contact Admin");
-		    	//fetchPlayerList(leagueId,'player-roster',userId);
+		    	//fetchPlayerList(leagueId,'rosterList',userId);
 		    }
 		});
 		}
@@ -362,7 +362,7 @@ body {
 		    {	
 		    	console.log(data);
 		    	$('#'+iD).empty();
-		    	$('#'+iD).append('<p style="color:#ffbf03;height:40px;font-size:3em;text-transform: lowercase;margin-top:-5px;font-family:"Raleway", sans-serif;">player-roster</p>');
+		    	//$('#'+iD).append('<p style="color:#ffbf03;height:40px;font-size:3em;text-transform: lowercase;margin-top:-5px;font-family:"Raleway", sans-serif;">player-roster</p>');
 		    	$(data.Players).each(function(index,value){$('#'+iD).append('<a draggable="true" class="player" id='+value.id+'+123 ondragstart="dragPlayer(this, event)"><div class="content1" style="margin-top:2px;"><div class="card1" style="height:40px;"><div class="userimage1"><img class="circle responsive-img" src="${pageContext.request.contextPath}/resources/UIAssets/user1.jpeg"/></div><div  class="profileinfo1"><p id='+value.id+' role = '+value.role+' style="font-size:2em;font-family:Raleway, sans-serif; color:#000000;margin-top:3px;">'+value.player+'</p></div></div></div></a>');})
 		    	//console.log(JSON.stringify(data));
 		    	passPlayerList(data);
@@ -378,9 +378,33 @@ body {
 	function passPlayerList(data){
 		
 		playerData=data;
+		populateRoles(data);
 		//console.log(playerData);
 	}
-
+	function populateRoles(data){
+		$(playerData.Players).each(
+				function(index,value){
+					$('#dropdown1').empty();
+					$('#dropdown1').append('<li><a onclick=javascript:playerTypeSearch("ALL") style="color:#ffbf03;">ALL</a></li><li class="divider"></li>');
+					var ind=0;	
+					var rolesList=[];
+					var roles = $("#rosterList").find("p");
+					//roles.splice(0,1);
+					for ( ind = 0; ind < roles.length; ind++ ) {
+					  // console.log($(listItems[ind]).attr('id'));
+					    rolesList.push($(roles[ind]).attr('role'));
+					}
+					//console.log(rolesList+"here 1");
+					//console.log(rolesList.length);
+					var counts = {};
+					for (var i = 0; i < rolesList.length; i++) {
+		    			counts[rolesList[i]] = 1 + (counts[rolesList[i]] || 0);
+					}
+					for (var key in counts){
+						$('#dropdown1').append('<li><a onclick=javascript:playerTypeSearch("'+key+'") style="color:#ffbf03;">'+key+'</a></li><li class="divider"></li>');
+					}
+				})
+	}
 	function sendPlayerList(userId,leagueId,flag){
 		//var teamName=document.getElementById("teamName").value;
 		//var teamName=('#teamName').val();
@@ -459,15 +483,23 @@ body {
 			});
 		}
 	}
-	
+	var playerType="";
+	function playerTypeSearch(type){
+		playerType=type;
+		if(playerType.includes("ALL")){
+			playerType="";
+		}
+		searchPlayerList();
+	}
 	function searchPlayerList(){
-		var searchText="";
-		var playerType="";
+		var searchText=document.getElementById("searchText").value;
+		$('#rosterList').empty();
 		$(playerData.Players).each(
 				function(index,value){
-					if(value.role.includes(playerType)){
-						console.log(value.player+" great");
-					}
+					if(value.role.toLowerCase().includes(playerType.toLowerCase())){
+					if(value.player.toLowerCase().includes(searchText.toLowerCase())){
+						$('#rosterList').append('<a draggable="true" class="player" id='+value.id+'+123 ondragstart="dragPlayer(this, event)"><div class="content1" style="margin-top:2px;"><div class="card1" style="height:40px;"><div class="userimage1"><img class="circle responsive-img" src="${pageContext.request.contextPath}/resources/UIAssets/user1.jpeg"/></div><div  class="profileinfo1"><p id='+value.id+' role = '+value.role+' style="font-size:2em;font-family:Raleway, sans-serif; color:#000000;margin-top:3px;">'+value.player+'</p></div></div></div></a>');
+					}}
 				})
 		
 	}
