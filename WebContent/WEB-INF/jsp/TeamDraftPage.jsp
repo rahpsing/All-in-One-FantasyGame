@@ -95,7 +95,7 @@ body {
 	  	</div> -->
  		<div class="teaminfo"> 
  			<div class="userteamoverlay" id="userTeamOverlay">
- 				<div class="editbutton">
+ 				<div class="editbutton" style="width:80px;">
  					<button id="editTeamButton" class="waves-effect waves-light btn" style="background-color:#ffbf03;height:40px;font-size:2em;text-transform: lowercase;padding-top:2.5px;font-family:'Raleway', sans-serif;border-radius:5px;">edit team</button>
  				</div>
  			</div>
@@ -207,8 +207,9 @@ body {
 				<div class="clear"></div>
 			</section>
 	 	</div>
- 		<div style="position:absolute;display:none;top:304px; left:615px; width: 115px;" id="teamSaveButton">
-					<input onclick="javascript:sendPlayerList('${userId}','${leagueId}','${flag}')"class="waves-effect waves-light btn" style="background-color:#ffbf03;height:40px;width:100%;font-size:2.5em;text-transform: lowercase; font-family:'Raleway', sans-serif;" type="button" value="save" onclick=""/>
+ 		<div style="position:absolute;display:none;top:307px; left:616px; width: 110px;" id="teamSaveButton">
+					<input id="saveButton" onclick="javascript:sendPlayerList('${userId}','${leagueId}','${flag}')"class="waves-effect waves-light btn" style="background-color:#ffbf03;height:40px;width:100%;font-size:2em;text-transform: lowercase; padding-top:5px;font-family:'Raleway', sans-serif;" type="button" value="save" onclick=""/>
+					
 		</div>
  		<!-- <div class="colorstrip10"></div>
 		<div class="colorstrip11"></div>
@@ -300,6 +301,7 @@ body {
 	var teamName = document.getElementById("teamName");	
 	var teamSaveButton = document.getElementById("teamSaveButton");
 	var userTeamOverlay = document.getElementById("userTeamOverlay");
+	var saveButton = document.getElementById("saveButton");
 	
 	editTeamButton.onclick = function() {
 		userTeamOverlay.style.display = "none";
