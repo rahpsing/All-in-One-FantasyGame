@@ -60,6 +60,7 @@ body {
 </head>
 <body onload="javascript:onLoadCalls('${leagueId}','${userId}','${flag}')">
 	<div class="colorstrip1">
+		<button class="allinonebanner">all-in-one</button>
 		<div class="logout">
 			<button id="logOut" class="waves-effect waves-light btn" style="background-color:#ffbf03;height:40px;font-size:1.5em;text-transform: lowercase;padding-top:2.5px;font-family:'Raleway', sans-serif;">logout</button>
 		</div>
