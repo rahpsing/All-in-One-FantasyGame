@@ -133,14 +133,26 @@ public class LeagueServiceImpl implements LeagueServiceAPI {
 		for(String key:rulesMap.keySet()) {
 			System.out.println("Key value=  "+ key + "  Pair value =  "+ rulesMap.get(key));
 		}
-		JSONObject returnString=new JSONObject(rulesMap);
+		JSONArray allData = new JSONArray();
+		for(String key:rulesMap.keySet()) {
+			JSONObject eachData = new JSONObject();
+            try {
+                eachData.put("role",key);
+                eachData.put("number", rulesMap.get(key));
+                
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+            allData.put(eachData);
+		}
 		JSONObject root= new JSONObject();
 		try {
-			root.put("rulesMap", returnString);
+			root.put("rulesMap", allData);
 		} catch (JSONException e) {
 			// TODO Auto-generated catch block
 			return "false";
 		}
+		System.out.println(allData.toString());
 		return root.toString();
 	}
 
