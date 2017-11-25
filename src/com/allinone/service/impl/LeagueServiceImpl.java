@@ -4,6 +4,7 @@
 package com.allinone.service.impl;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -18,6 +19,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.allinone.dao.api.LeagueDaoAPI;
 import com.allinone.dao.api.SportUtilityDaoAPI;
+import com.allinone.pojos.Game;
 import com.allinone.pojos.League;
 import com.allinone.pojos.Player;
 import com.allinone.pojos.UserTeam;
@@ -154,6 +156,17 @@ public class LeagueServiceImpl implements LeagueServiceAPI {
 		}
 		System.out.println(allData.toString());
 		return root.toString();
+	}
+	
+	@Override
+	public String gamesList(String leagueId){
+	
+		List<Game> listOfGames=objLeagueDao.gamesList(leagueId);
+		System.out.println(listOfGames.isEmpty());
+		//Collections.sort(listOfGames);
+		//System.out.println(listOfGames.toString());
+		return "yes";
+		
 	}
 
 }

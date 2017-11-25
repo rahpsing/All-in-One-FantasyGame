@@ -127,9 +127,12 @@ body {
 function onLoadCalls(leagueId,userId){
 	checkJoinButton(leagueId,userId);
 	populateUserTeams(leagueId,userId);
-	
+	fetchGames(leagueId);
 }
 
+function fetchGames(leagueId){
+	
+}
 function populateUserTeams(leagueId,userId){
 	$.ajax({
 		url : '/All-In-One-FantasyGame/fetchUserTeams',

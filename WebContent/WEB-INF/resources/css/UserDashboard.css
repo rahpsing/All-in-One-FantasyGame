@@ -187,8 +187,9 @@ html,body {
 	overflow-y: scroll;
 	max-height: 650px;
 	position: absolute;
-    background-color: #f9f9f9;
+    background-color: none;
     min-width: 800px;
+    width: 100%;
 }
 .scrollresult a {
     color: black;

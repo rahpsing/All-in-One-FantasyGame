@@ -16,6 +16,7 @@ import org.springframework.stereotype.Repository;
 
 import com.allinone.dao.api.LeagueDaoAPI;
 import com.allinone.dao.api.SportUtilityDaoAPI;
+import com.allinone.pojos.Game;
 import com.allinone.pojos.League;
 import com.allinone.pojos.Player;
 import com.allinone.pojos.Sport;
@@ -131,4 +132,11 @@ public class LeagueDaoImpl implements LeagueDaoAPI {
 		return objLeague.getMapSportConstraints();
 	}
 
+	@Override
+	public List<Game> gamesList(String leagueId){
+		Session session = objSessionFactory.getCurrentSession();
+		League objLeague = session.get(League.class, leagueId);
+		return objLeague.getListOfGames();
+		
+	}
 }

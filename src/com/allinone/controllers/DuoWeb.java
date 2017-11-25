@@ -109,7 +109,7 @@ public final class DuoWeb {
 		}
 			catch (InvalidKeyException | NoSuchAlgorithmException | DuoWebException | IOException e) {
 			// TODO Auto-generated catch block
-				return "Please contact System Administrator";
+				return "redirect:" + "http://localhost:8080/All-In-One-FantasyGame/LandingPage1.jsp";
 		}
 		
 	}

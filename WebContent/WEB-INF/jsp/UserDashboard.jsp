@@ -558,10 +558,8 @@ function sendFetchLikeReq(iD,value,userId){console.log(userId);
 	    {	
 	    	$('#'+iD).empty();
 	    	
-	    	//$(data.League).each(function(index,value){$('#'+iD).append('<a onclick=javascript:redirectLeague(\''+value.id+'\',\''+userId+'\') >'+value.League+'</a>');})
-	    	$(data.League).each(function(index,value){$('#'+iD).append('<div onclick=javascript:redirectLeague(\''+value.id+'\',\''+userId+'\') class="profileinfo"><p style="font-size:2em;font-family:"Raleway", sans-serif; ">'+value.League+'</p><p class="bio" style="font-size: 1.5em;margin-top:-20px;font-family:"Raleway", sans-serif; ">Users : '+value.numOfPlayers+'</p></div></div>');})
-	 		//$('#'+iD).append('<div  class="content"><div class="card" style="height:80px;"><div class="profileinfo"><p style="font-size:2em;font-family:"Raleway", sans-serif; ">create league</p><p class="bio" style="font-size: 1.5em;margin-top:-20px;font-family:"Raleway", sans-serif; "></div></div></div>');
-
+	    	//$(data.League).each(function(index,value){$('#'+iD).append('<div onclick=javascript:redirectLeague(\''+value.id+'\',\''+userId+'\') class="profileinfo"><p style="font-size:2em;font-family:"Raleway", sans-serif; ">'+value.League+'</p><p class="bio" style="font-size: 1.5em;margin-top:-20px;font-family:"Raleway", sans-serif; ">Users : '+value.numOfPlayers+'</p></div></div>');})
+			$(data.League).each(function(index,value){$('#'+iD).append('<div onclick=javascript:redirectLeague(\''+value.id+'\',\''+userId+'\') class="content" style="cursor:pointer;"><div class="card" style="height:80px;"><div class="profileinfo"><p style="font-size:2em;">'+value.League+'</p><p class="bio" style="font-size: 1.5em;margin-top:-20px;">Users : '+value.numOfPlayers+'</p></div></div></div>');})
 	    },
 	    error: function (jqXHR, textStatus, errorThrown)
 	    {

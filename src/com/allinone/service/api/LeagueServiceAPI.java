@@ -31,6 +31,10 @@ public interface LeagueServiceAPI {
 
 
 	public String rulesMap(String leagueId);
+
+
+
+	public String gamesList(String leagueId);
 	
 	
 }

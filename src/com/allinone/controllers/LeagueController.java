@@ -168,5 +168,14 @@ public class LeagueController {
 			System.out.println("Key value=  "+ key + "  Pair value =  "+ rulesMap.get(key));
 		}*/
 	}
+	@RequestMapping(value="/gamesList")
+	@ResponseBody
+	public String gamesList(HttpServletRequest objRequest, HttpServletResponse objResponse) {
+		
+		//String leagueId = objRequest.getParameter("leagueId");
+		return objLeagueService.gamesList("4028b8815fdc6aa5015fdc6acb510001");
+	
+		
+	}
 }
 
