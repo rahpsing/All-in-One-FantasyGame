@@ -133,7 +133,6 @@ public class LeagueDaoImpl implements LeagueDaoAPI {
 	}
 
 
-
 	@Override
 	public void saveUserScores(Map<String, Double> mapOfUserIdAndScore) {
 		// TODO Auto-generated method stub

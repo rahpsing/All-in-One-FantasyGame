@@ -194,6 +194,7 @@ public class LeagueServiceImpl implements LeagueServiceAPI {
 	public String gamesList(String leagueId){
 	
 		Set<Game> listOfGames=objLeagueDao.gamesList(leagueId);
+
 		System.out.println(listOfGames.isEmpty());
 		//Collections.sort(listOfGames);
 		//System.out.println(listOfGames.toString());
