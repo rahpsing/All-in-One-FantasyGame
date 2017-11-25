@@ -3,7 +3,9 @@ package com.allinone.controllers;
 
 import java.util.HashMap;
 import java.util.Iterator;
+
 import java.util.List;
+
 import java.util.Map;
 import java.util.Set;
 
@@ -159,6 +161,18 @@ public class LeagueController {
 	
 		return new ModelAndView("UserDashboard");
 	}
+
+	
+	@RequestMapping(value="/uploadGame")
+	@ResponseBody
+	public void uploadGame(HttpServletRequest objRequest, HttpServletResponse objResponse) {
+		
+		String leagueId = objRequest.getParameter("leagueId");
+		String gameId = objRequest.getParameter("gameId");
+		objLeagueService.getUserScoresForAGame(leagueId, gameId);
+		//return new ModelAndView("UserDashboard");
+	}
+
 	@RequestMapping(value="/rulesMap")
 	@ResponseBody
 	public String rulesMap(HttpServletRequest objRequest, HttpServletResponse objResponse){

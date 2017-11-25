@@ -17,7 +17,6 @@ import java.util.Set;
 
 import org.apache.poi.ss.format.CellDateFormatter;
 import org.apache.poi.ss.usermodel.Cell;
-
 import org.apache.poi.ss.usermodel.CellType;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
@@ -28,24 +27,34 @@ import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Criterion;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
-
 import org.springframework.stereotype.Repository;
 
+import com.allinone.constants.Operators;
+import com.allinone.constants.ScoringRatio;
 import com.allinone.dao.api.SportUtilityDaoAPI;
 import com.allinone.pojos.Game;
 import com.allinone.pojos.League;
 import com.allinone.pojos.Player;
+import com.allinone.pojos.RuleHelper;
 import com.allinone.pojos.Sport;
 import com.allinone.pojos.Team;
 import com.allinone.util.GameStatus;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 @Repository
 public class SportUtilityDaoImpl implements SportUtilityDaoAPI {
 
+	
 	@Autowired
 	private SessionFactory objSessionFactory;
 	
+
+	public static Map<String,Map<String,Set<RuleHelper>>> mapOfLeagueAndRules= new HashMap<String,Map<String,Set<RuleHelper>>>();
+	
 	private static final String FILE_NAME = "C:\\Users\\prash\\gitbashnew2\\All-In-One-FantasyGame\\DataMappings.xlsx";
+	private static final String GAME_FILE = "C:\\Users\\rahul\\workspace\\All-In-One-FantasyGame\\GameFile.xlsx";
+
 	
 	
 /*	public static void main(String[] args) {
@@ -58,6 +67,18 @@ public class SportUtilityDaoImpl implements SportUtilityDaoAPI {
 			e.printStackTrace();
 		}
 	}*/
+	
+	
+	public static Map<String, Map<String, Set<RuleHelper>>> getMapOfLeagueAndRules() {
+		return mapOfLeagueAndRules;
+	}
+
+	public static void setMapOfLeagueAndRules(Map<String, Map<String, Set<RuleHelper>>> mapOfLeagueAndRules) {
+		SportUtilityDaoImpl.mapOfLeagueAndRules = mapOfLeagueAndRules;
+	}
+
+	
+	
 	@Override
 	public String getsportID(String sportName) {
 		Criteria objCriteria  = objSessionFactory.getCurrentSession().createCriteria(Sport.class);
@@ -156,10 +177,14 @@ public class SportUtilityDaoImpl implements SportUtilityDaoAPI {
 		                    	break;
 		                    	
 		                    case 2:
-		                    	player.setPlayerRole((String)getCellValue(currentCell));
+		                    	player.setUniqueId((String)getCellValue(currentCell));
 		                    	break;
 		                    	
 		                    case 3:
+		                    	player.setPlayerRole((String)getCellValue(currentCell));
+		                    	break;
+		                    	
+		                    case 4:
 		                    	if(mapOfCodeAndTeam.containsKey((String)getCellValue(currentCell))) {
 		                    		player.setTeam(mapOfCodeAndTeam.get((String)getCellValue(currentCell)));
 		                    	} else {
@@ -176,9 +201,9 @@ public class SportUtilityDaoImpl implements SportUtilityDaoAPI {
 		            }
 		            
 		            
-		            //WORK ON SHEET3--RULES
-		      //      iterator = openSheetIterator(workbook,2);
-		      //      populateRules(iterator,league);
+		          //  WORK ON SHEET3--RULES
+		            iterator = openSheetIterator(workbook,2);
+		           populateRules(iterator,league);
 		            
 		            
 		            //WORK ON SHEET4--GAMES
@@ -317,7 +342,83 @@ public class SportUtilityDaoImpl implements SportUtilityDaoAPI {
 
 	private void populateRules(Iterator<Row> iterator, League league) {
 		// TODO Auto-generated method stub
+		Row currentRow;
+		Map<String,Set<RuleHelper>> mapOfMetricsAndRules = new HashMap<String,Set<RuleHelper>>();
 		
+  outer : while (iterator.hasNext()) {
+		    String metricName = "";
+          	currentRow = iterator.next();
+            Iterator<Cell> cellIterator = currentRow.iterator();
+         
+            RuleHelper objRuleHelper = new RuleHelper();
+            
+           	
+              while (cellIterator.hasNext()) {
+                  Cell currentCell = cellIterator.next();
+                  int columnIndex = currentCell.getColumnIndex();
+                  
+                  if(currentCell.getCellTypeEnum().equals(CellType.BLANK) || currentCell.getCellTypeEnum().equals(CellType._NONE))
+                	  break outer;
+                  
+                  switch (columnIndex) {
+                  case 0:
+                	  metricName = (String)getCellValue(currentCell);
+                      break;
+                      
+                  case 1:
+                	  objRuleHelper.setOperator(Operators.valueOf((String) getCellValue(currentCell)));
+                	  break;
+                  	
+                  case 2:
+                	  objRuleHelper.setScore((double) getCellValue(currentCell));
+                  	break;
+                  	
+                  case 3:
+                	  objRuleHelper.setPoints((double) getCellValue(currentCell));
+                	  break;
+                	  
+                  case 4:
+                	  objRuleHelper.setScoringRatio(ScoringRatio.valueOf((String) getCellValue(currentCell)));
+                	  break;
+                
+                  }
+              }
+              if(!metricName.isEmpty()) {
+            	if(mapOfMetricsAndRules.containsKey(metricName)) {
+            		mapOfMetricsAndRules.get(metricName).add(objRuleHelper);
+            	} else {
+            		Set<RuleHelper> setRuleHelper = new HashSet<RuleHelper>();
+            		setRuleHelper.add(objRuleHelper);
+            		mapOfMetricsAndRules.put(metricName, setRuleHelper);
+            	}
+              }
+
+
+          }
+		  
+		  league.setMapOfMetricsAndRules(mapOfMetricsAndRules);
+		  mapOfLeagueAndRules.put(league.getId(), mapOfMetricsAndRules);
+		  
+		  ObjectMapper mapper = new ObjectMapper();
+	        mapper.enableDefaultTyping(ObjectMapper.DefaultTyping.NON_FINAL);
+	        String json;
+			try {
+				json = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(mapOfMetricsAndRules);
+				System.out.println("*******************************************************************************************");
+				 System.out.println(json);
+				 Map<String,Set<RuleHelper>> readValue = mapper.readValue(json, Map.class);
+				 System.out.println(readValue);
+			} catch (JsonProcessingException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+
+	       
+
+	       // MyClass readValue = mapper.readValue(json, MyClass.class);
 	}
 
 	private void addTeams() {
@@ -453,6 +554,205 @@ public class SportUtilityDaoImpl implements SportUtilityDaoAPI {
 		 
 		    return null;
 		}
+
+	@Override
+	public Map<String, Map<String, Double>> readGameScores(Game objGame) {
+		// TODO Auto-generated method stub
+		Map<String,Map<String, Double>> mapOfPlayerAndRoleScores = new HashMap<String,Map<String, Double>>();
+		
+	      try {
+	    		
+	            FileInputStream excelFile = new FileInputStream(new File(GAME_FILE));
+	            Workbook objWorkbook = new XSSFWorkbook(excelFile);
+	            Sheet datatypeSheet;
+	            Iterator<Row> iterator;
+	            Row currentRow;
+	            //assuming sheet1 is home team
+	            Team homeTeam = objGame.getHomeTeam();
+	            Team awayTeam = objGame.getAwayTeam();
+	          
+	            //home team scores
+	            datatypeSheet = objWorkbook.getSheetAt(0);
+	        	iterator      = datatypeSheet.iterator();
+	        	mapOfPlayerAndRoleScores = getSheetScores(iterator,homeTeam);
+	         	            
+	        	// away team scores
+	        	 datatypeSheet = objWorkbook.getSheetAt(1);
+		         iterator      = datatypeSheet.iterator();
+		         mapOfPlayerAndRoleScores.putAll(getSheetScores(iterator,awayTeam));
+	            
+	        /*  //  WORK ON SHEET3--RULES
+	            iterator = openSheetIterator(workbook,2);
+	           populateRules(iterator,league);
+	            
+	            
+	            //WORK ON SHEET4--GAMES
+	            iterator = openSheetIterator(workbook,3);
+	            listOfGames = populateGames(iterator,league,mapOfCodeAndTeam);
+	            addConstraints(league);*/
+	            
+		         objWorkbook.close();
+	            
+	        } catch (FileNotFoundException e) {
+	            System.out.println(e);
+	        	e.printStackTrace();
+	        } catch (IOException e) {
+	        	System.out.println(e);
+	        	e.printStackTrace();
+	        }
+	      
+	      return mapOfPlayerAndRoleScores;
+		
+		
+		
+	}
+
+	private Map<String,Map<String, Double>> getSheetScores(Iterator<Row> iterator, Team objTeam) {
+		// TODO Auto-generated method stub
+		
+		Set<Player> setOfPlayers = objTeam.getSetOfPlayers();
+		Map<String,Map<String, Double>> mapOfPlayerAndRoleScores = new HashMap<String,Map<String, Double>>();
+		Map<String,String> mapOfUniqueNamesAndPlayerIds = new HashMap<String,String>();
+		mapOfUniqueNamesAndPlayerIds = getPlayers(setOfPlayers);
+		
+		//populate metrics from excel
+		Map<Integer,String> mapColumnIndexToMetric = fetchMetricsByColumnHeader(iterator);
+		
+		
+		   while (iterator.hasNext()) {
+
+           	Row currentRow = iterator.next();
+               Iterator<Cell> cellIterator = currentRow.iterator();
+               String playerUniqueId = "";
+               Map<String,Double> mapScores = new HashMap<String,Double>();
+              
+               while (cellIterator.hasNext()) {
+
+                   Cell currentCell = cellIterator.next();
+                   int columnIndex = currentCell.getColumnIndex();
+                   
+                   switch (columnIndex) {
+                   case 2:
+                   
+                	   playerUniqueId = (String)getCellValue(currentCell);
+                	   if(mapOfUniqueNamesAndPlayerIds.containsKey(playerUniqueId))
+                		   mapOfPlayerAndRoleScores.put(mapOfUniqueNamesAndPlayerIds.get(playerUniqueId), mapScores);
+                	   
+                       break;
+                       
+                   case 3:
+                	   Double metric1 = (Double)getCellValue(currentCell);
+                	   mapScores.put(mapColumnIndexToMetric.get(columnIndex), metric1);
+                	   break;
+                   	
+                   case 4:
+                	   Double metric2 = (Double)getCellValue(currentCell);
+                	   mapScores.put(mapColumnIndexToMetric.get(columnIndex), metric2);
+                	   break;
+                   	
+                   case 5:
+                	   Double metric3 = (Double)getCellValue(currentCell);
+                	   mapScores.put(mapColumnIndexToMetric.get(columnIndex), metric3);
+                	   break;
+                	   
+                   case 6:
+                	   Double metric4 = (Double)getCellValue(currentCell);
+                	   mapScores.put(mapColumnIndexToMetric.get(columnIndex), metric4);
+                	   break;
+                	   
+                   case 7:
+                	   Double metric5 = (Double)getCellValue(currentCell);
+                	   mapScores.put(mapColumnIndexToMetric.get(columnIndex), metric5);
+                	   break;
+                	   
+                   case 8:
+                	   Double metric6 = (Double)getCellValue(currentCell);
+                	   mapScores.put(mapColumnIndexToMetric.get(columnIndex), metric6);
+                	   break;
+
+                   }
+
+               }
+               mapOfPlayerAndRoleScores.put(mapOfUniqueNamesAndPlayerIds.get(playerUniqueId), mapScores);
+           }
+       return mapOfPlayerAndRoleScores;
+	}
+
+	private Map<Integer, String> fetchMetricsByColumnHeader(Iterator<Row> iterator) {
+		// TODO Auto-generated method stub
+		Map<Integer,String> mapColumnIndexToMetric = new HashMap<Integer,String>();
+		
+		
+		 if (iterator.hasNext()) {
+
+	           	Row currentRow = iterator.next(); //visiting header
+	               Iterator<Cell> cellIterator = currentRow.iterator();
+	            	
+	               while (cellIterator.hasNext()) {
+
+	                   Cell currentCell = cellIterator.next();
+	                   int columnIndex = currentCell.getColumnIndex();
+	                   
+	                   switch (columnIndex) {
+	                   case 3:
+	                   
+	                	   String metric1 = (String)getCellValue(currentCell);
+	                	   mapColumnIndexToMetric.put(columnIndex, metric1);
+	                	   
+	                       break;
+	                       
+	                   case 4:
+	                	   String metric2 = (String)getCellValue(currentCell);
+	                	   mapColumnIndexToMetric.put(columnIndex, metric2);
+	                	   
+	                       break;
+	                   	
+	                   case 5:
+	                	   String metric3 = (String)getCellValue(currentCell);
+	                	   mapColumnIndexToMetric.put(columnIndex, metric3);
+	                	   
+	                       break;
+	                   	
+	                   case 6:
+	                	   String metric4 = (String)getCellValue(currentCell);
+	                	   mapColumnIndexToMetric.put(columnIndex, metric4);
+	                	   
+	                       break;
+	                       
+	                   case 7:
+	                	   String metric5 = (String)getCellValue(currentCell);
+	                	   mapColumnIndexToMetric.put(columnIndex, metric5);
+	                	   
+	                       break;
+	                       
+	                   case 8:
+	                	   String metric6 = (String)getCellValue(currentCell);
+	                	   mapColumnIndexToMetric.put(columnIndex, metric6);
+	                	   
+	                       break;
+
+	                   }
+
+	               }
+
+	           }
+
+		
+		
+		return mapColumnIndexToMetric;
+	}
+
+	private Map<String, String> getPlayers(Set<Player> setOfPlayers) {
+		// TODO Auto-generated method stub
+		
+		Map<String,String> mapOfUniqueNamesAndPlayerIds = new HashMap<String,String>();
+		
+		for(Player objPlayer : setOfPlayers) {
+			
+			mapOfUniqueNamesAndPlayerIds.put(objPlayer.getUniqueId(), objPlayer.getId());	
+		}
+		return mapOfUniqueNamesAndPlayerIds;
+	}
 	
 
 }

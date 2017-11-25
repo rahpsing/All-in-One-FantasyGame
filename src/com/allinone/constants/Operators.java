@@ -9,7 +9,7 @@ package com.allinone.constants;
  */
 public enum Operators {
 	
-	IS_EQUALS,
+	EQUALS,
 	GREATER_THAN,
 	LESS_THAN
 

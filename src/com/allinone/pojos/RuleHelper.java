@@ -6,6 +6,7 @@ package com.allinone.pojos;
 import java.io.Serializable;
 
 import com.allinone.constants.Operators;
+import com.allinone.constants.ScoringRatio;
 
 /**
  * @author rahul
@@ -20,6 +21,7 @@ public class RuleHelper implements Serializable, Comparable<RuleHelper> {
 	private Operators operator;
 	private double score;
 	private double points;
+	private ScoringRatio scoringRatio;
 	
 	public RuleHelper() {
 		
@@ -66,6 +68,16 @@ public class RuleHelper implements Serializable, Comparable<RuleHelper> {
 		else  
 			return 1;  
 	}
+
+	public ScoringRatio getScoringRatio() {
+		return scoringRatio;
+	}
+
+	public void setScoringRatio(ScoringRatio scoringRatio) {
+		this.scoringRatio = scoringRatio;
+	}
+
+
 
 	
 }
