@@ -812,7 +812,7 @@ $maincolor: #009688;
     padding: -100px;
     border: none;
     width: 700px; /* Could be more or less, depending on screen size */
-    height: 270px;
+    height: 350px;
     box-shadow: 0 15px 18px 0 rgba(0,0,0,0.2),0 16px 30px 0 rgba(0,0,0,0.19);
     -webkit-animation-name: animatetop;
     -webkit-animation-duration: 0.4s;
@@ -855,7 +855,7 @@ $maincolor: #009688;
     padding: -100px;
     border: none;
     width: 700px; /* Could be more or less, depending on screen size */
-    height: 270px;
+    height: 600px;
     box-shadow: 0 15px 18px 0 rgba(0,0,0,0.2),0 16px 30px 0 rgba(0,0,0,0.19);
     -webkit-animation-name: animatetop;
     -webkit-animation-duration: 0.4s;
@@ -874,4 +874,43 @@ $maincolor: #009688;
 	position:absolute;
 	bottom: 110px;
 	right: 150px;
+}
+
+.rolesdiv{
+	position:absolute;
+	width:100%;
+	width: 425px;
+	margin-left:140px;
+	margin-top:150px;
+	height:300px;
+	overflow-y:scroll;
+}
+.addroles {
+	position:absolute;
+	bottom:200px;
+	right: 10px;
+}
+.createsportleaguemodalcss{
+    display: none; /* Hidden by default */
+    max-height: calc(100% - 50px);
+  	position: fixed;
+    top: 50%;
+    left: 50%;
+  	transform: translate(-50%, -50%);
+  	z-index: 199;
+}
+.createsportleague-modal-content{
+	z-index: 199;
+    background-color: #ffffff;
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: -100px;
+    border: none;
+    width: 700px; /* Could be more or less, depending on screen size */
+    height: 350px;
+    box-shadow: 0 15px 18px 0 rgba(0,0,0,0.2),0 16px 30px 0 rgba(0,0,0,0.19);
+    -webkit-animation-name: animatetop;
+    -webkit-animation-duration: 0.4s;
+    animation-name: animatetop;
+    animation-duration: 0.4s;
+   	text-align: center;
 }

@@ -232,14 +232,31 @@ div.panel button {
 		  			<b style="font-family:'Raleway', sans-serif;font-size:2.5em;padding-top:10px;">create league</b>
 		  		</div>
 		  		<div style="display:block;">
-			  		<div style="display:inline-block;margin-top:15px;float:left;margin-left:20px;">
-			  			<b style="font-family:'Raleway', sans-serif;font-size:1.5em;">choose sport : </b>
+			  		<div style="display:inline-block;margin-top:30px;float:left;margin-left:110px;">
+			  			<b style="font-family:'Raleway', sans-serif;font-size:1.5em;">sport : </b>
 			  		</div>
-			  		<div style="display:inline-block;margin-top:60px;float:left;margin-left:-164px;">
-			  			<b style="font-family:'Raleway', sans-serif;font-size:1.5em;">copy roster from : </b>
+			  		<div id="sportOption" class="input-field col s12" style="float:right;width:60%;height:15px;margin-right:20px;margin-top:20px;">
+					    <select>
+					      <option value="" disabled selected>Choose your option</option>
+					      <option value="soccer">soccer</option>
+					      <option value="cricket">cricket</option>
+					    </select>
+					</div>
+			  		<div style="display:inline-block;margin-top:100px;float:left;margin-left:-80px;">
+			  			<b style="font-family:'Raleway', sans-serif;font-size:1.5em;">roster : </b>
 			  		</div>
-			  		<div style="display:inline-block;margin-top:105px;float:left;margin-left:-200px;">
+			  		<div id="rosterOption" class="input-field col s12" style="float:right;width:60%;height:15px;margin-right:20px;margin-top:55px;">
+					    <select>
+					      <option value="" disabled selected>Choose your option</option>
+					      <option value="epl">epl</option>
+					      <option value="laliga">la liga</option>
+					    </select>
+					</div>
+			  		<div style="display:inline-block;margin-top:135px;float:left;margin-left:-166px;">
 			  			<b style="font-family:'Raleway', sans-serif;font-size:1.5em;">league name : </b>
+			  		</div>
+			  		<div style="float:right;width:60%;height:15px;margin-right:20px;margin-top:55px;">
+			  			<input placeholder="league name" id="userLeagueName" type="text">
 			  		</div>
 		  		</div>
 		  		<div class="cancelbutton1">
@@ -257,12 +274,35 @@ div.panel button {
 		  			<b style="font-family:'Raleway', sans-serif;font-size:2.5em;padding-top:10px;">create sport</b>
 		  		</div>
 		  		<div style="display:block;">
-			  		<div style="display:inline-block;margin-top:15px;float:left;margin-left:20px;">
+			  		<div style="display:inline-block;margin-top:30px;float:left;margin-left:70px;">
 			  			<b style="font-family:'Raleway', sans-serif;font-size:1.5em;">sport name : </b>
 			  		</div>
-			  		<div style="display:inline-block;margin-top:60px;float:left;margin-left:-144px;">
+			  		<div style="float:right;width:60%;height:15px;margin-right:20px;margin-top:25px;">
+			  			<input placeholder="sport name" id="userSportName" type="text">
+			  		</div>
+			  		<div style="display:inline-block;margin-top:100px;float:left;margin-left:-144px;">
 			  			<b style="font-family:'Raleway', sans-serif;font-size:1.5em;">define roles : </b>
 			  		</div>
+		  		</div>
+		  		<div class="rolesdiv">
+			  		<div style="float:left;width:100%;height:15px;">
+				  			<input placeholder="role 1" id="userSportRole1" type="text">
+				  	</div>
+				  	<div style="float:left;width:100%;height:15px;margin-top:35px;">
+				  			<input placeholder="role 2" id="userSportRole2" type="text">
+				  	</div>
+				  	<div style="float:left;width:100%;height:15px;margin-top:35px;">
+				  			<input placeholder="role 3" id="userSportRole3" type="text">
+				  	</div>
+				  	<div style="float:left;width:100%;height:15px;margin-top:35px;">
+				  			<input placeholder="role 4" id="userSportRole4" type="text">
+				  	</div>
+				  	<div style="float:left;width:100%;height:15px;margin-top:35px;">
+				  			<input placeholder="role 5" id="userSportRole5" type="text">
+				  	</div>
+				</div>
+				<div id="addRoles" class="addroles">
+					<a class="btn-floating btn-large waves-effect waves-light #ffbf03" style=""><i class="material-icons" style="background-color:#ffbf03">add</i></a>
 		  		</div>
 		  		<div class="cancelbutton2">
 					<button id="cancelButton2" class="waves-effect waves-light btn" href="#Highlights" style="background-color:#021A42;height:40px;font-size:1.5em;text-transform: lowercase;padding-top:2.5px;font-family:'Raleway', sans-serif;border-radius:5px">cancel</button>
@@ -272,6 +312,53 @@ div.panel button {
 				</div>
 		  	</div>
 	</div>
+	<div id="createSportLeagueModal" class="createsportleaguemodalcss">
+		 	<!-- Modal content -->
+		  	<div id="createSportLeagueContent" class="createsportleague-modal-content">
+		  		<div class="modalcolorstrip1">
+		  			<b style="font-family:'Raleway', sans-serif;font-size:2.5em;padding-top:10px;">create league</b>
+		  		</div>
+		  		<div style="display:block;">
+			  		<div style="display:inline-block;margin-top:30px;float:left;margin-left:110px;">
+			  			<b style="font-family:'Raleway', sans-serif;font-size:1.5em;">sport : </b>
+			  		</div>
+			  		<div id="sportOption" class="input-field col s12" style="float:right;width:60%;height:15px;margin-right:20px;margin-top:20px;">
+					    <select>
+					      <option value="" disabled selected>Choose your option</option>
+					      <option value="soccer">soccer</option>
+					      <option value="cricket">cricket</option>
+					    </select>
+					</div>
+			  		<div style="display:inline-block;margin-top:100px;float:left;margin-left:-80px;">
+			  			<b style="font-family:'Raleway', sans-serif;font-size:1.5em;">roster : </b>
+			  		</div>
+			  		<div id="rosterOption" class="input-field col s12" style="float:right;width:60%;height:15px;margin-right:20px;margin-top:55px;">
+					    <select>
+					      <option value="" disabled selected>Choose your option</option>
+					      <option value="epl">epl</option>
+					      <option value="laliga">la liga</option>
+					    </select>
+					</div>
+			  		<div style="display:inline-block;margin-top:135px;float:left;margin-left:-166px;">
+			  			<b style="font-family:'Raleway', sans-serif;font-size:1.5em;">league name : </b>
+			  		</div>
+			  		<div style="float:right;width:60%;height:15px;margin-right:20px;margin-top:55px;">
+			  			<input placeholder="league name" id="userLeagueName" type="text">
+			  		</div>
+		  		</div>
+		  		<div class="cancelbutton1">
+					<button id="cancelButton1" class="waves-effect waves-light btn" href="#Highlights" style="background-color:#021A42;height:40px;font-size:1.5em;text-transform: lowercase;padding-top:2.5px;font-family:'Raleway', sans-serif;border-radius:5px">cancel</button>
+				</div>
+				<div class="donebutton1">
+					<button id="doneButton1" class="waves-effect waves-light btn" href="#Highlights" style="background-color:#021A42;height:40px;font-size:1.5em;text-transform: lowercase;padding-top:2.5px;font-family:'Raleway', sans-serif;border-radius:5px">done</button>
+				</div>
+		  	</div>
+	</div>
+	<script>
+     $(document).ready(function() {
+        $('select').material_select();
+    });
+ 	</script>
 	<script>
 		var acc = document.getElementsByClassName("accordion");
 		var i;
@@ -302,6 +389,10 @@ div.panel button {
 	var createSportButton = document.getElementById("createSportButton");
 	var cancelButton1 = document.getElementById("cancelButton1");
 	var cancelButton2 = document.getElementById("cancelButton2");
+	var addRoles = document.getElementById("addRoles");
+	var createSportContent = document.getElementById("createSportContent");
+	var nextButton1 = document.getElementById("nextButton1");
+	var createSportLeagueModal = document.getElementById("createSportLeagueModal");
 	
 	/* window.onclick = function(event) {
 		if(event.target.parentNode.className != "" && event.target.parentNode.className != "signup-modal-content" && event.target.parentNode.className != "signupmodalcss" && event.target.parentNode.className != "modal-content" && event.target.parentNode.className != "loginmodalcss" && event.target.parentNode.className != "forgotuorpdiv"){
@@ -352,6 +443,15 @@ div.panel button {
 	closeSearchButton.onclick = function() {
 		searchResultDiv.style.display = "none";
 		leagueListDiv.style.display = "block";
+	}
+	
+	addRoles.onclick = function() {
+		
+	}
+	
+	nextButton1.onclick = function() {
+		createSportModal.style.display = "none";
+		createSportLeagueModal.style.display = "block";
 	}
 	
 	var updateProfileDiv = document.getElementById("updateProfileImage");
