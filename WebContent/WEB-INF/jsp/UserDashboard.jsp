@@ -284,25 +284,11 @@ div.panel button {
 			  			<b style="font-family:'Raleway', sans-serif;font-size:1.5em;">define roles : </b>
 			  		</div>
 		  		</div>
-		  		<div class="rolesdiv">
-			  		<div style="float:left;width:100%;height:15px;">
-				  			<input placeholder="role 1" id="userSportRole1" type="text">
-				  	</div>
-				  	<div style="float:left;width:100%;height:15px;margin-top:35px;">
-				  			<input placeholder="role 2" id="userSportRole2" type="text">
-				  	</div>
-				  	<div style="float:left;width:100%;height:15px;margin-top:35px;">
-				  			<input placeholder="role 3" id="userSportRole3" type="text">
-				  	</div>
-				  	<div style="float:left;width:100%;height:15px;margin-top:35px;">
-				  			<input placeholder="role 4" id="userSportRole4" type="text">
-				  	</div>
-				  	<div style="float:left;width:100%;height:15px;margin-top:35px;">
-				  			<input placeholder="role 5" id="userSportRole5" type="text">
-				  	</div>
+		  		<div class="rolesdiv" id="rolesDiv">
+				  	<input placeholder="new role" type="text" style="float:left;width:100%;height:30px;">
 				</div>
-				<div id="addRoles" class="addroles">
-					<a class="btn-floating btn-large waves-effect waves-light #ffbf03" style=""><i class="material-icons" style="background-color:#ffbf03">add</i></a>
+				<div class="addroles">
+					<a id="addRoles" class="btn-floating btn-large waves-effect waves-light #ffbf03" style=""><i class="material-icons" style="background-color:#ffbf03">add</i></a>
 		  		</div>
 		  		<div class="cancelbutton2">
 					<button id="cancelButton2" class="waves-effect waves-light btn" href="#Highlights" style="background-color:#021A42;height:40px;font-size:1.5em;text-transform: lowercase;padding-top:2.5px;font-family:'Raleway', sans-serif;border-radius:5px">cancel</button>
@@ -316,41 +302,27 @@ div.panel button {
 		 	<!-- Modal content -->
 		  	<div id="createSportLeagueContent" class="createsportleague-modal-content">
 		  		<div class="modalcolorstrip1">
-		  			<b style="font-family:'Raleway', sans-serif;font-size:2.5em;padding-top:10px;">create league</b>
+		  			<b style="font-family:'Raleway', sans-serif;font-size:2.5em;padding-top:10px;">create sport</b>
 		  		</div>
 		  		<div style="display:block;">
-			  		<div style="display:inline-block;margin-top:30px;float:left;margin-left:110px;">
-			  			<b style="font-family:'Raleway', sans-serif;font-size:1.5em;">sport : </b>
-			  		</div>
-			  		<div id="sportOption" class="input-field col s12" style="float:right;width:60%;height:15px;margin-right:20px;margin-top:20px;">
-					    <select>
-					      <option value="" disabled selected>Choose your option</option>
-					      <option value="soccer">soccer</option>
-					      <option value="cricket">cricket</option>
-					    </select>
-					</div>
-			  		<div style="display:inline-block;margin-top:100px;float:left;margin-left:-80px;">
-			  			<b style="font-family:'Raleway', sans-serif;font-size:1.5em;">roster : </b>
-			  		</div>
-			  		<div id="rosterOption" class="input-field col s12" style="float:right;width:60%;height:15px;margin-right:20px;margin-top:55px;">
-					    <select>
-					      <option value="" disabled selected>Choose your option</option>
-					      <option value="epl">epl</option>
-					      <option value="laliga">la liga</option>
-					    </select>
-					</div>
-			  		<div style="display:inline-block;margin-top:135px;float:left;margin-left:-166px;">
+			  		<div style="display:inline-block;margin-top:45px;float:left;margin-left:36px;">
 			  			<b style="font-family:'Raleway', sans-serif;font-size:1.5em;">league name : </b>
 			  		</div>
-			  		<div style="float:right;width:60%;height:15px;margin-right:20px;margin-top:55px;">
+			  		<div style="float:right;width:60%;height:15px;margin-right:20px;margin-top:35px;">
 			  			<input placeholder="league name" id="userLeagueName" type="text">
 			  		</div>
 		  		</div>
-		  		<div class="cancelbutton1">
-					<button id="cancelButton1" class="waves-effect waves-light btn" href="#Highlights" style="background-color:#021A42;height:40px;font-size:1.5em;text-transform: lowercase;padding-top:2.5px;font-family:'Raleway', sans-serif;border-radius:5px">cancel</button>
+		  		<div class="downloadbutton">
+					<button id="downloadButton" class="waves-effect waves-light btn" href="#Highlights" style="width:100%;background-color:#ffbf03;height:40px;font-size:1.5em;text-transform: lowercase;padding-top:2.5px;font-family:'Raleway', sans-serif;border-radius:5px">download template</button>
 				</div>
-				<div class="donebutton1">
-					<button id="doneButton1" class="waves-effect waves-light btn" href="#Highlights" style="background-color:#021A42;height:40px;font-size:1.5em;text-transform: lowercase;padding-top:2.5px;font-family:'Raleway', sans-serif;border-radius:5px">done</button>
+				<div class="uploadbutton">
+					<button id="uploadButton" class="waves-effect waves-light btn" href="#Highlights" style="width:100%;background-color:#ffbf03;height:40px;font-size:1.5em;text-transform: lowercase;padding-top:2.5px;font-family:'Raleway', sans-serif;border-radius:5px">upload template</button>
+				</div>
+		  		<div class="cancelbutton3">
+					<button id="cancelButton3" class="waves-effect waves-light btn" href="#Highlights" style="background-color:#021A42;height:40px;font-size:1.5em;text-transform: lowercase;padding-top:2.5px;font-family:'Raleway', sans-serif;border-radius:5px">cancel</button>
+				</div>
+				<div class="donebutton2">
+					<button id="doneButton2" class="waves-effect waves-light btn" href="#Highlights" style="background-color:#021A42;height:40px;font-size:1.5em;text-transform: lowercase;padding-top:2.5px;font-family:'Raleway', sans-serif;border-radius:5px">done</button>
 				</div>
 		  	</div>
 	</div>
@@ -389,7 +361,9 @@ div.panel button {
 	var createSportButton = document.getElementById("createSportButton");
 	var cancelButton1 = document.getElementById("cancelButton1");
 	var cancelButton2 = document.getElementById("cancelButton2");
+	var cancelButton3 = document.getElementById("cancelButton3");
 	var addRoles = document.getElementById("addRoles");
+	var rolesDiv = document.getElementById("rolesDiv");
 	var createSportContent = document.getElementById("createSportContent");
 	var nextButton1 = document.getElementById("nextButton1");
 	var createSportLeagueModal = document.getElementById("createSportLeagueModal");
@@ -446,12 +420,19 @@ div.panel button {
 	}
 	
 	addRoles.onclick = function() {
-		
+		/* rolesDiv.appendChild(contentRolesDiv); */
+		rolesDiv.insertAdjacentHTML('BeforeEnd', '<input placeholder="new role" type="text" style="float:left;width:100%;height:30px;">');
 	}
+	
 	
 	nextButton1.onclick = function() {
 		createSportModal.style.display = "none";
 		createSportLeagueModal.style.display = "block";
+	}
+	
+	cancelButton3.onclick = function() {
+		createSportLeagueModal.style.display = "none";
+		mainDiv.classList.remove("blur");
 	}
 	
 	var updateProfileDiv = document.getElementById("updateProfileImage");
@@ -558,10 +539,8 @@ function sendFetchLikeReq(iD,value,userId){console.log(userId);
 	    {	
 	    	$('#'+iD).empty();
 	    	
-	    	//$(data.League).each(function(index,value){$('#'+iD).append('<a onclick=javascript:redirectLeague(\''+value.id+'\',\''+userId+'\') >'+value.League+'</a>');})
-	    	$(data.League).each(function(index,value){$('#'+iD).append('<div onclick=javascript:redirectLeague(\''+value.id+'\',\''+userId+'\') class="profileinfo"><p style="font-size:2em;font-family:"Raleway", sans-serif; ">'+value.League+'</p><p class="bio" style="font-size: 1.5em;margin-top:-20px;font-family:"Raleway", sans-serif; ">Users : '+value.numOfPlayers+'</p></div></div>');})
-	 		//$('#'+iD).append('<div  class="content"><div class="card" style="height:80px;"><div class="profileinfo"><p style="font-size:2em;font-family:"Raleway", sans-serif; ">create league</p><p class="bio" style="font-size: 1.5em;margin-top:-20px;font-family:"Raleway", sans-serif; "></div></div></div>');
-
+	    	//$(data.League).each(function(index,value){$('#'+iD).append('<div onclick=javascript:redirectLeague(\''+value.id+'\',\''+userId+'\') class="profileinfo"><p style="font-size:2em;font-family:"Raleway", sans-serif; ">'+value.League+'</p><p class="bio" style="font-size: 1.5em;margin-top:-20px;font-family:"Raleway", sans-serif; ">Users : '+value.numOfPlayers+'</p></div></div>');})
+			$(data.League).each(function(index,value){$('#'+iD).append('<div onclick=javascript:redirectLeague(\''+value.id+'\',\''+userId+'\') class="content" style="cursor:pointer;"><div class="card" style="height:80px;"><div class="profileinfo"><p style="font-size:2em;">'+value.League+'</p><p class="bio" style="font-size: 1.5em;margin-top:-20px;">Users : '+value.numOfPlayers+'</p></div></div></div>');})
 	    },
 	    error: function (jqXHR, textStatus, errorThrown)
 	    {

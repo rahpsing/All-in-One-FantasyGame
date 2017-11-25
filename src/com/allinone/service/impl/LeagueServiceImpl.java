@@ -4,7 +4,11 @@
 package com.allinone.service.impl;
 
 import java.util.ArrayList;
+
+import java.util.Collections;
+
 import java.util.HashMap;
+
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -149,10 +153,12 @@ public class LeagueServiceImpl implements LeagueServiceAPI {
 			objTeam.setScore(score);
 			mapOfUserIdAndScore.put(objTeam.getUsert().getUserId(), score);
 		}
+		objLeagueDao.saveUserScores(mapOfUserIdAndScore);
 		
 		return mapOfUserIdAndScore;
 	}
 	
+
 	@Override
 	public String rulesMap(String leagueId){
 		
@@ -182,6 +188,17 @@ public class LeagueServiceImpl implements LeagueServiceAPI {
 		}
 		System.out.println(allData.toString());
 		return root.toString();
+	}
+	
+	@Override
+	public String gamesList(String leagueId){
+	
+		Set<Game> listOfGames=objLeagueDao.gamesList(leagueId);
+		System.out.println(listOfGames.isEmpty());
+		//Collections.sort(listOfGames);
+		//System.out.println(listOfGames.toString());
+		return "yes";
+		
 	}
 
 }

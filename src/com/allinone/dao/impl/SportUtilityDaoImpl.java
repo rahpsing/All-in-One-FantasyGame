@@ -52,7 +52,7 @@ public class SportUtilityDaoImpl implements SportUtilityDaoAPI {
 
 	public static Map<String,Map<String,Set<RuleHelper>>> mapOfLeagueAndRules= new HashMap<String,Map<String,Set<RuleHelper>>>();
 	
-	private static final String FILE_NAME = "C:\\Users\\prash\\gitbashnew2\\All-In-One-FantasyGame\\DataMappings.xlsx";
+	private static final String FILE_NAME = "C:\\Users\\rahul\\workspace\\All-In-One-FantasyGame\\DataMappings.xlsx";
 	private static final String GAME_FILE = "C:\\Users\\rahul\\workspace\\All-In-One-FantasyGame\\GameFile.xlsx";
 
 	
@@ -100,7 +100,7 @@ public class SportUtilityDaoImpl implements SportUtilityDaoAPI {
 		try {
 	        List<Team> listOfTeams = new ArrayList<Team>();
 	        List<Player> listOfPlayers = new ArrayList<Player>();
-	        List<Game> listOfGames  = new ArrayList<Game>();
+	        Set<Game> setOfGames  = new HashSet<Game>();
 	        
 	        Criteria objCriteria  = objSessionFactory.getCurrentSession().createCriteria(League.class);
 			Criterion usernameCriteria = Restrictions.eq("leagueName", "IPL");
@@ -208,7 +208,7 @@ public class SportUtilityDaoImpl implements SportUtilityDaoAPI {
 		            
 		            //WORK ON SHEET4--GAMES
 		            iterator = openSheetIterator(workbook,3);
-		            listOfGames = populateGames(iterator,league,mapOfCodeAndTeam);
+		            setOfGames = populateGames(iterator,league,mapOfCodeAndTeam);
 		            addConstraints(league);
 		            
 		            workbook.close();
@@ -232,7 +232,7 @@ public class SportUtilityDaoImpl implements SportUtilityDaoAPI {
 		          	objSessionFactory.getCurrentSession().saveOrUpdate(team);
 		      }
 		      
-		      for(Game game : listOfGames) {
+		      for(Game game : setOfGames) {
 	          	    objSessionFactory.getCurrentSession().saveOrUpdate(game);
 	          }
 		  	objSessionFactory.getCurrentSession().saveOrUpdate(league);
@@ -257,11 +257,11 @@ public class SportUtilityDaoImpl implements SportUtilityDaoAPI {
 		
 	}
 
-	private List<Game> populateGames(Iterator<Row> iterator, League league, Map<String,Team> mapOfCodeAndTeam) {
+	private Set<Game> populateGames(Iterator<Row> iterator, League league, Map<String,Team> mapOfCodeAndTeam) {
 		// TODO Auto-generated method stub
 		Row currentRow;
 		
-		List<Game> listOfGames = new ArrayList<Game>();
+		Set<Game> setOfGames = new HashSet<Game>();
 		  while (iterator.hasNext()) {
 		    String scheduledStartTime = "";
           	currentRow = iterator.next();
@@ -316,13 +316,13 @@ public class SportUtilityDaoImpl implements SportUtilityDaoAPI {
               }
               objGame.setGameStatus(GameStatus.TO_BE_PLAYED);
               
-              listOfGames.add(objGame);
+              setOfGames.add(objGame);
 
           }
 		  
 		//  league.setListOfGames(listOfGames);
 		  
-	    return listOfGames;
+	    return setOfGames;
 		  
 	}
 

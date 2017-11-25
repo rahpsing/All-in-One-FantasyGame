@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import com.allinone.pojos.Game;
 import com.allinone.pojos.League;
 import com.allinone.pojos.Player;
 import com.allinone.pojos.UserTeam;
@@ -30,6 +31,10 @@ public interface LeagueDaoAPI {
 	public Set<Player> userTeamSet(String leagueId,String userId);
 
 	public Map<String, Integer> rulesMap(String leagueId);
+
+	public void saveUserScores(Map<String, Double> mapOfUserIdAndScore);
+
+	public Set<Game> gamesList(String leagueId);
 
 
 

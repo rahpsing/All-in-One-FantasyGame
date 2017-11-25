@@ -1,5 +1,5 @@
 
-	var updateTeamNameButton = document.getElementById("updateTeamNameButton");
+	
 	var teamNameEditForm = document.getElementById("teamNameEdit");
 	var playerRoster = document.getElementById("player-roster");
 	var userTeam = document.getElementById("user-team");
@@ -8,7 +8,11 @@
 	var saveButton = document.getElementById("saveButton");
 	var playerData="";
    	
-	
+	function updatedTeamName(){
+		var updatedName=document.getElementById("updateTeamName").value;
+		//alert("Function called");
+		alert(updatedName);
+	}
 	
 	function dragPlayer(player, event) {
 	    event.dataTransfer.setData('Players', player.id);

@@ -51,14 +51,14 @@
  
  		<many-to-one name="leagueOwner" column="leagueOwner" unique="false" not-null="false"/>
  
-        
-        <list name="listOfGames" inverse="true" table="GAME" lazy="true">
+ 		 <set name="setOfGames" inverse="true" table="GAME" lazy="true">
             <key>
                 <column name="LEAGUE_ID" />
             </key>
-            <list-index></list-index>
             <one-to-many class="com.allinone.pojos.Game" />
-        </list>
+        </set>
+        
+      
         <property name="isSystemLeague" type="boolean" access="field">
             <column name="ISSYSTEMLEAGUE" />
         </property>

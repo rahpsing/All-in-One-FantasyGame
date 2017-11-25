@@ -83,7 +83,7 @@ body {
  		<div id="editNameModal" class="editnamecss" style="display:none;">
 			  	<form name="loginForm"  >
 				    <input type="text" class="teamname" id="teamName" name="teamname" style="color:#ffffff;font-size:2em;" placeholder="Update Team Name..." value='${teamName}'><br>
-				    <input class="waves-effect waves-light btn" style="background-color:#ffbf03;height:40px;width:30%;font-size:2em;text-transform: lowercase; top:-60px; left:500px;padding-top:5px;font-family:'Raleway', sans-serif;" type="button" value="Submit" onclick="javascript:validateLoginForm()"/>
+				    <input class="waves-effect waves-light btn" style="background-color:#ffbf03;height:40px;width:30%;font-size:2em;text-transform: lowercase; top:-60px; left:500px;padding-top:5px;font-family:'Raleway', sans-serif;" type="button" value="Submit" onclick="javascript:updatedTeamName()"/>
 				</form>
 		</div>
  		<!-- <div class="fixed-action-btn toolbar" >

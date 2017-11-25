@@ -29,7 +29,7 @@ public class League implements Serializable {
 	private Set<Player> setOfPlayers = new HashSet<Player>();
 	private Set<Team> setOfTeams = new HashSet<Team>();
 	private Map<String,Integer> mapSportConstraints = new HashMap<String,Integer>();
-	private List<Game> listOfGames;
+	private Set<Game> setOfGames;
 	private Set<UserTeam> setOfUserTeams;
 	private boolean isSystemLeague;
 	private Map<String,Set<RuleHelper>> mapOfMetricsAndRules = new HashMap<String,Set<RuleHelper>>();
@@ -59,12 +59,7 @@ public class League implements Serializable {
 	public void setSetOfTeams(Set<Team> setOfTeams) {
 		this.setOfTeams = setOfTeams;
 	}
-	public List<Game> getListOfGames() {
-		return listOfGames;
-	}
-	public void setListOfGames(List<Game> listOfGames) {
-		this.listOfGames = listOfGames;
-	}
+
 	public boolean isSystemLeague() {
 		return isSystemLeague;
 	}
@@ -113,6 +108,12 @@ public class League implements Serializable {
 	}
 	public void setMapOfMetricsAndRules(Map<String,Set<RuleHelper>> mapOfMetricsAndRules) {
 		this.mapOfMetricsAndRules = mapOfMetricsAndRules;
+	}
+	public Set<Game> getSetOfGames() {
+		return setOfGames;
+	}
+	public void setSetOfGames(Set<Game> setOfGames) {
+		this.setOfGames = setOfGames;
 	}
 	
 
