@@ -19,6 +19,10 @@
             <column name="PLAYERROLE" />
         </property>
 
+	    <property name="uniqueId" type="java.lang.String">
+            <column name="UNIQUEID" />
+        </property>
+        
         <many-to-one name="league" class="com.allinone.pojos.League" fetch="join">
             <column name="LEAGUE_ID" not-null="true"/>
         </many-to-one>

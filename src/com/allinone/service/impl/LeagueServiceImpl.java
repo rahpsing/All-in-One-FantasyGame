@@ -4,20 +4,29 @@
 package com.allinone.service.impl;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
+import org.hibernate.Session;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.allinone.dao.api.GameDaoAPI;
 import com.allinone.dao.api.LeagueDaoAPI;
 import com.allinone.dao.api.SportUtilityDaoAPI;
+import com.allinone.pojos.Game;
 import com.allinone.pojos.League;
 import com.allinone.pojos.Player;
 import com.allinone.pojos.UserTeam;
 import com.allinone.service.api.LeagueServiceAPI;
 import com.allinone.service.api.ListToJsonTwoColumnsServiceAPI;
+import com.allinone.service.api.StatisticCalculatorServiceAPI;
 import com.allinone.service.api.TeamListToJsonServiceAPI;
 import com.allinone.service.api.TeamSetToJsonAPI;
 
@@ -43,6 +52,12 @@ public class LeagueServiceImpl implements LeagueServiceAPI {
 	
 	@Autowired
 	SportUtilityDaoAPI objSportUtilityDao;
+	
+	@Autowired
+	StatisticCalculatorServiceAPI objStatisticCalculatorAPI;
+	
+	@Autowired
+	GameDaoAPI objGameDao;
 
 	@Override
 	public String fetchLeagues(String sport,String comparator) {
@@ -104,7 +119,7 @@ public class LeagueServiceImpl implements LeagueServiceAPI {
 	public String fetchUserTeams(String leagueId) {
 		// TODO Auto-generated method stub
 		
-		Set<UserTeam>returnSet = objLeagueDao.fetchUserTeams(leagueId);
+		Set<UserTeam> returnSet = objLeagueDao.fetchUserTeams(leagueId);
 		String jsonString=objTeamSetToJson.listToJson("userTeam", returnSet);
 		return jsonString;
 	}
@@ -120,5 +135,54 @@ public class LeagueServiceImpl implements LeagueServiceAPI {
 		return jsonString;
 	}
 	
+	@Override
+	public Map<String,Double> getUserScoresForAGame(String leagueId, String gameId) {
+		
+		Map<String,Double> mapOfUserIdAndScore = new HashMap<String,Double>();
+		Set<UserTeam> setOfUserTeams = objLeagueDao.fetchUserTeams(leagueId);
+		Game objGame = objGameDao.fetchGameObject(gameId);
+		Map<String,Map<String, Double>> mapOfPlayerAndRoleScores = objSportUtilityDao.readGameScores(objGame);
+		
+		for(UserTeam objTeam : setOfUserTeams) {
+			double score = objStatisticCalculatorAPI.calculateScore(leagueId, objTeam.getSetOfPlayers(), mapOfPlayerAndRoleScores);
+			score += objTeam.getScore() + score;
+			objTeam.setScore(score);
+			mapOfUserIdAndScore.put(objTeam.getUsert().getUserId(), score);
+		}
+		
+		return mapOfUserIdAndScore;
+	}
+	
+	@Override
+	public String rulesMap(String leagueId){
+		
+		Map<String,Integer> rulesMap = objLeagueDao.rulesMap(leagueId);
+		System.out.println(rulesMap.size());
+		for(String key:rulesMap.keySet()) {
+			System.out.println("Key value=  "+ key + "  Pair value =  "+ rulesMap.get(key));
+		}
+		JSONArray allData = new JSONArray();
+		for(String key:rulesMap.keySet()) {
+			JSONObject eachData = new JSONObject();
+            try {
+                eachData.put("role",key);
+                eachData.put("number", rulesMap.get(key));
+                
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+            allData.put(eachData);
+		}
+		JSONObject root= new JSONObject();
+		try {
+			root.put("rulesMap", allData);
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			return "false";
+		}
+		System.out.println(allData.toString());
+		return root.toString();
+	}
+
 
 }

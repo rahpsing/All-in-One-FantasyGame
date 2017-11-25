@@ -23,6 +23,7 @@ public class Player implements Serializable {
 	private String firstName;
 	private String lastName;
 	private String playerRole;
+	private String uniqueId;
 	//private Sport sport;
 	private League league;
 	private Team team;
@@ -73,6 +74,12 @@ public class Player implements Serializable {
 	}
 	public void setPlayerRole(String playerRole) {
 		this.playerRole = playerRole;
+	}
+	public String getUniqueId() {
+		return uniqueId;
+	}
+	public void setUniqueId(String uniqueId) {
+		this.uniqueId = uniqueId;
 	}
 
 }
