@@ -4,6 +4,7 @@
 package com.allinone.dao.api;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 import com.allinone.pojos.League;
@@ -27,6 +28,8 @@ public interface LeagueDaoAPI {
 	
 
 	public Set<Player> userTeamSet(String leagueId,String userId);
+
+	public Map<String, Integer> rulesMap(String leagueId);
 
 
 

@@ -9,6 +9,7 @@
 <!-- jQuery -->
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/css/jQuery.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/materialize.min.js"></script> 
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/teamDraftPage.js"></script>
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/TeamDraftPage.css" media="screen" />
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/materialize.min.css"  media="screen,projection"/>
@@ -60,6 +61,7 @@ body {
 </head>
 <body onload="javascript:onLoadCalls('${leagueId}','${userId}','${flag}')">
 	<div class="colorstrip1">
+		<button class="allinonebanner">all-in-one</button>
 		<div class="logout">
 			<button id="logOut" class="waves-effect waves-light btn" style="background-color:#ffbf03;height:40px;font-size:1.5em;text-transform: lowercase;padding-top:2.5px;font-family:'Raleway', sans-serif;">logout</button>
 		</div>
@@ -68,15 +70,20 @@ body {
 		<div class="colorstrip2">
 			<img src="${pageContext.request.contextPath}/resources/UIAssets/league1pic.png" class="userimage">
 			<div class="welcomemsg" id="teamName">
-			<b>team: </b>
-			<b id="teamName1" class="name">${teamName}</b>
+				<b>team: </b>
+				<b id="teamName1" class="name">${teamName}</b>
+				<a class="btn-floating btn-large waves-effect waves-light" id="updateTeamNameButton" style="height:30px;width:30px;margin-top:-25px;background:rgba(255,255,255,0.1);">
+					<div style="margin-top:-12px;">
+						<i class="material-icons">edit</i>
+					</div>
+				</a>
 			</div>
 			<%-- <img src="${pageContext.request.contextPath}/resources/UIAssets/bannerdesign.png" class="bannerdesign"> --%>
  		</div>
  		<div id="editNameModal" class="editnamecss" style="display:none;">
 			  	<form name="loginForm"  >
 				    <input type="text" class="teamname" id="teamName" name="teamname" style="color:#ffffff;font-size:2em;" placeholder="Update Team Name..." value='${teamName}'><br>
-				    <input class="waves-effect waves-light btn" style="background-color:#ffbf03;height:40px;width:30%;font-size:2em;text-transform: lowercase; top:-60px; left:500px;font-family:'Raleway', sans-serif;" type="button" value="Submit" onclick="javascript:validateLoginForm()"/>
+				    <input class="waves-effect waves-light btn" style="background-color:#ffbf03;height:40px;width:30%;font-size:2em;text-transform: lowercase; top:-60px; left:500px;padding-top:5px;font-family:'Raleway', sans-serif;" type="button" value="Submit" onclick="javascript:validateLoginForm()"/>
 				</form>
 		</div>
  		<!-- <div class="fixed-action-btn toolbar" >
@@ -95,7 +102,7 @@ body {
 	  	</div> -->
  		<div class="teaminfo"> 
  			<div class="userteamoverlay" id="userTeamOverlay">
- 				<div class="editbutton">
+ 				<div class="editbutton" style="width:80px;">
  					<button id="editTeamButton" class="waves-effect waves-light btn" style="background-color:#ffbf03;height:40px;font-size:2em;text-transform: lowercase;padding-top:2.5px;font-family:'Raleway', sans-serif;border-radius:5px;">edit team</button>
  				</div>
  			</div>
@@ -106,12 +113,13 @@ body {
 			    		
 				</div>
 			
-				<div id="player-roster" ondrop="dropPlayer1(this, event)" ondragenter="return false" ondragover="return false" style="float:right;">
+				<div id="player-roster" ondrop="dropPlayer1(this, event)" ondragenter="return false" ondragover="return false" style="float:right;overflow-y:auto;">
 			   		<p style="color:#ffbf03;height:40px;font-size:3em;text-transform: lowercase;margin-top:-5px;font-family:'Raleway', sans-serif;">player roster</p>
 			   		<div class="search">
 			   			<div style="float:left;width:295px;">
-				      		<input id="searchText" autocomplete=off type="text" onkeyup="" name="search" class="searchTerm" style="width:100%;"placeholder="search for players">
+				      		<input id="searchText" autocomplete=off type="text" onkeyup="javascript:searchPlayerList()" name="search" class="searchTerm" style="width:100%;"placeholder="search for players">
 				   		</div>
+				   		<button class="clearsearch"><i class="material-icons center">close</i></button>
 				   		<a class='dropdown-button btn' href='#' data-activates='dropdown1' style="color:#ffbf03;background-color:#ffffff;width:20%;margin-top:5px;margin-bottom:30px;"><i class="material-icons center">edit</i> </a>
 				    	<ul id='dropdown1' class='dropdown-content' style="text-align:center;margin-left:-20px;">
 						    <li><a href="#!" style="color:#ffbf03;">forward</a></li>
@@ -150,7 +158,7 @@ body {
 								</div>
 							</div>
 						</a> 
-						<a draggable="true" class="player" id="player3" ondragstart="dragPlayer(this, event)" style="overflow-y:auto;">
+						<a draggable="true" class="player" id="player3" ondragstart="dragPlayer(this, event)">
 							<div class="content1" style="margin-top:2px;">
 								<div class="card1" style="height:40px;">
 								  	<div class="userimage1">
@@ -207,8 +215,9 @@ body {
 				<div class="clear"></div>
 			</section>
 	 	</div>
- 		<div style="position:absolute;display:none;top:304px; left:615px; width: 115px;" id="teamSaveButton">
-					<input onclick="javascript:sendPlayerList('${userId}','${leagueId}','${flag}')"class="waves-effect waves-light btn" style="background-color:#ffbf03;height:40px;width:100%;font-size:2.5em;text-transform: lowercase; font-family:'Raleway', sans-serif;" type="button" value="save" onclick=""/>
+ 		<div style="position:absolute;display:none;top:307px; left:616px; width: 110px;" id="teamSaveButton">
+					<input id="saveButton" onclick="javascript:sendPlayerList('${userId}','${leagueId}','${flag}')"class="waves-effect waves-light btn" style="background-color:#ffbf03;height:40px;width:100%;font-size:2em;text-transform: lowercase; padding-top:5px;font-family:'Raleway', sans-serif;" type="button" value="save" onclick=""/>
+					
 		</div>
  		<!-- <div class="colorstrip10"></div>
 		<div class="colorstrip11"></div>
@@ -222,84 +231,10 @@ body {
 	</div>
 	<script>
 	/* New DRAG AND DROP SCRIPT , disregard all of my previous scripts. will edit it out later */
-	function dragPlayer(player, event) {
-	    event.dataTransfer.setData('Players', player.id);
-	    
-	}
-	function dropPlayer(target, event) {
-	    var player = event.dataTransfer.getData('Players');
-	   	target.appendChild(document.getElementById(player)); 
-		var ind=0;	
-		var listOfPlayerIds=[];
-		var listItems = $("#user-team").find("p");
-		listItems.splice(0,1);
-		for ( ind = 0; ind < listItems.length; ind++ ) {
-		   // console.log($(listItems[ind]).attr('id'));
-		    listOfPlayerIds.push($(listItems[ind]).attr('id'));
-		}
-		//console.log(listItems[0]);
-		//console.log(listOfPlayerIds);
-		//console.log(listOfPlayerIds.length+"Here ");
-		
-		
-		if(listOfPlayerIds.length > 11){
-			alert("Please select 11 players only")
-			
-			document.getElementById("player-roster").append(document.getElementById(player));
-			//target.removeChild(document.getElementById(player));
-			
-			
-		}
-		
-		else{
-			var ind=0;	
-			var rolesList=[];
-			var roles = $("#user-team").find("p");
-			roles.splice(0,1);
-			for ( ind = 0; ind < roles.length; ind++ ) {
-			  // console.log($(listItems[ind]).attr('id'));
-			    rolesList.push($(roles[ind]).attr('role'));
-			}
-			console.log(rolesList+"here 1");
-			//console.log(rolesList.length);
-			var counts = {};
-			for (var i = 0; i < rolesList.length; i++) {
-    			counts[rolesList[i]] = 1 + (counts[rolesList[i]] || 0);
-			}
-			console.log(counts);
-			for (var key in counts){
-				console.log(key);
-				if(!key.includes("eeper")){
-					if(counts[key]>4){
-						alert("Only four "+key);
-						document.getElementById("player-roster").append(document.getElementById(player));
-					}
-					
-				}
-				else{
-					if(counts[key]>2){
-						alert("Only two "+ key);
-						document.getElementById("player-roster").append(document.getElementById(player));
-					}
-				}
-			}
-		}
-	}
-	function dropPlayer1(target,event){
-		var player = event.dataTransfer.getData('Players');
-		target.appendChild(document.getElementById(player));
-	}
-	</script>
-	<script>
-
-	var updateTeamNameButton = document.getElementById("updateTeamNameButton");
-	var teamNameEditForm = document.getElementById("teamNameEdit");
-	var playerRoster = document.getElementById("player-roster");
-	var userTeam = document.getElementById("user-team");
-	var editNameModal = document.getElementById("editNameModal");
-	var teamName = document.getElementById("teamName");	
 	var teamSaveButton = document.getElementById("teamSaveButton");
 	var userTeamOverlay = document.getElementById("userTeamOverlay");
+	var editNameModal = document.getElementById("editNameModal");
+	var teamName = document.getElementById("teamName");	
 	
 	editTeamButton.onclick = function() {
 		userTeamOverlay.style.display = "none";
@@ -310,24 +245,13 @@ body {
 		editNameModal.style.display = "block";
 		teamName.style.display = "none";
 	}
-	
+	</script>
+	<script>
 
-	
-
-	
 	</script>
 	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
   	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
   	<script type="text/javascript">
-   	$( function() {
-   	 $( "#sortable1, #sortable2" ).sortable({
-   	   connectWith: ".connectedSortable"
-   	 }).disableSelection();
-  	} );
-	function onLoadCalls(leagueId,userId,flag){
-		populateTeam(userId,leagueId);
-		fetchPlayerList(leagueId,'player-roster',userId);
-	}
 	function populateTeam(userId,leagueId)
 	{
 		$.ajax({
@@ -340,15 +264,27 @@ body {
 		    	$('#user-team').empty();
 		    	$('#user-team').append('<p style="color:#ffbf03;height:40px;font-size:3em;text-transform: lowercase;margin-top:-5px;font-family:"Raleway", sans-serif;">team</p>');
 		    	$(data.usersTeam).each(function(index,value){$('#user-team').append('<a draggable="true" class="player" id='+value.id+'+123  ondragstart="dragPlayer(this, event)"><div class="content1" style="margin-top:2px;"><div class="card1" style="height:40px;"><div class="userimage1"><img class="circle responsive-img" src="${pageContext.request.contextPath}/resources/UIAssets/user1.jpeg"/></div><div  class="profileinfo1"><p id='+value.id+' role = '+value.role+'  style="font-size:2em;font-family:Raleway, sans-serif; color:#000000;margin-top:3px;">'+value.player+'</p></div></div></div></a>');})
-		    	//fetchPlayerList(leagueId,'player-roster',userId);
+		    	//fetchPlayerList(leagueId,'rosterList',userId);
 		    },
 		    error: function (jqXHR, textStatus, errorThrown)
 		    {
 		    	//alert("something went wrong.Contact Admin");
-		    	//fetchPlayerList(leagueId,'player-roster',userId);
+		    	//fetchPlayerList(leagueId,'rosterList',userId);
 		    }
 		});
 		}
+	function searchPlayerList(){
+		var searchText=document.getElementById("searchText").value;
+		$('#rosterList').empty();
+		$(playerData.Players).each(
+				function(index,value){
+					if(value.role.toLowerCase().includes(playerType.toLowerCase())){
+					if(value.player.toLowerCase().includes(searchText.toLowerCase())){
+						$('#rosterList').append('<a draggable="true" class="player" id='+value.id+'+123 ondragstart="dragPlayer(this, event)"><div class="content1" style="margin-top:2px;"><div class="card1" style="height:40px;"><div class="userimage1"><img class="circle responsive-img" src="${pageContext.request.contextPath}/resources/UIAssets/user1.jpeg"/></div><div  class="profileinfo1"><p id='+value.id+' role = '+value.role+' style="font-size:2em;font-family:Raleway, sans-serif; color:#000000;margin-top:3px;">'+value.player+'</p></div></div></div></a>');
+					}}
+				})
+		
+	}
 	function fetchPlayerList(leagueId,iD,userId){
 		$.ajax({
 		    url : '/All-In-One-FantasyGame/playerList',
@@ -359,9 +295,10 @@ body {
 		    {	
 		    	console.log(data);
 		    	$('#'+iD).empty();
-		    	$('#'+iD).append('<p style="color:#ffbf03;height:40px;font-size:3em;text-transform: lowercase;margin-top:-5px;font-family:"Raleway", sans-serif;">player-roster</p>');
+		    	//$('#'+iD).append('<p style="color:#ffbf03;height:40px;font-size:3em;text-transform: lowercase;margin-top:-5px;font-family:"Raleway", sans-serif;">player-roster</p>');
 		    	$(data.Players).each(function(index,value){$('#'+iD).append('<a draggable="true" class="player" id='+value.id+'+123 ondragstart="dragPlayer(this, event)"><div class="content1" style="margin-top:2px;"><div class="card1" style="height:40px;"><div class="userimage1"><img class="circle responsive-img" src="${pageContext.request.contextPath}/resources/UIAssets/user1.jpeg"/></div><div  class="profileinfo1"><p id='+value.id+' role = '+value.role+' style="font-size:2em;font-family:Raleway, sans-serif; color:#000000;margin-top:3px;">'+value.player+'</p></div></div></div></a>');})
-		    	
+		    	//console.log(JSON.stringify(data));
+		    	passPlayerList(data);
 		    },
 		    error: function (jqXHR, textStatus, errorThrown)
 		    {
@@ -370,105 +307,36 @@ body {
 		    }
 		});
 	} 
-
-	function sendPlayerList(userId,leagueId,flag){
-		//var teamName=document.getElementById("teamName").value;
-		//var teamName=('#teamName').val();
-		//alert(teamName);
-		var ind=0;	
-		var listOfPlayerIds=[];
-		var rolesList=[];
-		var listItems = $("#user-team").find("p");
-		listItems.splice(0,1);
-		for ( ind = 0; ind < listItems.length; ind++ ) {
-		    console.log($(listItems[ind]).attr('id'));
-		    listOfPlayerIds.push($(listItems[ind]).attr('id'));
-		    rolesList.push($(listItems[ind]).attr('role'));
-		}
+	
+	function passPlayerList(data){
 		
-		//console.log(rolesList.length);
-		var counts = {};
-		for (var i = 0; i < rolesList.length; i++) {
-			counts[rolesList[i]] = 1 + (counts[rolesList[i]] || 0);
-		}
-		console.log(Object.keys(counts).length);
-		var countOfRoles=Object.keys(counts).length;
+		playerData=data;
+		populateRoles(data);
 		
-		if(listOfPlayerIds.length < 11 ){
-			alert("Please select atleast 11 players")
-		}
-		else if(listOfPlayerIds.length > 11){
-			alert("Please select 11 players only")
-		}
-		else if(teamName==""){
-			alert("Please Enter Team name.")
-		}
-		else if(countOfRoles<4){
-			alert("Select atleast one of each type")
-		}
-		else{
-			
-			listOfPlayerIds=JSON.stringify(listOfPlayerIds);
-			console.log("Thanks");
-			$.ajax({
-			    url : '/All-In-One-FantasyGame/createTeam',
-			    type: 'post',
-			    data : {userId:userId,leagueId:leagueId,listOfPlayerIds:listOfPlayerIds,flag:flag},
-			    
-			    success: function(data)
-			   
-			    {	
-			    	if (data=="true")
-			    	var f = document.createElement("form");
-					f.setAttribute('method',"post");
-					f.setAttribute('action',"/All-In-One-FantasyGame/redirectLeague");
-
-					var i = document.createElement("input"); //input element, text
-					i.setAttribute('type',"hidden");
-					i.setAttribute('name',"redirectValue");
-					i.setAttribute('value',leagueId);
-					f.appendChild(i);
-					var j = document.createElement("input");
-					j.setAttribute('type',"hidden");
-					j.setAttribute('name',"userId");
-					j.setAttribute('value',userId);
-					f.appendChild(j);
-					var k = document.createElement("input");
-					k.setAttribute('type',"hidden");
-					k.setAttribute('name',"flag");
-					k.setAttribute('value',flag);
-					f.appendChild(k);
-					document.body.appendChild(f);
-					console.log(f);
-					f.submit();
-			    },
-			    error: function (jqXHR, textStatus, errorThrown)
-			    {
-			    	alert("something went wrong.Contact Admin");
-			    }
-			});
-		}
 	}
-	
-	
-
-	/*	var f = document.createElement("form");
-		f.setAttribute('method',"post");
-		f.setAttribute('action',"/All-In-One-FantasyGame/redirectLeague");
-
-		var i = document.createElement("input"); //input element, text
-		i.setAttribute('type',"hidden");
-		i.setAttribute('name',"redirectValue");
-		i.setAttribute('value',valueId);
-		f.appendChild(i);
-		var j = document.createElement("input");
-		j.setAttribute('type',"hidden");
-		j.setAttribute('name',"userId");
-		j.setAttribute('value',userId);
-		f.appendChild(j);
-		document.body.appendChild(f);
-		console.log(f);
-		f.submit();*/
+	function populateRoles(data){
+		$(playerData.Players).each(
+				function(index,value){
+					$('#dropdown1').empty();
+					$('#dropdown1').append('<li><a onclick=javascript:playerTypeSearch("ALL") style="color:#ffbf03;">ALL</a></li><li class="divider"></li>');
+					var ind=0;	
+					var rolesList=[];
+					var roles = $("#rosterList").find("p");
+					
+					for ( ind = 0; ind < roles.length; ind++ ) {
+					  
+					    rolesList.push($(roles[ind]).attr('role'));
+					}
+					
+					var counts = {};
+					for (var i = 0; i < rolesList.length; i++) {
+		    			counts[rolesList[i]] = 1 + (counts[rolesList[i]] || 0);
+					}
+					for (var key in counts){
+						$('#dropdown1').append('<li><a onclick=javascript:playerTypeSearch("'+key+'") style="color:#ffbf03;">'+key+'</a></li><li class="divider"></li>');
+					}
+				})
+	}
 		
 </script>
 </body>

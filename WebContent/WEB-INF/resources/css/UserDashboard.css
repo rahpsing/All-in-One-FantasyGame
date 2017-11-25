@@ -24,7 +24,7 @@ html,body {
 	background: #ffffff;
 }
 .blur{
-  -webkit-filter: blur(1px) grayscale(10%);
+  -webkit-filter: blur(2px) grayscale(10%);
 }
 .colorstrip1{
 	position: fixed;
@@ -47,6 +47,11 @@ html,body {
     background-color: none;
     font-size:10px;
     display:inline-block;
+}
+.creatediv {
+	float:right;
+	margin-top:130px;
+	margin-right:20px;
 }
 .userimage{
   position: relative;
@@ -463,10 +468,10 @@ html,body {
 	position: relative;
 	width: 100%;
 	top: 40px;
-	height: 300px;
+	height: 80px;
     border-style: none;
     border-color: #91053d;
-    background-color: #91053d;
+    background-color: #ffbf03;
     text-align: center;
 }
 .companybanner{
@@ -520,7 +525,7 @@ html,body {
     border-radius: 4px;
     cursor: pointer;
     background-color: #F5F5F5;
-    color: #5a1646;
+    color: #021A42;
     padding: 8px 15px;
 }
 .upload-button {
@@ -542,7 +547,7 @@ html,body {
 }
 .userprofileinfo{
 	margin-top: 50px;
-	color: #5a1646;
+	color: #021A42;
 	font-size: 1em; 
 	font-family:'Raleway', sans-serif; 
 	font-weight: bold; 
@@ -571,7 +576,7 @@ html,body {
 }
 .profilebanner {
 	padding-top: 20px;
-	color: #5a1646;
+	color: #021A42;
     border-bottom: solid #5a1646;
 	font-size: 2em; 
 	font-family:'Raleway', sans-serif; 
@@ -775,4 +780,137 @@ $maincolor: #009688;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+}
+
+.allinonebanner{
+	position: absolute; 
+	top: -3px;
+	left: 0px;
+	color: #ffbf03;
+	font-size:2em; 
+	font-family:'Raleway', sans-serif; 
+	padding-left:20px; 
+	width:200px; 
+	text-align:left;
+	border: none;
+	background: none;
+}
+
+.createleaguemodalcss{
+    display: none; /* Hidden by default */
+    max-height: calc(100% - 50px);
+  	position: fixed;
+    top: 50%;
+    left: 50%;
+  	transform: translate(-50%, -50%);
+  	z-index: 199;
+}
+.createleague-modal-content{
+	z-index: 199;
+    background-color: #ffffff;
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: -100px;
+    border: none;
+    width: 700px; /* Could be more or less, depending on screen size */
+    height: 350px;
+    box-shadow: 0 15px 18px 0 rgba(0,0,0,0.2),0 16px 30px 0 rgba(0,0,0,0.19);
+    -webkit-animation-name: animatetop;
+    -webkit-animation-duration: 0.4s;
+    animation-name: animatetop;
+    animation-duration: 0.4s;
+   	text-align: center;
+}
+
+.modalcolorstrip1{
+	background-color: #ffbf03;
+	width: 100%;
+	height: 60px;
+	color: #ffffff;
+	text-align: center;
+}
+
+.donebutton1{
+	position:absolute;
+	bottom: 110px;
+	right: 10px;
+}
+.cancelbutton1{
+	position:absolute;
+	bottom: 110px;
+	right: 150px;
+}
+.createsportmodalcss{
+    display: none; /* Hidden by default */
+    max-height: calc(100% - 50px);
+  	position: fixed;
+    top: 50%;
+    left: 50%;
+  	transform: translate(-50%, -50%);
+  	z-index: 199;
+}
+.createsport-modal-content{
+	z-index: 199;
+    background-color: #ffffff;
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: -100px;
+    border: none;
+    width: 700px; /* Could be more or less, depending on screen size */
+    height: 600px;
+    box-shadow: 0 15px 18px 0 rgba(0,0,0,0.2),0 16px 30px 0 rgba(0,0,0,0.19);
+    -webkit-animation-name: animatetop;
+    -webkit-animation-duration: 0.4s;
+    animation-name: animatetop;
+    animation-duration: 0.4s;
+   	text-align: center;
+}
+
+
+.nextbutton1{
+	position:absolute;
+	bottom: 110px;
+	right: 10px;
+}
+.cancelbutton2{
+	position:absolute;
+	bottom: 110px;
+	right: 150px;
+}
+
+.rolesdiv{
+	position:absolute;
+	width:100%;
+	width: 425px;
+	margin-left:140px;
+	margin-top:150px;
+	height:300px;
+	overflow-y:scroll;
+}
+.addroles {
+	position:absolute;
+	bottom:200px;
+	right: 10px;
+}
+.createsportleaguemodalcss{
+    display: none; /* Hidden by default */
+    max-height: calc(100% - 50px);
+  	position: fixed;
+    top: 50%;
+    left: 50%;
+  	transform: translate(-50%, -50%);
+  	z-index: 199;
+}
+.createsportleague-modal-content{
+	z-index: 199;
+    background-color: #ffffff;
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: -100px;
+    border: none;
+    width: 700px; /* Could be more or less, depending on screen size */
+    height: 350px;
+    box-shadow: 0 15px 18px 0 rgba(0,0,0,0.2),0 16px 30px 0 rgba(0,0,0,0.19);
+    -webkit-animation-name: animatetop;
+    -webkit-animation-duration: 0.4s;
+    animation-name: animatetop;
+    animation-duration: 0.4s;
+   	text-align: center;
 }

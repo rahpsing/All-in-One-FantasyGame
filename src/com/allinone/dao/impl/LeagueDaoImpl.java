@@ -3,6 +3,7 @@ package com.allinone.dao.impl;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 import org.hibernate.Criteria;
@@ -123,5 +124,11 @@ public class LeagueDaoImpl implements LeagueDaoAPI {
 		return false;
 	}
 	
+	@Override
+	public Map<String,Integer> rulesMap(String leagueId){
+		Session session = objSessionFactory.getCurrentSession();
+		League objLeague = session.get(League.class, leagueId);
+		return objLeague.getMapSportConstraints();
+	}
 
 }
