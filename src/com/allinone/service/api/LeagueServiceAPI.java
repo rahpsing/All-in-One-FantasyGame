@@ -27,10 +27,9 @@ public interface LeagueServiceAPI {
 	public String userTeamSet(String leagueId, String userId);
 
 	public List<Player> playerList(String leagueId, String userId);
-	
-	
 
 	public String rulesMap(String leagueId);
+
 	
 	
 }

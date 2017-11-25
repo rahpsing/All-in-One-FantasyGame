@@ -184,5 +184,4 @@ public class LeagueServiceImpl implements LeagueServiceAPI {
 		return root.toString();
 	}
 
-
 }
