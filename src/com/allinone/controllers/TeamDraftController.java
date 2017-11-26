@@ -44,22 +44,25 @@ public class TeamDraftController {
 		String leagueId = objRequest.getParameter("leagueId");
 		String listOfPlayerIds = objRequest.getParameter("listOfPlayerIds");
 		String flag = objRequest.getParameter("flag");
-		//String teamName = objRequest.getParameter("teamName");
+		String teamName = objRequest.getParameter("updateTeamName");
+		System.out.println(teamName+"at controller");
 		List<String> listOfPlayerIdsList = new Gson().fromJson( listOfPlayerIds, List.class);
 		Set playerSet=new HashSet(listOfPlayerIdsList);
 		System.out.println("Done");
 		String returnString;
-		//Boolean teamNameBoolean;
+		Boolean teamNameBoolean;
 		if(flag.equals("create")) {
 		returnString =objUserTeamDraftAPI.createTeam(playerSet,leagueId, userId);
-		//teamNameBoolean=objUserTeamDraftAPI.updateTeamName(leagueId, userId, returnString, teamName);
+		String userTeamId=objUserTeamDraftAPI.getUserTeamId(leagueId, userId);
+		teamNameBoolean=objUserTeamDraftAPI.updateTeamName(leagueId, userId, userTeamId, teamName);
 		}
 		else {
 			
 			String userTeamId=objUserTeamDraftAPI.getUserTeamId(leagueId, userId);
 			
 			returnString=objUserTeamDraftAPI.updateTeam(playerSet, leagueId, userId, userTeamId, 50, 50);
-			//teamNameBoolean=objUserTeamDraftAPI.updateTeamName(leagueId, userId, returnString, teamName);
+			
+			teamNameBoolean=objUserTeamDraftAPI.updateTeamName(leagueId, userId, userTeamId, teamName);
 		}
 		if(returnString.equals("false"))
 		{

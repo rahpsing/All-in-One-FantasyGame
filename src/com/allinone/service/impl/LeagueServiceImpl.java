@@ -12,6 +12,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.TreeSet;
 
 import org.hibernate.Session;
 import org.json.JSONArray;
@@ -50,6 +51,9 @@ public class LeagueServiceImpl implements LeagueServiceAPI {
 	
 	@Autowired
 	TeamListToJsonServiceAPI objTeamListToJson;
+	
+	@Autowired
+	SetOfGamesToJsonAPI objSetOfGamesToJson;
 	
 	@Autowired
 	LeagueDaoAPI objLeagueDao;
@@ -193,12 +197,16 @@ public class LeagueServiceImpl implements LeagueServiceAPI {
 	@Override
 	public String gamesList(String leagueId){
 	
-		Set<Game> listOfGames=objLeagueDao.gamesList(leagueId);
-
-		System.out.println(listOfGames.isEmpty());
+		Set<Game> setOfGames=objLeagueDao.gamesList(leagueId);
+		TreeSet<Game> treeSetOfGames= new TreeSet<Game>();
+		treeSetOfGames.addAll(setOfGames);
+		System.out.println(treeSetOfGames.isEmpty());
+		for (Game game :treeSetOfGames) {
+			System.out.println(game.getScheduledStartTime());
+		}
 		//Collections.sort(listOfGames);
 		//System.out.println(listOfGames.toString());
-		return "yes";
+		return objSetOfGamesToJson.convertSetOfGamesToJson("listOfMatches", treeSetOfGames);
 		
 	}
 

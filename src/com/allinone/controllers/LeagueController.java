@@ -108,7 +108,7 @@ public class LeagueController {
 		model.put("userId", userId);
 		model.put("flag", flag);
 		if(flag.equals("create")) {
-			model.put("teamName", "Playing Eleven");
+			model.put("teamName", "");
 		}
 		else if(flag.equals("edit")) {
 			String teamName=objTeamService.getUserTeamName(leagueId, userId);
@@ -187,7 +187,7 @@ public class LeagueController {
 	public String gamesList(HttpServletRequest objRequest, HttpServletResponse objResponse) {
 		
 		//String leagueId = objRequest.getParameter("leagueId");
-		return objLeagueService.gamesList("4028b8815fdc6aa5015fdc6acb510001");
+		return objLeagueService.gamesList("4028b8815ff54eda015ff54f1c440001");
 	
 		
 	}

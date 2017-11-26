@@ -4,13 +4,13 @@
 	var playerRoster = document.getElementById("player-roster");
 	var userTeam = document.getElementById("user-team");
 
-
+	
 	var saveButton = document.getElementById("saveButton");
 	var playerData="";
    	
 	function updatedTeamName(){
+		
 		var updatedName=document.getElementById("updateTeamName").value;
-		//alert("Function called");
 		alert(updatedName);
 	}
 	
@@ -99,7 +99,7 @@
 		console.log(rulesMap);
 	}
 
-	function rulesCheck(counts,leagueId,userId,listOfPlayerIds,flag){
+	function rulesCheck(counts,leagueId,userId,listOfPlayerIds,flag,updatedName){
 	
 		var flag=Boolean(1==1)
 		var missedRules=""
@@ -123,7 +123,7 @@
 		if(flag){
 		listOfPlayerIds=JSON.stringify(listOfPlayerIds);
 		console.log("Thanks");
-		callFormSubmit(leagueId,userId,listOfPlayerIds,flag);
+		callFormSubmit(leagueId,userId,listOfPlayerIds,flag,updatedName);
 		}
 		else{
 			alert(missedRules);
@@ -136,6 +136,7 @@
 		var ind=0;	
 		var listOfPlayerIds=[];
 		var rolesList=[];
+		var updatedName=document.getElementById("updateTeamName").value;
 		var listItems = $("#user-team").find("p");
 		listItems.splice(0,1);
 		for ( ind = 0; ind < listItems.length; ind++ ) {
@@ -143,6 +144,8 @@
 		    listOfPlayerIds.push($(listItems[ind]).attr('id'));
 		    rolesList.push($(listItems[ind]).attr('role'));
 		}
+		
+		
 		
 		//console.log(rolesList.length);
 		var counts = {};
@@ -160,11 +163,11 @@
 			alert("Please select 11 players only");
 			return;
 		}
-		else if(teamName==""){
+		else if(updatedName==""){
 			alert("Please Enter Team name.");
 			return;
 		}
-		rulesCheck(counts,leagueId,userId,listOfPlayerIds,flag);
+		rulesCheck(counts,leagueId,userId,listOfPlayerIds,flag,updatedName);
 			
 		
 		
@@ -179,15 +182,15 @@
 	}
 	
 
-	function callFormSubmit(leagueId,userId,listOfPlayerIds,flag){
+	function callFormSubmit(leagueId,userId,listOfPlayerIds,flag,updatedName){
 		$.ajax({
 		    url : '/All-In-One-FantasyGame/createTeam',
 		    type: 'post',
-		    data : {userId:userId,leagueId:leagueId,listOfPlayerIds:listOfPlayerIds,flag:flag},
+		    data : {userId:userId,leagueId:leagueId,listOfPlayerIds:listOfPlayerIds,flag:flag,updateTeamName:updatedName},
 		    
 		    success: function(data)
 		   
-		    {	
+		    {	//alert(updatedName);
 		    	if (data=="true")
 		    	var f = document.createElement("form");
 				f.setAttribute('method',"post");
@@ -208,6 +211,11 @@
 				k.setAttribute('name',"flag");
 				k.setAttribute('value',flag);
 				f.appendChild(k);
+				var l = document.createElement("input");
+				l.setAttribute('type',"hidden");
+				l.setAttribute('name',"updateTeamName");
+				l.setAttribute('value',updatedName);
+				f.appendChild(l);
 				document.body.appendChild(f);
 				console.log(f);
 				f.submit();

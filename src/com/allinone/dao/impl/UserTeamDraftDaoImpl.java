@@ -125,6 +125,7 @@ public class UserTeamDraftDaoImpl implements UserTeamDraftDaoAPI {
 		Session session = objSessionFactory.getCurrentSession();
 		User objUser = session.get(User.class,userId);
 		League objLeague = session.get(League.class, leagueId);
+		UserTeam objuserTeam = session.get(UserTeam.class, userTeamId);
 		UserTeam userTeam = null;
 	
 			Set<UserTeam> userTeams = objLeague.getSetOfUserTeams();
@@ -138,12 +139,12 @@ public class UserTeamDraftDaoImpl implements UserTeamDraftDaoAPI {
 		Set<Player> setOfUserTeamPlayers = new HashSet<Player>();
 
 		try {
-		userTeam.setSetOfPlayers(setOfUserTeamPlayers);
-		userTeam.setUsert(objUser);
-		userTeam.setTeamName(teamName);
-		userTeam.setLeague(objLeague);
+			objuserTeam.setSetOfPlayers(setOfUserTeamPlayers);
+			objuserTeam.setUsert(objUser);
+			objuserTeam.setTeamName(teamName);
+			objuserTeam.setLeague(objLeague);
 		
-		session.saveOrUpdate(userTeam);
+		session.saveOrUpdate(objuserTeam);
 		
 		return true;
 		}

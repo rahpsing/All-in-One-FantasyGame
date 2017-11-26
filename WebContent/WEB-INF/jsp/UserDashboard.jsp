@@ -439,9 +439,10 @@ div.panel button {
 	var fileUploadDiv = document.getElementById("imageUpload");
 	
 
-	updateProfileDiv.onclick = function() {
+ 	updateProfileDiv.onclick = function() {
 		 readURL(fileUploadDiv);
-	}
+		 
+	} 
 	
 	
 	    var readURL = function(input) {
@@ -449,7 +450,7 @@ div.panel button {
 	            var reader = new FileReader();
 
 	            reader.onload = function (e) {
-	                $('.uploadprofileimage').attr('src', e.target.result);
+	                $('.profileimage').attr('src', e.target.result);
 	            }
 	    
 	            reader.readAsDataURL(input.files[0]);
@@ -457,11 +458,13 @@ div.panel button {
 	    }
 	    
 
-	    $(".file-upload").on('change', function(){
+	    /* $(".file-upload").on('change', function(){
+	    	
 	        readURL(this);
 	    });
-	    
+	     */
 	    $(".updateprofileimage").on('click', function() {
+	    	
 	       $(".fileUpload").click();
 	       readURL(this);
 	    });
