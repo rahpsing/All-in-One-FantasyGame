@@ -27,6 +27,7 @@ public class TeamSetToJsonImpl implements TeamSetToJsonAPI {
                 eachData.put("userName", returnList.get(i).getUsert().getUserName());
                 eachData.put("id", returnList.get(i).getId());
                 eachData.put("points", returnList.get(i).getScore());
+                eachData.put("userTeamName", returnList.get(i).getTeamName());
             } catch (JSONException e) {
                 e.printStackTrace();
             }
