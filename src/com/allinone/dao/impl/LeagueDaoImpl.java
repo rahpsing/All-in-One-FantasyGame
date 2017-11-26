@@ -15,11 +15,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.allinone.dao.api.LeagueDaoAPI;
-import com.allinone.dao.api.SportUtilityDaoAPI;
 import com.allinone.pojos.Game;
 import com.allinone.pojos.League;
 import com.allinone.pojos.Player;
-import com.allinone.pojos.Sport;
 import com.allinone.pojos.User;
 import com.allinone.pojos.UserTeam;
 
@@ -134,13 +132,28 @@ public class LeagueDaoImpl implements LeagueDaoAPI {
 
 
 	@Override
-	public void saveUserScores(Map<String, Double> mapOfUserIdAndScore) {
+	public boolean saveUserScores(String leagueId, Map<String, Double> mapOfUserIdAndScore) {
 		// TODO Auto-generated method stub
 		Session session = objSessionFactory.getCurrentSession();
-		for(String userId : mapOfUserIdAndScore.keySet()) {
+		
+		
+		
+		League objLeague = session.get(League.class, leagueId);
+		Set<UserTeam> userTeams = objLeague.getSetOfUserTeams();
+		double totalScore = 0;
+		for(UserTeam userTeam : userTeams) {
 			
-		//	session.get(UserTeam.class, arg1)
-	}
+		    String userId = userTeam.getUsert().getUserId();
+			if(mapOfUserIdAndScore.containsKey(userId)) {
+				
+				//computation to add new scores to existing scores
+				totalScore = userTeam.getScore() + mapOfUserIdAndScore.get(userId);
+				userTeam.setScore(totalScore);
+			    session.saveOrUpdate(userTeam);
+	        }
+	    }
+		
+		return true;
 	}
 	
 	@Override

@@ -18,7 +18,7 @@ public interface LeagueServiceAPI {
 
 	public String fetchLeagues(String sport,String Comparator);
 
-	public Map<String,Double> getUserScoresForAGame(String leagueId, String gameId);
+	public Map<String,Double> updateUserScoresForAGame(String leagueId, String gameId);
 	
 	public boolean hasUserJoinedLeague(String userId, String leagueId);
 
@@ -29,9 +29,6 @@ public interface LeagueServiceAPI {
 	public List<Player> playerList(String leagueId, String userId);
 
 	public String rulesMap(String leagueId);
-
-
-
 
 	public String gamesList(String leagueId);
 

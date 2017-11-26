@@ -163,13 +163,13 @@ public class LeagueController {
 	}
 
 	
-	@RequestMapping(value="/uploadGame")
+	@RequestMapping(value="/uploadGameScores")
 	@ResponseBody
-	public void uploadGame(HttpServletRequest objRequest, HttpServletResponse objResponse) {
+	public void uploadGameScores(HttpServletRequest objRequest, HttpServletResponse objResponse) {
 		
 		String leagueId = objRequest.getParameter("leagueId");
 		String gameId = objRequest.getParameter("gameId");
-		objLeagueService.getUserScoresForAGame(leagueId, gameId);
+		objLeagueService.updateUserScoresForAGame(leagueId, gameId);
 		//return new ModelAndView("UserDashboard");
 	}
 

@@ -4,16 +4,11 @@
 package com.allinone.service.impl;
 
 import java.util.ArrayList;
-
-import java.util.Collections;
-
 import java.util.HashMap;
-
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import org.hibernate.Session;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -140,7 +135,7 @@ public class LeagueServiceImpl implements LeagueServiceAPI {
 	}
 	
 	@Override
-	public Map<String,Double> getUserScoresForAGame(String leagueId, String gameId) {
+	public Map<String,Double> updateUserScoresForAGame(String leagueId, String gameId) {
 		
 		Map<String,Double> mapOfUserIdAndScore = new HashMap<String,Double>();
 		Set<UserTeam> setOfUserTeams = objLeagueDao.fetchUserTeams(leagueId);
@@ -153,7 +148,7 @@ public class LeagueServiceImpl implements LeagueServiceAPI {
 			objTeam.setScore(score);
 			mapOfUserIdAndScore.put(objTeam.getUsert().getUserId(), score);
 		}
-		objLeagueDao.saveUserScores(mapOfUserIdAndScore);
+		objLeagueDao.saveUserScores(leagueId, mapOfUserIdAndScore);
 		
 		return mapOfUserIdAndScore;
 	}

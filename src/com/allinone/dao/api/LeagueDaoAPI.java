@@ -33,7 +33,7 @@ public interface LeagueDaoAPI {
 	public Map<String, Integer> rulesMap(String leagueId);
 
 
-	public void saveUserScores(Map<String, Double> mapOfUserIdAndScore);
+	public boolean saveUserScores(String leagueId,Map<String, Double> mapOfUserIdAndScore);
 
 	public Set<Game> gamesList(String leagueId);
 	

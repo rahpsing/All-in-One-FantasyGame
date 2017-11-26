@@ -36,7 +36,6 @@ public class StatisticCalculatorServiceImpl implements StatisticCalculatorServic
 				Set<RuleHelper> objTreeSet = new TreeSet<RuleHelper>(mapOfRolesAndRules.get(key));
 				for(RuleHelper objHelper : objTreeSet) {
 				
-				
 					playerScore += getConditionalScore(mapRolesAndScores.get(key), objHelper);
 			}
 		 }
