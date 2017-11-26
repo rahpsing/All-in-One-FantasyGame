@@ -23,7 +23,7 @@ body {
 -->
 </style>
 </head>
-<body onload="javascript:onLoadCalls('${leagueId}','${userId}')"> 
+<body onload="javascript:onLoadCalls('${leagueId}','${userId}')">
 	<div class="colorstrip1">
 		<button class="allinonebanner">all-in-one</button>
 		<div class="logout">
@@ -31,11 +31,38 @@ body {
 		</div>
 	</div>
 	<div id="mainDiv" class="maindiv">
+		<div class="ticker-wrap">
+			<div class="ticker">
+			  <div class="ticker__item" style="background-color:#ffbf03;height:100%;width:250px;text-align:center;"><br><br><br><br><br><p>previous matches : </p><br></div>
+			  <div class="ticker__item" style="width:50px;"><br><div class="teamimage"><img class="circle responsive-img" src="${pageContext.request.contextPath}/resources/UIAssets/user1.jpeg"/></div><br><p style="text-align:center;"> MUN</p><p  style="text-align:center;">05</p></div>
+			  <div class="ticker__item" style="width:50px;text-align:center;"><p>vs.</p><br><p  style="text-align:center;">13</p></div>
+			  <div class="ticker__item" style="width:50px;"><br><div class="teamimage"><img class="circle responsive-img" src="${pageContext.request.contextPath}/resources/UIAssets/user1.jpeg"/></div><br><p style="text-align:center;"> LIV</p><p  style="text-align:center;">2017</p></div>
+			  <div class="ticker__item" style="background-color:#021A42;height:100%;width:10px;text-align:center;"><br><br><br><br><br><br><br><br><br><br><br></div>
+			  <div class="ticker__item" style="width:50px;"><br><div class="teamimage"><img class="circle responsive-img" src="${pageContext.request.contextPath}/resources/UIAssets/user1.jpeg"/></div><br><p style="text-align:center;"> MUN</p><p  style="text-align:center;">06</p></div>
+			  <div class="ticker__item" style="width:50px;text-align:center;"><p>vs.</p><br><p  style="text-align:center;">30</p></div>
+			  <div class="ticker__item" style="width:50px;"><br><div class="teamimage"><img class="circle responsive-img" src="${pageContext.request.contextPath}/resources/UIAssets/user1.jpeg"/></div><br><p style="text-align:center;"> LIV</p><p  style="text-align:center;">2017</p></div>
+			  <div class="ticker__item" style="background-color:#021A42;height:100%;width:10px;text-align:center;"><br><br><br><br><br><br><br><br><br><br><br></div>
+			  <div class="ticker__item" style="width:50px;"><br><div class="teamimage"><img class="circle responsive-img" src="${pageContext.request.contextPath}/resources/UIAssets/user1.jpeg"/></div><br><p style="text-align:center;"> MUN</p><p  style="text-align:center;">07</p></div>
+			  <div class="ticker__item" style="width:50px;text-align:center;"><p>vs.</p><br><p  style="text-align:center;">20</p></div>
+			  <div class="ticker__item" style="width:50px;"><br><div class="teamimage"><img class="circle responsive-img" src="${pageContext.request.contextPath}/resources/UIAssets/user1.jpeg"/></div><br><p style="text-align:center;"> LIV</p><p  style="text-align:center;">2017</p></div>
+			  <div class="ticker__item" style="background-color:#ffbf03;height:100%;width:250px;text-align:center;"><br><br><br><br><br><p>current match : </p><br></div>
+			  <div class="ticker__item" style="width:50px;"><br><div class="teamimage"><img class="circle responsive-img" src="${pageContext.request.contextPath}/resources/UIAssets/user1.jpeg"/></div><br><p style="text-align:center;"> MUN</p><p  style="text-align:center;">11</p></div>
+			  <div class="ticker__item" style="width:50px;text-align:center;"><p>vs.</p><br><p  style="text-align:center;">25</p></div>
+			  <div class="ticker__item" style="width:50px;"><br><div class="teamimage"><img class="circle responsive-img" src="${pageContext.request.contextPath}/resources/UIAssets/user1.jpeg"/></div><br><p style="text-align:center;"> LIV</p><p  style="text-align:center;">2017</p></div>
+			  <div class="ticker__item" style="background-color:#ffbf03;height:100%;width:250px;text-align:center;"><br><br><br><br><br><p>next matches : </p><br></div>
+			  <div class="ticker__item" style="width:50px;"><br><div class="teamimage"><img class="circle responsive-img" src="${pageContext.request.contextPath}/resources/UIAssets/user1.jpeg"/></div><br><p style="text-align:center;"> MUN</p><p  style="text-align:center;">12</p></div>
+			  <div class="ticker__item" style="width:50px;text-align:center;"><p>vs.</p><br><p  style="text-align:center;">24</p></div>
+			  <div class="ticker__item" style="width:50px;"><br><div class="teamimage"><img class="circle responsive-img" src="${pageContext.request.contextPath}/resources/UIAssets/user1.jpeg"/></div><br><p style="text-align:center;"> LIV</p><p  style="text-align:center;">2017</p></div>
+			  <div class="ticker__item" style="background-color:#021A42;height:100%;width:10px;text-align:center;"><br><br><br><br><br><br><br><br><br><br><br></div>
+			  <div class="ticker__item" style="width:50px;"><br><div class="teamimage"><img class="circle responsive-img" src="${pageContext.request.contextPath}/resources/UIAssets/user1.jpeg"/></div><br><p style="text-align:center;"> MUN</p><p  style="text-align:center;">12</p></div>
+			  <div class="ticker__item" style="width:50px;text-align:center;"><p>vs.</p><br><p  style="text-align:center;">29</p></div>
+			  <div class="ticker__item" style="width:50px;"><br><div class="teamimage"><img class="circle responsive-img" src="${pageContext.request.contextPath}/resources/UIAssets/user1.jpeg"/></div><br><p style="text-align:center;"> LIV</p><p  style="text-align:center;">2017</p></div>	  	
+			</div>
+		</div>
 		<div class="colorstrip2">
-			<img src="${pageContext.request.contextPath}/resources/UIAssets/league1pic.png" class="leagueimage">
 			<div class="welcomemsg">
-			<b></b>
-			<b class="name">testname${name}</b>
+				<b></b>
+				<b class="name">testname${name}</b>
 			</div>
 			<%-- <img src="${pageContext.request.contextPath}/resources/UIAssets/bannerdesign.png" class="bannerdesign"> --%>
 <%-- 			<button id="joinLeague" onclick="javascript:createTeam('${leagueId}','${userId}')" class="waves-effect waves-light btn" style="background-color:#ffbf03;height:70px;width: 200px;font-size:2em;text-transform: lowercase;padding-top:2.5px;font-family:'Raleway', sans-serif; position:absolute; right: 600px; ">join league</button> --%>

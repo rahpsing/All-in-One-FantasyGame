@@ -14,6 +14,7 @@ html,body {
 	font-size: 10px;
 	z-index: 99;
 	background: rgba(2,26,66,0.6); 
+	height:100vh;
 }
 .bgimage{
 	position: fixed;
@@ -46,8 +47,8 @@ html,body {
 .colorstrip2{
 	position: relative;
 	width: 100%;
-	top: 60px;
-	height: 200px;
+	top: 45px;
+	height: 70px;
     border-style: none;
     border-color: #c50234;
     background-color: none;
@@ -113,10 +114,11 @@ html,body {
 .leagueinfo{
 	position: relative;
 	height: 700px;
+	top:0px;
 }
 
 .leagueinfo .players {
-	margin-top: 120px;
+	margin-top: 90px;
 	position: absolute;
 	left: 5%;
 	display: show;
@@ -179,7 +181,7 @@ html,body {
 }
 
 .leagueinfo .myteam {
-	margin-top: 120px;
+	margin-top: 90px;
 	position: absolute;
 	right: 7.5%;
 	display: show;
@@ -265,7 +267,7 @@ html,body {
 .colorstrip13{
 	position: relative;
 	width: 100%;
-	top: 40px;
+	top: 0px;
 	height: 80px;
     border-style: none;
     border-color: #91053d;
@@ -539,4 +541,66 @@ $maincolor: #009688;
 	text-align:left;
 	border: none;
 	background: none;
+}
+
+@-webkit-keyframes ticker {
+  0% {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+    visibility: visible;
+  }
+  100% {
+    -webkit-transform: translate3d(-100%, 0, 0);
+    transform: translate3d(-100%, 0, 0);
+  }
+}
+@keyframes ticker {
+  0% {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+    visibility: visible;
+  }
+  100% {
+    -webkit-transform: translate3d(-100%, 0, 0);
+    transform: translate3d(-100%, 0, 0);
+  }
+}
+.ticker-wrap {
+  position: relative;
+  top: 40px;
+  width: 100%;
+  overflow: hidden;
+  height: 140px;
+  background-color: rgba(255,191,3,0.5);
+  padding-left: 100%;
+}
+
+.ticker {
+  display: inline-block;
+  height: 140px;
+  line-height: 10px;
+  white-space: nowrap;
+  padding-right: 100%;
+  -webkit-animation-iteration-count: infinite;
+  animation-iteration-count: infinite;
+  -webkit-animation-timing-function: linear;
+  animation-timing-function: linear;
+  -webkit-animation-name: ticker;
+  animation-name: ticker;
+  -webkit-animation-duration: 15s;
+  animation-duration: 15s;
+}
+.ticker__item {
+  display: inline-block;
+  margin-left:10px;
+  margin-right:10px;
+  font-size: 2em;
+  color: white;
+  align: center;
+}
+.teamimage {
+	right: 0px;
+	top: 0px;
+	height: 30px;
+	width: 50px;
 }
