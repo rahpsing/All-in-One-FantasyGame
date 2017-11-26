@@ -107,7 +107,7 @@ body {
  				</div>
  			</div>
 	 		<section id="player-lists">
-				<div id="user-team" ondrop="dropPlayer(this, event)" ondragenter="return false" ondragover="return false">
+				<div id="user-team" ondrop="dropPlayer(this, event,'${flag}')" ondragenter="return false" ondragover="return false">
 			   <p style="color:#ffbf03;height:40px;font-size:3em;text-transform: lowercase;margin-top:-5px;font-family:'Raleway', sans-serif;">team</p>
 			    <!--These are all the draggable peices-->
 			    		
@@ -263,7 +263,8 @@ body {
 		    	console.log(data);
 		    	$('#user-team').empty();
 		    	$('#user-team').append('<p style="color:#ffbf03;height:40px;font-size:3em;text-transform: lowercase;margin-top:-5px;font-family:"Raleway", sans-serif;">team</p>');
-		    	$(data.usersTeam).each(function(index,value){$('#user-team').append('<a draggable="true" class="player" id='+value.id+'+123  ondragstart="dragPlayer(this, event)"><div class="content1" style="margin-top:2px;"><div class="card1" style="height:40px;"><div class="userimage1"><img class="circle responsive-img" src="${pageContext.request.contextPath}/resources/UIAssets/user1.jpeg"/></div><div  class="profileinfo1"><p id='+value.id+' role = '+value.role+'  style="font-size:2em;font-family:Raleway, sans-serif; color:#000000;margin-top:3px;">'+value.player+'</p></div></div></div></a>');})
+		    	$(data.usersTeam).each(function(index,value){$('#user-team').append('<a draggable="true" class="player" id='+value.id+'+123  ondragstart="dragPlayer(this, event)"><div class="content1" style="margin-top:2px;"><div class="card1" style="height:40px;"><div class="userimage1"><img class="circle responsive-img" src="${pageContext.request.contextPath}/resources/UIAssets/user1.jpeg"/></div><div  class="profileinfo1"><p id='+value.id+' role = '+value.role+'  style="font-size:2em;font-family:Raleway, sans-serif; color:#000000;margin-top:3px;">'+value.player+'</p></div></div></div></a>');
+		    			initialUserTeam.push(value.id);})
 		    	//fetchPlayerList(leagueId,'rosterList',userId);
 		    },
 		    error: function (jqXHR, textStatus, errorThrown)
@@ -272,6 +273,7 @@ body {
 		    	//fetchPlayerList(leagueId,'rosterList',userId);
 		    }
 		});
+		
 		}
 	function searchPlayerList(){
 		var searchText=document.getElementById("searchText").value;

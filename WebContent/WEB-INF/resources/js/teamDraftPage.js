@@ -3,8 +3,11 @@
 	var teamNameEditForm = document.getElementById("teamNameEdit");
 	var playerRoster = document.getElementById("player-roster");
 	var userTeam = document.getElementById("user-team");
-
-	
+	var initialUserTeam=[];
+	var revisedUserTeam=[];
+	var swapsOrig;
+	var swapsLeft;
+	var score;
 	var saveButton = document.getElementById("saveButton");
 	var playerData="";
    	
@@ -23,10 +26,11 @@
 		target.appendChild(document.getElementById(player));
 		countRoles();
 	}
-	function dropPlayer(target, event) {
+	function dropPlayer(target, event,flag) {
 	    var player = event.dataTransfer.getData('Players');
 	   	target.appendChild(document.getElementById(player)); 
 		var ind=0;	
+		var swapsUsed;
 		var listOfPlayerIds=[];
 		var listItems = $("#user-team").find("p");
 		console.log(listItems);
@@ -46,6 +50,17 @@
 			
 			
 		}
+		if(flag=="edit")
+		{
+		swapsUsed=diffInUserTeams();
+		}
+		else{
+			swapsUsed=0;
+		}
+		
+		swapsLeft=swapsOrig-swapsUsed;
+		alert(swapsLeft);
+		
 		countRoles();
 	}
 		function countRoles(){
@@ -75,6 +90,35 @@
 		
 		fetchPlayerList(leagueId,'rosterList',userId);
 		fetchRules(leagueId);
+		fetchSwapsAndScore(leagueId,userId,flag);
+	}
+	function fetchSwapsAndScore(leagueId,userId,flag){
+		if(flag=="create"){
+			swapsOrig=50;
+			score=50;
+		}
+		else
+			{
+			$.ajax({
+				url : '/All-In-One-FantasyGame/fetchSwapsAndScores',
+			    type: 'post',
+			    data : {leagueId:leagueId,userId:userId},
+			    dataType : 'json',
+			    success: function(data){
+			    	
+			    	$(data.teamDetails).each(function(index,value){
+			    		swapsOrig=value.swaps;
+						score=value.scores;
+						
+			    	});
+			    },
+			    error: function (jqXHR, textStatus, errorThrown)
+			    {
+			    	populateRules("");
+					console.log("Error while fetching scores and swaps");
+			    }
+			});
+			}
 	}
 	var rulesMap="";
 	function fetchRules(leagueId){
@@ -128,6 +172,25 @@
 		else{
 			alert(missedRules);
 		}
+	}
+	function diffInUserTeams(){
+		revisedUserTeam=[]
+		var usedSwaps=0;
+		var listItems = $("#user-team").find("p");
+		listItems.splice(0,1);
+		for ( var ind = 0; ind < listItems.length; ind++ ) {
+		    
+		    revisedUserTeam.push($(listItems[ind]).attr('id'));
+		    
+		}
+		
+		for (var i=0;i<initialUserTeam.length;i++){
+			if(!revisedUserTeam.includes(initialUserTeam[i])){
+				usedSwaps++;
+				//alert("Swap used")
+			}
+		}
+		return usedSwaps;
 	}
 	function sendPlayerList(userId,leagueId,flag){
 		//var teamName=document.getElementById("teamName").value;

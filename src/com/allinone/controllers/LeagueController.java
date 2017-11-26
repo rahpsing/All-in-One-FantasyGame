@@ -41,6 +41,9 @@ public class LeagueController {
 	LeagueServiceAPI objLeagueService;
 	
 	@Autowired
+	UserTeamDraftServiceAPI objUserTeamDraftAPI;
+	
+	@Autowired
 	UserTeamDraftServiceAPI objTeamService;
 	
 	@Autowired
@@ -191,5 +194,7 @@ public class LeagueController {
 	
 		
 	}
+	
+	
 }
 

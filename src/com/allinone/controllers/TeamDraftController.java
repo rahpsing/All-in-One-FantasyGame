@@ -72,5 +72,15 @@ public class TeamDraftController {
 		return "true";
 	}
 	
-
+	@RequestMapping(value="/fetchSwapsAndScores")
+	@ResponseBody
+	public String fetchSwapsAndScores(HttpServletRequest objRequest, HttpServletResponse objResponse) {
+		
+		String leagueId = objRequest.getParameter("leagueId");
+		String userId = objRequest.getParameter("userId");
+		String userTeamId=objUserTeamDraftAPI.getUserTeamId(leagueId, userId);
+		return objUserTeamDraftAPI.getUserTeamDetails(userTeamId);
+	
+		
+	}
 }

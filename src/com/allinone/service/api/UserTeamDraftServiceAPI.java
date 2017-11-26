@@ -24,6 +24,8 @@ public interface UserTeamDraftServiceAPI {
 
 	public String getUserTeamName(String leagueId, String userId);
 
+	public String getUserTeamDetails(String userTeamId);
+
 	
 
 }

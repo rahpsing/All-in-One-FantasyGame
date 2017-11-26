@@ -196,4 +196,13 @@ public class UserTeamDraftDaoImpl implements UserTeamDraftDaoAPI {
 				return "Playing Eleven";
 			}
 	}
+	
+	@Override
+	public UserTeam getUserTeamDetails(String userTeamId) {
+		Session session = objSessionFactory.getCurrentSession();
+		UserTeam objuserTeam = session.get(UserTeam.class, userTeamId);
+		return objuserTeam;
 	}
+}
+
+
