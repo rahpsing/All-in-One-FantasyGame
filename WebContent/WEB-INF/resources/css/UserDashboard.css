@@ -905,6 +905,15 @@ $maincolor: #009688;
   	transform: translate(-50%, -50%);
   	z-index: 199;
 }
+.createsportleaguemodalloadercss{
+    display: none; /* Hidden by default */
+    max-height: calc(100% - 50px);
+  	position: fixed;
+    top: 50%;
+    left: 50%;
+  	transform: translate(-50%, -50%);
+  	z-index: 199;
+}
 .createsportleague-modal-content{
 	z-index: 199;
     background-color: #ffffff;
