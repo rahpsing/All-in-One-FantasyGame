@@ -10,11 +10,34 @@
 	var score;
 	var saveButton = document.getElementById("saveButton");
 	var playerData="";
+	var globalleagueId;
+	var globaluserId;
    	
 	function updatedTeamName(){
 		
 		var updatedName=document.getElementById("updateTeamName").value;
-		alert(updatedName);
+		
+		$.ajax({
+			url : '/All-In-One-FantasyGame/updateTeamName',
+		    type: 'post',
+		    data : {leagueId:globalleagueId,userId:globaluserId,updateTeamName:updatedName},
+		    
+		    success: function(data){
+		    	
+		    	if(data=="true"){
+		    		alert("Team Name Updated");
+		    			}
+		    	else{
+		    		alert("Please try again");
+		    	}
+		    },
+		    error: function (jqXHR, textStatus, errorThrown)
+		    {
+		    	
+		    	alert("Team name not updated.Please try again ");
+		    }
+		});
+		
 	}
 	
 	function dragPlayer(player, event) {
@@ -59,7 +82,7 @@
 		}
 		
 		swapsLeft=swapsOrig-swapsUsed;
-		alert(swapsLeft);
+		//alert(swapsLeft);
 		
 		countRoles();
 	}
@@ -86,8 +109,10 @@
    	 }).disableSelection();
   	} );
 	function onLoadCalls(leagueId,userId,flag){
+		globalleagueId=leagueId;
+		globaluserId=userId;
 		populateTeam(userId,leagueId);
-		
+		onloadEditUserTeamName(leagueId,userId,flag);
 		fetchPlayerList(leagueId,'rosterList',userId);
 		fetchRules(leagueId);
 		fetchSwapsAndScore(leagueId,userId,flag);

@@ -81,9 +81,9 @@ body {
 			<%-- <img src="${pageContext.request.contextPath}/resources/UIAssets/bannerdesign.png" class="bannerdesign"> --%>
  		</div>
  		<div id="editNameModal" class="editnamecss" style="display:none;">
-			  	<form name="loginForm"  >
+			  	<form id="editNameButton" name="loginForm"  >
 				    <input type="text" class="teamname" id="updateTeamName" name="teamname" style="color:#ffffff;font-size:2em;" placeholder="Enter your Team Name..." value='${teamName}'><br>
-				    <!--<input class="waves-effect waves-light btn" style="background-color:#ffbf03;height:40px;width:30%;font-size:2em;text-transform: lowercase; top:-60px; left:500px;padding-top:5px;font-family:'Raleway', sans-serif;" type="button" value="Submit" onclick="javascript:updatedTeamName()"/>-->
+				    <!-- JS line 256<input class="waves-effect waves-light btn" style="background-color:#ffbf03;height:40px;width:30%;font-size:2em;text-transform: lowercase; top:-60px; left:500px;padding-top:5px;font-family:Raleway, sans-serif;" type="button" value="Submit" onclick="javascript:updatedTeamName()"/> -->
 				</form>
 		</div>
  		<!-- <div class="fixed-action-btn toolbar" >
@@ -235,6 +235,7 @@ body {
 	var userTeamOverlay = document.getElementById("userTeamOverlay");
 	var editNameModal = document.getElementById("editNameModal");
 	var teamName = document.getElementById("teamName");	
+	var editNameButton=document.getElementById("editNameButton");
 	
 	editTeamButton.onclick = function() {
 		userTeamOverlay.style.display = "none";
@@ -245,6 +246,19 @@ body {
 		editNameModal.style.display = "block";
 		teamName.style.display = "none";
 	}
+	function onloadEditUserTeamName(leagueId,userId,flag){
+		if(flag=="create"){
+		editNameModal.style.display = "block";
+		teamName.style.display = "none";
+		}
+		
+		else{
+			$('#editNameButton').append('<input class="waves-effect waves-light btn" style="background-color:#ffbf03;height:40px;width:30%;font-size:2em;text-transform: lowercase; top:-60px; left:500px;padding-top:5px;font-family:Raleway, sans-serif;" type="button" value="Submit" onclick="javascript:updatedTeamName()"/>');
+			
+		}
+		
+	}
+	
 	</script>
 	<script>
 

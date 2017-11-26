@@ -53,8 +53,7 @@ public class TeamDraftController {
 		Boolean teamNameBoolean;
 		if(flag.equals("create")) {
 		returnString =objUserTeamDraftAPI.createTeam(playerSet,leagueId, userId);
-		String userTeamId=objUserTeamDraftAPI.getUserTeamId(leagueId, userId);
-		teamNameBoolean=objUserTeamDraftAPI.updateTeamName(leagueId, userId, userTeamId, teamName);
+		
 		}
 		else {
 			
@@ -62,7 +61,11 @@ public class TeamDraftController {
 			
 			returnString=objUserTeamDraftAPI.updateTeam(playerSet, leagueId, userId, userTeamId, 50, 50);
 			
-			teamNameBoolean=objUserTeamDraftAPI.updateTeamName(leagueId, userId, userTeamId, teamName);
+			
+		}
+		if(flag.equals("create")) {
+		String userTeamId=objUserTeamDraftAPI.getUserTeamId(leagueId, userId);
+		teamNameBoolean=objUserTeamDraftAPI.updateTeamName(leagueId, userId, userTeamId, teamName);
 		}
 		if(returnString.equals("false"))
 		{
@@ -82,5 +85,19 @@ public class TeamDraftController {
 		return objUserTeamDraftAPI.getUserTeamDetails(userTeamId);
 	
 		
+	}
+	
+	@RequestMapping(value="/updateTeamName")
+	@ResponseBody
+	public String updateTeamName(HttpServletRequest objRequest, HttpServletResponse objResponse) {
+		
+		String leagueId = objRequest.getParameter("leagueId");
+		String userId = objRequest.getParameter("userId");
+		String userTeamId=objUserTeamDraftAPI.getUserTeamId(leagueId, userId);
+		String teamName = objRequest.getParameter("updateTeamName");
+		if(objUserTeamDraftAPI.updateTeamName(leagueId, userId, userTeamId, teamName)) {
+			return "true";
+		}
+		return "false";
 	}
 }

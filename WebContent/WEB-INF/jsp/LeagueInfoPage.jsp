@@ -214,7 +214,7 @@ function populateUserTeams(leagueId,userId){
 	    	$('#populateUserList').empty();
 	    	console.log("done1");
 	    	console.log(data);	
-	    	$(data.userTeam).each(function(index,value){$('#populateUserList').append('<div class="content"><div class="card" style="height:80px;"><div class="userimage"><img class="circle responsive-img" src="${pageContext.request.contextPath}/resources/UIAssets/user1.jpeg"/></div><div class="profileinfo"><p style="font-size:2em;font-family:Raleway, sans-serif; color:#000000;">'+value.userTeamName+'</p><p class="bio" style="font-size: 1.5em;margin-top:-20px;font-family:"Raleway", sans-serif; ">owner : '+value.userName+'  &nbsp;&nbsp;&nbsp;&nbsp; points : '+value.points+'</p></div></div></div>');})
+	    	$(data.userTeam).each(function(index,value){$('#populateUserList').append('<div class="content"><div class="card" style="height:80px;cursor:pointer;"><div class="userimage"><img class="circle responsive-img" src="${pageContext.request.contextPath}/resources/UIAssets/user1.jpeg"/></div><div class="profileinfo"><p style="font-size:2em;font-family:Raleway, sans-serif; color:#000000;">'+value.userTeamName+'</p><p class="bio" style="font-size: 1.5em;margin-top:-20px;font-family:"Raleway", sans-serif; ">owner : '+value.userName+'  &nbsp;&nbsp;&nbsp;&nbsp; points : '+value.points+'</p></div></div></div>');})
 	    	console.log("done2");
 	    	populateTeam(userId,leagueId);
 	    },
