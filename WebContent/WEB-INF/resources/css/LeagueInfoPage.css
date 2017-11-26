@@ -47,7 +47,7 @@ html,body {
 .colorstrip2{
 	position: relative;
 	width: 100%;
-	top: 185px;
+	top: 45px;
 	height: 70px;
     border-style: none;
     border-color: #c50234;
@@ -114,11 +114,11 @@ html,body {
 .leagueinfo{
 	position: relative;
 	height: 700px;
-	top:100px;
+	top:0px;
 }
 
 .leagueinfo .players {
-	margin-top: 120px;
+	margin-top: 90px;
 	position: absolute;
 	left: 5%;
 	display: show;
@@ -181,7 +181,7 @@ html,body {
 }
 
 .leagueinfo .myteam {
-	margin-top: 120px;
+	margin-top: 90px;
 	position: absolute;
 	right: 7.5%;
 	display: show;
@@ -267,7 +267,7 @@ html,body {
 .colorstrip13{
 	position: relative;
 	width: 100%;
-	top: 115px;
+	top: 0px;
 	height: 80px;
     border-style: none;
     border-color: #91053d;
@@ -566,7 +566,7 @@ $maincolor: #009688;
   }
 }
 .ticker-wrap {
-  position: fixed;
+  position: relative;
   top: 40px;
   width: 100%;
   overflow: hidden;
