@@ -326,6 +326,52 @@ div.panel button {
 				</div>
 		  	</div>
 	</div>
+	<div id="createSportLeagueModalLoader" class="createsportleaguemodalloadercss">
+		 	<!-- Modal content -->
+		  	<div id="createSportLeagueLoaderContent" class="createsportleague-modal-content" style="background-color: rgba(255,255,255,0.7);">
+		  		<div class="preloader-wrapper big active" style="margin-top:150px;">
+			      <div class="spinner-layer spinner-blue">
+			        <div class="circle-clipper left">
+			          <div class="circle"></div>
+			        </div><div class="gap-patch">
+			          <div class="circle"></div>
+			        </div><div class="circle-clipper right">
+			          <div class="circle"></div>
+			        </div>
+			      </div>
+			
+			      <div class="spinner-layer spinner-red">
+			        <div class="circle-clipper left">
+			          <div class="circle"></div>
+			        </div><div class="gap-patch">
+			          <div class="circle"></div>
+			        </div><div class="circle-clipper right">
+			          <div class="circle"></div>
+			        </div>
+			      </div>
+			
+			      <div class="spinner-layer spinner-yellow">
+			        <div class="circle-clipper left">
+			          <div class="circle"></div>
+			        </div><div class="gap-patch">
+			          <div class="circle"></div>
+			        </div><div class="circle-clipper right">
+			          <div class="circle"></div>
+			        </div>
+			      </div>
+			
+			      <div class="spinner-layer spinner-green">
+			        <div class="circle-clipper left">
+			          <div class="circle"></div>
+			        </div><div class="gap-patch">
+			          <div class="circle"></div>
+			        </div><div class="circle-clipper right">
+			          <div class="circle"></div>
+			        </div>
+			      </div>
+   				</div>
+		  	</div>
+	</div>
 	<script>
      $(document).ready(function() {
         $('select').material_select();
