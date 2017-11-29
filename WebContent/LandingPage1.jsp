@@ -24,11 +24,8 @@ body {
 </style>
 </head>
 <body>
-<div class="duomodal" id="duoPlacementDiv">
-			<iframe id="duo_iframe" width="100%" height="800"></iframe>
-</div>
 
-<div class="container1">
+<%-- <div class="container1">
 	
 		<div class="diagonal" id="d0">
 		   
@@ -42,15 +39,31 @@ body {
 		  <img src="${pageContext.request.contextPath}/resources/UIAssets/basketballmatch.jpg" />
 		  </div>
 		  
-		  <%-- <div class="diagonal" id="d2">
+		  <div class="diagonal" id="d2">
 		    
 		  <img src="${pageContext.request.contextPath}/resources/UIAssets/soccermatch.jpg" />
-		  </div> --%>
+		  </div>
 		  
 		  <div class="diagonal" id="d3">
 		    
 		  <img src="${pageContext.request.contextPath}/resources/UIAssets/cricketmatch.jpg" />
 		  </div> 
+</div> --%>
+<div class="container1">
+	 	<div id="image1" style="left: 0px;">
+			<img  src="${pageContext.request.contextPath}/resources/UIAssets/footballmatch.jpeg" />
+		</div>
+		<div class="image2boundary">
+			<div id="image2" style="left: 0px;">
+				<img src="${pageContext.request.contextPath}/resources/UIAssets/basketballmatch.jpg" />
+			</div>
+		</div>
+		<div class="image3boundary">
+			<div id="image3" style="left: 0px;">
+				<img src="${pageContext.request.contextPath}/resources/UIAssets/cricketmatch.jpg" />
+			</div>
+		</div>
+		
 </div>
 <div class="container2">
 	
@@ -74,6 +87,9 @@ body {
 		</div>
 		
 		
+	</div>
+	<div class="duomodal" id="duoPlacementDiv">
+			<iframe id="duo_iframe" width="100%" height="800"></iframe>
 	</div>
 	<%-- <div class="colorstrip21">
 		<img class="leaguesimage" src="${pageContext.request.contextPath}/resources/UIAssets/Leagues.png">
@@ -162,6 +178,36 @@ body {
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/Duo-Web-v2.min.js"></script>
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/materialize.min.js"></script>
+<script>
+
+setInterval(function() {
+	var obj1 = document.getElementById("image1");
+    var topVal1 = parseInt(obj1.style.left, 10);
+    if(topVal1 == 700){
+    	obj1.style.left = 0 + "px";
+    } else {
+    	obj1.style.left = (topVal1 - 2) + "px";
+    }
+}, 100);
+setInterval(function() {
+	var obj2 = document.getElementById("image2");
+    var topVal2 = parseInt(obj2.style.left, 10);
+    if(topVal2 == 700){
+    	obj2.style.left = 0 + "px";
+    } else {
+    	obj2.style.left = (topVal2 - 2) + "px";
+    }
+}, 100);
+setInterval(function() {
+	var obj3 = document.getElementById("image3");
+    var topVal3 = parseInt(obj3.style.left, 10);
+    if(topVal3 == 700){
+    	obj3.style.left = 0 + "px";
+    } else {
+    	obj3.style.left = (topVal3 - 2) + "px";
+    }
+}, 100); 
+</script>
 <script type="text/javascript">
 $.noConflict();
 jQuery(document).ready( function() {

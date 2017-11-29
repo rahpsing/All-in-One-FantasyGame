@@ -8,6 +8,7 @@ html,body {
 .maindiv{
 	position: absolute; 
 	top: 0px;
+	width: 100%;
 	font-size: 10px;
 	/* z-index: 99; */
 }
@@ -30,7 +31,7 @@ html,body {
 	position: absolute;
 	left: 0px;
 	height:100vh;
-	width: 500px;
+	width: 100%;
     border-style: none;
     border-color: #c50234;
     background-color: rgba(0,0,3,0.5);
@@ -78,7 +79,7 @@ html,body {
 
 .signupbuttondiv{
 	position: absolute;
-	width: 50%; 
+	width: 15%; 
 	left: 125px;
 	top: 550px;
     border-style: none;
@@ -91,7 +92,7 @@ html,body {
 
 .loginbuttondiv{
 	position: absolute;
-	width: 50%; 
+	width: 15%; 
 	left: 125px;
 	top: 650px;
     border-style: none;
@@ -133,7 +134,7 @@ html,body {
 	/* display: block; */
 	position: fixed;
 	top: 450px;
-	left: 500px;
+	left: 575px;
 	/* transform: translate(-50%, -50%); */
 	z-index: 199;
 	height: 750px;
@@ -573,4 +574,25 @@ html,body {
       top : 0px;
 } 
 
-
+#image1{
+	overflow:hidden;
+	position:absolute;
+}
+#image2{
+	position:relative;
+	overflow:hidden;
+}
+.image2boundary{
+	position:absolute;
+	overflow:hidden;
+	left: 550px;
+}
+#image3{
+	position:relative;
+	overflow:hidden;
+}
+.image3boundary{
+	position:absolute;
+	overflow:hidden;
+	left: 1100px;
+}
