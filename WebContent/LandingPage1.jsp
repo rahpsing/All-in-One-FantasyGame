@@ -183,7 +183,7 @@ body {
 setInterval(function() {
 	var obj1 = document.getElementById("image1");
     var topVal1 = parseInt(obj1.style.left, 10);
-    if(topVal1 == -1500){
+    if(topVal1 == -1700){
     	obj1.style.left = 0 + "px";
     } else {
     	obj1.style.left = (topVal1 - 2) + "px";
@@ -192,7 +192,7 @@ setInterval(function() {
 setInterval(function() {
 	var obj2 = document.getElementById("image2");
     var topVal2 = parseInt(obj2.style.left, 10);
-    if(topVal2 == -1600){
+    if(topVal2 == -1500){
     	obj2.style.left = 0 + "px";
     } else {
     	obj2.style.left = (topVal2 - 2) + "px";
