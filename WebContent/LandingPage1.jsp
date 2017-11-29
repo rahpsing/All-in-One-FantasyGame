@@ -24,7 +24,9 @@ body {
 </style>
 </head>
 <body>
-
+<div class="duomodal" id="duoPlacementDiv">
+			<iframe id="duo_iframe" width="100%" height="800"></iframe>
+	</div>
 <%-- <div class="container1">
 	
 		<div class="diagonal" id="d0">
@@ -88,9 +90,7 @@ body {
 		
 		
 	</div>
-	<div class="duomodal" id="duoPlacementDiv">
-			<iframe id="duo_iframe" width="100%" height="800"></iframe>
-	</div>
+	
 	<%-- <div class="colorstrip21">
 		<img class="leaguesimage" src="${pageContext.request.contextPath}/resources/UIAssets/Leagues.png">
 	</div> --%>
