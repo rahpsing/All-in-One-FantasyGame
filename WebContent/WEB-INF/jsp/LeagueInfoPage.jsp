@@ -32,7 +32,7 @@ body {
 	</div>
 	<div id="mainDiv" class="maindiv">
 		<div class="ticker-wrap">
-			<div class="ticker">
+			<div id="matchesTicker" class="ticker">
 			  <div class="ticker__item" style="background-color:#ffbf03;height:100%;width:250px;text-align:center;"><br><br><br><br><br><p>previous matches : </p><br></div>
 			  <div class="ticker__item" style="width:50px;"><br><div class="teamimage"><img class="circle responsive-img" src="${pageContext.request.contextPath}/resources/UIAssets/user1.jpeg"/></div><br><p style="text-align:center;"> MUN</p><p  style="text-align:center;">05</p></div>
 			  <div class="ticker__item" style="width:50px;text-align:center;"><p>vs.</p><br><p  style="text-align:center;">13</p></div>
@@ -62,7 +62,7 @@ body {
 		<div class="colorstrip2">
 			<div class="welcomemsg">
 				<b></b>
-				<b class="name">testname${name}</b>
+				<b class="name">${name}</b>
 			</div>
 			<%-- <img src="${pageContext.request.contextPath}/resources/UIAssets/bannerdesign.png" class="bannerdesign"> --%>
 <%-- 			<button id="joinLeague" onclick="javascript:createTeam('${leagueId}','${userId}')" class="waves-effect waves-light btn" style="background-color:#ffbf03;height:70px;width: 200px;font-size:2em;text-transform: lowercase;padding-top:2.5px;font-family:'Raleway', sans-serif; position:absolute; right: 600px; ">join league</button> --%>
@@ -155,10 +155,53 @@ function onLoadCalls(leagueId,userId){
 	checkJoinButton(leagueId,userId);
 	populateUserTeams(leagueId,userId);
 	fetchGames(leagueId);
+	
 }
 
+
 function fetchGames(leagueId){
-	
+	var prevCounter=0;
+	var upcomingCounter=0;
+	$('#matchesTicker').empty();
+	//$('#matchesTicker').append('<div class="ticker__item" style="background-color:#ffbf03;height:100%;width:250px;text-align:center;"><br><br><br><br><br><p>previous matches : </p><br></div>');
+	$.ajax({
+		url : '/All-In-One-FantasyGame/fetchGamesList',
+	    type: 'post',
+	    data : {leagueId:leagueId},
+	    dataType : 'json',
+	    success: function(data){
+	    	console.log(data);
+	    	
+	    	$(data.listOfMatches).each(function(index,value){
+	    		if(value.type=="previous")
+	    		{
+	    			if(prevCounter<1){
+	    				$('#matchesTicker').append('<div class="ticker__item" style="background-color:#ffbf03;height:100%;width:250px;text-align:center;"><br><br><br><br><br><p>previous matches : </p><br></div>');
+	    				prevCounter++;
+	    			}
+	    			$('#matchesTicker').append('<div class="ticker__item" style="width:50px;"><br><div class="teamimage"><img class="circle responsive-img" src="${pageContext.request.contextPath}/resources/UIAssets/user1.jpeg"/></div><br><p style="text-align:center;">'+value.homeTeam+'</p><p  style="text-align:center;">'+value.startTimeMonth+'</p></div>');
+	    			$('#matchesTicker').append('<div class="ticker__item" style="width:50px;text-align:center;"><p>vs.</p><br><p  style="text-align:center;">'+value.startTimeDate+'</p></div>');
+	    			$('#matchesTicker').append('<div class="ticker__item" style="width:50px;"><br><div class="teamimage"><img class="circle responsive-img" src="${pageContext.request.contextPath}/resources/UIAssets/user1.jpeg"/></div><br><p style="text-align:center;"> '+value.awayTeam+'</p><p  style="text-align:center;">'+value.startTimeYear+'</p></div>');
+	    			$('#matchesTicker').append('<div class="ticker__item" style="background-color:#021A42;height:100%;width:10px;text-align:center;"><br><br><br><br><br><br><br><br><br><br><br></div>');
+	    	}})
+	    	$(data.listOfMatches).each(function(index,value){
+	    		if(value.type=="upcoming")
+	    		{
+	    			if(upcomingCounter<1){
+	    				$('#matchesTicker').append('<div class="ticker__item" style="background-color:#ffbf03;height:100%;width:250px;text-align:center;"><br><br><br><br><br><p>upcoming matches : </p><br></div>');
+	    				upcomingCounter++;
+	    			}
+	    			$('#matchesTicker').append('<div class="ticker__item" style="width:50px;"><br><div class="teamimage"><img class="circle responsive-img" src="${pageContext.request.contextPath}/resources/UIAssets/user1.jpeg"/></div><br><p style="text-align:center;">'+value.homeTeam+'</p><p  style="text-align:center;">'+value.startTimeMonth+'</p></div>');
+	    			$('#matchesTicker').append('<div class="ticker__item" style="width:50px;text-align:center;"><p>vs.</p><br><p  style="text-align:center;">'+value.startTimeDate+'</p></div>');
+	    			$('#matchesTicker').append('<div class="ticker__item" style="width:50px;"><br><div class="teamimage"><img class="circle responsive-img" src="${pageContext.request.contextPath}/resources/UIAssets/user1.jpeg"/></div><br><p style="text-align:center;"> '+value.awayTeam+'</p><p  style="text-align:center;">'+value.startTimeYear+'</p></div>');
+	    			$('#matchesTicker').append('<div class="ticker__item" style="background-color:#021A42;height:100%;width:10px;text-align:center;"><br><br><br><br><br><br><br><br><br><br><br></div>');
+	    	}})
+	    },
+	    error: function (jqXHR, textStatus, errorThrown)
+	    {
+	    	alert("something went wrong.Contact Admin");
+	    }
+	});
 }
 function populateUserTeams(leagueId,userId){
 	$.ajax({
@@ -171,7 +214,7 @@ function populateUserTeams(leagueId,userId){
 	    	$('#populateUserList').empty();
 	    	console.log("done1");
 	    	console.log(data);	
-	    	$(data.userTeam).each(function(index,value){$('#populateUserList').append('<div class="content"><div class="card" style="height:80px;"><div class="userimage"><img class="circle responsive-img" src="${pageContext.request.contextPath}/resources/UIAssets/user1.jpeg"/></div><div class="profileinfo"><p style="font-size:2em;font-family:Raleway, sans-serif; color:#000000;">'+value.userName+'</p><p class="bio" style="font-size: 1.5em;margin-top:-20px;font-family:"Raleway", sans-serif; ">points : '+value.points+'</p></div></div></div>');})
+	    	$(data.userTeam).each(function(index,value){$('#populateUserList').append('<div class="content"><div class="card" style="height:80px;cursor:pointer;"><div class="userimage"><img class="circle responsive-img" src="${pageContext.request.contextPath}/resources/UIAssets/user1.jpeg"/></div><div class="profileinfo"><p style="font-size:2em;font-family:Raleway, sans-serif; color:#000000;">'+value.userTeamName+'</p><p class="bio" style="font-size: 1.5em;margin-top:-20px;font-family:"Raleway", sans-serif; ">owner : '+value.userName+'  &nbsp;&nbsp;&nbsp;&nbsp; points : '+value.points+'</p></div></div></div>');})
 	    	console.log("done2");
 	    	populateTeam(userId,leagueId);
 	    },

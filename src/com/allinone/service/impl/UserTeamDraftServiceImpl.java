@@ -6,12 +6,15 @@ package com.allinone.service.impl;
 import java.util.HashSet;
 import java.util.Set;
 
+import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.allinone.dao.api.LeagueDaoAPI;
 import com.allinone.dao.api.UserTeamDraftDaoAPI;
+import com.allinone.pojos.UserTeam;
+import com.allinone.service.api.TeamDetailsJsonConverterAPI;
 import com.allinone.service.api.UserTeamDraftServiceAPI;
 
 
@@ -28,6 +31,9 @@ public class UserTeamDraftServiceImpl implements UserTeamDraftServiceAPI {
 	
 	@Autowired
 	UserTeamDraftDaoAPI objTeamDraftDaoImpl;
+
+	@Autowired
+	TeamDetailsJsonConverterAPI objTeamDetailsJsonConverterAPI;
 
 	@Override
 	public String updateTeam(Set<String> setOfPlayerIds, String leagueId, String userId, String userTeamId,
@@ -77,6 +83,13 @@ public class UserTeamDraftServiceImpl implements UserTeamDraftServiceAPI {
 	@Override
 	public String getUserTeamName(String leagueId,String userId) {
 		return objTeamDraftDaoImpl.getUserTeamName(leagueId, userId);
+	}
+
+	@Override
+	public String getUserTeamDetails(String userTeamId) {
+		UserTeam  usrtm=objTeamDraftDaoImpl.getUserTeamDetails(userTeamId);
+		
+		return objTeamDetailsJsonConverterAPI.teamDetailsJsonConverter("teamDetails", usrtm);
 	}
 
 }

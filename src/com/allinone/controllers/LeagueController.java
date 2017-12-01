@@ -41,6 +41,9 @@ public class LeagueController {
 	LeagueServiceAPI objLeagueService;
 	
 	@Autowired
+	UserTeamDraftServiceAPI objUserTeamDraftAPI;
+	
+	@Autowired
 	UserTeamDraftServiceAPI objTeamService;
 	
 	@Autowired
@@ -108,7 +111,7 @@ public class LeagueController {
 		model.put("userId", userId);
 		model.put("flag", flag);
 		if(flag.equals("create")) {
-			model.put("teamName", "Playing Eleven");
+			model.put("teamName", "");
 		}
 		else if(flag.equals("edit")) {
 			String teamName=objTeamService.getUserTeamName(leagueId, userId);
@@ -159,7 +162,7 @@ public class LeagueController {
 	public ModelAndView testMyPage(HttpServletRequest objRequest, HttpServletResponse objResponse) {
 		
 	
-		return new ModelAndView("UserDashboard");
+		return new ModelAndView("UserChat");
 	}
 
 	
@@ -182,14 +185,16 @@ public class LeagueController {
 			System.out.println("Key value=  "+ key + "  Pair value =  "+ rulesMap.get(key));
 		}*/
 	}
-	@RequestMapping(value="/gamesList")
+	@RequestMapping(value="/fetchGamesList")
 	@ResponseBody
 	public String gamesList(HttpServletRequest objRequest, HttpServletResponse objResponse) {
 		
-		//String leagueId = objRequest.getParameter("leagueId");
-		return objLeagueService.gamesList("4028b8815fdc6aa5015fdc6acb510001");
+		String leagueId = objRequest.getParameter("leagueId");
+		return objLeagueService.gamesList(leagueId);
 	
 		
 	}
+	
+	
 }
 

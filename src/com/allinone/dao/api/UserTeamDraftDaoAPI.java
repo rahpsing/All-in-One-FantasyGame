@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Set;
 
 import com.allinone.pojos.League;
+import com.allinone.pojos.UserTeam;
 
 /**
  * @author rahul
@@ -24,6 +25,8 @@ public interface UserTeamDraftDaoAPI {
 	public String getUserTeamId(String leagueId, String UserId);
 
 	public String getUserTeamName(String leagueId, String userId);
+
+	public UserTeam getUserTeamDetails(String userTeamId);
 
 	
 

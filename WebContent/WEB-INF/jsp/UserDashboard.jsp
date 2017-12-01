@@ -326,6 +326,52 @@ div.panel button {
 				</div>
 		  	</div>
 	</div>
+	<div id="createSportLeagueModalLoader" class="createsportleaguemodalloadercss">
+		 	<!-- Modal content -->
+		  	<div id="createSportLeagueLoaderContent" class="createsportleague-modal-content" style="background-color: rgba(255,255,255,0.7);">
+		  		<div class="preloader-wrapper big active" style="margin-top:150px;">
+			      <div class="spinner-layer spinner-blue">
+			        <div class="circle-clipper left">
+			          <div class="circle"></div>
+			        </div><div class="gap-patch">
+			          <div class="circle"></div>
+			        </div><div class="circle-clipper right">
+			          <div class="circle"></div>
+			        </div>
+			      </div>
+			
+			      <div class="spinner-layer spinner-red">
+			        <div class="circle-clipper left">
+			          <div class="circle"></div>
+			        </div><div class="gap-patch">
+			          <div class="circle"></div>
+			        </div><div class="circle-clipper right">
+			          <div class="circle"></div>
+			        </div>
+			      </div>
+			
+			      <div class="spinner-layer spinner-yellow">
+			        <div class="circle-clipper left">
+			          <div class="circle"></div>
+			        </div><div class="gap-patch">
+			          <div class="circle"></div>
+			        </div><div class="circle-clipper right">
+			          <div class="circle"></div>
+			        </div>
+			      </div>
+			
+			      <div class="spinner-layer spinner-green">
+			        <div class="circle-clipper left">
+			          <div class="circle"></div>
+			        </div><div class="gap-patch">
+			          <div class="circle"></div>
+			        </div><div class="circle-clipper right">
+			          <div class="circle"></div>
+			        </div>
+			      </div>
+   				</div>
+		  	</div>
+	</div>
 	<script>
      $(document).ready(function() {
         $('select').material_select();
@@ -439,9 +485,10 @@ div.panel button {
 	var fileUploadDiv = document.getElementById("imageUpload");
 	
 
-	updateProfileDiv.onclick = function() {
+ 	updateProfileDiv.onclick = function() {
 		 readURL(fileUploadDiv);
-	}
+		 
+	} 
 	
 	
 	    var readURL = function(input) {
@@ -449,7 +496,7 @@ div.panel button {
 	            var reader = new FileReader();
 
 	            reader.onload = function (e) {
-	                $('.uploadprofileimage').attr('src', e.target.result);
+	                $('.profileimage').attr('src', e.target.result);
 	            }
 	    
 	            reader.readAsDataURL(input.files[0]);
@@ -457,11 +504,13 @@ div.panel button {
 	    }
 	    
 
-	    $(".file-upload").on('change', function(){
+	    /* $(".file-upload").on('change', function(){
+	    	
 	        readURL(this);
 	    });
-	    
+	     */
 	    $(".updateprofileimage").on('click', function() {
+	    	
 	       $(".fileUpload").click();
 	       readURL(this);
 	    });
@@ -505,7 +554,7 @@ function sendFetchReq(sportName,iD,value,userId){console.log(userId);
 	    	//alert("Please" + sportName);
 	    	
 	    	var count = 0;
-	    	$(data.League).each(function(index,value){$('#'+iD).append('<div onclick=javascript:redirectLeague(\''+value.id+'\',\''+userId+'\') class="content"><div class="card" style="height:80px;"><div class="profileinfo"><p style="font-size:2em;font-family:Raleway, sans-serif; ">'+value.League+'</p><p class="bio" style="font-size: 1.5em;margin-top:-20px;font-family:"Raleway", sans-serif; ">Users : '+value.numOfPlayers+'</p></div></div></div>');count++;})
+	    	$(data.League).each(function(index,value){$('#'+iD).append('<div onclick=javascript:redirectLeague(\''+value.id+'\',\''+userId+'\') class="content" style="cursor:pointer;"><div class="card" style="height:80px;"><div class="profileinfo"><p style="font-size:2em;font-family:Raleway, sans-serif; ">'+value.League+'</p><p class="bio" style="font-size: 1.5em;margin-top:-20px;font-family:"Raleway", sans-serif; ">Users : '+value.numOfPlayers+'</p></div></div></div>');count++;})
 	 		$('#'+iD).append('<div  class="content"><div class="card" style="height:80px;"><div class="profileinfo"><p style="font-size:2em;font-family:"Raleway", sans-serif; ">create league</p><p class="bio" style="font-size: 1.5em;margin-top:-20px;font-family:"Raleway", sans-serif; "></div></div></div>');
 	    	document.getElementById(iD+"Number").innerHTML=count;
 	    	console.log(count);

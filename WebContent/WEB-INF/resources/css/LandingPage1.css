@@ -573,4 +573,25 @@ html,body {
       top : 0px;
 } 
 
-
+#image1{
+	overflow:hidden;
+	position:absolute;
+}
+#image2{
+	position:relative;
+	overflow:hidden;
+}
+.image2boundary{
+	position:absolute;
+	overflow:hidden;
+	left: 550px;
+}
+#image3{
+	position:relative;
+	overflow:hidden;
+}
+.image3boundary{
+	position:absolute;
+	overflow:hidden;
+	left: 1100px;
+}

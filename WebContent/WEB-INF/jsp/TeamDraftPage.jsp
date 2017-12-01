@@ -81,9 +81,9 @@ body {
 			<%-- <img src="${pageContext.request.contextPath}/resources/UIAssets/bannerdesign.png" class="bannerdesign"> --%>
  		</div>
  		<div id="editNameModal" class="editnamecss" style="display:none;">
-			  	<form name="loginForm"  >
-				    <input type="text" class="teamname" id="teamName" name="teamname" style="color:#ffffff;font-size:2em;" placeholder="Update Team Name..." value='${teamName}'><br>
-				    <input class="waves-effect waves-light btn" style="background-color:#ffbf03;height:40px;width:30%;font-size:2em;text-transform: lowercase; top:-60px; left:500px;padding-top:5px;font-family:'Raleway', sans-serif;" type="button" value="Submit" onclick="javascript:updatedTeamName()"/>
+			  	<form id="editNameButton" name="loginForm"  >
+				    <input type="text" class="teamname" id="updateTeamName" name="teamname" style="color:#ffffff;font-size:2em;" placeholder="Enter your Team Name..." value='${teamName}'><br>
+				    <!-- JS line 256<input class="waves-effect waves-light btn" style="background-color:#ffbf03;height:40px;width:30%;font-size:2em;text-transform: lowercase; top:-60px; left:500px;padding-top:5px;font-family:Raleway, sans-serif;" type="button" value="Submit" onclick="javascript:updatedTeamName()"/> -->
 				</form>
 		</div>
  		<!-- <div class="fixed-action-btn toolbar" >
@@ -107,7 +107,7 @@ body {
  				</div>
  			</div>
 	 		<section id="player-lists">
-				<div id="user-team" ondrop="dropPlayer(this, event)" ondragenter="return false" ondragover="return false">
+				<div id="user-team" ondrop="dropPlayer(this, event,'${flag}')" ondragenter="return false" ondragover="return false">
 			   <p style="color:#ffbf03;height:40px;font-size:3em;text-transform: lowercase;margin-top:-5px;font-family:'Raleway', sans-serif;">team</p>
 			    <!--These are all the draggable peices-->
 			    		
@@ -216,8 +216,18 @@ body {
 			</section>
 	 	</div>
  		<div style="position:absolute;display:none;top:307px; left:616px; width: 110px;" id="teamSaveButton">
-					<input id="saveButton" onclick="javascript:sendPlayerList('${userId}','${leagueId}','${flag}')"class="waves-effect waves-light btn" style="background-color:#ffbf03;height:40px;width:100%;font-size:2em;text-transform: lowercase; padding-top:5px;font-family:'Raleway', sans-serif;" type="button" value="save" onclick=""/>
-					
+					<input id="saveButton" onclick="javascript:sendPlayerList('${userId}','${leagueId}','${flag}')"class="waves-effect waves-light btn" style="background-color:#ffbf03;height:40px;width:100%;font-size:2em;text-transform: lowercase; padding-top:5px;font-family:'Raleway', sans-serif;" type="button" value="save" onclick=""/>				
+		</div>
+		<div class="teamlegends" style="font-size:15px;font-family:'Raleway', sans-serif;">
+			<div id="position" style="margin-top:10px;margin-left:20px;width:200px;">
+				<div>position 1 : 5</div>
+				<div>position 2 : 4</div>
+				<div>position 3 : 3</div>
+				<div>position 4 : 1</div>
+			</div>
+			<div id="swapsLeft" class="swapsleft">
+				<div>swaps left:1000</div>
+			</div>
 		</div>
  		<!-- <div class="colorstrip10"></div>
 		<div class="colorstrip11"></div>
@@ -235,6 +245,7 @@ body {
 	var userTeamOverlay = document.getElementById("userTeamOverlay");
 	var editNameModal = document.getElementById("editNameModal");
 	var teamName = document.getElementById("teamName");	
+	var editNameButton=document.getElementById("editNameButton");
 	
 	editTeamButton.onclick = function() {
 		userTeamOverlay.style.display = "none";
@@ -245,6 +256,19 @@ body {
 		editNameModal.style.display = "block";
 		teamName.style.display = "none";
 	}
+	function onloadEditUserTeamName(leagueId,userId,flag){
+		if(flag=="create"){
+		editNameModal.style.display = "block";
+		teamName.style.display = "none";
+		}
+		
+		else{
+			$('#editNameButton').append('<input class="waves-effect waves-light btn" style="background-color:#ffbf03;height:40px;width:30%;font-size:2em;text-transform: lowercase; top:-60px; left:500px;padding-top:5px;font-family:Raleway, sans-serif;" type="button" value="Submit" onclick="javascript:updatedTeamName()"/>');
+			
+		}
+		
+	}
+	
 	</script>
 	<script>
 
@@ -263,7 +287,8 @@ body {
 		    	console.log(data);
 		    	$('#user-team').empty();
 		    	$('#user-team').append('<p style="color:#ffbf03;height:40px;font-size:3em;text-transform: lowercase;margin-top:-5px;font-family:"Raleway", sans-serif;">team</p>');
-		    	$(data.usersTeam).each(function(index,value){$('#user-team').append('<a draggable="true" class="player" id='+value.id+'+123  ondragstart="dragPlayer(this, event)"><div class="content1" style="margin-top:2px;"><div class="card1" style="height:40px;"><div class="userimage1"><img class="circle responsive-img" src="${pageContext.request.contextPath}/resources/UIAssets/user1.jpeg"/></div><div  class="profileinfo1"><p id='+value.id+' role = '+value.role+'  style="font-size:2em;font-family:Raleway, sans-serif; color:#000000;margin-top:3px;">'+value.player+'</p></div></div></div></a>');})
+		    	$(data.usersTeam).each(function(index,value){$('#user-team').append('<a draggable="true" class="player" id='+value.id+'+123  ondragstart="dragPlayer(this, event)"><div class="content1" style="margin-top:2px;"><div class="card1" style="height:40px;"><div class="userimage1"><img class="circle responsive-img" src="${pageContext.request.contextPath}/resources/UIAssets/user1.jpeg"/></div><div  class="profileinfo1"><p id='+value.id+' role = '+value.role+'  style="font-size:2em;font-family:Raleway, sans-serif; color:#000000;margin-top:3px;">'+value.player+'</p></div></div></div></a>');
+		    			initialUserTeam.push(value.id);})
 		    	//fetchPlayerList(leagueId,'rosterList',userId);
 		    },
 		    error: function (jqXHR, textStatus, errorThrown)
@@ -272,6 +297,7 @@ body {
 		    	//fetchPlayerList(leagueId,'rosterList',userId);
 		    }
 		});
+		
 		}
 	function searchPlayerList(){
 		var searchText=document.getElementById("searchText").value;

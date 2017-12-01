@@ -3,15 +3,41 @@
 	var teamNameEditForm = document.getElementById("teamNameEdit");
 	var playerRoster = document.getElementById("player-roster");
 	var userTeam = document.getElementById("user-team");
-
-
+	var initialUserTeam=[];
+	var revisedUserTeam=[];
+	var swapsOrig;
+	var swapsLeft;
+	var score;
 	var saveButton = document.getElementById("saveButton");
 	var playerData="";
+	var globalleagueId;
+	var globaluserId;
    	
 	function updatedTeamName(){
+		
 		var updatedName=document.getElementById("updateTeamName").value;
-		//alert("Function called");
-		alert(updatedName);
+		
+		$.ajax({
+			url : '/All-In-One-FantasyGame/updateTeamName',
+		    type: 'post',
+		    data : {leagueId:globalleagueId,userId:globaluserId,updateTeamName:updatedName},
+		    
+		    success: function(data){
+		    	
+		    	if(data=="true"){
+		    		alert("Team Name Updated");
+		    			}
+		    	else{
+		    		alert("Please try again");
+		    	}
+		    },
+		    error: function (jqXHR, textStatus, errorThrown)
+		    {
+		    	
+		    	alert("Team name not updated.Please try again ");
+		    }
+		});
+		
 	}
 	
 	function dragPlayer(player, event) {
@@ -23,10 +49,11 @@
 		target.appendChild(document.getElementById(player));
 		countRoles();
 	}
-	function dropPlayer(target, event) {
+	function dropPlayer(target, event,flag) {
 	    var player = event.dataTransfer.getData('Players');
 	   	target.appendChild(document.getElementById(player)); 
 		var ind=0;	
+		var swapsUsed;
 		var listOfPlayerIds=[];
 		var listItems = $("#user-team").find("p");
 		console.log(listItems);
@@ -46,6 +73,17 @@
 			
 			
 		}
+		if(flag=="edit")
+		{
+		swapsUsed=diffInUserTeams();
+		}
+		else{
+			swapsUsed=0;
+		}
+		
+		swapsLeft=swapsOrig-swapsUsed;
+		//alert(swapsLeft);
+		
 		countRoles();
 	}
 		function countRoles(){
@@ -71,10 +109,41 @@
    	 }).disableSelection();
   	} );
 	function onLoadCalls(leagueId,userId,flag){
+		globalleagueId=leagueId;
+		globaluserId=userId;
 		populateTeam(userId,leagueId);
-		
+		onloadEditUserTeamName(leagueId,userId,flag);
 		fetchPlayerList(leagueId,'rosterList',userId);
 		fetchRules(leagueId);
+		fetchSwapsAndScore(leagueId,userId,flag);
+	}
+	function fetchSwapsAndScore(leagueId,userId,flag){
+		if(flag=="create"){
+			swapsOrig=50;
+			score=50;
+		}
+		else
+			{
+			$.ajax({
+				url : '/All-In-One-FantasyGame/fetchSwapsAndScores',
+			    type: 'post',
+			    data : {leagueId:leagueId,userId:userId},
+			    dataType : 'json',
+			    success: function(data){
+			    	
+			    	$(data.teamDetails).each(function(index,value){
+			    		swapsOrig=value.swaps;
+						score=value.scores;
+						
+			    	});
+			    },
+			    error: function (jqXHR, textStatus, errorThrown)
+			    {
+			    	populateRules("");
+					console.log("Error while fetching scores and swaps");
+			    }
+			});
+			}
 	}
 	var rulesMap="";
 	function fetchRules(leagueId){
@@ -99,7 +168,7 @@
 		console.log(rulesMap);
 	}
 
-	function rulesCheck(counts,leagueId,userId,listOfPlayerIds,flag){
+	function rulesCheck(counts,leagueId,userId,listOfPlayerIds,flag,updatedName){
 	
 		var flag=Boolean(1==1)
 		var missedRules=""
@@ -123,11 +192,30 @@
 		if(flag){
 		listOfPlayerIds=JSON.stringify(listOfPlayerIds);
 		console.log("Thanks");
-		callFormSubmit(leagueId,userId,listOfPlayerIds,flag);
+		callFormSubmit(leagueId,userId,listOfPlayerIds,flag,updatedName);
 		}
 		else{
 			alert(missedRules);
 		}
+	}
+	function diffInUserTeams(){
+		revisedUserTeam=[]
+		var usedSwaps=0;
+		var listItems = $("#user-team").find("p");
+		listItems.splice(0,1);
+		for ( var ind = 0; ind < listItems.length; ind++ ) {
+		    
+		    revisedUserTeam.push($(listItems[ind]).attr('id'));
+		    
+		}
+		
+		for (var i=0;i<initialUserTeam.length;i++){
+			if(!revisedUserTeam.includes(initialUserTeam[i])){
+				usedSwaps++;
+				//alert("Swap used")
+			}
+		}
+		return usedSwaps;
 	}
 	function sendPlayerList(userId,leagueId,flag){
 		//var teamName=document.getElementById("teamName").value;
@@ -136,6 +224,7 @@
 		var ind=0;	
 		var listOfPlayerIds=[];
 		var rolesList=[];
+		var updatedName=document.getElementById("updateTeamName").value;
 		var listItems = $("#user-team").find("p");
 		listItems.splice(0,1);
 		for ( ind = 0; ind < listItems.length; ind++ ) {
@@ -143,6 +232,8 @@
 		    listOfPlayerIds.push($(listItems[ind]).attr('id'));
 		    rolesList.push($(listItems[ind]).attr('role'));
 		}
+		
+		
 		
 		//console.log(rolesList.length);
 		var counts = {};
@@ -160,11 +251,11 @@
 			alert("Please select 11 players only");
 			return;
 		}
-		else if(teamName==""){
+		else if(updatedName==""){
 			alert("Please Enter Team name.");
 			return;
 		}
-		rulesCheck(counts,leagueId,userId,listOfPlayerIds,flag);
+		rulesCheck(counts,leagueId,userId,listOfPlayerIds,flag,updatedName);
 			
 		
 		
@@ -179,15 +270,15 @@
 	}
 	
 
-	function callFormSubmit(leagueId,userId,listOfPlayerIds,flag){
+	function callFormSubmit(leagueId,userId,listOfPlayerIds,flag,updatedName){
 		$.ajax({
 		    url : '/All-In-One-FantasyGame/createTeam',
 		    type: 'post',
-		    data : {userId:userId,leagueId:leagueId,listOfPlayerIds:listOfPlayerIds,flag:flag},
+		    data : {userId:userId,leagueId:leagueId,listOfPlayerIds:listOfPlayerIds,flag:flag,updateTeamName:updatedName},
 		    
 		    success: function(data)
 		   
-		    {	
+		    {	//alert(updatedName);
 		    	if (data=="true")
 		    	var f = document.createElement("form");
 				f.setAttribute('method',"post");
@@ -208,6 +299,11 @@
 				k.setAttribute('name',"flag");
 				k.setAttribute('value',flag);
 				f.appendChild(k);
+				var l = document.createElement("input");
+				l.setAttribute('type',"hidden");
+				l.setAttribute('name',"updateTeamName");
+				l.setAttribute('value',updatedName);
+				f.appendChild(l);
 				document.body.appendChild(f);
 				console.log(f);
 				f.submit();

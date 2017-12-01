@@ -52,8 +52,8 @@ public class SportUtilityDaoImpl implements SportUtilityDaoAPI {
 
 	public static Map<String,Map<String,Set<RuleHelper>>> mapOfLeagueAndRules= new HashMap<String,Map<String,Set<RuleHelper>>>();
 	
-	private static final String FILE_NAME = "C:\\Users\\rahul\\workspace\\All-In-One-FantasyGame\\DataMappings.xlsx";
-	private static final String GAME_FILE = "C:\\Users\\rahul\\workspace\\All-In-One-FantasyGame\\GameFile.xlsx";
+	private static final String FILE_NAME = "C:\\Users\\prash\\gitbashnew2\\All-In-One-FantasyGame\\DataMappings.xlsx";
+	private static final String GAME_FILE = "C:\\Users\\prash\\gitbashnew2\\All-In-One-FantasyGame\\GameFile.xlsx";
 
 	
 	
@@ -250,8 +250,8 @@ public class SportUtilityDaoImpl implements SportUtilityDaoAPI {
 	/*	Sport objSport = league.getSport();
 		objSport.getSetOfRoles();*/
 		mapSportConstraints.put("WicketKeeper", 1);
-		mapSportConstraints.put("Bowler", 5);
-		mapSportConstraints.put("Batsman", 5);
+		mapSportConstraints.put("Bowler", 2);
+		mapSportConstraints.put("Batsman", 2);
 		
 		league.setMapSportConstraints(mapSportConstraints);
 		
