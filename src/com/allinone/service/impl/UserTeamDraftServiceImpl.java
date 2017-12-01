@@ -35,9 +35,6 @@ public class UserTeamDraftServiceImpl implements UserTeamDraftServiceAPI {
 	@Autowired
 	TeamDetailsJsonConverterAPI objTeamDetailsJsonConverterAPI;
 
-	@Autowired
-	TeamDetailsJsonConverterAPI objTeamDetailsJsonConverterAPI;
-
 	@Override
 	public String updateTeam(Set<String> setOfPlayerIds, String leagueId, String userId, String userTeamId,
 			int numSubstitutesLeft, double score) {
@@ -88,13 +85,6 @@ public class UserTeamDraftServiceImpl implements UserTeamDraftServiceAPI {
 		return objTeamDraftDaoImpl.getUserTeamName(leagueId, userId);
 	}
 	
-	@Override
-	public String getUserTeamDetails(String userTeamId) {
-		UserTeam  usrtm=objTeamDraftDaoImpl.getUserTeamDetails(userTeamId);
-		
-		return objTeamDetailsJsonConverterAPI.teamDetailsJsonConverter("teamDetails", usrtm);
-	}
-
 	@Override
 	public String getUserTeamDetails(String userTeamId) {
 		UserTeam  usrtm=objTeamDraftDaoImpl.getUserTeamDetails(userTeamId);
