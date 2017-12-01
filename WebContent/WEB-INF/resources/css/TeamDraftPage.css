@@ -94,7 +94,22 @@ html,body {
     display: inline-block;
     align:center;
 }
-
+.teamlegends{
+	position: absolute;
+	top: 300px;
+	left:50px;
+	height: 300px;
+	width: 200px;
+	background-color: white;
+	border-radius: 10px;
+}
+.swapsleft{
+	poisiton:absolute;
+	margin-top: 50px;
+	margin-left:20px;
+	font-size:15px;
+	width:200px;
+}
 .teaminfo{
 	position: relative;
 	height: 800px;

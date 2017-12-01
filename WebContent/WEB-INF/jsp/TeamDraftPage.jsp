@@ -216,8 +216,18 @@ body {
 			</section>
 	 	</div>
  		<div style="position:absolute;display:none;top:307px; left:616px; width: 110px;" id="teamSaveButton">
-					<input id="saveButton" onclick="javascript:sendPlayerList('${userId}','${leagueId}','${flag}')"class="waves-effect waves-light btn" style="background-color:#ffbf03;height:40px;width:100%;font-size:2em;text-transform: lowercase; padding-top:5px;font-family:'Raleway', sans-serif;" type="button" value="save" onclick=""/>
-					
+					<input id="saveButton" onclick="javascript:sendPlayerList('${userId}','${leagueId}','${flag}')"class="waves-effect waves-light btn" style="background-color:#ffbf03;height:40px;width:100%;font-size:2em;text-transform: lowercase; padding-top:5px;font-family:'Raleway', sans-serif;" type="button" value="save" onclick=""/>				
+		</div>
+		<div class="teamlegends" style="font-size:15px;font-family:'Raleway', sans-serif;">
+			<div id="position" style="margin-top:10px;margin-left:20px;width:200px;">
+				<div>position 1 : 5</div>
+				<div>position 2 : 4</div>
+				<div>position 3 : 3</div>
+				<div>position 4 : 1</div>
+			</div>
+			<div id="swapsLeft" class="swapsleft">
+				<div>swaps left:1000</div>
+			</div>
 		</div>
  		<!-- <div class="colorstrip10"></div>
 		<div class="colorstrip11"></div>
