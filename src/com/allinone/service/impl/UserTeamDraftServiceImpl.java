@@ -31,6 +31,9 @@ public class UserTeamDraftServiceImpl implements UserTeamDraftServiceAPI {
 	
 	@Autowired
 	UserTeamDraftDaoAPI objTeamDraftDaoImpl;
+	
+	@Autowired
+	TeamDetailsJsonConverterAPI objTeamDetailsJsonConverterAPI;
 
 	@Autowired
 	TeamDetailsJsonConverterAPI objTeamDetailsJsonConverterAPI;
@@ -83,6 +86,13 @@ public class UserTeamDraftServiceImpl implements UserTeamDraftServiceAPI {
 	@Override
 	public String getUserTeamName(String leagueId,String userId) {
 		return objTeamDraftDaoImpl.getUserTeamName(leagueId, userId);
+	}
+	
+	@Override
+	public String getUserTeamDetails(String userTeamId) {
+		UserTeam  usrtm=objTeamDraftDaoImpl.getUserTeamDetails(userTeamId);
+		
+		return objTeamDetailsJsonConverterAPI.teamDetailsJsonConverter("teamDetails", usrtm);
 	}
 
 	@Override
