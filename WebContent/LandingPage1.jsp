@@ -23,57 +23,85 @@ body {
 -->
 </style>
 </head>
-<body>
-<div class="duomodal" id="duoPlacementDiv">
+<body background="${pageContext.request.contextPath}/resources/UIAssets/asset6xe.svg"> 
+	<div class="duomodal" id="duoPlacementDiv">
 			<iframe id="duo_iframe" width="100%" height="800"></iframe>
 	</div>
-<%-- <div class="container1">
-	
-		<div class="diagonal" id="d0">
-		   
-		  <img  src="${pageContext.request.contextPath}/resources/UIAssets/footballmatch.jpeg" />
-		
-		 
-		  </div>
-		  
-		   <div class="diagonal" id="d1">
-		    
-		  <img src="${pageContext.request.contextPath}/resources/UIAssets/basketballmatch.jpg" />
-		  </div>
-		  
-		  <div class="diagonal" id="d2">
-		    
-		  <img src="${pageContext.request.contextPath}/resources/UIAssets/soccermatch.jpg" />
-		  </div>
-		  
-		  <div class="diagonal" id="d3">
-		    
-		  <img src="${pageContext.request.contextPath}/resources/UIAssets/cricketmatch.jpg" />
-		  </div> 
-</div> --%>
-<div class="container1">
-	 	<div id="image1" style="left: 0px;">
-			<img  src="${pageContext.request.contextPath}/resources/UIAssets/footballmatch.jpeg" />
+	<div class="panel1">
+		<div id="bImage4" class="bimage4">
+			<img  src="${pageContext.request.contextPath}/resources/UIAssets/asset13.svg" height="500px;"/>
 		</div>
-		<div class="image2boundary">
-			<div id="image2" style="left: 0px;">
-				<img src="${pageContext.request.contextPath}/resources/UIAssets/basketballmatch.jpg" />
-			</div>
+		<div id="bImage5" class="bimage5">
+			<img  src="${pageContext.request.contextPath}/resources/UIAssets/asset14.svg" height="500px;"/>
 		</div>
-		<div class="image3boundary">
-			<div id="image3" style="left: 0px;">
-				<img src="${pageContext.request.contextPath}/resources/UIAssets/cricketmatch.jpg" />
-			</div>
+		<div id="bImage6" class="bimage6">
+			<img  src="${pageContext.request.contextPath}/resources/UIAssets/asset15.svg" height="500px;"/>
 		</div>
-		
-</div>
-<div class="container2">
-	
-</div>
-<div id="mainDiv" class="maindiv">
+		<div id="bImage1" class="bimage1">
+			<img  src="${pageContext.request.contextPath}/resources/UIAssets/asset11.svg" height="500px;"/>
+		</div>
+		<div id="bImage2" class="bimage2">
+			<%-- <img  src="${pageContext.request.contextPath}/resources/UIAssets/asset11.svg" height="500px;"/> --%>
+		</div>
+		<div id="bFeature1" class="bfeature1">
+			<img  src="${pageContext.request.contextPath}/resources/UIAssets/feature1.pdf"/ height= "60px;">
+		</div>
+		<div id="bFeature2" class="bfeature2">
+			<img  src="${pageContext.request.contextPath}/resources/UIAssets/feature2.pdf"/ height= "60px;">
+		</div>
+		<div id="bFeature3" class="bfeature3">
+			<img  src="${pageContext.request.contextPath}/resources/UIAssets/feature3.pdf"/ height= "60px;">
+		</div>
+		<div id="bImage3" class="bimage3">
+			<img  src="${pageContext.request.contextPath}/resources/UIAssets/asset12.svg" height="500px;"/>
+		</div>
+		<div id="bFeature4" class="bfeature4">
+			<img  src="${pageContext.request.contextPath}/resources/UIAssets/feature4.pdf"/ height= "60px;">
+		</div>
+		<div id="bFeature5" class="bfeature5">
+			<img  src="${pageContext.request.contextPath}/resources/UIAssets/feature5.pdf"/ height= "60px;">
+		</div>
+		<div id="bFeature6" class="bfeature6">
+			<img  src="${pageContext.request.contextPath}/resources/UIAssets/feature6.pdf"/ height= "60px;">
+		</div>
+		<div id="bFeature7" class="bfeature7">
+			<img  src="${pageContext.request.contextPath}/resources/UIAssets/feature7.pdf"/ height= "60px;">
+		</div>
+		<div id="bFeature8" class="bfeature8">
+			<img  src="${pageContext.request.contextPath}/resources/UIAssets/feature8.pdf"/ height= "60px;">
+		</div>
+		<div id="aboutUs" class="aboutus">
+			<img  src="${pageContext.request.contextPath}/resources/UIAssets/aboutus.pdf"/ height= "60px;">
+		</div>
+		<div id="bFeature9" class="bfeature9">
+			<img  src="${pageContext.request.contextPath}/resources/UIAssets/dev1.pdf"/ height= "100px;">
+		</div>
+		<div id="bFeature10" class="bfeature10">
+			<img  src="${pageContext.request.contextPath}/resources/UIAssets/dev2.pdf"/ height= "100px;">
+		</div>
+		<div id="bFeature11" class="bfeature11">
+			<img  src="${pageContext.request.contextPath}/resources/UIAssets/dev3.pdf"/ height= "100px;">
+		</div>
+		<div id="bFeature12" class="bfeature12">
+			<img  src="${pageContext.request.contextPath}/resources/UIAssets/dev21.svg"/ height= "150px;">
+		</div>
+		<div id="bFeature13" class="bfeature13">
+			<img  src="${pageContext.request.contextPath}/resources/UIAssets/dev11.svg"/ height= "150px;">
+		</div>
+		<div id="bFeature14" class="bfeature14">
+			<img  src="${pageContext.request.contextPath}/resources/UIAssets/dev31.svg"/ height= "150px;">
+		</div>
+	</div> 
+	<div class="panel2">
+		<img  id="imageArrow" src="${pageContext.request.contextPath}/resources/UIAssets/asset7.svg" height="10px;" width="500px;"/>
+	</div>
+	<div id="mainDiv" class="maindiv">
 	<!-- <div class="colorstrip1"></div> -->
 	
 	<div class="colorstrip2">
+		<div class="bgimage">
+			<img  src="${pageContext.request.contextPath}/resources/UIAssets/asset4.png" height="100%" />
+		</div>
 		<b class="allinonebanner">all-in-one</b>
 		
 		<b class="multisportfantasyleague">multi-sport fantasy league</b>
@@ -84,68 +112,13 @@ body {
 		<div class="loginbuttondiv">
 			<button id="loginButton" class="waves-effect waves-light btn" style="background-color:#ffbf03;height:60px;width:100%;font-size:2em">Log In</button>
 		</div>
-		<div style="position:fixed; color:#ffffff; font-size:1.75em; bottom: 50px; left: 175px;">
+		<!-- <div style="position:fixed; color:#ffffff; font-size:1.75em; bottom: 200px; left: 25px;">
 			a group 4 project
-		</div>
-		
-		
-	</div>
-	
-	<%-- <div class="colorstrip21">
-		<img class="leaguesimage" src="${pageContext.request.contextPath}/resources/UIAssets/Leagues.png">
-	</div> --%>
-	<div>
-		<%-- <div class="imagestripdiv1">
-				<img class="footballimage" src="${pageContext.request.contextPath}/resources/UIAssets/FootballImage1.jpeg">
-				
-	    		<img class="cricketimage" src="${pageContext.request.contextPath}/resources/UIAssets/CricketImage1.jpg">
-		</div> --%>
-		<!-- This is the DUO iframe. This must be hidden on load.This must be shown at line 240 in this page -->
-		
-		<!-- <div class="signupbuttondiv">
-			<button id="signupButton" class="signupbanner">Sign Up</button>
-		</div>
-		<div class="loginbuttondiv">
-			<button id="loginButton" class="loginbanner">Log In</button>
 		</div> -->
 		
-		 <!-- <div class="colorstrip4">
-			<b class="registerbanner">doesn't matter if you're a new or returning player, let's get right into the action!</b>
-			<div class="colorstrip41">	
-				<b class="knowmorebanner">Know more</b>
-			</div>
-			<div class="signupbuttondiv">
-			 <button id="signupButton" class="waves-effect waves-light btn" style="background-color:#c50234;height:60px;width:100%;font-size:2em">Sign Up</button>
-			</div>
-			<a id="signupButton" class="waves-effect waves-light btn" >Sign Up</a>
-		<div class="loginbuttondiv">
-			<button id="loginButton" class="waves-effect waves-light btn" style="background-color:#c50234;height:60px;width:100%;font-size:2em">Log In</button>
-		</div>
-		</div>  -->
 		
-	</div> 
-	
-<!-- 	<div class="colorstrip5"></div>
-	<div class="colorstrip6"></div>
-	<div class="colorstrip7"></div>
-	<div class="colorstrip8"></div>
-	<div class="colorstrip9"></div> -->
-	<%-- <div class="infodiv">
-		<div class="colorstrip91">
-			<b class="featuresbanner">Features</b>
-		</div>
-		<div class="colorstrip92">
-			<b class="leaguessupportedbanner">Leagues Supported</b>
-			<img class="leaguesimage" src="${pageContext.request.contextPath}/resources/UIAssets/Leagues.png">
-		</div>
 	</div>
-	<div class="colorstrip10"></div>
-	<div class="colorstrip11"></div>
-	<div class="colorstrip12"></div>
-	<div class="colorstrip13">
-		<b class="companybanner">a group 4 project ©</b>
-	</div> --%>
-</div>
+	</div> 
 <div id="loginModal" class="loginmodalcss">
 		 	<!-- Modal content -->
 		  	<div id="loginModalContent" class="modal-content">
@@ -178,35 +151,107 @@ body {
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/Duo-Web-v2.min.js"></script>
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/materialize.min.js"></script>
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script>
+var flag=1
+setInterval(function() {
+	var obj = document.getElementById("imageArrow");
+    var val = parseFloat(window.getComputedStyle(obj).getPropertyValue("opacity"));
+    if(val == 0) {
+    	flag=0;
+    	obj.style.opacity = (val + 0.1);
+    } else if (val == 1) {
+    	flag=1;
+    	obj.style.opacity = (val - 0.1);
+    } else {
+	    if(flag==1){
+	    	obj.style.opacity = (val - 0.1);
+	    } else {
+	    	obj.style.opacity = (val + 0.1);
+	    }
+    }
+}, 125);
 
-setInterval(function() {
-	var obj1 = document.getElementById("image1");
-    var topVal1 = parseInt(obj1.style.left, 10);
-    if(topVal1 == -1700){
-    	obj1.style.left = 0 + "px";
-    } else {
-    	obj1.style.left = (topVal1 - 2) + "px";
+var bImage1 = document.getElementById("bImage1");
+var bFeature1 = document.getElementById("bFeature1");
+$(window).scroll(function(){
+    if ($(this).scrollTop() >= 370) {
+    	bImage1.style.opacity = 1;
     }
-}, 100);
-setInterval(function() {
-	var obj2 = document.getElementById("image2");
-    var topVal2 = parseInt(obj2.style.left, 10);
-    if(topVal2 == -1500){
-    	obj2.style.left = 0 + "px";
-    } else {
-    	obj2.style.left = (topVal2 - 2) + "px";
+    if ($(this).scrollTop() >= 280) {
+    	bFeature1.style.opacity = 1;
     }
-}, 100);
-setInterval(function() {
-	var obj3 = document.getElementById("image3");
-    var topVal3 = parseInt(obj3.style.left, 10);
-    if(topVal3 == -1700){
-    	obj3.style.left = 0 + "px";
-    } else {
-    	obj3.style.left = (topVal3 - 2) + "px";
+    if ($(this).scrollTop() >= 350) {
+    	bFeature2.style.opacity = 1;
     }
-}, 100); 
+    if ($(this).scrollTop() >= 420) {
+    	bFeature3.style.opacity = 1;
+    }
+    if ($(this).scrollTop() >= 450) {
+    	bImage2.style.opacity = 0;
+    }
+    if ($(this).scrollTop() >= 750) {
+    	bImage3.style.opacity = 1;
+    }
+    if ($(this).scrollTop() >= 880) {
+    	bFeature4.style.opacity = 1;
+    }
+    if ($(this).scrollTop() >= 910) {
+    	bFeature5.style.opacity = 1;
+    }
+    if ($(this).scrollTop() >= 950) {
+    	bFeature6.style.opacity = 1;
+    }
+    if ($(this).scrollTop() >= 1410) {
+    	bFeature7.style.opacity = 1;
+    }
+    if ($(this).scrollTop() >= 1450) {
+    	bFeature8.style.opacity = 1;
+    }
+    if ($(this).scrollTop() >= 2250) {
+    	aboutUs.style.opacity = 1;
+    }
+    if ($(this).scrollTop() >= 2350) {
+    	bFeature9.style.opacity = 1;
+    }
+    if ($(this).scrollTop() >= 2400) {
+    	bFeature10.style.opacity = 1;
+    }
+    if ($(this).scrollTop() >= 2450) {
+    	bFeature11.style.opacity = 1;
+    }
+    if ($(this).scrollTop() >= 2350) {
+    	bFeature12.style.opacity = 1;
+    }
+    if ($(this).scrollTop() >= 2400) {
+    	bFeature13.style.opacity = 1;
+    }
+    if ($(this).scrollTop() >= 2450) {
+    	bFeature14.style.opacity = 1;
+    }
+});
+window.onload=function()  //executes when the page finishes loading
+{
+	setTimeout(func1, 500);
+	setTimeout(func2, 1000);
+	setTimeout(func3, 1500);
+	//sets a timer which calls function func1 after 2,000 milliseconds = 2 secs.
+	
+};
+function func1()
+{
+	document.getElementById("bImage6").style.opacity = 1;
+}
+function func2()
+{
+	document.getElementById("bImage4").style.opacity = 1;
+}
+function func3()
+{
+	document.getElementById("bImage5").style.opacity = 1;
+}
+
 </script>
 <script type="text/javascript">
 $.noConflict();

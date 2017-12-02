@@ -246,7 +246,7 @@ body {
 	var editNameModal = document.getElementById("editNameModal");
 	var teamName = document.getElementById("teamName");	
 	var editNameButton=document.getElementById("editNameButton");
-	
+
 	editTeamButton.onclick = function() {
 		userTeamOverlay.style.display = "none";
 		teamSaveButton.style.display = "block";
