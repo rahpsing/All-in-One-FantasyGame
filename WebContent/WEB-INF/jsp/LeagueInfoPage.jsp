@@ -146,10 +146,31 @@ body {
 		<div class="colorstrip13">
 			<b class="companybanner">a group 4 project ©</b>
 		</div>
+		<div class="chatlogo" id="chatLogo">
+			<img src="${pageContext.request.contextPath}/resources/UIAssets/chatlogoY.pdf" height="60px">
+		</div>
+		<div class="chatbox" id="chatBox">
+			<div class="chatheader">chat box</div>
+			<div class="minimisebox" id="minimiseBox"></div>
+		</div>
 	</div>
 	<div class="bgimage">
 		<img src="${pageContext.request.contextPath}/resources/UIAssets/bgimage.jpg">
 	</div>
+	<script>
+		var chatLogo = document.getElementById("chatLogo");
+		var chatBox = document.getElementById("chatBox");
+		var minimiseBox = document.getElementById("minimiseBox");
+		chatLogo.onclick = function(){
+			chatLogo.style.display = "none";
+			chatBox.style.opacity = 1;
+		}
+		minimiseBox.onclick = function(){
+			chatBox.style.opacity = 0;
+			chatLogo.style.display= "block";
+		}
+		
+	</script>
 	<script>
 function onLoadCalls(leagueId,userId){
 	checkJoinButton(leagueId,userId);

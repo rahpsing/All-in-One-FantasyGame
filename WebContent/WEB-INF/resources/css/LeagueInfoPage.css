@@ -113,7 +113,7 @@ html,body {
 
 .leagueinfo{
 	position: relative;
-	height: 700px;
+	height:750px;
 	top:0px;
 }
 
@@ -267,7 +267,7 @@ html,body {
 .colorstrip13{
 	position: relative;
 	width: 100%;
-	top: 0px;
+	bottom: 0px;
 	height: 80px;
     border-style: none;
     border-color: #91053d;
@@ -668,4 +668,45 @@ $maincolor: #009688;
     animation-name: animatetop;
     animation-duration: 0.4s;
    	text-align: center;
+}
+.chatlogo{
+	position: fixed;
+	bottom: 25px;
+	right: 20px;
+	cursor: pointer;
+	
+}
+.chatbox{
+	position:fixed;
+	bottom:0px;
+	right:100px;
+	height: 300px;
+	width: 250px;
+	background-color: #ffffff;
+	opacity: 0;
+	-webkit-transition: opacity 0.5s;
+   	-moz-transition: opacity 0.5s;
+   	-o-transition: opacity 0.5s;
+   	transition: opacity 0.5s;
+   	overflow-y:scroll;
+}
+.chatheader{
+	position:relative;
+	top:0px;
+	width:100%;
+	background-color:#ffbf03;
+	height:30px;
+	text-align:center;
+	color: #ffffff;
+	font-size: 2.2em;
+	font-family:Raleway, sans-serif;
+}
+.minimisebox{
+	position:absolute;
+	top: 13px;
+	right: 10px;
+	background-color: #ffffff;
+	height: 5px;
+	width: 25px;
+	cursor:pointer;
 }
