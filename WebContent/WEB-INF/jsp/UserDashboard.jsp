@@ -225,8 +225,8 @@ div.panel button {
 						<b class="formfieldname">mobile number</b><input id="phoneNumberUpdate" class="inputform" type="tel"  style="width: 80%;" value='${phoneNumber}'><br>
 						
 					 </div>
-					 <button id="updateProfileImage" class="waves-effect waves-light btn" style="background-color:#021A42;height:40px;font-size:1.5em;text-transform: lowercase;padding-top:2.5px;">update profile image</button><br><br>
-		  				<input id="imageUpload" class="file-upload" type="file" accept="image/*"/>
+					<button id="updateProfileImage" class="waves-effect waves-light btn" style="background-color:#021A42;height:40px;font-size:1.5em;text-transform: lowercase;padding-top:2.5px;">update profile image</button><br><br>
+		  			<input id="imageUpload" style="margin-left:80px;margin-bottom:20px;" class="file-upload" type="file" onchange="readURL(this);" accept="image/*"/>
 		  			<button id="saveProfile" onclick="javascript:sendUpdateProfileReq('${userId}')" class="waves-effect waves-light btn" style="background-color:#021A42;height:40px;font-size:1.5em;text-transform: lowercase;padding-top:2.5px;">save profile</button>
 				</div>
 		  	</div>
@@ -492,12 +492,12 @@ div.panel button {
 	
 
  	updateProfileDiv.onclick = function() {
-		 readURL(fileUploadDiv);
-		 
+ 		fileUploadDiv.style.display="block";	 
 	} 
 	
 	
 	    var readURL = function(input) {
+	    	fileUploadDiv.style.display="none";
 	        if (input.files && input.files[0]) {
 	            var reader = new FileReader();
 
