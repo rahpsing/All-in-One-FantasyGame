@@ -384,6 +384,9 @@ div.panel button {
     });
  	</script>
 	<script>
+		higlightsButton.onclick = function(){
+			window.location.href = '#Highlights';
+		}
 		var acc = document.getElementsByClassName("accordion");
 		var i;
 		
