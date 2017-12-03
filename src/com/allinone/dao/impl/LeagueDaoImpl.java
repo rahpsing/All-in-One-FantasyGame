@@ -130,6 +130,25 @@ public class LeagueDaoImpl implements LeagueDaoAPI {
 		return objLeague.getMapSportConstraints();
 	}
 
+	@Override
+	public String checkIfThereIsParentLeague(String leagueId) {
+		try{
+			Session session = objSessionFactory.getCurrentSession();
+		League objLeague = session.get(League.class, leagueId);
+		if(objLeague.getParentLeague().equals(null)) {
+		return "false";
+		}
+		else {
+			return objLeague.getParentLeague(); 
+		}
+		}
+		catch(Exception e) {
+			System.out.println(e);
+			return "false";
+			
+		}
+	}
+
 
 	@Override
 	public boolean saveUserScores(String leagueId, Map<String, Double> mapOfUserIdAndScore) {
@@ -163,5 +182,14 @@ public class LeagueDaoImpl implements LeagueDaoAPI {
 		return objLeague.getSetOfGames();
 		
 	}
+	
+	@Override
+	public League fetchLeague(String leagueId){
+		Session session = objSessionFactory.getCurrentSession();
+		League objLeague = session.get(League.class, leagueId);
+		return objLeague;
+		
+	}
+	
 
 }

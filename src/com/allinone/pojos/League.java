@@ -3,6 +3,11 @@
  */
 package com.allinone.pojos;
 
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -26,6 +31,7 @@ public class League implements Serializable {
 	private String leagueName;
 	private User leagueOwner;
 	private Sport sport;
+	private String parentLeague;
 	private Set<Player> setOfPlayers = new HashSet<Player>();
 	private Set<Team> setOfTeams = new HashSet<Team>();
 	private Map<String,Integer> mapSportConstraints = new HashMap<String,Integer>();
@@ -43,6 +49,12 @@ public class League implements Serializable {
 	}
 	public String getLeagueName() {
 		return leagueName;
+	}
+	public String getParentLeague() {
+		return parentLeague;
+	}
+	public void setParentLeague(String parentLeague) {
+		this.parentLeague = parentLeague;
 	}
 	public void setLeagueName(String leagueName) {
 		this.leagueName = leagueName;
@@ -116,5 +128,5 @@ public class League implements Serializable {
 		this.setOfGames = setOfGames;
 	}
 	
+    }
 
-}

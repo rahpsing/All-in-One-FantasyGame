@@ -1,9 +1,14 @@
+function loadChatbox(){var e=document.getElementById("minim-chat");e.style.display="block";var e=document.getElementById("maxi-chat");e.style.display="none";var e=document.getElementById("chatbox");e.style.margin="0";}
+	function closeChatbox(){var e=document.getElementById("chatbox");e.style.margin="0 0 -1500px 0";}
+	function minimChatbox(){var e=document.getElementById("minim-chat");e.style.display="none";var e=document.getElementById("maxi-chat");e.style.display="block";var e=document.getElementById("chatbox");e.style.margin="0 0 -460px 0";}
+
+
 var endPointURL = "ws://" + window.location.host + "/All-In-One-FantasyGame/chat";
 
 var chatClient = null;
 
 function connect () {
-	alert(1);
+
     chatClient = new WebSocket(endPointURL);
     chatClient.onmessage = function (event) {
         var messagesArea = document.getElementById("messages");

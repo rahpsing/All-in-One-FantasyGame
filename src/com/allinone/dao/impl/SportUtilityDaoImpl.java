@@ -1,4 +1,5 @@
-package com.allinone.dao.impl;
+package com.
+allinone.dao.impl;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -15,6 +16,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import javax.persistence.Entity;
+import javax.persistence.Persistence;
+
 import org.apache.poi.ss.format.CellDateFormatter;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.CellType;
@@ -23,9 +27,12 @@ import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.hibernate.Criteria;
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Criterion;
 import org.hibernate.criterion.Restrictions;
+import org.hibernate.internal.util.SerializationHelper;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -38,6 +45,7 @@ import com.allinone.pojos.Player;
 import com.allinone.pojos.RuleHelper;
 import com.allinone.pojos.Sport;
 import com.allinone.pojos.Team;
+import com.allinone.pojos.User;
 import com.allinone.util.GameStatus;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -52,8 +60,8 @@ public class SportUtilityDaoImpl implements SportUtilityDaoAPI {
 
 	public static Map<String,Map<String,Set<RuleHelper>>> mapOfLeagueAndRules= new HashMap<String,Map<String,Set<RuleHelper>>>();
 	
-	private static final String FILE_NAME = "C:\\Users\\prash\\gitbashnew2\\All-In-One-FantasyGame\\DataMappings.xlsx";
-	private static final String GAME_FILE = "C:\\Users\\prash\\gitbashnew2\\All-In-One-FantasyGame\\GameFile.xlsx";
+	private static final String FILE_NAME = "C:\\Users\\rahul\\workspace\\All-In-One-FantasyGame\\WebContent\\WEB-INF\\DataMappings.xlsx";
+	private static final String GAME_FILE = "C:\\Users\\rahul\\workspace\\All-In-One-FantasyGame\\WebContent\\WEB-INF\\GameFile.xlsx";
 
 	
 	
@@ -754,5 +762,36 @@ public class SportUtilityDaoImpl implements SportUtilityDaoAPI {
 		return mapOfUniqueNamesAndPlayerIds;
 	}
 	
+	@Override
+	public String createUserLeague(String leagueName, String leagueId,String userId) {
+		// TODO Auto-generated method stub
+
+		try {
+			
+			
+			League league=new League();
+			league.setParentLeague(leagueId);
+			league.setLeagueName(leagueName);
+			User parentUser=objSessionFactory.getCurrentSession().get(User.class,userId);
+			league.setLeagueOwner(parentUser);
+			
+			Session session = objSessionFactory.getCurrentSession();
+			League objLeague = session.get(League.class, leagueId);
+			league.setSport(objLeague.getSport());
+			league.setNumSubstitutesAllowed(objLeague.getNumSubstitutesAllowed());
+			
+			objSessionFactory.getCurrentSession().saveOrUpdate(league);
+			objSessionFactory.getCurrentSession().saveOrUpdate(parentUser);
+			String newleagueId=league.getId();
+			
+			return newleagueId;
+			 
+			
+		} catch(Exception e) {
+			System.out.println(e);
+			return "false";
+		}
+		
+	}
 
 }

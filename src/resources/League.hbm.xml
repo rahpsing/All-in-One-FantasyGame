@@ -16,6 +16,10 @@
         <property name="numSubstitutesAllowed">
             <column name="numSubstitutesAllowed" />
         </property>
+                
+        <property name="parentLeague">
+            <column name="parentLeague" />
+        </property>
         
         <many-to-one name="sport" class="com.allinone.pojos.Sport" fetch="select">
             <column name="SPORT_ID" not-null="true" />

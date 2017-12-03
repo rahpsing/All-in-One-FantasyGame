@@ -36,6 +36,10 @@ public interface LeagueDaoAPI {
 	public boolean saveUserScores(String leagueId,Map<String, Double> mapOfUserIdAndScore);
 
 	public Set<Game> gamesList(String leagueId);
+
+	public League fetchLeague(String leagueId);
+	
+	public String checkIfThereIsParentLeague(String leagueId);
 	
 
 }

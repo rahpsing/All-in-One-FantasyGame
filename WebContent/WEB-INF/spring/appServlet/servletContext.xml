@@ -24,10 +24,10 @@
     
     <bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource" destroy-method="close">
     <property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"/>
-    <property name="url" value="jdbc:oracle:thin:@localhost:1521:ORCL"/>
+    <property name="url" value="jdbc:oracle:thin:@localhost:1521:xe"/>
    <!--  <property name="dialect" value = "org.hibernate.dialect.Oracle10gDialect"/>   -->
-    <property name="username" value="scott"/>
-    <property name="password" value="Q1w2e3r4"/>
+    <property name="username" value="SYSTEM"/>
+    <property name="password" value="SYSTEM"/>
 
 </bean>
 
@@ -45,6 +45,7 @@
 
 <!-- service and dao class configurations -->
        <bean id="objGameDao" class="com.allinone.dao.impl.GameDaoImpl"></bean>
+       <bean id="objTemplateGenerator" class="com.allinone.service.impl.ExcelCreatorServiceImpl"></bean>
        <bean id="objStatisticCalculatorAPI" class="com.allinone.service.impl.StatisticCalculatorServiceImpl"></bean>
        <bean id="objUserRegistrationDao" class="com.allinone.dao.impl.UserRegistrationDaoImpl"></bean>
        <bean id="objUserRegistrationService" class="com.allinone.service.impl.UserRegistrationServiceImpl"></bean>

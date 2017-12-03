@@ -1,16 +1,11 @@
 package com.allinone.util;
 
-/**
- * ChatServerEndPointConfigurator.java
- * http://programmingforliving.com
- */
-
 
 import javax.websocket.server.ServerEndpointConfig.Configurator;
 
 /**
  * ChatServerEndPointConfigurator
- * @author Jiji_Sasidharan
+ * @author rahul
  */
 public class ChatServerEndPointConfigurator extends Configurator {
 

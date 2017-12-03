@@ -12,7 +12,7 @@ import javax.websocket.server.ServerEndpoint;
 
 /**
  * ChatServer
- * @author Jiji_Sasidharan
+ * @author rahul
  */
 @ServerEndpoint(value="/chat", configurator=ChatServerEndPointConfigurator.class)
 @Singleton
