@@ -62,7 +62,7 @@ div.panel button {
 }
 </style>
 </head>
-<body onload="javascript:sendAllFetch('${userId}')">
+<body onload="javascript:onloadCalls('${userId}')">
 	<div class="colorstrip1">
 		<button onclick="javascript:redirectToHomePage('${userId}')" class="allinonebanner">all-in-one</button>
 		<div class="aiologo">
@@ -81,7 +81,7 @@ div.panel button {
 			<button id="editProfile" class="waves-effect waves-light btn" style="background-color:#ffbf03;height:40px;font-size:1.5em;text-transform: lowercase;padding-top:2.5px;font-family:'Raleway', sans-serif;">profile</button>
 		</div>
 		<div class="logout">
-			<button id="logOut" class="waves-effect waves-light btn" style="background-color:#ffbf03;height:40px;font-size:1.5em;text-transform: lowercase;padding-top:2.5px;font-family:'Raleway', sans-serif;">logout</button>
+			<button id="logOut" onclick="javascript:deleteCookie()" class="waves-effect waves-light btn" style="background-color:#ffbf03;height:40px;font-size:1.5em;text-transform: lowercase;padding-top:2.5px;font-family:'Raleway', sans-serif;">logout</button>
 		</div>
 	</div>
 	<div id="mainDiv" class="maindiv">
@@ -400,6 +400,11 @@ div.panel button {
     });
  	</script>
 	<script>
+	
+	function onloadCalls(userId){
+		sendAllFetch(userId);
+		setCookie('userIdCookie',userId, 1);
+	}
 		higlightsButton.onclick = function(){
 			window.location.href = '#Highlights';
 		}

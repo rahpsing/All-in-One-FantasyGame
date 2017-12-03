@@ -41,6 +41,8 @@ public interface LeagueDaoAPI {
 	
 
 	public League fetchLeague(String leagueId);
+
+	public Boolean checkIfUserIsAdmin(String leagueId,String userId);
 	
 
 }

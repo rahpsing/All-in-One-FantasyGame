@@ -68,7 +68,7 @@ body {
 			<object type="image/svg+xml" data="${pageContext.request.contextPath}/resources/UIAssets/aiologo.svg" height="35px;"></object>
 		</div>
 		<div class="logout">
-			<button id="logOut" class="waves-effect waves-light btn" style="background-color:#ffbf03;height:40px;font-size:1.5em;text-transform: lowercase;padding-top:2.5px;font-family:'Raleway', sans-serif;">logout</button>
+			<button onclick="javascript:deleteCookie()" id="logOut" class="waves-effect waves-light btn" style="background-color:#ffbf03;height:40px;font-size:1.5em;text-transform: lowercase;padding-top:2.5px;font-family:'Raleway', sans-serif;">logout</button>
 		</div>
 	</div>
 	<div id="mainDiv" class="maindiv">
