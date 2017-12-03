@@ -14,5 +14,9 @@ public interface SportUtilityServiceAPI {
 	public boolean addNewSport();
 	
 	public boolean createLeague();
+
+	//boolean createUserLeague(String leagueName, String leagueId);
+
+	public String createUserLeague(String leagueName, String leagueId, String userId);
 	
 }

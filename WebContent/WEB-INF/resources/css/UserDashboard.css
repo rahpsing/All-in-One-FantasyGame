@@ -37,6 +37,11 @@ html,body {
     background-color: rgba(255,255,255,0.3);
     z-index: 999;
 }
+.aiologo{
+	position:absolute;
+	left: 170px;
+	top:2.5px;
+}
 .colorstrip2{
 	position: relative;
 	width: 100%;
@@ -868,14 +873,14 @@ $maincolor: #009688;
 
 
 .nextbutton1{
-	position:relative;
-	bottom: -260px;
-	right: -200px;
+	position:absolute;
+	bottom: 55px;
+	right: 10px;
 }
 .cancelbutton2{
-	position:relative;
-	bottom: -300px;
-	right: -40px;
+	position:absolute;
+	bottom: 55px;
+	right: 150px;
 }
 
 .rolesdiv{
@@ -888,8 +893,8 @@ $maincolor: #009688;
 	overflow-y:scroll;
 }
 .addroles {
-	position:relative;
-	bottom:-200px;
+	position:absolute;
+	bottom:125px;
 	/* right: -280px; */
 	float:right;
 	right: 20px;
@@ -952,4 +957,9 @@ $maincolor: #009688;
 	position:absolute;
 	bottom: 115px;
 	right: 150px;
+}
+.aiologo2{
+	position: absolute;
+	right: 20px;
+	top: 12.5px;
 }

@@ -41,6 +41,17 @@ public class SportUtilityServiceImpl implements SportUtilityServiceAPI {
 		return objServiceUtilityDao.createLeague();
 	}
 	
-	
+	@Override
+	public String createUserLeague(String leagueName,String leagueId,String userId) {
+		// TODO Auto-generated method stub
+		String returnString=objServiceUtilityDao.createUserLeague(leagueName, leagueId,userId);
+		if(!returnString.equals("false"))
+		{
+			return returnString;
+		}
+		else {
+			return "false";
+		}
+	}
 
 }

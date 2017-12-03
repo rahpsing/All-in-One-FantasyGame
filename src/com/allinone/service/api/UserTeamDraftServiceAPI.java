@@ -18,13 +18,15 @@ public interface UserTeamDraftServiceAPI {
 
 	
 
-	public String createTeam(Set<String> setOfPlayerIds, String leagueId, String userId);
+	public String createTeam(Set<String> playerSet, String leagueId, String userId, String teamName);
 
 	public String getUserTeamId(String leagueId, String UserId);
 
 	public String getUserTeamName(String leagueId, String userId);
 
 	public String getUserTeamDetails(String userTeamId);
+
+	
 
 	
 

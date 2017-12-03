@@ -69,7 +69,7 @@ public class UserTeamDraftDaoImpl implements UserTeamDraftDaoAPI {
 	}
 	
 	@Override
-	public String createTeam(String leagueId, String userId) {
+	public String createTeam(String leagueId, String userId,String teamName) {
 		// TODO Auto-generated method stub
 		
 		Session session = objSessionFactory.getCurrentSession();
@@ -86,7 +86,7 @@ public class UserTeamDraftDaoImpl implements UserTeamDraftDaoAPI {
 		userTeam.setScore(0);
 		userTeam.setUsert(objUser);
 		userTeam.setLeague(objLeague);
-		
+		userTeam.setTeamName(teamName);
 		session.saveOrUpdate(userTeam);
 		System.out.println("_______Seperation------------------");
 		try {
@@ -203,6 +203,8 @@ public class UserTeamDraftDaoImpl implements UserTeamDraftDaoAPI {
 		UserTeam objuserTeam = session.get(UserTeam.class, userTeamId);
 		return objuserTeam;
 	}
+	
+	
 }
 
 

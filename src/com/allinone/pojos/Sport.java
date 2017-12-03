@@ -3,6 +3,11 @@
  */
 package com.allinone.pojos;
 
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.Set;
 
@@ -69,9 +74,6 @@ public class Sport implements Serializable {
 	public void setSetOfMetrics(Set<String> setOfMetrics) {
 		this.setOfMetrics = setOfMetrics;
 	}
-	
-	
-	
-	
+		
 	
 }

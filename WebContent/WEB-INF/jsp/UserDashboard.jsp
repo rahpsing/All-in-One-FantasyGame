@@ -226,7 +226,9 @@ div.panel button {
 						<b class="formfieldname">mobile number</b><input id="phoneNumberUpdate" class="inputform" type="tel"  style="width: 80%;" value='${phoneNumber}'><br>
 						
 					 </div>
-					 <button id="updateProfileImage" class="waves-effect waves-light btn" style="background-color:#021A42;height:40px;font-size:1.5em;text-transform: lowercase;padding-top:2.5px;">update profile image</button><br><br>
+
+					<button id="updateProfileImage" class="waves-effect waves-light btn" style="background-color:#021A42;height:40px;font-size:1.5em;text-transform: lowercase;padding-top:2.5px;">update profile image</button><br><br>
+
 		  			<input id="imageUpload" style="margin-left:80px;margin-bottom:20px;" class="file-upload" type="file" onchange="readURL(this);" accept="image/*"/>
 		  			<button id="saveProfile" onclick="javascript:sendUpdateProfileReq('${userId}')" class="waves-effect waves-light btn" style="background-color:#021A42;height:40px;font-size:1.5em;text-transform: lowercase;padding-top:2.5px;">save profile</button>
 				</div>
@@ -601,6 +603,7 @@ function sendFetchReq(sportName,iD,value,userId){console.log(userId);
 </script>
 
 <script>
+
 function sendFetchLikeReq(iD,value,userId){console.log(userId);
 	searchResultDiv.style.display = "block";
 	leagueListDiv.style.display = "none";

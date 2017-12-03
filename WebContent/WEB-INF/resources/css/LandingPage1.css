@@ -3,7 +3,26 @@ html,body {
     overflow-x: visible;
     max-width: 100%;
 	min-width: 100vh;
-	background: #021A42;
+	/* background: #020516; */
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+html, body, .block {
+    height: 100%;
+  }
+// Class for when element is above threshold
+.pin-top {
+	position: relative;
+}
+
+// Class for when element is below threshold
+.pin-bottom {
+	position: relative;
+}
+
+// Class for when element is pinned
+.pinned {
+	position: fixed !important;
 }
 .maindiv{
 	position: absolute; 
@@ -26,16 +45,255 @@ html,body {
     background-color: #91053d;
     /*z-index: 999;*/
 }
-.colorstrip2{
+.panel1{
+	overflow-x:hidden;
+	/* background: url('resources/UIAssets/asset6x.svg'); */
+	height: 3675px;
+}
+.panel2{
+	position:fixed;
+	bottom:20px;
+	left:36%;
+	width:300px;
+}
+.bimage4{
 	position: absolute;
+	margin-top: 100px;
+	margin-left:750px;
+	opacity:0;
+   -webkit-transition: opacity 2s;
+   -moz-transition: opacity 2s;
+   -o-transition: opacity 2s;
+   transition: opacity 2s;
+}
+.bimage5{
+	position: absolute;
+	margin-top: 200px;
+	margin-left:1030px;
+	opacity:0;
+   -webkit-transition: opacity 2s;
+   -moz-transition: opacity 2s;
+   -o-transition: opacity 2s;
+   transition: opacity 2s;
+}
+.bimage6{
+	position: absolute;
+	margin-top: 200px;
+	margin-left:540px;
+	opacity:0;
+   -webkit-transition: opacity 2s;
+   -moz-transition: opacity 2s;
+   -o-transition: opacity 2s;
+   transition: opacity 2s;
+}
+.bimage1{
+	position: absolute;
+	margin-top: 1000px;
+	margin-left:900px;
+	opacity:0;
+   -webkit-transition: opacity 2s;
+   -moz-transition: opacity 2s;
+   -o-transition: opacity 2s;
+   transition: opacity 2s;
+}
+.bimage2{
+	position: absolute;
+	margin-top: 1300px;
+	margin-left:950px;
+	height:100px;
+	width:100px;
+	background: #020516;
+	opacity:1;
+   -webkit-transition: opacity 2s;
+   -moz-transition: opacity 2s;
+   -o-transition: opacity 2s;
+   transition: opacity 2s;
+}
+.bimage3{
+	position: absolute;
+	margin-top: 1500px;
+	margin-left:320px;
+	opacity:0;
+   -webkit-transition: opacity 2s;
+   -moz-transition: opacity 2s;
+   -o-transition: opacity 2s;
+   transition: opacity 2s;
+}
+.bfeature1{
+	position: absolute;
+	margin-top: 1000px;
+	margin-left:670px;
+	opacity:0;
+   -webkit-transition: opacity 2s;
+   -moz-transition: opacity 2s;
+   -o-transition: opacity 2s;
+   transition: opacity 2s;
+}
+.bfeature2{
+	position: absolute;
+	margin-top: 1100px;
+	margin-left:630px;
+	opacity:0;
+   -webkit-transition: opacity 2s;
+   -moz-transition: opacity 2s;
+   -o-transition: opacity 2s;
+   transition: opacity 2s;
+}
+.bfeature3{
+	position: absolute;
+	margin-top: 1200px;
+	margin-left: 590px;
+	opacity:0;
+   -webkit-transition: opacity 2s;
+   -moz-transition: opacity 2s;
+   -o-transition: opacity 2s;
+   transition: opacity 2s;
+}
+.bfeature4{
+	position: absolute;
+	margin-top: 1650px;
+	margin-left:820px;
+	opacity:0;
+   -webkit-transition: opacity 2s;
+   -moz-transition: opacity 2s;
+   -o-transition: opacity 2s;
+   transition: opacity 2s;
+}
+.bfeature5{
+	position: absolute;
+	margin-top: 1750px;
+	margin-left:780px;
+	opacity:0;
+   -webkit-transition: opacity 2s;
+   -moz-transition: opacity 2s;
+   -o-transition: opacity 2s;
+   transition: opacity 2s;
+}
+.bfeature6{
+	position: absolute;
+	margin-top: 1850px;
+	margin-left: 740px;
+	opacity:0;
+   -webkit-transition: opacity 2s;
+   -moz-transition: opacity 2s;
+   -o-transition: opacity 2s;
+   transition: opacity 2s;
+}
+.bfeature7{
+	position: absolute;
+	margin-top: 2250px;
+	margin-left:580px;
+	opacity:0;
+   -webkit-transition: opacity 2s;
+   -moz-transition: opacity 2s;
+   -o-transition: opacity 2s;
+   transition: opacity 2s;
+}
+.bfeature8{
+	position: absolute;
+	margin-top: 2350px;
+	margin-left: 620px;
+	opacity:0;
+   -webkit-transition: opacity 2s;
+   -moz-transition: opacity 2s;
+   -o-transition: opacity 2s;
+   transition: opacity 2s;
+}
+.aboutus{
+	position: absolute;
+	margin-top: 3000px;
+	margin-left: 900px;
+	opacity:0;
+   -webkit-transition: opacity 2s;
+   -moz-transition: opacity 2s;
+   -o-transition: opacity 2s;
+   transition: opacity 2s;
+}
+.bfeature9{
+	position: absolute;
+	margin-top: 3100px;
+	margin-left: 800px;
+	opacity:0;
+   -webkit-transition: opacity 2s;
+   -moz-transition: opacity 2s;
+   -o-transition: opacity 2s;
+   transition: opacity 2s;
+}
+.bfeature10{
+	position: absolute;
+	margin-top: 3250px;
+	margin-left: 800px;
+	opacity:0;
+   -webkit-transition: opacity 2s;
+   -moz-transition: opacity 2s;
+   -o-transition: opacity 2s;
+   transition: opacity 2s;
+}
+.bfeature11{
+	position: absolute;
+	margin-top: 3400px;
+	margin-left: 800px;
+	opacity:0;
+   -webkit-transition: opacity 2s;
+   -moz-transition: opacity 2s;
+   -o-transition: opacity 2s;
+   transition: opacity 2s;
+}
+.bfeature12{
+	position: absolute;
+	margin-top: 3080px;
+	margin-left: 700px;
+	opacity:0;
+   -webkit-transition: opacity 2s;
+   -moz-transition: opacity 2s;
+   -o-transition: opacity 2s;
+   transition: opacity 2s;
+}
+.bfeature13{
+	position: absolute;
+	margin-top: 3230px;
+	margin-left: 1150px;
+	opacity:0;
+   -webkit-transition: opacity 2s;
+   -moz-transition: opacity 2s;
+   -o-transition: opacity 2s;
+   transition: opacity 2s;
+}
+.bfeature14{
+	position: absolute;
+	margin-top: 3380px;
+	margin-left: 700px;
+	opacity:0;
+   -webkit-transition: opacity 2s;
+   -moz-transition: opacity 2s;
+   -o-transition: opacity 2s;
+   transition: opacity 2s;
+}
+.colorstrip2{
+	position: fixed;
 	left: 0px;
 	height:100vh;
-	width: 500px;
+	width: 700px;
     border-style: none;
     border-color: #c50234;
-    background-color: rgba(0,0,3,0.5);
+    /* background-color: rgba(2,26,66,0.3); */
     font-size:10px;
     display: block;
+}
+.bgimage{
+	height:100%;
+}
+.blank {
+  height: 800px;
+  background-color: lightgrey;
+}
+
+#staggered-test li {
+  opacity: 0;
+}
+
+#image-test {
+  opacity: 0;
 }
 .colorstrip21{
 	position: absolute;
@@ -55,7 +313,7 @@ html,body {
 }
 .allinonebanner{
 	position: absolute; 
-	top: 50px;
+	top: 150px;
 	left: 45px;
 	color: #ffbf03;
 	font-size:8em; 
@@ -66,7 +324,7 @@ html,body {
 }
 .multisportfantasyleague{
 	position: absolute;
-	top: 170px; 
+	top: 270px; 
 	left: 100px;
 	color: #ffbf03;
 	font-size: 2em; 
@@ -77,24 +335,24 @@ html,body {
 }
 
 .signupbuttondiv{
-	position: absolute;
-	width: 50%; 
-	left: 125px;
-	top: 550px;
+	position: relative;
+	width: 30%; 
+	margin-right: 37.5%;
+	top: 47.5%;
     border-style: none;
     border-color: #c50234;
     background-color: #ffbf03;
     float: right;   
-    margin-right: 50px;
+    /* margin-right: 0px; */
     text-align: center;
 }
 
 .loginbuttondiv{
-	position: absolute;
-	width: 50%; 
-	left: 125px;
-	top: 650px;
-    border-style: none;
+	position: relative;
+	width: 30%; 
+	top: 52.5%;
+	margin-left: 45%;
+    border-style: none; 
     border-color: #c50234;
     background-color: #c50234;
     float: right;   
@@ -151,23 +409,28 @@ html,body {
 	color: #ffffff;
 	cursor: pointer;
 	font-size:3em; 
-	font-family:"roboto";  
+	font-family:Raleway, sans-serif;    
 	font-weight: bold; 
 }
 .signupcred{
 	position: relative;
 	margin-top: -15px;
-	color: #ffbf03;
+	text-align: center;
+	background-color: #ffbf03;
+	color:#ffffff;
 	font-size:30px; 
-	font-family:"roboto";  
+	font-family:Raleway, sans-serif;  
 	font-weight: bold;
+	width: 100%;
+	border-radius: 7px;
 }
 .signupmodalcss{
     display: none; /* Hidden by default */
     max-height: calc(100% - 50px);
   	position: fixed;
   	top: 600px;
-    left: 250px;
+    left: 350px;
+    font-family:Raleway, sans-serif;
   	transform: translate(-50%, -50%);
 }
 .signup-modal-content{
@@ -175,7 +438,7 @@ html,body {
     margin: 15% auto; /* 15% from the top and centered */
     margin-top: -60px;
     padding: 20px;
-    border: none;
+    border-radius: 5px;
     width: 250px; /* Could be more or less, depending on screen size */
     height: 400px;
     box-shadow: 0 15px 18px 0 rgba(0,0,0,0.2),0 16px 30px 0 rgba(0,0,0,0.19);
@@ -237,14 +500,15 @@ html,body {
     max-height: calc(100% - 50px);
   	position: fixed;
     top: 600px;
-    left: 250px;
+    left: 350px;
   	transform: translate(-50%, -50%);
+  	font-family:Raleway, sans-serif;
 }
 .modal-content{
     background-color: #ffffff;
     margin: 15% auto; /* 15% from the top and centered */
     padding: 20px;
-    border: none;
+    border-radius: 5px;
     width: 250px; /* Could be more or less, depending on screen size */
     height: 300px;
     box-shadow: 0 15px 18px 0 rgba(0,0,0,0.2),0 16px 30px 0 rgba(0,0,0,0.19);
@@ -257,11 +521,14 @@ html,body {
 .logincred{
 	position: relative;
 	margin-top: -15px;
-	margin-left: 15px;
-	color: #ffbf03;
+	background-color: #ffbf03;
+	width: 100%;
+	color:#ffffff;
+	text-align: center;
 	font-size:30px; 
-	font-family:"roboto";  
+	font-family:Raleway, sans-serif;   
 	font-weight: bold;
+	border-radius: 7px;
 }
 .username{
 	position: relative;
@@ -284,21 +551,21 @@ html,body {
 .forgotuorp{
 	float: left;
 	color: #ffbf03;
-	font-size:12px; 
-	font-family:"roboto";  
+	font-size:10px; 
+	font-family:'Raleway', sans-serif;  
 	font-weight: bold; 
 }
 .reset{
-	margin-top: 10px;
-	margin-left: -7px;
+	margin-top: 7px;
+	
 	height: 20px;
 	background-color: #ffffff;
 	border: none;
 	position: absolute; 
 	color: #ffbf03;
 	cursor: pointer;
-	font-size:12px; 
-	font-family:"roboto";  
+	font-size:10px; 
+	font-family:'Raleway', sans-serif;   
 	font-weight: bold;
 	text-decoration: underline;
 }
@@ -534,7 +801,8 @@ html,body {
   height: 100%;
   width: 100%;
   /* background: white; */
-  overflow: hidden;
+  overflow-x: hidden;
+  overflow-y:scroll;
   
  /*  margin-left: 100px; */
   z-index: -95;
@@ -573,25 +841,18 @@ html,body {
       top : 0px;
 } 
 
-#image1{
-	overflow:hidden;
+.image2{
 	position:absolute;
+	top:500px;
+	right: 0px;
+	z-index: 199;
+	opacity: 0.9;
 }
-#image2{
-	position:relative;
-	overflow:hidden;
-}
-.image2boundary{
-	position:absolute;
-	overflow:hidden;
-	left: 550px;
-}
-#image3{
-	position:relative;
-	overflow:hidden;
-}
-.image3boundary{
-	position:absolute;
-	overflow:hidden;
-	left: 1100px;
+.cover1{
+	position: absoulte;
+	/* background-color: #020516; */
+	background-color: #ffffff;
+	height: 500px;
+	width: 500px;
+	margin-top:1000px;
 }

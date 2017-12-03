@@ -129,7 +129,7 @@ public class LeagueDaoImpl implements LeagueDaoAPI {
 		League objLeague = session.get(League.class, leagueId);
 		return objLeague.getMapSportConstraints();
 	}
-
+	
 	@Override
 	public String checkIfThereIsParentLeague(String leagueId) {
 		try{
