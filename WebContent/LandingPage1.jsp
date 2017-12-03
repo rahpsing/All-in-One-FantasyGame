@@ -44,43 +44,43 @@ body {
 			<%-- <img  src="${pageContext.request.contextPath}/resources/UIAssets/asset11.svg" height="500px;"/> --%>
 		</div>
 		<div id="bFeature1" class="bfeature1">
-			<img  src="${pageContext.request.contextPath}/resources/UIAssets/feature1.pdf"/ height= "60px;">
+			<img  src="${pageContext.request.contextPath}/resources/UIAssets/feature1_4.svg"/ height= "60px;">
 		</div>
 		<div id="bFeature2" class="bfeature2">
-			<img  src="${pageContext.request.contextPath}/resources/UIAssets/feature2.pdf"/ height= "60px;">
+			<img  src="${pageContext.request.contextPath}/resources/UIAssets/feature2.svg"/ height= "60px;">
 		</div>
 		<div id="bFeature3" class="bfeature3">
-			<img  src="${pageContext.request.contextPath}/resources/UIAssets/feature3.pdf"/ height= "60px;">
+			<img  src="${pageContext.request.contextPath}/resources/UIAssets/feature3.svg"/ height= "60px;">
 		</div>
 		<div id="bImage3" class="bimage3">
 			<img  src="${pageContext.request.contextPath}/resources/UIAssets/asset12.svg" height="500px;"/>
 		</div>
 		<div id="bFeature4" class="bfeature4">
-			<img  src="${pageContext.request.contextPath}/resources/UIAssets/feature4.pdf"/ height= "60px;">
+			<img  src="${pageContext.request.contextPath}/resources/UIAssets/feature4.svg"/ height= "60px;">
 		</div>
 		<div id="bFeature5" class="bfeature5">
-			<img  src="${pageContext.request.contextPath}/resources/UIAssets/feature5.pdf"/ height= "60px;">
+			<img  src="${pageContext.request.contextPath}/resources/UIAssets/feature5.svg"/ height= "60px;">
 		</div>
 		<div id="bFeature6" class="bfeature6">
-			<img  src="${pageContext.request.contextPath}/resources/UIAssets/feature6.pdf"/ height= "60px;">
+			<img  src="${pageContext.request.contextPath}/resources/UIAssets/feature6.svg"/ height= "60px;">
 		</div>
 		<div id="bFeature7" class="bfeature7">
-			<img  src="${pageContext.request.contextPath}/resources/UIAssets/feature7.pdf"/ height= "60px;">
+			<img  src="${pageContext.request.contextPath}/resources/UIAssets/feature7.svg"/ height= "60px;">
 		</div>
 		<div id="bFeature8" class="bfeature8">
-			<img  src="${pageContext.request.contextPath}/resources/UIAssets/feature8.pdf"/ height= "60px;">
+			<img  src="${pageContext.request.contextPath}/resources/UIAssets/feature8.svg"/ height= "60px;">
 		</div>
 		<div id="aboutUs" class="aboutus">
-			<img  src="${pageContext.request.contextPath}/resources/UIAssets/aboutus.pdf"/ height= "60px;">
+			<img  src="${pageContext.request.contextPath}/resources/UIAssets/aboutus.svg"/ height= "60px;">
 		</div>
 		<div id="bFeature9" class="bfeature9">
-			<img  src="${pageContext.request.contextPath}/resources/UIAssets/dev1.pdf"/ height= "100px;">
+			<img  src="${pageContext.request.contextPath}/resources/UIAssets/dev1.svg"/ height= "100px;">
 		</div>
 		<div id="bFeature10" class="bfeature10">
-			<img  src="${pageContext.request.contextPath}/resources/UIAssets/dev2.pdf"/ height= "100px;">
+			<img  src="${pageContext.request.contextPath}/resources/UIAssets/dev2.svg"/ height= "100px;">
 		</div>
 		<div id="bFeature11" class="bfeature11">
-			<img  src="${pageContext.request.contextPath}/resources/UIAssets/dev3.pdf"/ height= "100px;">
+			<img  src="${pageContext.request.contextPath}/resources/UIAssets/dev3.svg"/ height= "100px;">
 		</div>
 		<div id="bFeature12" class="bfeature12">
 			<img  src="${pageContext.request.contextPath}/resources/UIAssets/dev21.svg"/ height= "150px;">
@@ -98,26 +98,28 @@ body {
 	<div id="mainDiv" class="maindiv">
 	<!-- <div class="colorstrip1"></div> -->
 	
-	<div class="colorstrip2">
-		<div class="bgimage">
-			<img  src="${pageContext.request.contextPath}/resources/UIAssets/asset4.png" height="100%" />
+		<div class="colorstrip2">
+			<div class="bgimage">
+				<img  src="${pageContext.request.contextPath}/resources/UIAssets/asset4.png" height="100%" />
+			</div>
+			<b class="allinonebanner">all-in-one</b>
+			
+			<b class="multisportfantasyleague">multi-sport fantasy league</b>
+			
+			<div class="signupbuttondiv">
+				 <button id="signupButton" class="waves-effect waves-light btn" style="background-color:#ffbf03;height:60px;width:100%;font-size:2em">Sign Up</button>
+			</div>
+			<div class="loginbuttondiv">
+				<button id="loginButton" class="waves-effect waves-light btn" style="background-color:#ffbf03;height:60px;width:100%;font-size:2em">Log In</button>
+			</div>
+			<!-- <div style="position:fixed; color:#ffffff; font-size:1.75em; bottom: 200px; left: 25px;">
+				a group 4 project
+			</div> -->
+			<div class="aiologo">
+				<img  src="${pageContext.request.contextPath}/resources/UIAssets/aiologo.pdf" height="100px" />
+			</div>
+			
 		</div>
-		<b class="allinonebanner">all-in-one</b>
-		
-		<b class="multisportfantasyleague">multi-sport fantasy league</b>
-		
-		<div class="signupbuttondiv">
-			 <button id="signupButton" class="waves-effect waves-light btn" style="background-color:#ffbf03;height:60px;width:100%;font-size:2em">Sign Up</button>
-		</div>
-		<div class="loginbuttondiv">
-			<button id="loginButton" class="waves-effect waves-light btn" style="background-color:#ffbf03;height:60px;width:100%;font-size:2em">Log In</button>
-		</div>
-		<!-- <div style="position:fixed; color:#ffffff; font-size:1.75em; bottom: 200px; left: 25px;">
-			a group 4 project
-		</div> -->
-		
-		
-	</div>
 	</div> 
 <div id="loginModal" class="loginmodalcss">
 		 	<!-- Modal content -->
