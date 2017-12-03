@@ -69,6 +69,7 @@ div.panel button {
 			<%-- <img src="${pageContext.request.contextPath}/resources/UIAssets/aiologo.svg" height="35px"> --%>
 			<object type="image/svg+xml" data="${pageContext.request.contextPath}/resources/UIAssets/aiologo.svg" height="35px;"></object>
 		</div>
+		<button onclick="javascript:redirectToHomePage('${userId}')" class="allinonebanner">all-in-one</button>
 			<!--<tr>
 				<b>aaaaa</b>
 				<b>bbbbb</b>
