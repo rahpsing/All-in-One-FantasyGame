@@ -409,16 +409,20 @@ html, body, .block {
 	color: #ffffff;
 	cursor: pointer;
 	font-size:3em; 
-	font-family:"roboto";  
+	font-family:Raleway, sans-serif;    
 	font-weight: bold; 
 }
 .signupcred{
 	position: relative;
 	margin-top: -15px;
-	color: #ffbf03;
+	text-align: center;
+	background-color: #ffbf03;
+	color:#ffffff;
 	font-size:30px; 
-	font-family:"roboto";  
+	font-family:Raleway, sans-serif;  
 	font-weight: bold;
+	width: 100%;
+	border-radius: 7px;
 }
 .signupmodalcss{
     display: none; /* Hidden by default */
@@ -434,7 +438,7 @@ html, body, .block {
     margin: 15% auto; /* 15% from the top and centered */
     margin-top: -60px;
     padding: 20px;
-    border: none;
+    border-radius: 5px;
     width: 250px; /* Could be more or less, depending on screen size */
     height: 400px;
     box-shadow: 0 15px 18px 0 rgba(0,0,0,0.2),0 16px 30px 0 rgba(0,0,0,0.19);
@@ -504,7 +508,7 @@ html, body, .block {
     background-color: #ffffff;
     margin: 15% auto; /* 15% from the top and centered */
     padding: 20px;
-    border: none;
+    border-radius: 5px;
     width: 250px; /* Could be more or less, depending on screen size */
     height: 300px;
     box-shadow: 0 15px 18px 0 rgba(0,0,0,0.2),0 16px 30px 0 rgba(0,0,0,0.19);
@@ -517,11 +521,14 @@ html, body, .block {
 .logincred{
 	position: relative;
 	margin-top: -15px;
-	margin-left: 15px;
-	color: #ffbf03;
+	background-color: #ffbf03;
+	width: 100%;
+	color:#ffffff;
+	text-align: center;
 	font-size:30px; 
-	font-family:"roboto";  
+	font-family:Raleway, sans-serif;   
 	font-weight: bold;
+	border-radius: 7px;
 }
 .username{
 	position: relative;
@@ -544,21 +551,21 @@ html, body, .block {
 .forgotuorp{
 	float: left;
 	color: #ffbf03;
-	font-size:12px; 
-	font-family:"roboto";  
+	font-size:10px; 
+	font-family:'Raleway', sans-serif;  
 	font-weight: bold; 
 }
 .reset{
-	margin-top: 10px;
-	margin-left: -7px;
+	margin-top: 7px;
+	
 	height: 20px;
 	background-color: #ffffff;
 	border: none;
 	position: absolute; 
 	color: #ffbf03;
 	cursor: pointer;
-	font-size:12px; 
-	font-family:"roboto";  
+	font-size:10px; 
+	font-family:'Raleway', sans-serif;   
 	font-weight: bold;
 	text-decoration: underline;
 }
