@@ -79,16 +79,17 @@ function uploadFile() {
 }
 
 
-
 function submitLeagueData() {
 	
 	//onclick of done
-	var form = document.forms["uploadTemplateForm"];
-	var formData = new FormData(form);
+	//var form = document.forms["uploadTemplateForm"];
+	var formData = new FormData();
+	formData.append("file",jQuery("#fileupload").val());
 	
 	jQuery.ajax({
 	    url : '/All-In-One-FantasyGame/uploadLeagueData',
 	    type: 'POST',
+	    dataType: 'text',
 	    beforeSend: function(){
 	        jQuery('#createSportLeagueModalLoader').show();
 	    },
@@ -98,7 +99,7 @@ function submitLeagueData() {
 	    	jQuery('#createSportLeagueModalLoader').hide();
 	    },
 	    success: function(data) {	
-	    	
+	    	jQuery('#createSportLeagueModalLoader').hide();
 	    		alert(data);
 	    	//alert(data);
 	    },
