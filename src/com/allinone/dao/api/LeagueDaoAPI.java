@@ -40,4 +40,7 @@ public interface LeagueDaoAPI {
 	public String checkIfThereIsParentLeague(String leagueId);
 	
 
+	public League fetchLeague(String leagueId);
+	
+
 }

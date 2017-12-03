@@ -16,7 +16,7 @@
         <property name="numSubstitutesAllowed">
             <column name="numSubstitutesAllowed" />
         </property>
-        
+                
         <property name="parentLeague">
             <column name="parentLeague" />
         </property>

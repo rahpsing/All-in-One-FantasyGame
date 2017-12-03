@@ -8,6 +8,7 @@
 <!--  ${pageContext.request.contextPath} - gives you path of the project -->
 <!-- jQuery -->
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/css/jQuery.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/userDashboard.js"></script>
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/UserDashboard.css" media="screen" />
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/materialize.min.css"  media="screen,projection"/>
@@ -64,7 +65,8 @@ div.panel button {
 	<div class="colorstrip1">
 		<button class="allinonebanner">all-in-one</button>
 		<div class="aiologo">
-			<img src="${pageContext.request.contextPath}/resources/UIAssets/aiologo.pdf" height="35px">
+			<%-- <img src="${pageContext.request.contextPath}/resources/UIAssets/aiologo.svg" height="35px"> --%>
+			<object type="image/svg+xml" data="${pageContext.request.contextPath}/resources/UIAssets/aiologo.svg" height="35px;"></object>
 		</div>
 			<!--<tr>
 				<b>aaaaa</b>
@@ -225,7 +227,9 @@ div.panel button {
 						<b class="formfieldname">mobile number</b><input id="phoneNumberUpdate" class="inputform" type="tel"  style="width: 80%;" value='${phoneNumber}'><br>
 						
 					 </div>
+
 					<button id="updateProfileImage" class="waves-effect waves-light btn" style="background-color:#021A42;height:40px;font-size:1.5em;text-transform: lowercase;padding-top:2.5px;">update profile image</button><br><br>
+
 		  			<input id="imageUpload" style="margin-left:80px;margin-bottom:20px;" class="file-upload" type="file" onchange="readURL(this);" accept="image/*"/>
 		  			<button id="saveProfile" onclick="javascript:sendUpdateProfileReq('${userId}')" class="waves-effect waves-light btn" style="background-color:#021A42;height:40px;font-size:1.5em;text-transform: lowercase;padding-top:2.5px;">save profile</button>
 				</div>
@@ -321,9 +325,16 @@ div.panel button {
 			  		</div>
 		  		</div>
 		  		<div class="downloadbutton">
+		  		    
 					<button id="downloadButton" class="waves-effect waves-light btn" href="#Highlights" style="width:100%;background-color:#ffbf03;height:40px;font-size:1.5em;text-transform: lowercase;padding-top:2.5px;font-family:'Raleway', sans-serif;border-radius:5px">download template</button>
 				</div>
 				<div class="uploadbutton">
+				      
+				      <form name="uploadTemplateForm" action="" method="post" enctype="multipart/form-data" style="display:none;">
+					       <input id="fileupload" type="file" name="files" data-url="/uploadTemplate" style="display:none;">	
+    				</form>
+				     
+				   
 					<button id="uploadButton" class="waves-effect waves-light btn" href="#Highlights" style="width:100%;background-color:#ffbf03;height:40px;font-size:1.5em;text-transform: lowercase;padding-top:2.5px;font-family:'Raleway', sans-serif;border-radius:5px">upload template</button>
 				</div>
 		  		<div class="cancelbutton3">
@@ -384,31 +395,6 @@ div.panel button {
      $(document).ready(function() {
         $('select').material_select();
         
-        $("#cricketOption").click(function() {
-        
-        var $selectDropdown = 
-            $("#leagueOptions")
-              .empty()
-              .html(' ');
-
-          // add new value
-          var value = "some value";
-          $selectDropdown.append(
-            $("<option></option>")
-              .attr("value",value)
-              .text(value)
-          );
-
-          // trigger event
-          $selectDropdown.trigger('contentChanged');
-        });
-
-
-        $('select').on('contentChanged', function() {
-          // re-initialize (update)
-          $(this).material_select();
-        });
-        
     });
  	</script>
 	<script>
@@ -445,6 +431,8 @@ div.panel button {
 	var cancelButton1 = document.getElementById("cancelButton1");
 	var cancelButton2 = document.getElementById("cancelButton2");
 	var cancelButton3 = document.getElementById("cancelButton3");
+	var downloadButton = document.getElementById("downloadButton");
+	var uploadButton = document.getElementById("uploadButton");
 	var addRoles = document.getElementById("addRoles");
 	var rolesDiv = document.getElementById("rolesDiv");
 	var createSportContent = document.getElementById("createSportContent");
@@ -509,13 +497,25 @@ div.panel button {
 	
 	
 	nextButton1.onclick = function() {
-		createSportModal.style.display = "none";
-		createSportLeagueModal.style.display = "block";
+		jQuery.when(saveSportData()).then(function() {
+
+			createSportModal.style.display = "none";
+			createSportLeagueModal.style.display = "block";
+		});
+		
 	}
 	
 	cancelButton3.onclick = function() {
 		createSportLeagueModal.style.display = "none";
 		mainDiv.classList.remove("blur");
+	}
+
+	downloadButton.onclick = function() {
+		downloadFile();
+	}
+
+	uploadButton.onclick = function() {
+		uploadFile();
 	}
 	
 	var updateProfileDiv = document.getElementById("updateProfileImage");

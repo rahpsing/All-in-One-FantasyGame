@@ -29,16 +29,20 @@ body {
 	</div>
 	<div class="panel1">
 		<div id="bImage4" class="bimage4">
-			<img  src="${pageContext.request.contextPath}/resources/UIAssets/asset13.svg" height="500px;"/>
+			<object type="image/svg+xml" data="${pageContext.request.contextPath}/resources/UIAssets/asset13.svg" height="500px;"></object>
+			<%-- <img  src="${pageContext.request.contextPath}/resources/UIAssets/asset13.svg" height="500px;"/> --%>
 		</div>
 		<div id="bImage5" class="bimage5">
-			<img  src="${pageContext.request.contextPath}/resources/UIAssets/asset14.svg" height="500px;"/>
+			<object type="image/svg+xml" data="${pageContext.request.contextPath}/resources/UIAssets/asset14.svg" height="500px;"></object>
+			<%-- <img  src="${pageContext.request.contextPath}/resources/UIAssets/asset14.svg" height="500px;"/> --%>
 		</div>
 		<div id="bImage6" class="bimage6">
-			<img  src="${pageContext.request.contextPath}/resources/UIAssets/asset15.svg" height="500px;"/>
+			<object type="image/svg+xml" data="${pageContext.request.contextPath}/resources/UIAssets/asset15.svg" height="500px;"></object>
+			<%-- <img  src="${pageContext.request.contextPath}/resources/UIAssets/asset15.svg" height="500px;"/> --%>
 		</div>
 		<div id="bImage1" class="bimage1">
-			<img  src="${pageContext.request.contextPath}/resources/UIAssets/asset11.svg" height="500px;"/>
+			<object type="image/svg+xml" data="${pageContext.request.contextPath}/resources/UIAssets/asset11.svg" height="500px;"></object>
+			<%-- <img  src="${pageContext.request.contextPath}/resources/UIAssets/asset11.svg" height="500px;"/> --%>
 		</div>
 		<div id="bImage2" class="bimage2">
 			<%-- <img  src="${pageContext.request.contextPath}/resources/UIAssets/asset11.svg" height="500px;"/> --%>
@@ -53,7 +57,8 @@ body {
 			<img  src="${pageContext.request.contextPath}/resources/UIAssets/feature3.svg"/ height= "60px;">
 		</div>
 		<div id="bImage3" class="bimage3">
-			<img  src="${pageContext.request.contextPath}/resources/UIAssets/asset12.svg" height="500px;"/>
+			<object type="image/svg+xml" data="${pageContext.request.contextPath}/resources/UIAssets/asset12.svg" height="500px;"></object>
+			<%-- <img  src="${pageContext.request.contextPath}/resources/UIAssets/asset12.svg" height="500px;"/> --%>
 		</div>
 		<div id="bFeature4" class="bfeature4">
 			<img  src="${pageContext.request.contextPath}/resources/UIAssets/feature4.svg"/ height= "60px;">
@@ -83,13 +88,16 @@ body {
 			<img  src="${pageContext.request.contextPath}/resources/UIAssets/dev3.svg"/ height= "100px;">
 		</div>
 		<div id="bFeature12" class="bfeature12">
-			<img  src="${pageContext.request.contextPath}/resources/UIAssets/dev21.svg"/ height= "150px;">
+			<object type="image/svg+xml" data="${pageContext.request.contextPath}/resources/UIAssets/dev21.svg" height="150px;"></object>
+			<%-- <img  src="${pageContext.request.contextPath}/resources/UIAssets/dev21.svg"/ height= "150px;"> --%>
 		</div>
 		<div id="bFeature13" class="bfeature13">
-			<img  src="${pageContext.request.contextPath}/resources/UIAssets/dev11.svg"/ height= "150px;">
+			<object type="image/svg+xml" data="${pageContext.request.contextPath}/resources/UIAssets/dev11.svg" height="150px;"></object>
+			<%-- <img  src="${pageContext.request.contextPath}/resources/UIAssets/dev11.svg"/ height= "150px;"> --%>
 		</div>
 		<div id="bFeature14" class="bfeature14">
-			<img  src="${pageContext.request.contextPath}/resources/UIAssets/dev31.svg"/ height= "150px;">
+			<object type="image/svg+xml" data="${pageContext.request.contextPath}/resources/UIAssets/dev31.svg" height="150px;"></object>
+			<%-- <img  src="${pageContext.request.contextPath}/resources/UIAssets/dev31.svg"/ height= "150px;"> --%>
 		</div>
 	</div> 
 	<div class="panel2">
@@ -97,28 +105,40 @@ body {
 	</div>
 	<div id="mainDiv" class="maindiv">
 	<!-- <div class="colorstrip1"></div> -->
-	
+		<div class="signupbuttondiv">
+					 <button id="signupButton" class="waves-effect waves-light btn" style="background-color:#ffbf03;max-height:60px;height:60px;width:100%;font-size:2em">Sign Up</button>
+		</div>
+		<div class="loginbuttondiv">
+			<button id="loginButton" class="waves-effect waves-light btn" style="background-color:#ffbf03;max-height:60px;height:60px;width:100%;font-size:2em">Log In</button>
+		</div>
+		<div style="position:fixed;left:0%;height:100%">
+			<img  src="${pageContext.request.contextPath}/resources/UIAssets/asset4.png" height="100%"/>
+		</div>
 		<div class="colorstrip2">
-			<div class="bgimage">
-				<img  src="${pageContext.request.contextPath}/resources/UIAssets/asset4.png" height="100%" />
-			</div>
+			<%-- <div class="bgimage" style="height:100%;">
+				<div class="signupbuttondiv">
+					 <button id="signupButton" class="waves-effect waves-light btn" style="background-color:#ffbf03;height:60px;width:100%;font-size:2em">Sign Up</button>
+				</div>
+				<div class="loginbuttondiv">
+					<button id="loginButton" class="waves-effect waves-light btn" style="background-color:#ffbf03;height:60px;width:100%;font-size:2em">Log In</button>
+				</div>
+				<div style="position:absolute;top:0px;height:100%">
+					<img  src="${pageContext.request.contextPath}/resources/UIAssets/asset4.png" height="100%"/>
+				</div>
+			</div> --%>
 			<b class="allinonebanner">all-in-one</b>
 			
 			<b class="multisportfantasyleague">multi-sport fantasy league</b>
 			
-			<div class="signupbuttondiv">
+			<!-- <div class="signupbuttondiv">
 				 <button id="signupButton" class="waves-effect waves-light btn" style="background-color:#ffbf03;height:60px;width:100%;font-size:2em">Sign Up</button>
 			</div>
 			<div class="loginbuttondiv">
 				<button id="loginButton" class="waves-effect waves-light btn" style="background-color:#ffbf03;height:60px;width:100%;font-size:2em">Log In</button>
-			</div>
+			</div> -->
 			<!-- <div style="position:fixed; color:#ffffff; font-size:1.75em; bottom: 200px; left: 25px;">
 				a group 4 project
 			</div> -->
-			<div class="aiologo">
-				<img  src="${pageContext.request.contextPath}/resources/UIAssets/aiologo.pdf" height="100px" />
-			</div>
-			
 		</div>
 	</div> 
 <div id="loginModal" class="loginmodalcss">
