@@ -425,7 +425,8 @@ html, body, .block {
     max-height: calc(100% - 50px);
   	position: fixed;
   	top: 600px;
-    left: 250px;
+    left: 350px;
+    font-family:Raleway, sans-serif;
   	transform: translate(-50%, -50%);
 }
 .signup-modal-content{
@@ -495,8 +496,9 @@ html, body, .block {
     max-height: calc(100% - 50px);
   	position: fixed;
     top: 600px;
-    left: 250px;
+    left: 350px;
   	transform: translate(-50%, -50%);
+  	font-family:Raleway, sans-serif;
 }
 .modal-content{
     background-color: #ffffff;

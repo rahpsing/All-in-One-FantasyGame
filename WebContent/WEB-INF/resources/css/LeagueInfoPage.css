@@ -37,7 +37,11 @@ html,body {
     background-color: rgba(255,255,255,0.3);
     z-index: 999;
 }
-
+.aiologo{
+	position:absolute;
+	left: 170px;
+	top:2.5px;
+}
 .logout{
 	position: absolute;
 	right: 50px;

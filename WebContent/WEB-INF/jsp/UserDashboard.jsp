@@ -63,6 +63,9 @@ div.panel button {
 <body onload="javascript:sendAllFetch('${userId}')">
 	<div class="colorstrip1">
 		<button class="allinonebanner">all-in-one</button>
+		<div class="aiologo">
+			<img src="${pageContext.request.contextPath}/resources/UIAssets/aiologo.pdf" height="35px">
+		</div>
 			<!--<tr>
 				<b>aaaaa</b>
 				<b>bbbbb</b>
@@ -134,6 +137,9 @@ div.panel button {
 							      <div class="profileinfo">
 							        <p style="font-size:2em;font-family:'Raleway', sans-serif; ">league 1 name</p>
 							        <p class="bio" style="font-size: 1.5em;margin-top:-20px;font-family:'Raleway', sans-serif; ">deatils 11  13</p>
+							        <div class="aiologo2">
+							    		<img src="${pageContext.request.contextPath}/resources/UIAssets/aiologo.pdf" height="55px">
+							    	</div>
 							      </div>
 							    </div>
 							  </div>

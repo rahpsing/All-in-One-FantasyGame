@@ -62,6 +62,9 @@ body {
 <body onload="javascript:onLoadCalls('${leagueId}','${userId}','${flag}')">
 	<div class="colorstrip1">
 		<button class="allinonebanner">all-in-one</button>
+		<div class="aiologo">
+			<img src="${pageContext.request.contextPath}/resources/UIAssets/aiologo.pdf" height="35px">
+		</div>
 		<div class="logout">
 			<button id="logOut" class="waves-effect waves-light btn" style="background-color:#ffbf03;height:40px;font-size:1.5em;text-transform: lowercase;padding-top:2.5px;font-family:'Raleway', sans-serif;">logout</button>
 		</div>
@@ -138,6 +141,8 @@ body {
 								  	<div class="userimage1">
 								     	<img class="circle responsive-img" src="${pageContext.request.contextPath}/resources/UIAssets/user1.jpeg"/>
 								 	</div>
+								 	<div class="playpositionindicator" style="background-color:#DC4444">
+								 	</div>
 								      <div class="profileinfo1">
 								        <p style="font-size:2em;font-family:'Raleway', sans-serif; color:#000000;margin-top:3px;">player 1</p>
 								        <!-- <p class="bio1" style="font-size: 1em;margin-top:-20px;font-family:'Raleway', sans-serif; ">deatils 11  13</p> -->
@@ -150,6 +155,8 @@ body {
 								<div class="card1" style="height:40px;">
 								  	<div class="userimage1">
 								     	<img class="circle responsive-img" src="${pageContext.request.contextPath}/resources/UIAssets/user1.jpeg"/>
+								 	</div>
+								 	<div class="playpositionindicator" style="background-color:#A1EAFB">
 								 	</div>
 								      <div class="profileinfo1">
 								        <p style="font-size:2em;font-family:'Raleway', sans-serif; color:#000000;margin-top:3px;">player 2</p>
@@ -164,6 +171,8 @@ body {
 								  	<div class="userimage1">
 								     	<img class="circle responsive-img" src="${pageContext.request.contextPath}/resources/UIAssets/user1.jpeg"/>
 								 	</div>
+								 	<div class="playpositionindicator" style="background-color:#CBF078">
+								 	</div>
 								      <div class="profileinfo1">
 								        <p style="font-size:2em;font-family:'Raleway', sans-serif; color:#000000;margin-top:3px;">player 3</p>
 								        <!-- <p class="bio1" style="font-size: 1em;margin-top:-20px;font-family:'Raleway', sans-serif; ">deatils 11  13</p> -->
@@ -176,6 +185,8 @@ body {
 								<div class="card1" style="height:40px;">
 								  	<div class="userimage1">
 								     	<img class="circle responsive-img" src="${pageContext.request.contextPath}/resources/UIAssets/user1.jpeg"/>
+								 	</div>
+								 	<div class="playpositionindicator" style="background-color:#F1BBF5">
 								 	</div>
 								      <div class="profileinfo1">
 								        <p style="font-size:2em;font-family:'Raleway', sans-serif; color:#000000;margin-top:3px;">player 4</p>
@@ -190,6 +201,8 @@ body {
 								  	<div class="userimage1">
 								     	<img class="circle responsive-img" src="${pageContext.request.contextPath}/resources/UIAssets/user1.jpeg"/>
 								 	</div>
+								 	<div class="playpositionindicator" style="background-color:#5782BB">
+								 	</div>
 								      <div class="profileinfo1">
 								        <p style="font-size:2em;font-family:'Raleway', sans-serif; color:#000000;margin-top:3px;">player 5</p>
 								        <!-- <p class="bio1" style="font-size: 1em;margin-top:-20px;font-family:'Raleway', sans-serif; ">deatils 11  13</p> -->
@@ -202,6 +215,8 @@ body {
 								<div class="card1" style="height:40px;">
 								  	<div class="userimage1">
 								     	<img class="circle responsive-img" src="${pageContext.request.contextPath}/resources/UIAssets/user1.jpeg"/>
+								 	</div>
+								 	<div class="playpositionindicator" style="background-color:#FF8F56">
 								 	</div>
 								      <div class="profileinfo1">
 								        <p style="font-size:2em;font-family:'Raleway', sans-serif; color:#000000;margin-top:3px;">player 6</p>
@@ -219,7 +234,55 @@ body {
 					<input id="saveButton" onclick="javascript:sendPlayerList('${userId}','${leagueId}','${flag}')"class="waves-effect waves-light btn" style="background-color:#ffbf03;height:40px;width:100%;font-size:2em;text-transform: lowercase; padding-top:5px;font-family:'Raleway', sans-serif;" type="button" value="save" onclick=""/>				
 		</div>
 		<div class="teamlegends" style="font-size:15px;font-family:'Raleway', sans-serif;">
-			<div id="position" style="margin-top:10px;margin-left:20px;width:200px;">
+			<div class="card1" style="height:40px;margin:5px;">
+				<div class="playpositionindicator" style="background-color:#DC4444"></div>
+				<div class="profileinfo1" style="margin-top:5px;display:inline-block;">
+					<div style="font-size:1em;font-family:'Raleway', sans-serif; color:#000000;margin-top:3px;">player position 1</div>
+					<div style="position:absolute;top:3px;font-size:1em;font-family:'Raleway', sans-serif; color:#000000;margin-top:3px;right:10px;">:    15</div>
+				</div>
+			</div>
+			<div class="card1" style="height:40px;margin:5px;">
+				<div class="playpositionindicator" style="background-color:#A1EAFB"></div>
+				<div class="profileinfo1" style="margin-top:5px;display:inline-block;">
+					<div style="font-size:1em;font-family:'Raleway', sans-serif; color:#000000;margin-top:3px;">player position 2</div>
+					<div style="position:absolute;top:3px;font-size:1em;font-family:'Raleway', sans-serif; color:#000000;margin-top:3px;right:10px;">:    5</div>
+				</div>
+			</div>
+			<div class="card1" style="height:40px;margin:5px;">
+				<div class="playpositionindicator" style="background-color:#CBF078"></div>
+				<div class="profileinfo1" style="margin-top:5px;display:inline-block;">
+					<div style="font-size:1em;font-family:'Raleway', sans-serif; color:#000000;margin-top:3px;">player position 3</div>
+					<div style="position:absolute;top:3px;font-size:1em;font-family:'Raleway', sans-serif; color:#000000;margin-top:3px;right:10px;">:    15</div>
+				</div>
+			</div>
+			<div class="card1" style="height:40px;margin:5px;">
+				<div class="playpositionindicator" style="background-color:#F1BBF5"></div>
+				<div class="profileinfo1" style="margin-top:5px;display:inline-block;">
+					<div style="font-size:1em;font-family:'Raleway', sans-serif; color:#000000;margin-top:3px;">player position 4</div>
+					<div style="position:absolute;top:3px;font-size:1em;font-family:'Raleway', sans-serif; color:#000000;margin-top:3px;right:10px;">:    5</div>
+				</div>
+			</div>
+			<div class="card1" style="height:40px;margin:5px;">
+				<div class="playpositionindicator" style="background-color:#5782BB"></div>
+				<div class="profileinfo1" style="margin-top:5px;display:inline-block;">
+					<div style="font-size:1em;font-family:'Raleway', sans-serif; color:#000000;margin-top:3px;">player position 5</div>
+					<div style="position:absolute;top:3px;font-size:1em;font-family:'Raleway', sans-serif; color:#000000;margin-top:3px;right:10px;">:    15</div>
+				</div>
+			</div>
+			<div class="card1" style="height:40px;margin:5px;">
+				<div class="playpositionindicator" style="background-color:#FF8F56"></div>
+				<div class="profileinfo1" style="margin-top:5px;display:inline-block;">
+					<div style="font-size:1em;font-family:'Raleway', sans-serif; color:#000000;margin-top:3px;">player position 6</div>
+					<div style="position:absolute;top:3px;font-size:1em;font-family:'Raleway', sans-serif; color:#000000;margin-top:3px;right:10px;">:    5</div>
+				</div>
+			</div>
+			<div class="card1" style="height:40px;margin:5px;">
+				<div class="profileinfo1" style="margin-top:5px;display:inline-block;">
+					<div style="font-size:1em;font-family:'Raleway', sans-serif; color:#000000;margin-top:3px;">swaps left</div>
+					<div style="position:absolute;top:3px;font-size:1em;font-family:'Raleway', sans-serif; color:#000000;margin-top:3px;right:10px;">:    15</div>
+				</div>
+			</div>
+			<!-- <div id="position" style="margin-top:10px;margin-left:20px;width:200px;">
 				<div>position 1 : 5</div>
 				<div>position 2 : 4</div>
 				<div>position 3 : 3</div>
@@ -227,7 +290,7 @@ body {
 			</div>
 			<div id="swapsLeft" class="swapsleft">
 				<div>swaps left:1000</div>
-			</div>
+			</div> -->
 		</div>
  		<!-- <div class="colorstrip10"></div>
 		<div class="colorstrip11"></div>
