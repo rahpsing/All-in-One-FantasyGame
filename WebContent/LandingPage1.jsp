@@ -99,24 +99,32 @@ body {
 	<!-- <div class="colorstrip1"></div> -->
 	
 		<div class="colorstrip2">
-			<div class="bgimage">
-				<img  src="${pageContext.request.contextPath}/resources/UIAssets/asset4.png" height="100%" />
+			<div class="bgimage" style="height:100%;">
+				<div class="signupbuttondiv">
+					 <button id="signupButton" class="waves-effect waves-light btn" style="background-color:#ffbf03;height:60px;width:100%;font-size:2em">Sign Up</button>
+				</div>
+				<div class="loginbuttondiv">
+					<button id="loginButton" class="waves-effect waves-light btn" style="background-color:#ffbf03;height:60px;width:100%;font-size:2em">Log In</button>
+				</div>
+				<div style="position:absolute;top:0px;">
+					<img  src="${pageContext.request.contextPath}/resources/UIAssets/asset4.png" height="100%" />
+				</div>
 			</div>
 			<b class="allinonebanner">all-in-one</b>
 			
 			<b class="multisportfantasyleague">multi-sport fantasy league</b>
 			
-			<div class="signupbuttondiv">
+			<!-- <div class="signupbuttondiv">
 				 <button id="signupButton" class="waves-effect waves-light btn" style="background-color:#ffbf03;height:60px;width:100%;font-size:2em">Sign Up</button>
 			</div>
 			<div class="loginbuttondiv">
 				<button id="loginButton" class="waves-effect waves-light btn" style="background-color:#ffbf03;height:60px;width:100%;font-size:2em">Log In</button>
-			</div>
+			</div> -->
 			<!-- <div style="position:fixed; color:#ffffff; font-size:1.75em; bottom: 200px; left: 25px;">
 				a group 4 project
 			</div> -->
 			<div class="aiologo">
-				<img  src="${pageContext.request.contextPath}/resources/UIAssets/aiologo.pdf" height="100px" />
+				<img  src="${pageContext.request.contextPath}/resources/UIAssets/aiologo.svg" height="100px" />
 			</div>
 			
 		</div>

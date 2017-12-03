@@ -335,10 +335,10 @@ html, body, .block {
 }
 
 .signupbuttondiv{
-	position: absolute;
+	position: relative;
 	width: 30%; 
-	left: 255px;
-	top: 525px;
+	margin-right: 37.5%;
+	top: 47.5%;
     border-style: none;
     border-color: #c50234;
     background-color: #ffbf03;
@@ -348,11 +348,11 @@ html, body, .block {
 }
 
 .loginbuttondiv{
-	position: absolute;
+	position: relative;
 	width: 30%; 
-	left: 255px;
-	top: 625px;
-    border-style: none;
+	top: 52.5%;
+	margin-left: 45%;
+    border-style: none; 
     border-color: #c50234;
     background-color: #c50234;
     float: right;   

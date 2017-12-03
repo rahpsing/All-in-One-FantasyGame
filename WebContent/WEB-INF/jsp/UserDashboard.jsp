@@ -64,7 +64,7 @@ div.panel button {
 	<div class="colorstrip1">
 		<button class="allinonebanner">all-in-one</button>
 		<div class="aiologo">
-			<img src="${pageContext.request.contextPath}/resources/UIAssets/aiologo.pdf" height="35px">
+			<img src="${pageContext.request.contextPath}/resources/UIAssets/aiologo.svg" height="35px">
 		</div>
 			<!--<tr>
 				<b>aaaaa</b>
