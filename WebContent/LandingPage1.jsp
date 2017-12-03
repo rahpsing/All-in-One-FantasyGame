@@ -97,19 +97,27 @@ body {
 	</div>
 	<div id="mainDiv" class="maindiv">
 	<!-- <div class="colorstrip1"></div> -->
-	
+		<div class="signupbuttondiv">
+					 <button id="signupButton" class="waves-effect waves-light btn" style="background-color:#ffbf03;max-height:60px;height:60px;width:100%;font-size:2em">Sign Up</button>
+		</div>
+		<div class="loginbuttondiv">
+			<button id="loginButton" class="waves-effect waves-light btn" style="background-color:#ffbf03;max-height:60px;height:60px;width:100%;font-size:2em">Log In</button>
+		</div>
+		<div style="position:fixed;left:0%;height:100%">
+			<img  src="${pageContext.request.contextPath}/resources/UIAssets/asset4.png" height="100%"/>
+		</div>
 		<div class="colorstrip2">
-			<div class="bgimage" style="height:100%;">
+			<%-- <div class="bgimage" style="height:100%;">
 				<div class="signupbuttondiv">
 					 <button id="signupButton" class="waves-effect waves-light btn" style="background-color:#ffbf03;height:60px;width:100%;font-size:2em">Sign Up</button>
 				</div>
 				<div class="loginbuttondiv">
 					<button id="loginButton" class="waves-effect waves-light btn" style="background-color:#ffbf03;height:60px;width:100%;font-size:2em">Log In</button>
 				</div>
-				<div style="position:absolute;top:0px;">
-					<img  src="${pageContext.request.contextPath}/resources/UIAssets/asset4.png" height="100%" />
+				<div style="position:absolute;top:0px;height:100%">
+					<img  src="${pageContext.request.contextPath}/resources/UIAssets/asset4.png" height="100%"/>
 				</div>
-			</div>
+			</div> --%>
 			<b class="allinonebanner">all-in-one</b>
 			
 			<b class="multisportfantasyleague">multi-sport fantasy league</b>
@@ -123,10 +131,6 @@ body {
 			<!-- <div style="position:fixed; color:#ffffff; font-size:1.75em; bottom: 200px; left: 25px;">
 				a group 4 project
 			</div> -->
-			<div class="aiologo">
-				<img  src="${pageContext.request.contextPath}/resources/UIAssets/aiologo.svg" height="100px" />
-			</div>
-			
 		</div>
 	</div> 
 <div id="loginModal" class="loginmodalcss">
