@@ -10,6 +10,7 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/css/jQuery.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/materialize.min.js"></script> 
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/teamDraftPage.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/redirectRequests.js"></script>
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/TeamDraftPage.css" media="screen" />
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/materialize.min.css"  media="screen,projection"/>
@@ -61,7 +62,7 @@ body {
 </head>
 <body onload="javascript:onLoadCalls('${leagueId}','${userId}','${flag}')">
 	<div class="colorstrip1">
-		<button class="allinonebanner">all-in-one</button>
+		<button onclick="javascript:redirectToHomePage('${userId}')" class="allinonebanner">all-in-one</button>
 		<div class="aiologo">
 			<%-- <img src="${pageContext.request.contextPath}/resources/UIAssets/aiologo.svg" height="35px"> --%>
 			<object type="image/svg+xml" data="${pageContext.request.contextPath}/resources/UIAssets/aiologo.svg" height="35px;"></object>
