@@ -59,8 +59,7 @@ body {
   }
 </style>
 </head>
-<<body onload="javascript:onLoadCalls('${leagueId}','${userId}','${flag}')">
-<!-- <body> -->
+<body onload="javascript:onLoadCalls('${leagueId}','${userId}','${flag}')">
 	<div class="colorstrip1">
 		<button class="allinonebanner">all-in-one</button>
 		<div class="aiologo">
@@ -135,7 +134,7 @@ body {
 						    <li><a href="#!" style="color:#ffbf03;">goalie</a></li>
 					 	 </ul>
 			    	</div>
-			    	<div id="rosterList">
+			    	<div id="rosterList" style="margin-top:80px;">
 				    	<div draggable="true" class="player" id="player1" ondragstart="dragPlayer(this, event)">
 				    		<div class="content1" style="margin-top:2px;">
 								<div class="card1" style="height:40px;">
