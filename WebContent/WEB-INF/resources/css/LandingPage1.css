@@ -398,7 +398,7 @@ html, body, .block {
 	/* z-index: 999; */
 	/* display: block; */
 	position: fixed;
-	top: 450px;
+	top: 50%;
 	left: 500px;
 	/* transform: translate(-50%, -50%); */
 	z-index: 199;
@@ -436,7 +436,7 @@ html, body, .block {
     display: none; /* Hidden by default */
     max-height: calc(100% - 50px);
   	position: fixed;
-  	top: 600px;
+  	top: 50%;
     left: 350px;
     font-family:Raleway, sans-serif;
   	transform: translate(-50%, -50%);
@@ -508,7 +508,7 @@ html, body, .block {
     display: none; /* Hidden by default */
     max-height: calc(100% - 50px);
   	position: fixed;
-    top: 600px;
+    top: 50%;
     left: 350px;
   	transform: translate(-50%, -50%);
   	font-family:Raleway, sans-serif;

@@ -29,16 +29,20 @@ body {
 	</div>
 	<div class="panel1">
 		<div id="bImage4" class="bimage4">
-			<img  src="${pageContext.request.contextPath}/resources/UIAssets/asset13.svg" height="500px;"/>
+			<object type="image/svg+xml" data="${pageContext.request.contextPath}/resources/UIAssets/asset13.svg" height="500px;"></object>
+			<%-- <img  src="${pageContext.request.contextPath}/resources/UIAssets/asset13.svg" height="500px;"/> --%>
 		</div>
 		<div id="bImage5" class="bimage5">
-			<img  src="${pageContext.request.contextPath}/resources/UIAssets/asset14.svg" height="500px;"/>
+			<object type="image/svg+xml" data="${pageContext.request.contextPath}/resources/UIAssets/asset14.svg" height="500px;"></object>
+			<%-- <img  src="${pageContext.request.contextPath}/resources/UIAssets/asset14.svg" height="500px;"/> --%>
 		</div>
 		<div id="bImage6" class="bimage6">
-			<img  src="${pageContext.request.contextPath}/resources/UIAssets/asset15.svg" height="500px;"/>
+			<object type="image/svg+xml" data="${pageContext.request.contextPath}/resources/UIAssets/asset15.svg" height="500px;"></object>
+			<%-- <img  src="${pageContext.request.contextPath}/resources/UIAssets/asset15.svg" height="500px;"/> --%>
 		</div>
 		<div id="bImage1" class="bimage1">
-			<img  src="${pageContext.request.contextPath}/resources/UIAssets/asset11.svg" height="500px;"/>
+			<object type="image/svg+xml" data="${pageContext.request.contextPath}/resources/UIAssets/asset11.svg" height="500px;"></object>
+			<%-- <img  src="${pageContext.request.contextPath}/resources/UIAssets/asset11.svg" height="500px;"/> --%>
 		</div>
 		<div id="bImage2" class="bimage2">
 			<%-- <img  src="${pageContext.request.contextPath}/resources/UIAssets/asset11.svg" height="500px;"/> --%>
@@ -53,7 +57,8 @@ body {
 			<img  src="${pageContext.request.contextPath}/resources/UIAssets/feature3.svg"/ height= "60px;">
 		</div>
 		<div id="bImage3" class="bimage3">
-			<img  src="${pageContext.request.contextPath}/resources/UIAssets/asset12.svg" height="500px;"/>
+			<object type="image/svg+xml" data="${pageContext.request.contextPath}/resources/UIAssets/asset12.svg" height="500px;"></object>
+			<%-- <img  src="${pageContext.request.contextPath}/resources/UIAssets/asset12.svg" height="500px;"/> --%>
 		</div>
 		<div id="bFeature4" class="bfeature4">
 			<img  src="${pageContext.request.contextPath}/resources/UIAssets/feature4.svg"/ height= "60px;">
@@ -83,13 +88,16 @@ body {
 			<img  src="${pageContext.request.contextPath}/resources/UIAssets/dev3.svg"/ height= "100px;">
 		</div>
 		<div id="bFeature12" class="bfeature12">
-			<img  src="${pageContext.request.contextPath}/resources/UIAssets/dev21.svg"/ height= "150px;">
+			<object type="image/svg+xml" data="${pageContext.request.contextPath}/resources/UIAssets/dev21.svg" height="150px;"></object>
+			<%-- <img  src="${pageContext.request.contextPath}/resources/UIAssets/dev21.svg"/ height= "150px;"> --%>
 		</div>
 		<div id="bFeature13" class="bfeature13">
-			<img  src="${pageContext.request.contextPath}/resources/UIAssets/dev11.svg"/ height= "150px;">
+			<object type="image/svg+xml" data="${pageContext.request.contextPath}/resources/UIAssets/dev11.svg" height="150px;"></object>
+			<%-- <img  src="${pageContext.request.contextPath}/resources/UIAssets/dev11.svg"/ height= "150px;"> --%>
 		</div>
 		<div id="bFeature14" class="bfeature14">
-			<img  src="${pageContext.request.contextPath}/resources/UIAssets/dev31.svg"/ height= "150px;">
+			<object type="image/svg+xml" data="${pageContext.request.contextPath}/resources/UIAssets/dev31.svg" height="150px;"></object>
+			<%-- <img  src="${pageContext.request.contextPath}/resources/UIAssets/dev31.svg"/ height= "150px;"> --%>
 		</div>
 	</div> 
 	<div class="panel2">
