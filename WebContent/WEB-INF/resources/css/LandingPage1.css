@@ -335,29 +335,31 @@ html, body, .block {
 }
 
 .signupbuttondiv{
-	position: relative;
-	width: 30%; 
-	margin-right: 37.5%;
-	top: 47.5%;
+	position: fixed;
+	width: 12.5%;
+	top: 48%;
+	left: 13.5%;
     border-style: none;
     border-color: #c50234;
     background-color: #ffbf03;
     float: right;   
     /* margin-right: 0px; */
     text-align: center;
+    z-index:99;
 }
 
 .loginbuttondiv{
-	position: relative;
-	width: 30%; 
-	top: 52.5%;
-	margin-left: 45%;
+	position: fixed;
+	width: 12.5%; 
+	top: 58%;
+	left: 13.5%;
     border-style: none; 
     border-color: #c50234;
     background-color: #c50234;
     float: right;   
     margin-right: 80px;
     text-align: center;
+    z-index:99;
 }
 .imagestripdiv1{
 	position:relative;
