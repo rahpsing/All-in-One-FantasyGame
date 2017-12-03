@@ -123,7 +123,7 @@ body {
 				      		<input id="searchText" autocomplete=off type="text" onkeyup="javascript:searchPlayerList()" name="search" class="searchTerm" style="width:100%;"placeholder="search for players">
 				   		</div>
 				   		<button class="clearsearch"><i class="material-icons center">close</i></button>
-				   		<a class='dropdown-button btn' href='#' data-activates='dropdown1' style="color:#ffbf03;background-color:#ffffff;width:20%;margin-top:5px;margin-bottom:30px;"><i class="material-icons center">edit</i> </a>
+				   		<a class='dropdown-button btn' href='#' data-activates='dropdown1' style="position:absolute;color:#ffbf03;background-color:#ffffff;width:80px;margin-top:5px;margin-bottom:30px;margin-left:-37px;"><i class="material-icons center">edit</i> </a>
 				    	<ul id='dropdown1' class='dropdown-content' style="text-align:center;margin-left:-20px;">
 						    <li><a href="#!" style="color:#ffbf03;">forward</a></li>
 						    <li class="divider"></li>
