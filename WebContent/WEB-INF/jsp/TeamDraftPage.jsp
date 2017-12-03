@@ -234,49 +234,51 @@ body {
 					<input id="saveButton" onclick="javascript:sendPlayerList('${userId}','${leagueId}','${flag}')"class="waves-effect waves-light btn" style="background-color:#ffbf03;height:40px;width:100%;font-size:2em;text-transform: lowercase; padding-top:5px;font-family:'Raleway', sans-serif;" type="button" value="save" onclick=""/>				
 		</div>
 		<div class="teamlegends" style="font-size:15px;font-family:'Raleway', sans-serif;">
-			<div class="card1" style="height:40px;margin:5px;">
-				<div class="playpositionindicator" style="background-color:#DC4444"></div>
-				<div class="profileinfo1" style="margin-top:5px;display:inline-block;">
-					<div style="font-size:1em;font-family:'Raleway', sans-serif; color:#000000;margin-top:3px;">player position 1</div>
-					<div style="position:absolute;top:3px;font-size:1em;font-family:'Raleway', sans-serif; color:#000000;margin-top:3px;right:10px;">:    15</div>
+			<div id="legendCards">
+				<div class="card1" style="height:40px;margin:5px;">
+					<div class="playpositionindicator" style="background-color:#DC4444"></div>
+					<div class="profileinfo1" style="margin-top:5px;display:inline-block;">
+						<div style="font-size:1em;font-family:'Raleway', sans-serif; color:#000000;margin-top:3px;">player position 1</div>
+						<div style="position:absolute;top:3px;font-size:1em;font-family:'Raleway', sans-serif; color:#000000;margin-top:3px;right:10px;">:    15</div>
+					</div>
+				</div>
+				<div class="card1" style="height:40px;margin:5px;">
+					<div class="playpositionindicator" style="background-color:#A1EAFB"></div>
+					<div class="profileinfo1" style="margin-top:5px;display:inline-block;">
+						<div style="font-size:1em;font-family:'Raleway', sans-serif; color:#000000;margin-top:3px;">player position 2</div>
+						<div style="position:absolute;top:3px;font-size:1em;font-family:'Raleway', sans-serif; color:#000000;margin-top:3px;right:10px;">:    5</div>
+					</div>
+				</div>
+				<div class="card1" style="height:40px;margin:5px;">
+					<div class="playpositionindicator" style="background-color:#CBF078"></div>
+					<div class="profileinfo1" style="margin-top:5px;display:inline-block;">
+						<div style="font-size:1em;font-family:'Raleway', sans-serif; color:#000000;margin-top:3px;">player position 3</div>
+						<div style="position:absolute;top:3px;font-size:1em;font-family:'Raleway', sans-serif; color:#000000;margin-top:3px;right:10px;">:    15</div>
+					</div>
+				</div>
+				<div class="card1" style="height:40px;margin:5px;">
+					<div class="playpositionindicator" style="background-color:#F1BBF5"></div>
+					<div class="profileinfo1" style="margin-top:5px;display:inline-block;">
+						<div style="font-size:1em;font-family:'Raleway', sans-serif; color:#000000;margin-top:3px;">player position 4</div>
+						<div style="position:absolute;top:3px;font-size:1em;font-family:'Raleway', sans-serif; color:#000000;margin-top:3px;right:10px;">:    5</div>
+					</div>
+				</div>
+				<div class="card1" style="height:40px;margin:5px;">
+					<div class="playpositionindicator" style="background-color:#5782BB"></div>
+					<div class="profileinfo1" style="margin-top:5px;display:inline-block;">
+						<div style="font-size:1em;font-family:'Raleway', sans-serif; color:#000000;margin-top:3px;">player position 5</div>
+						<div style="position:absolute;top:3px;font-size:1em;font-family:'Raleway', sans-serif; color:#000000;margin-top:3px;right:10px;">:    15</div>
+					</div>
+				</div>
+				<div class="card1" style="height:40px;margin:5px;">
+					<div class="playpositionindicator" style="background-color:#FF8F56"></div>
+					<div class="profileinfo1" style="margin-top:5px;display:inline-block;">
+						<div style="font-size:1em;font-family:'Raleway', sans-serif; color:#000000;margin-top:3px;">player position 6</div>
+						<div style="position:absolute;top:3px;font-size:1em;font-family:'Raleway', sans-serif; color:#000000;margin-top:3px;right:10px;">:    5</div>
+					</div>
 				</div>
 			</div>
-			<div class="card1" style="height:40px;margin:5px;">
-				<div class="playpositionindicator" style="background-color:#A1EAFB"></div>
-				<div class="profileinfo1" style="margin-top:5px;display:inline-block;">
-					<div style="font-size:1em;font-family:'Raleway', sans-serif; color:#000000;margin-top:3px;">player position 2</div>
-					<div style="position:absolute;top:3px;font-size:1em;font-family:'Raleway', sans-serif; color:#000000;margin-top:3px;right:10px;">:    5</div>
-				</div>
-			</div>
-			<div class="card1" style="height:40px;margin:5px;">
-				<div class="playpositionindicator" style="background-color:#CBF078"></div>
-				<div class="profileinfo1" style="margin-top:5px;display:inline-block;">
-					<div style="font-size:1em;font-family:'Raleway', sans-serif; color:#000000;margin-top:3px;">player position 3</div>
-					<div style="position:absolute;top:3px;font-size:1em;font-family:'Raleway', sans-serif; color:#000000;margin-top:3px;right:10px;">:    15</div>
-				</div>
-			</div>
-			<div class="card1" style="height:40px;margin:5px;">
-				<div class="playpositionindicator" style="background-color:#F1BBF5"></div>
-				<div class="profileinfo1" style="margin-top:5px;display:inline-block;">
-					<div style="font-size:1em;font-family:'Raleway', sans-serif; color:#000000;margin-top:3px;">player position 4</div>
-					<div style="position:absolute;top:3px;font-size:1em;font-family:'Raleway', sans-serif; color:#000000;margin-top:3px;right:10px;">:    5</div>
-				</div>
-			</div>
-			<div class="card1" style="height:40px;margin:5px;">
-				<div class="playpositionindicator" style="background-color:#5782BB"></div>
-				<div class="profileinfo1" style="margin-top:5px;display:inline-block;">
-					<div style="font-size:1em;font-family:'Raleway', sans-serif; color:#000000;margin-top:3px;">player position 5</div>
-					<div style="position:absolute;top:3px;font-size:1em;font-family:'Raleway', sans-serif; color:#000000;margin-top:3px;right:10px;">:    15</div>
-				</div>
-			</div>
-			<div class="card1" style="height:40px;margin:5px;">
-				<div class="playpositionindicator" style="background-color:#FF8F56"></div>
-				<div class="profileinfo1" style="margin-top:5px;display:inline-block;">
-					<div style="font-size:1em;font-family:'Raleway', sans-serif; color:#000000;margin-top:3px;">player position 6</div>
-					<div style="position:absolute;top:3px;font-size:1em;font-family:'Raleway', sans-serif; color:#000000;margin-top:3px;right:10px;">:    5</div>
-				</div>
-			</div>
-			<div class="card1" style="height:40px;margin:5px;">
+			<div id="swapsLeftId" class="card1" style="height:40px;margin:5px;">
 				<div class="profileinfo1" style="margin-top:5px;display:inline-block;">
 					<div style="font-size:1em;font-family:'Raleway', sans-serif; color:#000000;margin-top:3px;">swaps left</div>
 					<div style="position:absolute;top:3px;font-size:1em;font-family:'Raleway', sans-serif; color:#000000;margin-top:3px;right:10px;">:    15</div>
@@ -350,9 +352,12 @@ body {
 		    	console.log(data);
 		    	$('#user-team').empty();
 		    	$('#user-team').append('<p style="color:#ffbf03;height:40px;font-size:3em;text-transform: lowercase;margin-top:-5px;font-family:"Raleway", sans-serif;">team</p>');
-		    	$(data.usersTeam).each(function(index,value){$('#user-team').append('<a draggable="true" class="player" id='+value.id+'+123  ondragstart="dragPlayer(this, event)"><div class="content1" style="margin-top:2px;"><div class="card1" style="height:40px;"><div class="userimage1"><img class="circle responsive-img" src="${pageContext.request.contextPath}/resources/UIAssets/user1.jpeg"/></div><div  class="profileinfo1"><p id='+value.id+' role = '+value.role+'  style="font-size:2em;font-family:Raleway, sans-serif; color:#000000;margin-top:3px;">'+value.player+'</p></div></div></div></a>');
+		    	$(data.usersTeam).each(function(index,value){
+		    		var color=colorMap[value.role];
+		    		$('#user-team').append('<a draggable="true" class="player" id='+value.id+'+123  ondragstart="dragPlayer(this, event)"><div class="content1" style="margin-top:2px;"><div class="card1" style="height:40px;"><div class="userimage1"><img class="circle responsive-img" src="${pageContext.request.contextPath}/resources/UIAssets/user1.jpeg"/></div><div  class="profileinfo1"><div class="playpositionindicator" style="background-color:'+color+'"></div><p id='+value.id+' role = '+value.role+'  style="font-size:2em;font-family:Raleway, sans-serif; color:#000000;margin-top:3px;">'+value.player+'</p></div></div></div></a>');
 		    			initialUserTeam.push(value.id);})
 		    	//fetchPlayerList(leagueId,'rosterList',userId);
+		    			fetchCountsMap();
 		    },
 		    error: function (jqXHR, textStatus, errorThrown)
 		    {
@@ -366,10 +371,10 @@ body {
 		var searchText=document.getElementById("searchText").value;
 		$('#rosterList').empty();
 		$(playerData.Players).each(
-				function(index,value){
+				function(index,value){var color=colorMap[value.role];
 					if(value.role.toLowerCase().includes(playerType.toLowerCase())){
 					if(value.player.toLowerCase().includes(searchText.toLowerCase())){
-						$('#rosterList').append('<a draggable="true" class="player" id='+value.id+'+123 ondragstart="dragPlayer(this, event)"><div class="content1" style="margin-top:2px;"><div class="card1" style="height:40px;"><div class="userimage1"><img class="circle responsive-img" src="${pageContext.request.contextPath}/resources/UIAssets/user1.jpeg"/></div><div  class="profileinfo1"><p id='+value.id+' role = '+value.role+' style="font-size:2em;font-family:Raleway, sans-serif; color:#000000;margin-top:3px;">'+value.player+'</p></div></div></div></a>');
+						$('#rosterList').append('<a draggable="true" class="player" id='+value.id+'+123 ondragstart="dragPlayer(this, event)"><div class="content1" style="margin-top:2px;"><div class="card1" style="height:40px;"><div class="userimage1"><img class="circle responsive-img" src="${pageContext.request.contextPath}/resources/UIAssets/user1.jpeg"/></div><div  class="profileinfo1"><div class="playpositionindicator" style="background-color:'+color+'"></div><p id='+value.id+' role = '+value.role+' style="font-size:2em;font-family:Raleway, sans-serif; color:#000000;margin-top:3px;">'+value.player+'</p></div></div></div></a>');
 					}}
 				})
 		
@@ -385,7 +390,10 @@ body {
 		    	console.log(data);
 		    	$('#'+iD).empty();
 		    	//$('#'+iD).append('<p style="color:#ffbf03;height:40px;font-size:3em;text-transform: lowercase;margin-top:-5px;font-family:"Raleway", sans-serif;">player-roster</p>');
-		    	$(data.Players).each(function(index,value){$('#'+iD).append('<a draggable="true" class="player" id='+value.id+'+123 ondragstart="dragPlayer(this, event)"><div class="content1" style="margin-top:2px;"><div class="card1" style="height:40px;"><div class="userimage1"><img class="circle responsive-img" src="${pageContext.request.contextPath}/resources/UIAssets/user1.jpeg"/></div><div  class="profileinfo1"><p id='+value.id+' role = '+value.role+' style="font-size:2em;font-family:Raleway, sans-serif; color:#000000;margin-top:3px;">'+value.player+'</p></div></div></div></a>');})
+		    	$(data.Players).each(function(index,value){
+		    		var color=colorMap[value.role];
+		    		//console.log(color);
+		    		$('#'+iD).append('<a draggable="true" class="player" id='+value.id+'+123 ondragstart="dragPlayer(this, event)"><div class="content1" style="margin-top:2px;"><div class="card1" style="height:40px;"><div class="userimage1"><img class="circle responsive-img" src="${pageContext.request.contextPath}/resources/UIAssets/user1.jpeg"/></div><div class="playpositionindicator" style="background-color:'+color+'"></div><div  class="profileinfo1"><p id='+value.id+' role = '+value.role+' style="font-size:2em;font-family:Raleway, sans-serif; color:#000000;margin-top:3px;">'+value.player+'</p></div></div></div></a>');})
 		    	//console.log(JSON.stringify(data));
 		    	passPlayerList(data);
 		    },
@@ -402,6 +410,26 @@ body {
 		playerData=data;
 		populateRoles(data);
 		
+	}
+	
+	function fillRulesandSwap(){
+		$('#legendCards').empty();
+		$('#swapsLeftId').empty();
+		
+		for (var key in modifiedCountsMap){
+			color=colorMap[key];
+			$('#legendCards').append('<div class="card1" style="height:40px;margin:5px;">'+
+					'<div class="playpositionindicator" style="background-color:'+color+'"></div>'+
+					'<div class="profileinfo1" style="margin-top:5px;display:inline-block;">'+
+					'<div style="font-size:1em;font-family:Raleway, sans-serif; color:#000000;margin-top:3px;">'+key+'</div>'+
+					'<div style="position:absolute;top:3px;font-size:1em;font-family:Raleway, sans-serif; color:#000000;margin-top:3px;right:10px;">:    '+modifiedCountsMap[key]+'</div>'+
+					'</div>'+
+					'</div>');
+		}
+		$('#swapsLeftId').append('<div class="profileinfo1" style="margin-top:5px;display:inline-block;">'+
+				'<div style="font-size:1em;font-family:Raleway, sans-serif; color:#000000;margin-top:3px;">swaps left</div>'+
+				'<div style="position:absolute;top:3px;font-size:1em;font-family:Raleway, sans-serif; color:#000000;margin-top:3px;right:10px;">:    '+swapsLeft+'</div>'+
+				'</div>');
 	}
 	function populateRoles(data){
 		$(playerData.Players).each(
