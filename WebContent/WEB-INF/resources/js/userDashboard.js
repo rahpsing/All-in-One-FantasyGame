@@ -39,6 +39,35 @@ function fetchLeagueTemplate() {
 	});
 }
 
+function createSportAndLeagueEntry() {
+	
+	var jsonRoles = JSON.stringify(rolesArray);
+	jQuery.ajax({
+	    url : '/All-In-One-FantasyGame/createTemplate',
+	    type: 'POST',
+	    beforeSend: function(){
+	        jQuery('#createSportLeagueModalLoader').show();
+	    },
+	    complete: function(){
+	    	jQuery('#createSportLeagueModalLoader').hide();
+	    },
+	    data : {sportName:sportName,sportRoles:jsonRoles},
+	    
+	    success: function(data) {	
+	    	jQuery("#downloadButton").attr('data-filepath',data);
+	    	fileName = data;
+	    	jQuery('#createSportLeagueModalLoader').hide();
+	    	//alert(data);
+	    },
+	    error: function (jqXHR, textStatus, errorThrown)
+	    {
+	    	alert("something went wrong.Contact Admin");
+	    }
+	});
+}
+
+
+
 function downloadFile() {
 	
     //var filepath = $(this).attr('data-filepath');
@@ -70,8 +99,7 @@ function submitLeagueData() {
 	    },
 	    success: function(data) {	
 	    	
-	    	if(data == "success")
-	    		alert("success");
+	    		alert(data);
 	    	//alert(data);
 	    },
 	    error: function (jqXHR, textStatus, errorThrown)
