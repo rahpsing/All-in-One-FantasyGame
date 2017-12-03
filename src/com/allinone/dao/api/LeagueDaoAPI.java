@@ -37,10 +37,10 @@ public interface LeagueDaoAPI {
 
 	public Set<Game> gamesList(String leagueId);
 
+	public String checkIfThereIsParentLeague(String leagueId);
+	
 
 	public League fetchLeague(String leagueId);
-	
-	public String checkIfThereIsParentLeague(String leagueId);
 	
 
 }

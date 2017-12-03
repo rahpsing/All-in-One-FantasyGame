@@ -72,7 +72,7 @@ public class CreateSportController {
 	
 	
 	   // Handling file upload request
-	   @RequestMapping("/uploadTemplate")
+	   @RequestMapping("/uploadLeagueData")
 	   public ResponseEntity<Object> fileUpload(@RequestParam("file") MultipartFile file)
 	         throws IOException {
 

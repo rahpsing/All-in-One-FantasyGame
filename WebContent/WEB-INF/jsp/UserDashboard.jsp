@@ -328,7 +328,12 @@ div.panel button {
 					<button id="downloadButton" class="waves-effect waves-light btn" href="#Highlights" style="width:100%;background-color:#ffbf03;height:40px;font-size:1.5em;text-transform: lowercase;padding-top:2.5px;font-family:'Raleway', sans-serif;border-radius:5px">download template</button>
 				</div>
 				<div class="uploadbutton">
-				     <input id="fileupload" type="file" name="files" data-url="/uploadTemplate" style="display:none;">
+				      
+				      <form name="uploadTemplateForm" action="" method="post" enctype="multipart/form-data" style="display:none;">
+					       <input id="fileupload" type="file" name="files" data-url="/uploadTemplate" style="display:none;">	
+    				</form>
+				     
+				   
 					<button id="uploadButton" class="waves-effect waves-light btn" href="#Highlights" style="width:100%;background-color:#ffbf03;height:40px;font-size:1.5em;text-transform: lowercase;padding-top:2.5px;font-family:'Raleway', sans-serif;border-radius:5px">upload template</button>
 				</div>
 		  		<div class="cancelbutton3">

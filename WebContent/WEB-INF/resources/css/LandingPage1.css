@@ -337,8 +337,8 @@ html, body, .block {
 .signupbuttondiv{
 	position: fixed;
 	width: 12.5%;
-	top: 48%;
-	left: 13.5%;
+	top: 53%;
+	left: 15.30%;
     border-style: none;
     border-color: #c50234;
     background-color: #ffbf03;
@@ -346,13 +346,16 @@ html, body, .block {
     /* margin-right: 0px; */
     text-align: center;
     z-index:99;
+    font-family:'Raleway', sans-serif;  
+    max-height:60px;
+    height:60px;
 }
 
 .loginbuttondiv{
 	position: fixed;
 	width: 12.5%; 
-	top: 58%;
-	left: 13.5%;
+	top: 63%;
+	left: 15.30%;
     border-style: none; 
     border-color: #c50234;
     background-color: #c50234;
@@ -360,6 +363,9 @@ html, body, .block {
     margin-right: 80px;
     text-align: center;
     z-index:99;
+    font-family:'Raleway', sans-serif;  
+    max-height:60px;
+    height:60px;
 }
 .imagestripdiv1{
 	position:relative;
@@ -434,6 +440,7 @@ html, body, .block {
     left: 350px;
     font-family:Raleway, sans-serif;
   	transform: translate(-50%, -50%);
+  	z-index:100;
 }
 .signup-modal-content{
     background-color: #ffffff;
@@ -505,6 +512,7 @@ html, body, .block {
     left: 350px;
   	transform: translate(-50%, -50%);
   	font-family:Raleway, sans-serif;
+  	z-index:100;
 }
 .modal-content{
     background-color: #ffffff;
