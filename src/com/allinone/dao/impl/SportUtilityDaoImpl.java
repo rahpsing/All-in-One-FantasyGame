@@ -1,4 +1,5 @@
-package com.allinone.dao.impl;
+package com.
+allinone.dao.impl;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -15,6 +16,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import javax.persistence.Entity;
+import javax.persistence.Persistence;
+
 import org.apache.poi.ss.format.CellDateFormatter;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.CellType;
@@ -23,9 +27,12 @@ import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.hibernate.Criteria;
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Criterion;
 import org.hibernate.criterion.Restrictions;
+import org.hibernate.internal.util.SerializationHelper;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -38,6 +45,7 @@ import com.allinone.pojos.Player;
 import com.allinone.pojos.RuleHelper;
 import com.allinone.pojos.Sport;
 import com.allinone.pojos.Team;
+import com.allinone.pojos.User;
 import com.allinone.util.GameStatus;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -466,80 +474,80 @@ public class SportUtilityDaoImpl implements SportUtilityDaoAPI {
 	}
 
 	@Override
-	public boolean createLeague() {
-		// TODO Auto-generated method stub
-
-		try {
-			
-			League league = new League();
-			league.setLeagueName("IPL");
-			league.setSystemLeague(true);
-			league.setNumSubstitutesAllowed(50);
-			
-			League league2 = new League();
-			league2.setLeagueName("PSL");
-			league2.setSystemLeague(true);
-			league2.setNumSubstitutesAllowed(50);
-			
-			
-			League league3 = new League();
-			league3.setLeagueName("Australian Summer League");
-			league3.setSystemLeague(true);
-			league3.setNumSubstitutesAllowed(50);
-			
-			League league4 = new League();
-			league4.setLeagueName("Carribean League");
-			league4.setSystemLeague(false);
-			league4.setNumSubstitutesAllowed(50);
-			
-			League league5 = new League();
-			league5.setLeagueName("Westeros League");
-			league5.setSystemLeague(false);
-			league5.setNumSubstitutesAllowed(50);
-			
-			League league6 = new League();
-			league6.setLeagueName("ICC top 11");
-			league6.setSystemLeague(false);
-			league6.setNumSubstitutesAllowed(50);
-			
-			League league7 = new League();
-			league7.setLeagueName("Westeros Champions League");
-			league7.setSystemLeague(false);
-			league7.setNumSubstitutesAllowed(50);
-			
-			Criteria objCriteria  = objSessionFactory.getCurrentSession().createCriteria(Sport.class);
-			Criterion usernameCriteria = Restrictions.eq("sportName", "Cricket");
-			objCriteria.add(usernameCriteria);
-
-			List<Sport> results = objCriteria.list();
-			
-			if(results == null || results.isEmpty())
-				return false;
-			
-			Sport sport = results.get(0);
-
-			league.setSport(sport);
-			league2.setSport(sport);
-			league3.setSport(sport);
-			league4.setSport(sport);
-			league5.setSport(sport);
-			league6.setSport(sport);
-			league7.setSport(sport);
-			objSessionFactory.getCurrentSession().saveOrUpdate(league);
-			objSessionFactory.getCurrentSession().saveOrUpdate(league2);
-			objSessionFactory.getCurrentSession().saveOrUpdate(league3);
-			objSessionFactory.getCurrentSession().saveOrUpdate(league4);
-			objSessionFactory.getCurrentSession().saveOrUpdate(league5);
-			objSessionFactory.getCurrentSession().saveOrUpdate(league6);
-			objSessionFactory.getCurrentSession().saveOrUpdate(league7);
-			//objSessionFactory.getCurrentSession().saveOrUpdate(sport);
-		} catch(Exception e) {
-			System.out.println(e);
-			return false;
-		}
+			public boolean createLeague() {
+				// TODO Auto-generated method stub
 		
-		return true;
-	}
+				try {
+					
+					League league = new League();
+					league.setLeagueName("IPL");
+					league.setSystemLeague(true);
+					league.setNumSubstitutesAllowed(50);
+					
+					League league2 = new League();
+					league2.setLeagueName("PSL");
+					league2.setSystemLeague(true);
+					league2.setNumSubstitutesAllowed(50);
+					
+					
+					League league3 = new League();
+					league3.setLeagueName("Australian Summer League");
+					league3.setSystemLeague(true);
+					league3.setNumSubstitutesAllowed(50);
+					
+					League league4 = new League();
+					league4.setLeagueName("Carribean League");
+					league4.setSystemLeague(false);
+					league4.setNumSubstitutesAllowed(50);
+					
+					League league5 = new League();
+					league5.setLeagueName("Westeros League");
+					league5.setSystemLeague(false);
+					league5.setNumSubstitutesAllowed(50);
+					
+					League league6 = new League();
+					league6.setLeagueName("ICC top 11");
+					league6.setSystemLeague(false);
+					league6.setNumSubstitutesAllowed(50);
+					
+					League league7 = new League();
+					league7.setLeagueName("Westeros Champions League");
+					league7.setSystemLeague(false);
+					league7.setNumSubstitutesAllowed(50);
+					
+					Criteria objCriteria  = objSessionFactory.getCurrentSession().createCriteria(Sport.class);
+					Criterion usernameCriteria = Restrictions.eq("sportName", "Cricket");
+					objCriteria.add(usernameCriteria);
+		
+					List<Sport> results = objCriteria.list();
+					
+					if(results == null || results.isEmpty())
+						return false;
+					
+					Sport sport = results.get(0);
+		
+					league.setSport(sport);
+					league2.setSport(sport);
+					league3.setSport(sport);
+					league4.setSport(sport);
+					league5.setSport(sport);
+					league6.setSport(sport);
+					league7.setSport(sport);
+					objSessionFactory.getCurrentSession().saveOrUpdate(league);
+					objSessionFactory.getCurrentSession().saveOrUpdate(league2);
+					objSessionFactory.getCurrentSession().saveOrUpdate(league3);
+					objSessionFactory.getCurrentSession().saveOrUpdate(league4);
+					objSessionFactory.getCurrentSession().saveOrUpdate(league5);
+					objSessionFactory.getCurrentSession().saveOrUpdate(league6);
+					objSessionFactory.getCurrentSession().saveOrUpdate(league7);
+					//objSessionFactory.getCurrentSession().saveOrUpdate(sport);
+				} catch(Exception e) {
+					System.out.println(e);
+					return false;
+				}
+				
+				return true;
+			}
 	
 	   private static Object getCellValue(Cell currentCell) {
 		    
@@ -754,5 +762,36 @@ public class SportUtilityDaoImpl implements SportUtilityDaoAPI {
 		return mapOfUniqueNamesAndPlayerIds;
 	}
 	
+	@Override
+	public String createUserLeague(String leagueName, String leagueId,String userId) {
+		// TODO Auto-generated method stub
+
+		try {
+			
+			
+			League league=new League();
+			league.setParentLeague(leagueId);
+			league.setLeagueName(leagueName);
+			User parentUser=objSessionFactory.getCurrentSession().get(User.class,userId);
+			league.setLeagueOwner(parentUser);
+			
+			Session session = objSessionFactory.getCurrentSession();
+			League objLeague = session.get(League.class, leagueId);
+			league.setSport(objLeague.getSport());
+			league.setNumSubstitutesAllowed(objLeague.getNumSubstitutesAllowed());
+			
+			objSessionFactory.getCurrentSession().saveOrUpdate(league);
+			objSessionFactory.getCurrentSession().saveOrUpdate(parentUser);
+			String newleagueId=league.getId();
+			
+			return newleagueId;
+			 
+			
+		} catch(Exception e) {
+			System.out.println(e);
+			return "false";
+		}
+		
+	}
 
 }

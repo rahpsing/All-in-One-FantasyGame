@@ -35,6 +35,8 @@ public class TeamDraftController {
 	
 	@Autowired
 	TeamListToJsonServiceAPI objTeamListToJson;
+
+	private Set playerSet;
 	
 	@RequestMapping(value="/createTeam")
 	@ResponseBody
@@ -45,14 +47,14 @@ public class TeamDraftController {
 		String listOfPlayerIds = objRequest.getParameter("listOfPlayerIds");
 		String flag = objRequest.getParameter("flag");
 		String teamName = objRequest.getParameter("updateTeamName");
-		System.out.println(teamName+"at controller");
+		
 		List<String> listOfPlayerIdsList = new Gson().fromJson( listOfPlayerIds, List.class);
-		Set playerSet=new HashSet(listOfPlayerIdsList);
-		System.out.println("Done");
+		playerSet = new HashSet(listOfPlayerIdsList);
+		
 		String returnString;
 		Boolean teamNameBoolean;
 		if(flag.equals("create")) {
-		returnString =objUserTeamDraftAPI.createTeam(playerSet,leagueId, userId);
+		returnString =objUserTeamDraftAPI.createTeam(playerSet,leagueId, userId,teamName);
 		
 		}
 		else {
@@ -63,10 +65,7 @@ public class TeamDraftController {
 			
 			
 		}
-		if(flag.equals("create")) {
-		String userTeamId=objUserTeamDraftAPI.getUserTeamId(leagueId, userId);
-		teamNameBoolean=objUserTeamDraftAPI.updateTeamName(leagueId, userId, userTeamId, teamName);
-		}
+		
 		if(returnString.equals("false"))
 		{
 			return "false";

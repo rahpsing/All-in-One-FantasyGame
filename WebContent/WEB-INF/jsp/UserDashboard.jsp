@@ -236,17 +236,19 @@ div.panel button {
 			  			<b style="font-family:'Raleway', sans-serif;font-size:1.5em;">sport : </b>
 			  		</div>
 			  		<div id="sportOption" class="input-field col s12" style="float:right;width:60%;height:15px;margin-right:20px;margin-top:20px;">
-					    <select>
+					  <select onchange="javascript:fetchAvailableLeagueNames(this.value,'leagueOptions','rosterOption','${userId}')">
+					       
+					      
 					      <option value="" disabled selected>Choose your option</option>
-					      <option value="soccer">soccer</option>
-					      <option value="cricket">cricket</option>
+					      <option  value="SOCCER">soccer</option>
+					      <option  value="CRICKET" id="cricketOption">cricket</option>
 					    </select>
 					</div>
 			  		<div style="display:inline-block;margin-top:100px;float:left;margin-left:-80px;">
 			  			<b style="font-family:'Raleway', sans-serif;font-size:1.5em;">roster : </b>
 			  		</div>
 			  		<div id="rosterOption" class="input-field col s12" style="float:right;width:60%;height:15px;margin-right:20px;margin-top:55px;">
-					    <select>
+					    <select id="leagueOptions" onchange="javascript:renameParentLeague(this.value)">
 					      <option value="" disabled selected>Choose your option</option>
 					      <option value="epl">epl</option>
 					      <option value="laliga">la liga</option>
@@ -263,7 +265,7 @@ div.panel button {
 					<button id="cancelButton1" class="waves-effect waves-light btn" href="#Highlights" style="background-color:#021A42;height:40px;font-size:1.5em;text-transform: lowercase;padding-top:2.5px;font-family:'Raleway', sans-serif;border-radius:5px">cancel</button>
 				</div>
 				<div class="donebutton1">
-					<button id="doneButton1" class="waves-effect waves-light btn" href="#Highlights" style="background-color:#021A42;height:40px;font-size:1.5em;text-transform: lowercase;padding-top:2.5px;font-family:'Raleway', sans-serif;border-radius:5px">done</button>
+					<button id="doneButton1" onclick="javascript:sendCreateUserLeaguerequest('${userId}')" class="waves-effect waves-light btn" href="#Highlights" style="background-color:#021A42;height:40px;font-size:1.5em;text-transform: lowercase;padding-top:2.5px;font-family:'Raleway', sans-serif;border-radius:5px">done</button>
 				</div>
 		  	</div>
 	</div>
@@ -375,6 +377,32 @@ div.panel button {
 	<script>
      $(document).ready(function() {
         $('select').material_select();
+        
+        $("#cricketOption").click(function() {
+        
+        var $selectDropdown = 
+            $("#leagueOptions")
+              .empty()
+              .html(' ');
+
+          // add new value
+          var value = "some value";
+          $selectDropdown.append(
+            $("<option></option>")
+              .attr("value",value)
+              .text(value)
+          );
+
+          // trigger event
+          $selectDropdown.trigger('contentChanged');
+        });
+
+
+        $('select').on('contentChanged', function() {
+          // re-initialize (update)
+          $(this).material_select();
+        });
+        
     });
  	</script>
 	<script>
@@ -572,6 +600,7 @@ function sendFetchReq(sportName,iD,value,userId){console.log(userId);
 </script>
 
 <script>
+
 function sendFetchLikeReq(iD,value,userId){console.log(userId);
 	searchResultDiv.style.display = "block";
 	leagueListDiv.style.display = "none";
@@ -604,6 +633,80 @@ function sendFetchLikeReq(iD,value,userId){console.log(userId);
 	else{
 		$('#'+iD).empty();
 	}
+}
+var parentleagueId="";
+function renameParentLeague(parentleague){
+	parentleagueId=parentleague;
+	//alert(parentleagueId);
+}
+function sendCreateUserLeaguerequest(userId){
+	//alert(parentleagueId);
+	var leagueName=document.getElementById('userLeagueName').value;
+	if(parentleagueId==""){
+		alert("Please select a Parent League");
+	}
+	else if(leagueName=="")
+		{
+		alert("Please enter a league name");
+		}
+	else{
+		var f = document.createElement("form");
+		f.setAttribute('method',"post");
+		f.setAttribute('action',"/All-In-One-FantasyGame/createUserLeague");
+
+		var i = document.createElement("input"); //input element, text
+		i.setAttribute('type',"hidden");
+		i.setAttribute('name',"parentleagueId");
+		i.setAttribute('value',parentleagueId);
+		f.appendChild(i);
+		var j = document.createElement("input");
+		j.setAttribute('type',"hidden");
+		j.setAttribute('name',"userId");
+		j.setAttribute('value',userId);
+		f.appendChild(j);
+		var k = document.createElement("input");
+		k.setAttribute('type',"hidden");
+		k.setAttribute('name',"leagueName");
+		k.setAttribute('value',leagueName);
+		f.appendChild(k);
+		document.body.appendChild(f);
+		console.log(f);
+		f.submit();
+	}
+}
+function fetchAvailableLeagueNames(sportName,iD,value,userId){
+	
+	$.ajax({
+	    url : '/All-In-One-FantasyGame/fetchLeagues',
+	    type: 'post',
+	    data : {SPORT_NAME:sportName,VALUE:value},
+	    dataType : 'json',
+	    success: function(data)
+	    {	$("#leagueOptions").html('');
+	    //rosterOption
+	    	//var select = document.createElement('select')
+	    	//alert("Check here");
+	    	
+	    	//$('#'+iD).append('<option value="" disabled selected>Choose your option</option>');
+	    	 var options='<option value="" disabled selected>Choose your option</option>';
+	    	$(data.League).each(function(index,value){
+	    		options+='<option value="' + value.id + '">' + value.League + '</option>';
+	    		    
+	    	})
+	    	
+	    	console.log(options);
+	    	$("#leagueOptions").append(options); 
+	    	$('select').material_select();
+	 		
+	    	
+	    	
+	    },
+	    error: function (jqXHR, textStatus, errorThrown)
+	    {
+	    	$('#'+iD).empty();
+	    	alert('wrong');
+	    }
+	});
 }
 </script>
 <script>

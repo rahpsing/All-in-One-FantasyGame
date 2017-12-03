@@ -191,7 +191,7 @@
 		});
 		if(flag){
 		listOfPlayerIds=JSON.stringify(listOfPlayerIds);
-		console.log("Thanks");
+		
 		callFormSubmit(leagueId,userId,listOfPlayerIds,flag,updatedName);
 		}
 		else{
@@ -225,6 +225,7 @@
 		var listOfPlayerIds=[];
 		var rolesList=[];
 		var updatedName=document.getElementById("updateTeamName").value;
+		alert(updatedName);
 		var listItems = $("#user-team").find("p");
 		listItems.splice(0,1);
 		for ( ind = 0; ind < listItems.length; ind++ ) {
@@ -278,7 +279,7 @@
 		    
 		    success: function(data)
 		   
-		    {	//alert(updatedName);
+		    {	alert(updatedName);
 		    	if (data=="true")
 		    	var f = document.createElement("form");
 				f.setAttribute('method',"post");

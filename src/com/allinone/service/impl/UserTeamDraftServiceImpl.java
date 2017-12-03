@@ -62,14 +62,16 @@ public class UserTeamDraftServiceImpl implements UserTeamDraftServiceAPI {
 	}
 
 	@Override
-	public String createTeam(Set<String> playerSet,String leagueId, String userId) {
+	public String createTeam(Set<String> playerSet,String leagueId, String userId,String teamName) {
 		// TODO Auto-generated method stub
-		String returnString= objTeamDraftDaoImpl.createTeam(leagueId, userId);
+		String returnString= objTeamDraftDaoImpl.createTeam(leagueId, userId,teamName);
 		if(!returnString.equals("false"))
 		{
 			
 			if(updateTeam(playerSet,leagueId,userId,returnString,50,(double) 50).equals("true")) {
+				if(updateTeamName(leagueId, userId, returnString, teamName)) {
 				return "true";
+				}
 			}
 			return "false";
 		}

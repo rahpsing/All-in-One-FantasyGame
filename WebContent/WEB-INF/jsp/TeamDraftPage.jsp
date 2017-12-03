@@ -59,7 +59,8 @@ body {
   }
 </style>
 </head>
-<body onload="javascript:onLoadCalls('${leagueId}','${userId}','${flag}')">
+<<body onload="javascript:onLoadCalls('${leagueId}','${userId}','${flag}')">
+<!-- <body> -->
 	<div class="colorstrip1">
 		<button class="allinonebanner">all-in-one</button>
 		<div class="logout">

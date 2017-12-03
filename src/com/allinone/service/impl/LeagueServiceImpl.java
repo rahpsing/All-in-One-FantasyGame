@@ -104,11 +104,17 @@ public class LeagueServiceImpl implements LeagueServiceAPI {
 	public List<Player> playerList(String leagueId,String userId){
 		List<Player> listOfPlayer=new ArrayList<Player>();
 		List<League> listOfLeagues = new ArrayList<League>();
-		listOfLeagues = objLeagueDao.fetchLikeLeagues(leagueId);
+		String modifiedLeagueId=leagueId;
+		String returnedParentCheck=objLeagueDao.checkIfThereIsParentLeague(leagueId);
+		if(!returnedParentCheck.equals("false")) {
+			modifiedLeagueId=returnedParentCheck;
+		}
+		listOfLeagues = objLeagueDao.fetchLikeLeagues(modifiedLeagueId);
 		
 		for(Player i: listOfLeagues.get(0).getSetOfPlayers()) {
 			listOfPlayer.add(i);
 		}
+		
 		Set<Player> returnSet = objLeagueDao.userTeamSet(leagueId, userId);
 		List<Player> returnList = new ArrayList<Player>(returnSet);
 		listOfPlayer.removeAll(returnList);
@@ -164,8 +170,13 @@ public class LeagueServiceImpl implements LeagueServiceAPI {
 
 	@Override
 	public String rulesMap(String leagueId){
+		String modifiedLeagueId=leagueId;
+		String returnedParentCheck=objLeagueDao.checkIfThereIsParentLeague(leagueId);
+		if(!returnedParentCheck.equals("false")) {
+			modifiedLeagueId=returnedParentCheck;
+		}
 		
-		Map<String,Integer> rulesMap = objLeagueDao.rulesMap(leagueId);
+		Map<String,Integer> rulesMap = objLeagueDao.rulesMap(modifiedLeagueId);
 		System.out.println(rulesMap.size());
 		for(String key:rulesMap.keySet()) {
 			System.out.println("Key value=  "+ key + "  Pair value =  "+ rulesMap.get(key));
@@ -195,8 +206,12 @@ public class LeagueServiceImpl implements LeagueServiceAPI {
 	
 	@Override
 	public String gamesList(String leagueId){
-	
-		Set<Game> setOfGames=objLeagueDao.gamesList(leagueId);
+		String modifiedLeagueId=leagueId;
+		String returnedParentCheck=objLeagueDao.checkIfThereIsParentLeague(leagueId);
+		if(!returnedParentCheck.equals("false")) {
+			modifiedLeagueId=returnedParentCheck;
+		}
+		Set<Game> setOfGames=objLeagueDao.gamesList(modifiedLeagueId);
 		TreeSet<Game> treeSetOfGames= new TreeSet<Game>();
 		treeSetOfGames.addAll(setOfGames);
 		System.out.println(treeSetOfGames.isEmpty());
