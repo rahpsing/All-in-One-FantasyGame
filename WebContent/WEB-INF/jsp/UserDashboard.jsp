@@ -332,9 +332,9 @@ div.panel button {
 				</div>
 				<div class="uploadbutton">
 				      
-				      <form name="uploadTemplateForm" action="" method="post" enctype="multipart/form-data" style="display:none;">
-					       <input id="fileupload" type="file" name="files" data-url="/uploadTemplate" style="display:none;">	
-    				</form>
+				     <!--  <form name="uploadTemplateForm" action="uploadLeagueData" method="post" enctype="multipart/form-data" style="display:none;"> -->
+					       <input id="fileupload" type="file" name="file"  style="display:none;">	
+    				<!-- </form> -->
 				     
 				   
 					<button id="uploadButton" class="waves-effect waves-light btn" href="#Highlights" style="width:100%;background-color:#ffbf03;height:40px;font-size:1.5em;text-transform: lowercase;padding-top:2.5px;font-family:'Raleway', sans-serif;border-radius:5px">upload template</button>
@@ -435,6 +435,7 @@ div.panel button {
 	var createLeagueButton = document.getElementById("createLeagueButton");
 	var createLeagueModal = document.getElementById("createLeagueModal");
 	var createSportButton = document.getElementById("createSportButton");
+	var doneButton2 = document.getElementById("doneButton2");
 	var cancelButton1 = document.getElementById("cancelButton1");
 	var cancelButton2 = document.getElementById("cancelButton2");
 	var cancelButton3 = document.getElementById("cancelButton3");
@@ -524,6 +525,11 @@ div.panel button {
 	uploadButton.onclick = function() {
 		uploadFile();
 	}
+
+	doneButton2.onclick = function() {
+		submitLeagueData();
+	}
+
 	
 	var updateProfileDiv = document.getElementById("updateProfileImage");
 	var fileUploadDiv = document.getElementById("imageUpload");
@@ -663,11 +669,11 @@ function sendCreateUserLeaguerequest(userId){
 	//alert(parentleagueId);
 	var leagueName=document.getElementById('userLeagueName').value;
 	if(parentleagueId==""){
-		alert("Please select a Parent League");
+		alert("lease select a parent league");
 	}
 	else if(leagueName=="")
 		{
-		alert("Please enter a league name");
+		alert("please enter a league name");
 		}
 	else{
 		var f = document.createElement("form");
@@ -724,7 +730,7 @@ function fetchAvailableLeagueNames(sportName,iD,value,userId){
 	    error: function (jqXHR, textStatus, errorThrown)
 	    {
 	    	$('#'+iD).empty();
-	    	alert('wrong');
+	    	/* alert('wrong'); */
 	    }
 	});
 }
@@ -770,11 +776,13 @@ function sendUpdateProfileReq(userId){
 		    success: function(data)
 		   
 		    {	
-		    	alert(data);
+		    	alert("profile update successful");
+		    	profilePageModal.style.display = "none";
+			    mainDiv.classList.remove("blur");
 		    },
 		    error: function (jqXHR, textStatus, errorThrown)
 		    {
-		    	alert("something went wrong.Contact Admin");
+		    	alert("something went wrong. contact admin");
 		    }
 		});
 }

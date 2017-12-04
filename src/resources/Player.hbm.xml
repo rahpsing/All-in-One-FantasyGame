@@ -22,16 +22,35 @@
 	    <property name="uniqueId" type="java.lang.String">
             <column name="UNIQUEID" />
         </property>
-        
+<!--         
         <many-to-one name="league" class="com.allinone.pojos.League" fetch="join">
             <column name="LEAGUE_ID" not-null="true"/>
-        </many-to-one>
+        </many-to-one> -->
 
         
         <many-to-one name="team" class="com.allinone.pojos.Team" fetch="join">
             <column name="TEAM_ID"/>
         </many-to-one>
+        
+        
+         <set name="setOfUserTeams" table="players_userTeam" inverse="false" lazy="true" fetch="select">
+            <key>
+                <column name="PLAYER_ID" not-null="true" />
+            </key>
+            <many-to-many entity-name="com.allinone.pojos.UserTeam">
+                <column name="USERTEAM_ID" not-null="true" />
+            </many-to-many>
+        </set>
+        
 	
+	    <set name="setOfLeagues" table="league_players" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="PLAYER_ID" not-null="true" />
+            </key>
+            <many-to-many entity-name="com.allinone.pojos.League">
+                <column name="LEAGUE_ID" not-null="true" />
+            </many-to-many>
+        </set>
 	
 
    <!--      <property name="profileImage" type="binary">

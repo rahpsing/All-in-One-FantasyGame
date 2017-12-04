@@ -615,7 +615,17 @@ h2 {
 	border: none;
 	background: none;
 }
-
+.legendtitle{
+	top:0;
+	width:100%;
+	color: #ffffff;
+	font-size:1.5em;
+	font-family:'Raleway', sans-serif; 
+	height:30px;
+	text-align:center;
+	background-color:#ffbf03;
+	border-radius:7px;
+}
 .editnamecss{
 	position: absolute;
 	top: 190px;

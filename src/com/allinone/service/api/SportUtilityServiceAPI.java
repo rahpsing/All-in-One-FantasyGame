@@ -9,7 +9,7 @@ package com.allinone.service.api;
  */
 public interface SportUtilityServiceAPI {
 
-	public boolean readEntriesToDatabase();
+	public boolean readEntriesToDatabase() throws Exception;
 	
 	public boolean addNewSport();
 	

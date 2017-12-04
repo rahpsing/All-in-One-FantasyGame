@@ -341,25 +341,25 @@ function validateSignUpForm(){
 	var pfilter3 = /^(?=.*\d)/;
 	
 	if (!filter.test(email)) {
-	    alert("Please provide a valid email address");
+	    alert("please provide a valid email address");
 	    return false;
  	}else if(email == "" || username == "" || password == "" || repassword == ""){
-		alert("Enter all fields");
+		alert("enter all fields");
 		return false;
 	}else if(password.length < 8){
-		alert("Password must be at least 8 characters long");
+		alert("password must be at least 8 characters long");
 		return false;
 	}else if(!pfilter1.test(password)){
-		alert("Password must containt at least 1 lowercase letter");
+		alert("password must containt at least 1 lowercase letter");
 		return false;
 	}else if(!pfilter2.test(password)){
-		alert("Password must containt at least 1 uppercase letter");
+		alert("password must containt at least 1 uppercase letter");
 		return false;
 	}else if(!pfilter3.test(password)){
-		alert("Password must containt at least 1 number");
+		alert("password must containt at least 1 number");
 		return false;
 	}else if(password != repassword){
-		alert("Passwords do not match, reconfirm password");
+		alert("passwords do not match, reconfirm password");
 		return false;
 	}
 	jQuery.ajax({
@@ -371,12 +371,12 @@ function validateSignUpForm(){
 	    	signupModal.style.display = "none";
 	    	console.log("Came from backend");
 		if(data=="Success"){
-			alert("Congratulations..! Please Login to fantastic world of sports")
+			alert("sign up successful. please login to continue.")
 		}
 	    },
 	    error: function (jqXHR, textStatus, errorThrown)
 	    {	
-		alert("Username already in use. Please try a different username")
+		alert("username already in use. please try a different one")
 	    }
 	});
 }
@@ -388,7 +388,7 @@ function validateLoginForm(){
 	console.log(userName);
 	console.log(passWord);
 	if(userName == "" || passWord == ""){
-		alert("Enter all fields");
+		alert("enter all fields");
 		return false;
 	}
 	jQuery.ajax({
@@ -403,11 +403,11 @@ function validateLoginForm(){
 			duo(userName);
 			
 			}
-		else{alert("Username/Password doesn't match")}
+		else{alert("username/password doesn't match")}
 	    },
 	    error: function (jqXHR, textStatus, errorThrown)
 	    {	
-		alert("please try again.Contact administrator")
+		alert("please try again. contact administrator")
 	    }
 	});
     return true;
@@ -444,7 +444,7 @@ function validateLoginForm(){
 		    },
 		    error: function (jqXHR, textStatus, errorThrown)
 		    {	
-			alert("please try again.Contact administrator")
+			alert("please try again. contact administrator")
 		    }
 		});
  }

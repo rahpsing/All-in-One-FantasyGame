@@ -236,6 +236,7 @@ body {
 					<input id="saveButton" onclick="javascript:sendPlayerList('${userId}','${leagueId}','${flag}')"class="waves-effect waves-light btn" style="background-color:#ffbf03;height:40px;width:100%;font-size:2em;text-transform: lowercase; padding-top:5px;font-family:'Raleway', sans-serif;" type="button" value="save" onclick=""/>				
 		</div>
 		<div class="teamlegends" style="font-size:15px;font-family:'Raleway', sans-serif;">
+			<div class="legendtitle">team mix</div>
 			<div id="legendCards">
 				<div class="card1" style="height:40px;margin:5px;">
 					<div class="playpositionindicator" style="background-color:#DC4444"></div>

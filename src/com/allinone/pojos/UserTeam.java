@@ -4,6 +4,7 @@
 package com.allinone.pojos;
 
 import java.io.Serializable;
+import java.util.HashSet;
 import java.util.Set;
 
 /**
@@ -22,7 +23,7 @@ public class UserTeam implements Serializable {
 	private int numSubstitutesLeft;
 	private League league;
 	private double score;
-	private Set<Player> setOfPlayers;
+	private Set<Player> setOfPlayers = new HashSet<Player>();
 	private String teamName;
 	
 	public String getId() {
