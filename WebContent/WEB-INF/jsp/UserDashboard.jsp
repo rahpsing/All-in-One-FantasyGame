@@ -663,11 +663,11 @@ function sendCreateUserLeaguerequest(userId){
 	//alert(parentleagueId);
 	var leagueName=document.getElementById('userLeagueName').value;
 	if(parentleagueId==""){
-		alert("Please select a Parent League");
+		alert("lease select a parent league");
 	}
 	else if(leagueName=="")
 		{
-		alert("Please enter a league name");
+		alert("please enter a league name");
 		}
 	else{
 		var f = document.createElement("form");
@@ -724,7 +724,7 @@ function fetchAvailableLeagueNames(sportName,iD,value,userId){
 	    error: function (jqXHR, textStatus, errorThrown)
 	    {
 	    	$('#'+iD).empty();
-	    	alert('wrong');
+	    	/* alert('wrong'); */
 	    }
 	});
 }
@@ -770,11 +770,13 @@ function sendUpdateProfileReq(userId){
 		    success: function(data)
 		   
 		    {	
-		    	alert(data);
+		    	alert("profile update successful");
+		    	profilePageModal.style.display = "none";
+			    mainDiv.classList.remove("blur");
 		    },
 		    error: function (jqXHR, textStatus, errorThrown)
 		    {
-		    	alert("something went wrong.Contact Admin");
+		    	alert("something went wrong. contact admin");
 		    }
 		});
 }
