@@ -146,14 +146,14 @@ body {
 		  	<div id="loginModalContent" class="modal-content">
 			  	<form name="loginForm"  >
 			  		<p class="logincred">login details</p>
-				    <input type="text" class="username" id="username" name="username" placeholder="User Name..."><br>
-				    <input type="password" class="password" id="password" name="password" placeholder="Password..."><br>
+				    <input type="text" class="username" id="username" name="username" placeholder="user name..."><br>
+				    <input type="password" class="password" id="password" name="password" placeholder="password..."><br>
 				    <input class="waves-effect waves-light btn" style="background-color:#ffbf03;height:40px;width:100%;font-size:2em;text-transform: lowercase;" type="button" value="submit" onclick="javascript:validateLoginForm()"/>
-				    <div class="forgotuorpdiv">
+				    <div class="forgotuorpdiv" style="display:none;">
 					    <p class="forgotuorp">forgot username or password?</p>
 					    <button id="reset" class="reset">click here</button>
 				    </div>
-				    <input class="waves-effect waves-light btn" style="background-color:#ffbf03;height:20px;width:50%;font-size:1em;text-transform: lowercase;" type="button" id="close2" value="close"/>
+				    <input class="waves-effect waves-light btn" style="background-color:#ffbf03;height:20px;width:50%;margin-top:20px;font-size:1em;text-transform: lowercase;" type="button" id="close2" value="close"/>
 				</form>
 		  	</div>
 </div>
@@ -162,10 +162,12 @@ body {
 		  	<div id="signupModalContent" class="signup-modal-content">
 			  	<form name="signupForm" >
 			  		<p class="signupcred">signup details</p>
-			  		<input type="text" class="semail" id="email" name="email" placeholder="Email ID"..."><br>
-				    <input type="text" class="susername" id="username" name="username" placeholder="User Name..."><br>
-				    <input type="password" class="spassword" id="password" name="password" placeholder="Password..."><br>
-				    <input type="password" class="srepassword" id="repassword" name="repassword" placeholder="Reconfirm password..."><br>
+			  		<input type="text" class="semail" id="email" name="email" placeholder="email id"..."><br>
+				    <input type="text" class="susername" id="username" name="username" placeholder="user name..."><br>
+				    <input type="text" class="signupfirstname" id="signUpFirstName" name="firstname" placeholder="first name..."><br>
+				    <input type="text" class="signuplastname" id="signUpLastName" name="lastname" placeholder="last name..."><br>
+				    <input type="password" class="spassword" id="password" name="password" placeholder="password..."><br>
+				    <input type="password" class="srepassword" id="repassword" name="repassword" placeholder="reconfirm password..."><br>
 				    <input class="waves-effect waves-light btn" style="background-color:#ffbf03;height:40px;width:100%;font-size:2em;text-transform: lowercase;" type="button" value="Submit" onclick="javascript:validateSignUpForm()" />
 					<input class="waves-effect waves-light btn" style="background-color:#ffbf03;height:20px;width:50%;font-size:1em;text-transform: lowercase;margin-top:10px;" type="button" id="close1" value="close"/>
 				</form>
