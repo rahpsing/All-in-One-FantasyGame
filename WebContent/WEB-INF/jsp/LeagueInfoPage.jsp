@@ -156,7 +156,8 @@ body {
 		</div>
 		<div class="chatlogo" id="chatLogo">
 			<%-- <img src="${pageContext.request.contextPath}/resources/UIAssets/chatlogoY.pdf" height="60px"> --%>
-			<object type="image/svg+xml" data="${pageContext.request.contextPath}/resources/UIAssets/chatboxZ.svg" height="60px;"></object>
+			<%-- <object type="image/svg+xml" data="${pageContext.request.contextPath}/resources/UIAssets/chatboxZ.svg" height="60px;"></object> --%>
+			<img src="${pageContext.request.contextPath}/resources/UIAssets/chatboxZ.svg" height="60px">
 		</div>
 		<div class="chatbox" id="chatBox">
 			<div class="chatheader">chat box</div>
