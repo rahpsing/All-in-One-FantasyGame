@@ -42,10 +42,10 @@ function checkCookie() {
     if (user != "") {
        // alert("Welcome again " + user);
     } else {
-    	window.location.href = 'http://localhost:8080/All-In-One-FantasyGame/';
+    	window.location.href = 'http://localhost:8080/All-In-One-FantasyGame/LandingPage1.jsp';
         }
     }
 function deleteCookie() {
 	document.cookie = "userIdCookie="+"; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
-	window.location.href = 'http://localhost:8080/All-In-One-FantasyGame/';
+	window.location.href = 'http://localhost:8080/All-In-One-FantasyGame/LandingPage1.jsp';
 }
