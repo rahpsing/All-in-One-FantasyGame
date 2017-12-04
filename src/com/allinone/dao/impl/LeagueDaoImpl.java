@@ -53,7 +53,9 @@ public class LeagueDaoImpl implements LeagueDaoAPI {
 		
 		Set<League> setOfUserParticipatingLeagues = objUser.getSetOfLeagues();
 		for(League league :setOfUserParticipatingLeagues ) {
+			if(league.getSport().getId().equals(sportId)) {
 			finalSet.add(league);
+			}
 		}
 		finalList.clear();
 		finalList.addAll(finalSet);
@@ -244,5 +246,23 @@ public class LeagueDaoImpl implements LeagueDaoAPI {
 		catch(Exception e) {
 			return null;
 		}
+		
+		
 }
+	@Override
+	public String removeUserTeam(String leagueId,String userTeamId){
+		try
+		{	
+		Session session = objSessionFactory.getCurrentSession();
+		League objLeague = session.get(League.class, leagueId);
+		UserTeam objUserTeam = session.get(UserTeam.class, userTeamId);
+		objLeague.getSetOfUserTeams().remove(objUserTeam);
+		session.saveOrUpdate(objLeague);
+		session.saveOrUpdate(objUserTeam);
+		return "true";
+	}
+		catch(Exception e) {
+			return "false";
+		}
+	}
 }

@@ -36,6 +36,8 @@ public interface LeagueServiceAPI {
 
 	public String fetchAvailableLeagueNames(String sport, String comparator);
 
+	public String removeUserTeam(String leagueId, String userTeamId);
+
 	
 	
 }

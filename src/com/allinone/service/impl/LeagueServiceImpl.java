@@ -263,4 +263,9 @@ public class LeagueServiceImpl implements LeagueServiceAPI {
 		return jsonString;
 		
 }
+	@Override
+	public String removeUserTeam(String leagueId,String userTeamId){
+		return objLeagueDao.removeUserTeam(leagueId, userTeamId);
+	}
+	
 }
