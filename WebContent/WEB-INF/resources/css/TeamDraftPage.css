@@ -626,6 +626,9 @@ h2 {
 	background-color:#ffbf03;
 	border-radius:7px;
 }
+.name{
+	font-family:'Raleway', sans-serif;
+}
 .editnamecss{
 	position: absolute;
 	top: 190px;

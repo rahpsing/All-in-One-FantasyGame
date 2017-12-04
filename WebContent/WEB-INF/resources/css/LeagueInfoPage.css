@@ -705,6 +705,9 @@ $maincolor: #009688;
 	font-size: 2.2em;
 	font-family:Raleway, sans-serif;
 }
+.name{
+	font-family:Raleway, sans-serif;
+}
 .minimisebox{
 	position:absolute;
 	top: 13px;
