@@ -44,7 +44,9 @@ public interface LeagueDaoAPI {
 
 	public String checkIfUserIsAdmin(String leagueId,String userId);
 
-	List<League> fetchAvailableLeagueNames(String sportId);
+	public List<League> fetchAvailableLeagueNames(String sportId);
+
+	public String removeUserTeam(String leagueId, String userTeamId);
 	
 
 }

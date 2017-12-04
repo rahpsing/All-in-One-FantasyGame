@@ -9,12 +9,16 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.allinone.service.api.LeagueServiceAPI;
 import com.allinone.service.api.SportUtilityServiceAPI;
 
 @Controller
 public class UserLeagueController {
 	@Autowired
 	SportUtilityServiceAPI objSportUtility;
+	
+	@Autowired
+	LeagueServiceAPI objLeagueService;
 	
 	@RequestMapping(value="/createUserLeague")
 	
@@ -40,5 +44,12 @@ public class UserLeagueController {
 		return "TeamDraftPage";
 		
 		
+	}
+	@RequestMapping(value="/removeUserTeam")
+	@ResponseBody
+	public String removeUserTeam(HttpServletRequest objRequest, HttpServletResponse objResponse) {
+		String leagueId=objRequest.getParameter("leagueId");
+		String userTeamId=objRequest.getParameter("userTeamId");
+		return objLeagueService.removeUserTeam(leagueId, userTeamId);
 	}
 }

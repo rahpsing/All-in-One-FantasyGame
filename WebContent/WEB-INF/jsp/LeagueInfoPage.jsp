@@ -398,15 +398,17 @@ function populateUserTeams(leagueId,userId){
 	    data : {leagueId:leagueId},
 	    dataType : 'json',
 	    success: function(data){
-	    	//alert(data);
+	    	console.log(data);
 	    	$('#populateUserList').empty();
 	    	var diffDiv=""; 
 	    	var style="";
-	    	if(isAdmin=="true"){
-	    		diffDiv='<div id="removeUserDiv" style="float:right;"><button id="removeUserButton" onclick="" class="waves-effect waves-light btn" style="background-color:#c50234;height:45px;font-size:2em;text-transform: lowercase;font-family:Raleway, sans-serif;width:100px;positon:absolute;top:-70px;right:0px;border-radius:10px;padding-right:105px;">remove</button></div>';
-				style='style="right:160px;"';
-	    	}
-	    	$(data.userTeam).each(function(index,value){$('#populateUserList').append('<div class="content"><div class="card" style="height:80px;cursor:pointer;"><div class="userimage" '+style+'><img class="circle responsive-img" src="${pageContext.request.contextPath}/resources/UIAssets/user1.jpeg"/></div><div class="profileinfo"><p style="font-size:2em;font-family:Raleway, sans-serif; color:#000000;">'+value.userTeamName+'</p><p class="bio" style="font-size: 1.5em;margin-top:-20px;font-family:"Raleway", sans-serif; ">owner : '+value.userName+'  &nbsp;&nbsp;&nbsp;&nbsp; points : '+value.points+'</p></div>'+diffDiv+'</div></div>');})
+	    	
+	    	$(data.userTeam).each(function(index,value){
+	    		if(isAdmin=="true"){
+		    		diffDiv='<div id="removeUserDiv" style="float:right;"><button id="removeUserButton" onclick="javascript:removeUserTeam(\''+leagueId+'\', \''+value.id+'\', \''+userId+'\')" class="waves-effect waves-light btn" style="background-color:#c50234;height:45px;font-size:2em;text-transform: lowercase;font-family:Raleway, sans-serif;width:100px;positon:absolute;top:-70px;right:0px;border-radius:10px;padding-right:105px;">remove</button></div>';
+					style='style="right:160px;"';
+		    	}
+	    		$('#populateUserList').append('<div class="content"><div class="card" style="height:80px;cursor:pointer;"><div class="userimage" '+style+'><img class="circle responsive-img" src="${pageContext.request.contextPath}/resources/UIAssets/user1.jpeg"/></div><div class="profileinfo"><p style="font-size:2em;font-family:Raleway, sans-serif; color:#000000;">'+value.userTeamName+'</p><p class="bio" style="font-size: 1.5em;margin-top:-20px;font-family:"Raleway", sans-serif; ">owner : '+value.userName+'  &nbsp;&nbsp;&nbsp;&nbsp; points : '+value.points+'</p></div>'+diffDiv+'</div></div>');})
 	    	
 	    	populateTeam(userId,leagueId);
 	    },
@@ -417,6 +419,26 @@ function populateUserTeams(leagueId,userId){
 	});
 }
 
+function removeUserTeam(leagueId,userTeamId,userId){
+	$.ajax({
+		url : '/All-In-One-FantasyGame/removeUserTeam',
+	    type: 'post',
+	    data : {leagueId:leagueId,userTeamId:userTeamId},
+	    
+	    success: function(data){
+	    	if(data=="true"){
+	    		populateUserTeams(leagueId,userId)
+	    	}
+	    	else{
+	    		alert("something went wrong.Contact Admin");
+	    	}
+	    },
+	    error: function (jqXHR, textStatus, errorThrown)
+	    {
+	    	alert("something went wrong.Contact Admin");
+	    }
+	});
+}
 function populateTeam(userId,leagueId)
 {
 	$.ajax({
