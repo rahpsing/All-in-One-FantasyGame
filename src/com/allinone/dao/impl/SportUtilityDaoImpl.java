@@ -60,8 +60,8 @@ public class SportUtilityDaoImpl implements SportUtilityDaoAPI {
 
 	public static Map<String,Map<String,Set<RuleHelper>>> mapOfLeagueAndRules= new HashMap<String,Map<String,Set<RuleHelper>>>();
 	
-	private static final String FILE_NAME = "C:\\Users\\prash\\gitbashnew2\\All-In-One-FantasyGame\\WebContent\\WEB-INF\\DataMappings.xlsx";
-	private static final String GAME_FILE = "C:\\Users\\prash\\gitbashnew2\\All-In-One-FantasyGame\\WebContent\\WEB-INF\\GameFile.xlsx";
+	private static final String FILE_NAME = "C:\\Users\\rahul\\workspace\\All-In-One-FantasyGame\\WebContent\\WEB-INF\\DataMappings.xlsx";
+	private static final String GAME_FILE = "C:\\Users\\rahul\\workspace\\All-In-One-FantasyGame\\WebContent\\WEB-INF\\GameFile.xlsx";
 
 	
 	
@@ -99,7 +99,7 @@ public class SportUtilityDaoImpl implements SportUtilityDaoAPI {
 	}
 	
 	@Override
-	public boolean addEntriesToDatabase() {
+	public boolean addEntriesToDatabase() throws Exception {
 		// TODO Auto-generated method stub
 		//code to add player
 		
@@ -203,7 +203,7 @@ public class SportUtilityDaoImpl implements SportUtilityDaoAPI {
 		                    }
 
 		                }
-	                    player.setLeague(league);
+	                    player.getSetOfLeagues().add(league);
 	                    listOfPlayers.add(player);
 
 		            }
@@ -229,9 +229,14 @@ public class SportUtilityDaoImpl implements SportUtilityDaoAPI {
 		        	System.out.println(e);
 		        	e.printStackTrace();
 		        	return false;
+		        } catch (Exception e) {
+		        	
+		        	e.printStackTrace();
 		        }
 		      
-		
+		      league.setSetOfPlayers(new HashSet<Player>(listOfPlayers));
+		      objSessionFactory.getCurrentSession().saveOrUpdate(league);
+		      
 		      for(Player player : listOfPlayers) {
 	          	    objSessionFactory.getCurrentSession().saveOrUpdate(player);
 	          }
@@ -243,9 +248,11 @@ public class SportUtilityDaoImpl implements SportUtilityDaoAPI {
 		      for(Game game : setOfGames) {
 	          	    objSessionFactory.getCurrentSession().saveOrUpdate(game);
 	          }
-		  	objSessionFactory.getCurrentSession().saveOrUpdate(league);
+		      
+		      
+		  	
 		} catch (Exception e) {
-			e.printStackTrace();
+			throw e;
 		}
 		
 		return true;
@@ -777,8 +784,13 @@ public class SportUtilityDaoImpl implements SportUtilityDaoAPI {
 			
 			Session session = objSessionFactory.getCurrentSession();
 			League objLeague = session.get(League.class, leagueId);
+			Set<Player> setOfPlayers = objLeague.getSetOfPlayers();
 			league.setSport(objLeague.getSport());
 			league.setNumSubstitutesAllowed(objLeague.getNumSubstitutesAllowed());
+			
+			for(Player objPlayer:setOfPlayers) {
+				league.getSetOfPlayers().add(objPlayer);
+			}
 			
 			objSessionFactory.getCurrentSession().saveOrUpdate(league);
 			objSessionFactory.getCurrentSession().saveOrUpdate(parentUser);

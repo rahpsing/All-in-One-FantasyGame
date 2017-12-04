@@ -22,7 +22,7 @@ public class SportUtilityServiceImpl implements SportUtilityServiceAPI {
 	SportUtilityDaoAPI objServiceUtilityDao;
 
 	@Override
-	public boolean readEntriesToDatabase() {
+	public boolean readEntriesToDatabase() throws Exception {
 		// TODO Auto-generated method stub
 		
 		return objServiceUtilityDao.addEntriesToDatabase();

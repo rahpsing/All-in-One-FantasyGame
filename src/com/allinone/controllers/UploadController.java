@@ -18,7 +18,7 @@ public class UploadController {
 	
 	@RequestMapping(value="/upload")
 	@ResponseBody
-	public String uploadUserData(HttpServletRequest objRequest, HttpServletResponse objResponse) {
+	public String uploadUserData(HttpServletRequest objRequest, HttpServletResponse objResponse) throws Exception {
 		
 		String returnMessage = objSportUtility.readEntriesToDatabase()?"Success":"Failed";
 		
