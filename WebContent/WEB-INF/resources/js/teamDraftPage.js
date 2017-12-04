@@ -19,7 +19,7 @@
 function onLoadCalls(leagueId,userId,flag){
 		
 		//fetchRules(leagueId);
-		
+	checkCookie();
 		jQuery.when(fetchRules(leagueId)).then(function(){
 			globalleagueId=leagueId;
 			globaluserId=userId;
@@ -91,7 +91,14 @@ function diffInCounts(counts){
 		    
 		    success: function(data){
 		    	
+		    	
+				
+		    	//$("#teamName1").innerText;
 		    	if(data=="true"){
+		    		/*$("#teamName1").innerText=updatedName;
+			    	editNameModal.style.display = "none";
+		    		teamName.style.display = "block";
+		    		*/
 		    		alert("Team Name Updated");
 		    			}
 		    	else{

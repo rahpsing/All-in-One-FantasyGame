@@ -72,11 +72,13 @@ body {
 		</div>
 	</div>
 	<div id="mainDiv" class="maindiv">
-		<div class="colorstrip2">
+		<div id="teamName2" class="colorstrip2">
 			<img src="${pageContext.request.contextPath}/resources/UIAssets/league1pic.png" class="userimage">
-			<div class="welcomemsg" id="teamName">
-				<b>team: </b>
-				<b id="teamName1" class="name">${teamName}</b>
+			<div  class="welcomemsg" id="teamName">
+				
+					<b>team: </b>
+					<b id="teamName1" class="name">${teamName}</b>
+				
 				<a class="btn-floating btn-large waves-effect waves-light" id="updateTeamNameButton" style="height:30px;width:30px;margin-top:-25px;background:rgba(255,255,255,0.1);">
 					<div style="margin-top:-12px;">
 						<i class="material-icons">edit</i>
@@ -429,6 +431,18 @@ body {
 					'</div>'+
 					'</div>');
 		}
+		var listItems = $("#user-team").find("p");
+		listItems.splice(0,1);
+		var countOfPlayers=listItems.length;
+		if(countOfPlayers>11){
+			countOfPlayers=11;
+		}
+		$('#legendCards').append('<div class="card1" style="height:40px;margin:5px;">'+
+				'<div class="profileinfo1" style="margin-top:5px;display:inline-block;">'+
+				'<div style="font-size:1em;font-family:Raleway, sans-serif; color:#000000;margin-top:3px;">players selected</div>'+
+				'<div style="position:absolute;top:3px;font-size:1em;font-family:Raleway, sans-serif; color:#000000;margin-top:3px;right:10px;">:    '+countOfPlayers+'</div>'+
+				'</div>'+
+				'</div>');
 		$('#swapsLeftId').append('<div class="profileinfo1" style="margin-top:5px;display:inline-block;">'+
 				'<div style="font-size:1em;font-family:Raleway, sans-serif; color:#000000;margin-top:3px;">swaps left</div>'+
 				'<div style="position:absolute;top:3px;font-size:1em;font-family:Raleway, sans-serif; color:#000000;margin-top:3px;right:10px;">:    '+swapsLeft+'</div>'+

@@ -11,6 +11,7 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/materialize.min.js"></script>
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/redirectRequests.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/redirectRequests.js"></script>
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/LeagueInfoPage.css" media="screen" />
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/materialize.min.css"  media="screen,projection"/>
@@ -32,7 +33,7 @@ body {
 		</div>
 		<button onclick="javascript:redirectToHomePage('${userId}')" class="allinonebanner">all-in-one</button>
 		<div class="logout">
-			<button id="logOut" class="waves-effect waves-light btn" style="background-color:#ffbf03;height:40px;font-size:1.5em;text-transform: lowercase;padding-top:2.5px;font-family:'Raleway', sans-serif;">logout</button>
+			<button id="logOut" onclick="javascript:deleteCookie()" class="waves-effect waves-light btn" style="background-color:#ffbf03;height:40px;font-size:1.5em;text-transform: lowercase;padding-top:2.5px;font-family:'Raleway', sans-serif;">logout</button>
 		</div>
 	</div>
 	<div id="mainDiv" class="maindiv">
@@ -325,6 +326,7 @@ function onLoadCalls(leagueId,userId){
 	checkJoinButton(leagueId,userId);
 	populateUserTeams(leagueId,userId);
 	fetchGames(leagueId);
+	checkCookie();
 	});
 }
 
