@@ -67,7 +67,7 @@ public class LeagueServiceImpl implements LeagueServiceAPI {
 	GameDaoAPI objGameDao;
 
 	@Override
-	public String fetchLeagues(String sport,String comparator) {
+	public String fetchLeagues(String sport,String comparator,String userId) {
 		// TODO Auto-generated method stub
 		
 		List<League> listOfLeagues = new ArrayList<League>();
@@ -91,7 +91,7 @@ public class LeagueServiceImpl implements LeagueServiceAPI {
 		}
 		else {sportId=objSportUtilityDao.getsportID("SOCCER");}
 		
-		listOfLeagues = objLeagueDao.fetchLeagues(sportId);
+		listOfLeagues = objLeagueDao.fetchLeagues(sportId,userId);
 		
 		String jsonString = objListToJson.listToJson("League", listOfLeagues);
 		System.out.println(jsonString + "returning result " + comparator);
@@ -223,5 +223,44 @@ public class LeagueServiceImpl implements LeagueServiceAPI {
 		return objSetOfGamesToJson.convertSetOfGamesToJson("listOfMatches", treeSetOfGames);
 		
 	}
-
+	
+	@Override
+	public String checkIfUserIsAdmin(String leagueId,String userId){
+		
+		return objLeagueDao.checkIfUserIsAdmin(leagueId, userId);
+		
+}
+	@Override
+	public String fetchAvailableLeagueNames(String sport,String comparator) {
+		// TODO Auto-generated method stub
+		
+		List<League> listOfLeagues = new ArrayList<League>();
+		String sportId;
+		if(comparator.equals("redirectText")) {
+			listOfLeagues = objLeagueDao.fetchLikeLeagues(sport);
+			System.out.println(sport);
+			return listOfLeagues.get(0).getLeagueName();
+		}
+		if(comparator.equals("searchText")) {
+			listOfLeagues = objLeagueDao.fetchLikeLeagues(sport);
+			System.out.println(sport);
+						
+			String jsonString = objListToJson.listToJson("League", listOfLeagues);
+			System.out.println(jsonString + "returning result " + comparator);
+			
+			return jsonString;
+		}
+		if (sport.equals("CRICKET")) {
+			sportId=objSportUtilityDao.getsportID("CRICKET");
+		}
+		else {sportId=objSportUtilityDao.getsportID("SOCCER");}
+		
+		listOfLeagues = objLeagueDao.fetchAvailableLeagueNames(sportId);
+		
+		String jsonString = objListToJson.listToJson("League", listOfLeagues);
+		System.out.println(jsonString + "returning result " + comparator);
+		
+		return jsonString;
+		
+}
 }

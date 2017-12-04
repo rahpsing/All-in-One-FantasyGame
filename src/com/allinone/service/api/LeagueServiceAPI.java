@@ -16,7 +16,7 @@ import com.allinone.pojos.Player;
  */
 public interface LeagueServiceAPI {
 
-	public String fetchLeagues(String sport,String Comparator);
+	public String fetchLeagues(String sport,String Comparator,String userId);
 
 	public Map<String,Double> updateUserScoresForAGame(String leagueId, String gameId);
 	
@@ -31,6 +31,10 @@ public interface LeagueServiceAPI {
 	public String rulesMap(String leagueId);
 
 	public String gamesList(String leagueId);
+
+	public String checkIfUserIsAdmin(String leagueId, String userId);
+
+	public String fetchAvailableLeagueNames(String sport, String comparator);
 
 	
 	

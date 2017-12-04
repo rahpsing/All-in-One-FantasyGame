@@ -28,7 +28,7 @@ public class LeagueDaoImpl implements LeagueDaoAPI {
 	private SessionFactory objSessionFactory;
 	
 	@Override
-	public List<League> fetchLeagues(String sportId) {
+	public List<League> fetchLeagues(String sportId,String userId) {
 		// TODO Auto-generated method stub
 		
 		try {
@@ -48,6 +48,15 @@ public class LeagueDaoImpl implements LeagueDaoAPI {
 			}
 		}
 		
+		Set<League> finalSet=new HashSet<League>(finalList);
+		User objUser = objSessionFactory.getCurrentSession().get(User.class, userId);
+		
+		Set<League> setOfUserParticipatingLeagues = objUser.getSetOfLeagues();
+		for(League league :setOfUserParticipatingLeagues ) {
+			finalSet.add(league);
+		}
+		finalList.clear();
+		finalList.addAll(finalSet);
 		return finalList;
 		}
 		catch(Exception e) {
@@ -192,12 +201,48 @@ public class LeagueDaoImpl implements LeagueDaoAPI {
 	}
 	
 	@Override
-	public Boolean checkIfUserIsAdmin(String leagueId,String userId){
-		Session session = objSessionFactory.getCurrentSession();
+	public String checkIfUserIsAdmin(String leagueId,String userId){
+		try{
+			Session session = objSessionFactory.getCurrentSession();
+		
 		League objLeague = session.get(League.class, leagueId);
-		if(objLeague.getParentLeague()!=null && objLeague.getParentLeague().equals(userId))
-			return true;
-		return false;
+		if(!objLeague.getLeagueOwner().getUserId().equals(null) && objLeague.getLeagueOwner().getUserId().equals(userId))
+			return "true";
+		
+		return "false";
+		}
+		catch(Exception e)
+		{
+			System.out.println(e);
+			return "false";
+		}
 	}
 
+	@Override
+	public List<League> fetchAvailableLeagueNames(String sportId) {
+		// TODO Auto-generated method stub
+		
+		try {
+		Criteria objCriteria  = objSessionFactory.getCurrentSession().createCriteria(League.class);
+		Criterion isSystemLeagueCriteria = Restrictions.eq("isSystemLeague", Boolean.TRUE);
+		
+		objCriteria.add(Restrictions.and(isSystemLeagueCriteria));
+		
+		List<League> listOfLeagues = new ArrayList<League>();
+		List<League> finalList = new ArrayList<League>();
+		
+		listOfLeagues = objCriteria.list();
+		for(int i=0;i<listOfLeagues.size();i++) {
+			
+			if(listOfLeagues.get(i).getSport().getId().equals(sportId)) {
+				finalList.add(listOfLeagues.get(i));
+			}
+		}
+		
+		return finalList;
+		}
+		catch(Exception e) {
+			return null;
+		}
+}
 }

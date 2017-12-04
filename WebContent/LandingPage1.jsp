@@ -146,14 +146,14 @@ body {
 		  	<div id="loginModalContent" class="modal-content">
 			  	<form name="loginForm"  >
 			  		<p class="logincred">login details</p>
-				    <input type="text" class="username" id="username" name="username" placeholder="User Name..."><br>
-				    <input type="password" class="password" id="password" name="password" placeholder="Password..."><br>
+				    <input type="text" class="username" id="username" name="username" placeholder="user name..."><br>
+				    <input type="password" class="password" id="password" name="password" placeholder="password..."><br>
 				    <input class="waves-effect waves-light btn" style="background-color:#ffbf03;height:40px;width:100%;font-size:2em;text-transform: lowercase;" type="button" value="submit" onclick="javascript:validateLoginForm()"/>
-				    <div class="forgotuorpdiv">
+				    <div class="forgotuorpdiv" style="display:none;">
 					    <p class="forgotuorp">forgot username or password?</p>
 					    <button id="reset" class="reset">click here</button>
 				    </div>
-				    <input class="waves-effect waves-light btn" style="background-color:#ffbf03;height:20px;width:50%;font-size:1em;text-transform: lowercase;" type="button" id="close2" value="close"/>
+				    <input class="waves-effect waves-light btn" style="background-color:#ffbf03;height:20px;width:50%;margin-top:20px;font-size:1em;text-transform: lowercase;" type="button" id="close2" value="close"/>
 				</form>
 		  	</div>
 </div>
@@ -162,10 +162,12 @@ body {
 		  	<div id="signupModalContent" class="signup-modal-content">
 			  	<form name="signupForm" >
 			  		<p class="signupcred">signup details</p>
-			  		<input type="text" class="semail" id="email" name="email" placeholder="Email ID"..."><br>
-				    <input type="text" class="susername" id="username" name="username" placeholder="User Name..."><br>
-				    <input type="password" class="spassword" id="password" name="password" placeholder="Password..."><br>
-				    <input type="password" class="srepassword" id="repassword" name="repassword" placeholder="Reconfirm password..."><br>
+			  		<input type="text" class="semail" id="email" name="email" placeholder="email id"..."><br>
+				    <input type="text" class="susername" id="username" name="username" placeholder="user name..."><br>
+				    <input type="text" class="signupfirstname" id="signUpFirstName" name="firstname" placeholder="first name..."><br>
+				    <input type="text" class="signuplastname" id="signUpLastName" name="lastname" placeholder="last name..."><br>
+				    <input type="password" class="spassword" id="password" name="password" placeholder="password..."><br>
+				    <input type="password" class="srepassword" id="repassword" name="repassword" placeholder="reconfirm password..."><br>
 				    <input class="waves-effect waves-light btn" style="background-color:#ffbf03;height:40px;width:100%;font-size:2em;text-transform: lowercase;" type="button" value="Submit" onclick="javascript:validateSignUpForm()" />
 					<input class="waves-effect waves-light btn" style="background-color:#ffbf03;height:20px;width:50%;font-size:1em;text-transform: lowercase;margin-top:10px;" type="button" id="close1" value="close"/>
 				</form>
@@ -339,25 +341,25 @@ function validateSignUpForm(){
 	var pfilter3 = /^(?=.*\d)/;
 	
 	if (!filter.test(email)) {
-	    alert("Please provide a valid email address");
+	    alert("please provide a valid email address");
 	    return false;
  	}else if(email == "" || username == "" || password == "" || repassword == ""){
-		alert("Enter all fields");
+		alert("enter all fields");
 		return false;
 	}else if(password.length < 8){
-		alert("Password must be at least 8 characters long");
+		alert("password must be at least 8 characters long");
 		return false;
 	}else if(!pfilter1.test(password)){
-		alert("Password must containt at least 1 lowercase letter");
+		alert("password must containt at least 1 lowercase letter");
 		return false;
 	}else if(!pfilter2.test(password)){
-		alert("Password must containt at least 1 uppercase letter");
+		alert("password must containt at least 1 uppercase letter");
 		return false;
 	}else if(!pfilter3.test(password)){
-		alert("Password must containt at least 1 number");
+		alert("password must containt at least 1 number");
 		return false;
 	}else if(password != repassword){
-		alert("Passwords do not match, reconfirm password");
+		alert("passwords do not match, reconfirm password");
 		return false;
 	}
 	jQuery.ajax({
@@ -369,12 +371,12 @@ function validateSignUpForm(){
 	    	signupModal.style.display = "none";
 	    	console.log("Came from backend");
 		if(data=="Success"){
-			alert("Congratulations..! Please Login to fantastic world of sports")
+			alert("sign up successful. please login to continue.")
 		}
 	    },
 	    error: function (jqXHR, textStatus, errorThrown)
 	    {	
-		alert("Username already in use. Please try a different username")
+		alert("username already in use. please try a different one")
 	    }
 	});
 }
@@ -386,7 +388,7 @@ function validateLoginForm(){
 	console.log(userName);
 	console.log(passWord);
 	if(userName == "" || passWord == ""){
-		alert("Enter all fields");
+		alert("enter all fields");
 		return false;
 	}
 	jQuery.ajax({
@@ -401,11 +403,11 @@ function validateLoginForm(){
 			duo(userName);
 			
 			}
-		else{alert("Username/Password doesn't match")}
+		else{alert("username/password doesn't match")}
 	    },
 	    error: function (jqXHR, textStatus, errorThrown)
 	    {	
-		alert("please try again.Contact administrator")
+		alert("please try again. contact administrator")
 	    }
 	});
     return true;
@@ -442,7 +444,7 @@ function validateLoginForm(){
 		    },
 		    error: function (jqXHR, textStatus, errorThrown)
 		    {	
-			alert("please try again.Contact administrator")
+			alert("please try again. contact administrator")
 		    }
 		});
  }

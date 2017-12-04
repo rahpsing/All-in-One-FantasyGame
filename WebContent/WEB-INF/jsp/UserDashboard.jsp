@@ -597,24 +597,28 @@ function sendFetchReq(sportName,iD,value,userId){console.log(userId);
 	$.ajax({
 	    url : '/All-In-One-FantasyGame/fetchLeagues',
 	    type: 'post',
-	    data : {SPORT_NAME:sportName,VALUE:value},
+	    data : {SPORT_NAME:sportName,VALUE:value,userId:userId},
 	    dataType : 'json',
 	    success: function(data)
 	    {	$('#'+iD).empty();
 	    	//alert("Please" + sportName);
-	    	
+	    	//console.log(data);
 	    	var count = 0;
-	    	$(data.League).each(function(index,value){$('#'+iD).append('<div onclick=javascript:redirectLeague(\''+value.id+'\',\''+userId+'\') class="content" style="cursor:pointer;"><div class="card" style="height:80px;"><div class="profileinfo"><p style="font-size:2em;font-family:Raleway, sans-serif; ">'+value.League+'</p><p class="bio" style="font-size: 1.5em;margin-top:-20px;font-family:"Raleway", sans-serif; ">Users : '+value.numOfPlayers+'</p></div></div></div>');count++;})
-	 		$('#'+iD).append('<div  class="content"><div class="card" style="height:80px;"><div class="profileinfo"><p style="font-size:2em;font-family:"Raleway", sans-serif; ">create league</p><p class="bio" style="font-size: 1.5em;margin-top:-20px;font-family:"Raleway", sans-serif; "></div></div></div>');
+	    	$(data.League).each(function(index,value){
+	    		var systemLeagueDiv="";
+	    		if(value.isSystemLeague=="true");{
+	    			systemLeagueDiv='<div class="aiologo2"><object type="image/svg+xml" data="${pageContext.request.contextPath}/resources/UIAssets/aiologo.svg" height="55px;"></object></div>';
+	    		}
+	    				$('#'+iD).append('<div onclick=javascript:redirectLeague(\''+value.id+'\',\''+userId+'\') class="content" style="cursor:pointer;"><div class="card" style="height:80px;"><div class="profileinfo"><p style="font-size:2em;font-family:Raleway, sans-serif; ">'+value.League+'</p><p class="bio" style="font-size: 1.5em;margin-top:-20px;font-family:"Raleway", sans-serif; ">Users : '+value.numOfPlayers+'</p>'+systemLeagueDiv+'</div></div></div>');count++;})
+	 		//$('#'+iD).append('<div  class="content"><div class="card" style="height:80px;"><div class="profileinfo"><p style="font-size:2em;font-family:"Raleway", sans-serif; ">create league</p><p class="bio" style="font-size: 1.5em;margin-top:-20px;font-family:"Raleway", sans-serif; "></div></div></div>');
 	    	document.getElementById(iD+"Number").innerHTML=count;
-	    	console.log(count);
-	    	console.log(Object.keys(value).length);
+	    	
 	    },
 	    error: function (jqXHR, textStatus, errorThrown)
 	    {
 	    	$('#'+iD).empty();
 	    	document.getElementById(iD+"Number").innerHTML="0";
-	 		$('#'+iD).append('<div  class="content"><div class="card" style="height:80px;"><div class="profileinfo"><p style="font-size:2em;font-family:"Raleway", sans-serif; ">create league</p><p class="bio" style="font-size: 1.5em;margin-top:-20px;font-family:Raleway, sans-serif; "></div></div></div>');
+	 		//$('#'+iD).append('<div  class="content"><div class="card" style="height:80px;"><div class="profileinfo"><p style="font-size:2em;font-family:"Raleway", sans-serif; ">create league</p><p class="bio" style="font-size: 1.5em;margin-top:-20px;font-family:Raleway, sans-serif; "></div></div></div>');
 	    	
 	    }
 	});
@@ -632,7 +636,7 @@ function sendFetchLikeReq(iD,value,userId){console.log(userId);
 	$.ajax({
 	    url : '/All-In-One-FantasyGame/fetchLeagues',
 	    type: 'post',
-	    data : {SPORT_NAME:searchTxt,VALUE:value},
+	    data : {SPORT_NAME:searchTxt,VALUE:value,userId:userId},
 	    dataType : 'json',
 	    success: function(data)
 	   
@@ -665,11 +669,11 @@ function sendCreateUserLeaguerequest(userId){
 	//alert(parentleagueId);
 	var leagueName=document.getElementById('userLeagueName').value;
 	if(parentleagueId==""){
-		alert("Please select a Parent League");
+		alert("lease select a parent league");
 	}
 	else if(leagueName=="")
 		{
-		alert("Please enter a league name");
+		alert("please enter a league name");
 		}
 	else{
 		var f = document.createElement("form");
@@ -699,7 +703,7 @@ function sendCreateUserLeaguerequest(userId){
 function fetchAvailableLeagueNames(sportName,iD,value,userId){
 	
 	$.ajax({
-	    url : '/All-In-One-FantasyGame/fetchLeagues',
+	    url : '/All-In-One-FantasyGame/fetchAvailableLeagueNames',
 	    type: 'post',
 	    data : {SPORT_NAME:sportName,VALUE:value},
 	    dataType : 'json',
@@ -726,7 +730,7 @@ function fetchAvailableLeagueNames(sportName,iD,value,userId){
 	    error: function (jqXHR, textStatus, errorThrown)
 	    {
 	    	$('#'+iD).empty();
-	    	alert('wrong');
+	    	/* alert('wrong'); */
 	    }
 	});
 }
@@ -772,11 +776,13 @@ function sendUpdateProfileReq(userId){
 		    success: function(data)
 		   
 		    {	
-		    	alert(data);
+		    	alert("profile update successful");
+		    	profilePageModal.style.display = "none";
+			    mainDiv.classList.remove("blur");
 		    },
 		    error: function (jqXHR, textStatus, errorThrown)
 		    {
-		    	alert("something went wrong.Contact Admin");
+		    	alert("something went wrong. contact admin");
 		    }
 		});
 }

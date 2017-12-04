@@ -793,7 +793,7 @@ public class SportUtilityDaoImpl implements SportUtilityDaoAPI {
 			}
 			
 			objSessionFactory.getCurrentSession().saveOrUpdate(league);
-			objSessionFactory.getCurrentSession().saveOrUpdate(parentUser);
+			//objSessionFactory.getCurrentSession().saveOrUpdate(parentUser);
 			String newleagueId=league.getId();
 			
 			return newleagueId;

@@ -62,11 +62,11 @@ body {
 </head>
 <body onload="javascript:onLoadCalls('${leagueId}','${userId}','${flag}')">
 	<div class="colorstrip1">
-		<button onclick="javascript:redirectToHomePage('${userId}')" class="allinonebanner">all-in-one</button>
 		<div class="aiologo">
 			<%-- <img src="${pageContext.request.contextPath}/resources/UIAssets/aiologo.svg" height="35px"> --%>
 			<object type="image/svg+xml" data="${pageContext.request.contextPath}/resources/UIAssets/aiologo.svg" height="35px;"></object>
 		</div>
+		<button onclick="javascript:redirectToHomePage('${userId}')" class="allinonebanner">all-in-one</button>
 		<div class="logout">
 			<button onclick="javascript:deleteCookie()" id="logOut" class="waves-effect waves-light btn" style="background-color:#ffbf03;height:40px;font-size:1.5em;text-transform: lowercase;padding-top:2.5px;font-family:'Raleway', sans-serif;">logout</button>
 		</div>

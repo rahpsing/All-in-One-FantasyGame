@@ -18,7 +18,7 @@ import com.allinone.pojos.UserTeam;
  */
 public interface LeagueDaoAPI {
 
-	public List<League> fetchLeagues(String sport);
+	public List<League> fetchLeagues(String sport,String userId);
 
 	public List<League> fetchLikeLeagues(String likeLeague);
 	
@@ -42,7 +42,9 @@ public interface LeagueDaoAPI {
 
 	public League fetchLeague(String leagueId);
 
-	public Boolean checkIfUserIsAdmin(String leagueId,String userId);
+	public String checkIfUserIsAdmin(String leagueId,String userId);
+
+	List<League> fetchAvailableLeagueNames(String sportId);
 	
 
 }

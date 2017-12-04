@@ -438,7 +438,7 @@ html, body, .block {
     max-height: calc(100% - 50px);
   	position: fixed;
   	top: 50%;
-    left: 350px;
+    left: 360px;
     font-family:Raleway, sans-serif;
   	transform: translate(-50%, -50%);
   	z-index:100;
@@ -450,7 +450,7 @@ html, body, .block {
     padding: 20px;
     border-radius: 5px;
     width: 250px; /* Could be more or less, depending on screen size */
-    height: 400px;
+    height: 550px;
     box-shadow: 0 15px 18px 0 rgba(0,0,0,0.2),0 16px 30px 0 rgba(0,0,0,0.19);
     -webkit-animation-name: animatetop;
     -webkit-animation-duration: 0.4s;
@@ -472,7 +472,22 @@ html, body, .block {
 	height: 30px;
 	font-size: 20px;
 }
+.signupfirstname{
+	position: relative;
+	margin-left: -3px;
+	margin-top: 20px;
+	height: 30px;
+	font-size: 20px;
+}
+
 .sphoneNumber{
+	position: relative;
+	margin-left: -3px;
+	margin-top: 20px;
+	height: 30px;
+	font-size: 20px;
+}
+.signuplastname{
 	position: relative;
 	margin-left: -3px;
 	margin-top: 20px;
@@ -510,7 +525,7 @@ html, body, .block {
     max-height: calc(100% - 50px);
   	position: fixed;
     top: 50%;
-    left: 350px;
+    left: 360px;
   	transform: translate(-50%, -50%);
   	font-family:Raleway, sans-serif;
   	z-index:100;
