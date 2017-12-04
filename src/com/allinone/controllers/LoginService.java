@@ -75,4 +75,47 @@ public class LoginService {
 		if (temp!= null) {return "true";}
 		return "false";
 	}
+
+	@RequestMapping(value = "/redirectToHomePage")
+	public String redirectToHomePage(HttpServletRequest objRequest, ModelMap model) {
+		String userId = objRequest.getParameter("userId");
+		User temp = objUserRegistrationService.pullUser(userId);
+		if (temp!= null) {
+		model.put("name", temp.getUserName());
+		model.put("emailId", temp.getEmailAddress());
+		model.put("userId", temp.getUserId());
+		//System.out.println(temp.getEmailAddress()+"EmailID of user");
+		if(temp.getFirstName() != null)
+		{
+			
+			model.put("firstName",temp.getFirstName());
+		}
+		else {
+			model.put("firstName","First Name");
+		}
+		
+		if(temp.getLastName()  != null)
+		{
+			model.put("lastName",temp.getLastName());
+			
+		}
+		else {
+			model.put("lastName","Last Name");
+		}
+		if(temp.getPhoneNumber() != null)
+		{
+			model.put("phoneNumber",temp.getPhoneNumber());
+		}
+		else {
+			
+			model.put("phoneNumber","Phone Number");
+		}
+		
+		//model.put("phone", temp.getPhoneNumber());
+		return "UserDashboard";
+	}
+		return "redirect:" + "http://localhost:8080/All-In-One-FantasyGame/LandingPage1.jsp";
+		}
+	
+	
 }

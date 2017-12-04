@@ -47,13 +47,15 @@ public class TeamDraftController {
 		String listOfPlayerIds = objRequest.getParameter("listOfPlayerIds");
 		String flag = objRequest.getParameter("flag");
 		String teamName = objRequest.getParameter("updateTeamName");
-		
+		String swapsLeft = objRequest.getParameter("swapsLeft");
+		String score = objRequest.getParameter("score");
 		List<String> listOfPlayerIdsList = new Gson().fromJson( listOfPlayerIds, List.class);
 		playerSet = new HashSet(listOfPlayerIdsList);
 		
 		String returnString;
-		Boolean teamNameBoolean;
+		//Boolean teamNameBoolean;
 		if(flag.equals("create")) {
+			
 		returnString =objUserTeamDraftAPI.createTeam(playerSet,leagueId, userId,teamName);
 		
 		}
@@ -61,7 +63,7 @@ public class TeamDraftController {
 			
 			String userTeamId=objUserTeamDraftAPI.getUserTeamId(leagueId, userId);
 			
-			returnString=objUserTeamDraftAPI.updateTeam(playerSet, leagueId, userId, userTeamId, 50, 50);
+			returnString=objUserTeamDraftAPI.updateTeam(playerSet, leagueId, userId, userTeamId, Integer.parseInt(swapsLeft), Double.parseDouble(score));
 			
 			
 		}

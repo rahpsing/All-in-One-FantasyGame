@@ -97,8 +97,8 @@ public class UserRegistrationDaoImpl implements UserRegistrationDaoAPI {
 		try {
 			Criteria objCriteria  = objSessionFactory.getCurrentSession().createCriteria(User.class);
 			Criterion usernameCriteria = Restrictions.eq("userName", userName);
-			
-			objCriteria.add(usernameCriteria);
+			Criterion userIdCriteria = Restrictions.eq("userId", userName);
+			objCriteria.add(Restrictions.or(usernameCriteria,userIdCriteria));
 
 			List results = objCriteria.list();
 			Iterator iterator = results.iterator();

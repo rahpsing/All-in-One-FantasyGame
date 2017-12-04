@@ -191,5 +191,13 @@ public class LeagueDaoImpl implements LeagueDaoAPI {
 		
 	}
 	
+	@Override
+	public Boolean checkIfUserIsAdmin(String leagueId,String userId){
+		Session session = objSessionFactory.getCurrentSession();
+		League objLeague = session.get(League.class, leagueId);
+		if(objLeague.getParentLeague()!=null && objLeague.getParentLeague().equals(userId))
+			return true;
+		return false;
+	}
 
 }

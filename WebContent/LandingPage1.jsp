@@ -111,8 +111,8 @@ body {
 		<div class="loginbuttondiv">
 			<button id="loginButton" class="waves-effect waves-light btn" style="background-color:#ffbf03;max-height:60px;height:60px;width:100%;font-size:2em">Log In</button>
 		</div>
-		<div style="position:fixed;left:0%;height:100%">
-			<img  src="${pageContext.request.contextPath}/resources/UIAssets/asset4.png" height="100%"/>
+		<div style="position:fixed;left:0%;height:100vh">
+			<img  src="${pageContext.request.contextPath}/resources/UIAssets/asset6xg.png" height="100%"/>
 		</div>
 		<div class="colorstrip2">
 			<%-- <div class="bgimage" style="height:100%;">

@@ -60,8 +60,8 @@ public class SportUtilityDaoImpl implements SportUtilityDaoAPI {
 
 	public static Map<String,Map<String,Set<RuleHelper>>> mapOfLeagueAndRules= new HashMap<String,Map<String,Set<RuleHelper>>>();
 	
-	private static final String FILE_NAME = "C:\\Users\\rahul\\workspace\\All-In-One-FantasyGame\\WebContent\\WEB-INF\\DataMappings.xlsx";
-	private static final String GAME_FILE = "C:\\Users\\rahul\\workspace\\All-In-One-FantasyGame\\WebContent\\WEB-INF\\GameFile.xlsx";
+	private static final String FILE_NAME = "C:\\Users\\prash\\gitbashnew2\\All-In-One-FantasyGame\\WebContent\\WEB-INF\\DataMappings.xlsx";
+	private static final String GAME_FILE = "C:\\Users\\prash\\gitbashnew2\\All-In-One-FantasyGame\\WebContent\\WEB-INF\\GameFile.xlsx";
 
 	
 	

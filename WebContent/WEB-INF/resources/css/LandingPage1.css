@@ -6,6 +6,7 @@ html,body {
 	/* background: #020516; */
 	background-repeat: no-repeat;
 	background-size: cover;
+	backgound: #020516;
 }
 html, body, .block {
     height: 100%;
@@ -112,7 +113,7 @@ html, body, .block {
 .bimage3{
 	position: absolute;
 	margin-top: 1500px;
-	margin-left:320px;
+	margin-left:250px;
 	opacity:0;
    -webkit-transition: opacity 2s;
    -moz-transition: opacity 2s;
@@ -152,7 +153,7 @@ html, body, .block {
 .bfeature4{
 	position: absolute;
 	margin-top: 1650px;
-	margin-left:820px;
+	margin-left:740px;
 	opacity:0;
    -webkit-transition: opacity 2s;
    -moz-transition: opacity 2s;
@@ -162,7 +163,7 @@ html, body, .block {
 .bfeature5{
 	position: absolute;
 	margin-top: 1750px;
-	margin-left:780px;
+	margin-left:700px;
 	opacity:0;
    -webkit-transition: opacity 2s;
    -moz-transition: opacity 2s;
@@ -172,7 +173,7 @@ html, body, .block {
 .bfeature6{
 	position: absolute;
 	margin-top: 1850px;
-	margin-left: 740px;
+	margin-left: 660px;
 	opacity:0;
    -webkit-transition: opacity 2s;
    -moz-transition: opacity 2s;

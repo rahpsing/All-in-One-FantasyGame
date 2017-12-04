@@ -6,13 +6,80 @@
 	var initialUserTeam=[];
 	var revisedUserTeam=[];
 	var swapsOrig;
-	var swapsLeft;
+	var swapsLeft=0;
 	var score;
 	var saveButton = document.getElementById("saveButton");
 	var playerData="";
 	var globalleagueId;
 	var globaluserId;
-   	
+   	var colorArray=["#A1EAFB","#CBF078","#F1BBF5","#5782BB","#FF8F56","#DC4444"];
+   	var colorMap={};
+   	var countsMap={};
+   	var modifiedCountsMap={};
+function onLoadCalls(leagueId,userId,flag){
+		
+		//fetchRules(leagueId);
+		
+		jQuery.when(fetchRules(leagueId)).then(function(){
+			globalleagueId=leagueId;
+			globaluserId=userId;
+			
+			onloadEditUserTeamName(leagueId,userId,flag);
+			
+			fetchSwapsAndScore(leagueId,userId,flag);
+			fetchPlayerList(leagueId,'rosterList',userId)
+			populateTeam(userId,leagueId);
+			/*jQuery.when(populateTeam(userId,leagueId)).then(function(){
+				fetchCountsMap();
+			})*/
+		})
+	}
+function fetchCountsMap(){
+	
+	var ind=0;	
+	var listOfPlayerIds=[];
+	var rolesList=[];
+	
+	//alert(updatedName);
+	var listItems = $("#user-team").find("p");
+	listItems.splice(0,1);
+	console.log(listItems.length);
+	for ( ind = 0; ind < listItems.length; ind++ ) {
+	    //console.log($(listItems[ind]).attr('id'));
+	    //listOfPlayerIds.push($(listItems[ind]).attr('id'));
+	    rolesList.push($(listItems[ind]).attr('role'));
+	}
+	for (var i = 0; i < rolesList.length; i++) {
+		countsMap[rolesList[i]] = 1 + (countsMap[rolesList[i]] || 0);
+	}
+	
+	console.log(countsMap);
+	diffInCounts(countsMap);
+}
+
+function diffInCounts(counts){
+	len=Object.keys(counts).length;
+	$(rulesMap.rulesMap).each(function(index,value){
+		//console.log(counts[value.role])
+		console.log(value.role);
+		if(counts.hasOwnProperty(value.role)){
+		if((parseInt(value.number)-counts[value.role])>0){
+			modifiedCountsMap[value.role]=(parseInt(value.number)-counts[value.role]);
+		}
+		else
+			{
+			modifiedCountsMap[value.role]=0;
+			}
+	}
+	else{
+		modifiedCountsMap[value.role]=parseInt(value.number)
+	}
+	});
+	console.log(modifiedCountsMap);
+	fillRulesandSwap();
+}
+
+
 	function updatedTeamName(){
 		
 		var updatedName=document.getElementById("updateTeamName").value;
@@ -47,7 +114,8 @@
 	function dropPlayer1(target,event){
 		var player = event.dataTransfer.getData('Players');
 		target.appendChild(document.getElementById(player));
-		countRoles();
+		counts=countRoles();
+		diffInCounts(counts);
 	}
 	function dropPlayer(target, event,flag) {
 	    var player = event.dataTransfer.getData('Players');
@@ -83,8 +151,9 @@
 		
 		swapsLeft=swapsOrig-swapsUsed;
 		//alert(swapsLeft);
+		counts=countRoles();
+		diffInCounts(counts);
 		
-		countRoles();
 	}
 		function countRoles(){
 			var ind=0;	
@@ -108,19 +177,12 @@
    	   connectWith: ".connectedSortable"
    	 }).disableSelection();
   	} );
-	function onLoadCalls(leagueId,userId,flag){
-		globalleagueId=leagueId;
-		globaluserId=userId;
-		populateTeam(userId,leagueId);
-		onloadEditUserTeamName(leagueId,userId,flag);
-		fetchPlayerList(leagueId,'rosterList',userId);
-		fetchRules(leagueId);
-		fetchSwapsAndScore(leagueId,userId,flag);
-	}
+	
 	function fetchSwapsAndScore(leagueId,userId,flag){
 		if(flag=="create"){
 			swapsOrig=50;
 			score=50;
+			swapsLeft=swapsOrig;
 		}
 		else
 			{
@@ -134,6 +196,7 @@
 			    	$(data.teamDetails).each(function(index,value){
 			    		swapsOrig=value.swaps;
 						score=value.scores;
+						swapsLeft=swapsOrig;
 						
 			    	});
 			    },
@@ -146,6 +209,7 @@
 			}
 	}
 	var rulesMap="";
+	var mapOfRulesMap={};
 	function fetchRules(leagueId){
 		$.ajax({
 			url : '/All-In-One-FantasyGame/rulesMap',
@@ -163,14 +227,19 @@
 		    }
 		});
 	}
+	
 	function populateRules(rules){
 		rulesMap=rules;
 		console.log(rulesMap);
+		$(rulesMap.rulesMap).each(function(index,value){
+			colorMap[value.role]=colorArray.pop();
+		});
+		console.log(colorMap);
 	}
 
 	function rulesCheck(counts,leagueId,userId,listOfPlayerIds,flag,updatedName){
 	
-		var flag=Boolean(1==1)
+		var rulesflag=Boolean(1==1)
 		var missedRules=""
 		$(rulesMap.rulesMap).each(function(index,value){
 			console.log(value.role);
@@ -179,17 +248,17 @@
 				console.log("Success");
 				}else{
 					missedRules+=" Please select atleast " + value.number +" " + value.role+"\n"
-					flag=Boolean(1>1)
+					rulesflag=Boolean(1>1)
 				}
 			}
 			else{
 				missedRules+=" Please select atleast " + value.number +" " + value.role+"\n";
 				
-				flag=Boolean(1>1)
+				rulesflag=Boolean(1>1)
 			}
 			
 		});
-		if(flag){
+		if(rulesflag){
 		listOfPlayerIds=JSON.stringify(listOfPlayerIds);
 		
 		callFormSubmit(leagueId,userId,listOfPlayerIds,flag,updatedName);
@@ -225,7 +294,7 @@
 		var listOfPlayerIds=[];
 		var rolesList=[];
 		var updatedName=document.getElementById("updateTeamName").value;
-		alert(updatedName);
+		//alert(updatedName);
 		var listItems = $("#user-team").find("p");
 		listItems.splice(0,1);
 		for ( ind = 0; ind < listItems.length; ind++ ) {
@@ -275,11 +344,11 @@
 		$.ajax({
 		    url : '/All-In-One-FantasyGame/createTeam',
 		    type: 'post',
-		    data : {userId:userId,leagueId:leagueId,listOfPlayerIds:listOfPlayerIds,flag:flag,updateTeamName:updatedName},
+		    data : {userId:userId,leagueId:leagueId,listOfPlayerIds:listOfPlayerIds,flag:flag,updateTeamName:updatedName,swapsLeft:swapsLeft,score:score},
 		    
 		    success: function(data)
 		   
-		    {	alert(updatedName);
+		    {	
 		    	if (data=="true")
 		    	var f = document.createElement("form");
 				f.setAttribute('method',"post");
@@ -305,6 +374,18 @@
 				l.setAttribute('name',"updateTeamName");
 				l.setAttribute('value',updatedName);
 				f.appendChild(l);
+				
+				var m = document.createElement("input");
+				m.setAttribute('type',"hidden");
+				m.setAttribute('name',"score");
+				m.setAttribute('value',score);
+				f.appendChild(m);
+				
+				var n = document.createElement("input");
+				n.setAttribute('type',"hidden");
+				n.setAttribute('name',"swapsLeft");
+				n.setAttribute('value',swapsLeft);
+				f.appendChild(n);
 				document.body.appendChild(f);
 				console.log(f);
 				f.submit();

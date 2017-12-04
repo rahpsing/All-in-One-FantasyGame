@@ -9,6 +9,7 @@
 <!-- jQuery -->
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/css/jQuery.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/userDashboard.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/redirectRequests.js"></script>
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/UserDashboard.css" media="screen" />
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/materialize.min.css"  media="screen,projection"/>
@@ -61,12 +62,14 @@ div.panel button {
 }
 </style>
 </head>
-<body onload="javascript:sendAllFetch('${userId}')">
+<body onload="javascript:onloadCalls('${userId}')">
 	<div class="colorstrip1">
-		<button class="allinonebanner">all-in-one</button>
+		<button onclick="javascript:redirectToHomePage('${userId}')" class="allinonebanner">all-in-one</button>
 		<div class="aiologo">
-			<img src="${pageContext.request.contextPath}/resources/UIAssets/aiologo.svg" height="35px">
+			<%-- <img src="${pageContext.request.contextPath}/resources/UIAssets/aiologo.svg" height="35px"> --%>
+			<object type="image/svg+xml" data="${pageContext.request.contextPath}/resources/UIAssets/aiologo.svg" height="35px;"></object>
 		</div>
+		<button onclick="javascript:redirectToHomePage('${userId}')" class="allinonebanner">all-in-one</button>
 			<!--<tr>
 				<b>aaaaa</b>
 				<b>bbbbb</b>
@@ -78,7 +81,7 @@ div.panel button {
 			<button id="editProfile" class="waves-effect waves-light btn" style="background-color:#ffbf03;height:40px;font-size:1.5em;text-transform: lowercase;padding-top:2.5px;font-family:'Raleway', sans-serif;">profile</button>
 		</div>
 		<div class="logout">
-			<button id="logOut" class="waves-effect waves-light btn" style="background-color:#ffbf03;height:40px;font-size:1.5em;text-transform: lowercase;padding-top:2.5px;font-family:'Raleway', sans-serif;">logout</button>
+			<button id="logOut" onclick="javascript:deleteCookie()" class="waves-effect waves-light btn" style="background-color:#ffbf03;height:40px;font-size:1.5em;text-transform: lowercase;padding-top:2.5px;font-family:'Raleway', sans-serif;">logout</button>
 		</div>
 	</div>
 	<div id="mainDiv" class="maindiv">
@@ -397,6 +400,11 @@ div.panel button {
     });
  	</script>
 	<script>
+	
+	function onloadCalls(userId){
+		sendAllFetch(userId);
+		setCookie('userIdCookie',userId, 1);
+	}
 		higlightsButton.onclick = function(){
 			window.location.href = '#Highlights';
 		}
