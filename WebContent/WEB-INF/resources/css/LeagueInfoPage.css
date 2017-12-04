@@ -39,7 +39,7 @@ html,body {
 }
 .aiologo{
 	position:absolute;
-	left: 170px;
+	left: 7px;
 	top:2.5px;
 }
 .logout{
@@ -536,7 +536,7 @@ $maincolor: #009688;
 .allinonebanner{
 	position: absolute; 
 	top: -3px;
-	left: 0px;
+	left: 30px;
 	color: #ffbf03;
 	font-size:2em; 
 	font-family:'Raleway', sans-serif; 
@@ -713,4 +713,7 @@ $maincolor: #009688;
 	height: 5px;
 	width: 25px;
 	cursor:pointer;
+}
+.updategamescores{
+	display:none;
 }

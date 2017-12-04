@@ -26,11 +26,11 @@ body {
 </head>
 <body onload="javascript:onLoadCalls('${leagueId}','${userId}')">
 	<div class="colorstrip1">
-		<button onclick="javascript:redirectToHomePage('${userId}')" class="allinonebanner">all-in-one</button>
 		<div class="aiologo">
 			<%-- <img src="${pageContext.request.contextPath}/resources/UIAssets/aiologo.svg" height="35px"> --%>
 			<object type="image/svg+xml" data="${pageContext.request.contextPath}/resources/UIAssets/aiologo.svg" height="35px;"></object>
 		</div>
+		<button onclick="javascript:redirectToHomePage('${userId}')" class="allinonebanner">all-in-one</button>
 		<div class="logout">
 			<button id="logOut" class="waves-effect waves-light btn" style="background-color:#ffbf03;height:40px;font-size:1.5em;text-transform: lowercase;padding-top:2.5px;font-family:'Raleway', sans-serif;">logout</button>
 		</div>
@@ -69,7 +69,7 @@ body {
 				<b></b>
 				<b class="name">${name}</b>
 			</div>
-			<div id="updateGameScores" style="float:right;">
+			<div id="updateGameScores" style="float:right;" class="updategamescores">
  				<button id="updateGameScoresButton" onclick="" class="waves-effect waves-light btn" style="background-color:#ffbf03;height:45px;font-size:2em;text-transform: lowercase;font-family:'Raleway', sans-serif;width:300px;positon:absolute;top:15px;right:175px;border-radius:10px;padding-right:20px;">update game points</button>
  			</div>
  		</div>
@@ -293,6 +293,7 @@ body {
 		var chatLogo = document.getElementById("chatLogo");
 		var chatBox = document.getElementById("chatBox");
 		var minimiseBox = document.getElementById("minimiseBox");
+		var updateGameScoresCheck = document.getElementById("updateGameScores");
 		chatLogo.onclick = function(){
 			chatLogo.style.display = "none";
 			chatBox.style.opacity = 1;
@@ -307,7 +308,7 @@ body {
 	var updateGameScoresButton = document.getElementById("updateGameScoresButton");
  	var uploadGameScoreModal = document.getElementById("uploadGameScoreModal");
  	var doneButton = document.getElementById("doneButton");
- 	
+ 	var isAdmin="";
  	updateGameScoresButton.onclick = function(){
  		uploadGameScoreModal.style.display = "block";
  	    mainDiv.classList.add("blur");
@@ -318,12 +319,33 @@ body {
  	    mainDiv.classList.remove("blur");
  	}
 function onLoadCalls(leagueId,userId){
+	
+	jQuery.when(checkIfUserIsAdmin(leagueId,userId)).then(function(){
 	checkJoinButton(leagueId,userId);
 	populateUserTeams(leagueId,userId);
 	fetchGames(leagueId);
-	
+	});
 }
 
+function checkIfUserIsAdmin(leagueId,userId){
+	$.ajax({
+		url : '/All-In-One-FantasyGame/checkIfuserIsAdmin',
+	    type: 'post',
+	    data : {leagueId:leagueId,userId:userId},
+	    //dataType : 'json',
+	    success: function(data){
+	    	isAdmin=data;
+	    if (data=="true"){
+	    	
+	    	updateGameScoresCheck.style.display="block";
+	    }
+	    },
+	    error: function (jqXHR, textStatus, errorThrown)
+	    {
+	    	alert("something went wrong.Contact Admin");
+	    }
+	});
+}
 
 function fetchGames(leagueId){
 	var prevCounter=0;
@@ -378,10 +400,14 @@ function populateUserTeams(leagueId,userId){
 	    success: function(data){
 	    	//alert(data);
 	    	$('#populateUserList').empty();
-	    	console.log("done1");
-	    	console.log(data);	
-	    	$(data.userTeam).each(function(index,value){$('#populateUserList').append('<div class="content"><div class="card" style="height:80px;cursor:pointer;"><div class="userimage"><img class="circle responsive-img" src="${pageContext.request.contextPath}/resources/UIAssets/user1.jpeg"/></div><div class="profileinfo"><p style="font-size:2em;font-family:Raleway, sans-serif; color:#000000;">'+value.userTeamName+'</p><p class="bio" style="font-size: 1.5em;margin-top:-20px;font-family:"Raleway", sans-serif; ">owner : '+value.userName+'  &nbsp;&nbsp;&nbsp;&nbsp; points : '+value.points+'</p></div></div></div>');})
-	    	console.log("done2");
+	    	var diffDiv=""; 
+	    	var style="";
+	    	if(isAdmin=="true"){
+	    		diffDiv='<div id="removeUserDiv" style="float:right;"><button id="removeUserButton" onclick="" class="waves-effect waves-light btn" style="background-color:#c50234;height:45px;font-size:2em;text-transform: lowercase;font-family:Raleway, sans-serif;width:100px;positon:absolute;top:-70px;right:0px;border-radius:10px;padding-right:105px;">remove</button></div>';
+				style='style="right:160px;"';
+	    	}
+	    	$(data.userTeam).each(function(index,value){$('#populateUserList').append('<div class="content"><div class="card" style="height:80px;cursor:pointer;"><div class="userimage" '+style+'><img class="circle responsive-img" src="${pageContext.request.contextPath}/resources/UIAssets/user1.jpeg"/></div><div class="profileinfo"><p style="font-size:2em;font-family:Raleway, sans-serif; color:#000000;">'+value.userTeamName+'</p><p class="bio" style="font-size: 1.5em;margin-top:-20px;font-family:"Raleway", sans-serif; ">owner : '+value.userName+'  &nbsp;&nbsp;&nbsp;&nbsp; points : '+value.points+'</p></div>'+diffDiv+'</div></div>');})
+	    	
 	    	populateTeam(userId,leagueId);
 	    },
 	    error: function (jqXHR, textStatus, errorThrown)

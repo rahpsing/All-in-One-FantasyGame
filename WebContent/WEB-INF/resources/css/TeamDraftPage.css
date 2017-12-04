@@ -632,7 +632,7 @@ h2 {
 }
 .userteamoverlay{
 	position:absolute;
-	height:70%;
+	height:700px;
 	width: 400px;
 	background: rgba(2,26,66,0); 
 }

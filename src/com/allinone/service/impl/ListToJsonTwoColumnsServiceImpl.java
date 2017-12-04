@@ -23,6 +23,14 @@ public class ListToJsonTwoColumnsServiceImpl implements ListToJsonTwoColumnsServ
                 eachData.put("League", returnMessage.get(i).getLeagueName());
                 eachData.put("id", returnMessage.get(i).getId());
                 eachData.put("numOfPlayers", returnMessage.get(i).getSetOfUserTeams().size());
+                try{
+                	returnMessage.get(i).getLeagueOwner().getUserId().equals(null);
+                	
+                	eachData.put("isSystemLeague", returnMessage.get(i).getLeagueOwner().getUserId());
+                }
+                catch(Exception e) {
+                	eachData.put("isSystemLeague", "true");
+                }
             } catch (JSONException e) {
                 e.printStackTrace();
             }

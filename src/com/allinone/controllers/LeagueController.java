@@ -56,21 +56,32 @@ public class LeagueController {
 	@ResponseBody
 	public String fetchLeagues(HttpServletRequest objRequest, HttpServletResponse objResponse) {
 		String comparator=objRequest.getParameter("VALUE");
-		String returnMessage = objLeagueService.fetchLeagues(objRequest.getParameter("SPORT_NAME"),comparator);
+		String userId=objRequest.getParameter("userId");
+		String returnMessage = objLeagueService.fetchLeagues(objRequest.getParameter("SPORT_NAME"),comparator,userId);
 		
 		//System.out.println(comparator);
 	
 		return returnMessage;
 	}
 	
+	@RequestMapping(value="/fetchAvailableLeagueNames")
+	@ResponseBody
+	public String fetchAvailableLeagueNames(HttpServletRequest objRequest, HttpServletResponse objResponse) {
+		String comparator=objRequest.getParameter("VALUE");
+		String returnMessage = objLeagueService.fetchAvailableLeagueNames(objRequest.getParameter("SPORT_NAME"),comparator);
+		
+		//System.out.println(comparator);
 	
+		return returnMessage;
+}
 	
 	@RequestMapping(value="/redirectLeague")
 	public String redirectLeague(HttpServletRequest objRequest, HttpServletResponse objResponse,ModelMap model) {
 		//for search functionality
-		String returnMessage = objLeagueService.fetchLeagues(objRequest.getParameter("redirectValue"),"redirectText");
-		
 		String userId=objRequest.getParameter("userId");
+		String returnMessage = objLeagueService.fetchLeagues(objRequest.getParameter("redirectValue"),"redirectText",userId);
+		
+		
 		System.out.println(userId+"   from redirect");
 		model.put("userId", objRequest.getParameter("userId"));
 		model.put("leagueId",objRequest.getParameter("redirectValue"));
@@ -195,6 +206,16 @@ public class LeagueController {
 		
 	}
 	
+	@RequestMapping(value="/checkIfuserIsAdmin")
+	@ResponseBody
+	public String checkIfuserIsAdmin(HttpServletRequest objRequest, HttpServletResponse objResponse) {
+		
+		String leagueId = objRequest.getParameter("leagueId");
+		String userId = objRequest.getParameter("userId");
+		return objLeagueService.checkIfUserIsAdmin(leagueId, userId);
+	
+		
+	}
 	
 }
 

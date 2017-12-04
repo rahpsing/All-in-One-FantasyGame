@@ -781,7 +781,7 @@ public class SportUtilityDaoImpl implements SportUtilityDaoAPI {
 			league.setNumSubstitutesAllowed(objLeague.getNumSubstitutesAllowed());
 			
 			objSessionFactory.getCurrentSession().saveOrUpdate(league);
-			objSessionFactory.getCurrentSession().saveOrUpdate(parentUser);
+			//objSessionFactory.getCurrentSession().saveOrUpdate(parentUser);
 			String newleagueId=league.getId();
 			
 			return newleagueId;
