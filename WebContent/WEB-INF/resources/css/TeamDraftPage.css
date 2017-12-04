@@ -38,7 +38,7 @@ html,body {
 }
 .aiologo{
 	position:absolute;
-	left: 170px;
+	left: 7px;
 	top:2.5px;
 }
 .colorstrip2{
@@ -605,7 +605,7 @@ h2 {
 .allinonebanner{
 	position: absolute; 
 	top: -3px;
-	left: 0px;
+	left: 30px;
 	color: #ffbf03;
 	font-size:2em; 
 	font-family:'Raleway', sans-serif; 
