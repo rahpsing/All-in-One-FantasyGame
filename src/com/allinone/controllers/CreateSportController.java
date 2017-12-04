@@ -80,7 +80,7 @@ public class CreateSportController {
 	      if (!file.getOriginalFilename().isEmpty()) {
 	         BufferedOutputStream outputStream = new BufferedOutputStream(
 	               new FileOutputStream(
-	                     new File("C:/Upload", file.getOriginalFilename())));
+	                     new File("C:/All-In-One", file.getOriginalFilename())));
 	         outputStream.write(file.getBytes());
 	         outputStream.flush();
 	         outputStream.close();

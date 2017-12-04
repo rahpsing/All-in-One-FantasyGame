@@ -10,6 +10,7 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -30,7 +31,8 @@ public class Player implements Serializable {
 	private String playerRole;
 	private String uniqueId;
 	//private Sport sport;
-	private League league;
+	private Set<League> setOfLeagues = new HashSet<League>();
+	private Set<UserTeam> setOfUserTeams = new HashSet<UserTeam>();
 	private Team team;
 	private byte[] profileImage;
 	public String getId() {
@@ -38,6 +40,18 @@ public class Player implements Serializable {
 	}
 	public void setId(String id) {
 		this.id = id;
+	}
+
+	@Override
+	public String toString() {
+		return "Player [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", playerRole=" + playerRole
+				+ ", uniqueId=" + uniqueId + ", team=" + team + ", profileImage=" + Arrays.toString(profileImage) + "]";
+	}
+	public Set<UserTeam> getSetOfUserTeams() {
+		return setOfUserTeams;
+	}
+	public void setSetOfUserTeams(Set<UserTeam> setOfUserTeams) {
+		this.setOfUserTeams = setOfUserTeams;
 	}
 	public String getFirstName() {
 		return firstName;
@@ -52,12 +66,7 @@ public class Player implements Serializable {
 		this.lastName = lastName;
 	}
 
-	public League getLeague() {
-		return league;
-	}
-	public void setLeague(League league) {
-		this.league = league;
-	}
+
 	public Team getTeam() {
 		return team;
 	}
@@ -70,10 +79,7 @@ public class Player implements Serializable {
 	public void setProfileImage(byte[] profileImage) {
 		this.profileImage = profileImage;
 	}
-	@Override
-	public String toString() {
-		return "Player [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ",  league=" + league + ", team=" + team + "]";
-	}
+
 	public String getPlayerRole() {
 		return playerRole;
 	}
@@ -86,5 +92,12 @@ public class Player implements Serializable {
 	public void setUniqueId(String uniqueId) {
 		this.uniqueId = uniqueId;
 	}
+	public Set<League> getSetOfLeagues() {
+		return setOfLeagues;
+	}
+	public void setSetOfLeagues(Set<League> setOfLeagues) {
+		this.setOfLeagues = setOfLeagues;
+	}
+
 
 }

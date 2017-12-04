@@ -14,7 +14,7 @@ import com.allinone.pojos.League;
  */
 public interface SportUtilityDaoAPI {
 
-	public boolean addEntriesToDatabase();
+	public boolean addEntriesToDatabase() throws Exception;
 
 	boolean addNewSportEntry();
 	

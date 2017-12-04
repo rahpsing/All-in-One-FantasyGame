@@ -31,12 +31,21 @@
             <one-to-many class="com.allinone.pojos.Team" />
         </set>
         
-        <set name="setOfPlayers" table="PLAYER" inverse="true" lazy="true">
+        <set name="setOfPlayers" table="league_players" inverse="false" lazy="true" fetch="select">
+            <key>
+                <column name="LEAGUE_ID" not-null="true" />
+            </key>
+            <many-to-many entity-name="com.allinone.pojos.Player">
+                <column name="PLAYER_ID" not-null="true" />
+            </many-to-many>
+        </set>
+        
+<!--         <set name="setOfPlayers" table="PLAYER" inverse="true" lazy="true">
             <key>
                 <column name="LEAGUE_ID" />
             </key>
             <one-to-many class="com.allinone.pojos.Player" />
-        </set>
+        </set> -->
         
         
 		<map name="mapSportConstraints" table="leagueConstraints" cascade="all">  

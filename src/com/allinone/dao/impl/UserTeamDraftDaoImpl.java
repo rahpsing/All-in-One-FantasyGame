@@ -49,7 +49,10 @@ public class UserTeamDraftDaoImpl implements UserTeamDraftDaoAPI {
 		Set<Player> setOfUserTeamPlayers = new HashSet<Player>();
 		
 		for(String playerId : setOfPlayerIds) {
-			setOfUserTeamPlayers.add(session.get(Player.class, playerId));
+			Player objPlayer = session.get(Player.class, playerId);
+			objPlayer.getSetOfUserTeams().add(userTeam);
+			session.saveOrUpdate(objPlayer);
+			setOfUserTeamPlayers.add(objPlayer);
 		}
 		try {
 		userTeam.setSetOfPlayers(setOfUserTeamPlayers);
