@@ -143,7 +143,7 @@ body {
 				    		<div class="content1" style="margin-top:2px;">
 								<div class="card1" style="height:40px;">
 								  	<div class="userimage1">
-								     	<img class="circle responsive-img" src="${pageContext.request.contextPath}/resources/UIAssets/user1.jpeg"/>
+								     	<img class="circle responsive-img" src="${pageContext.request.contextPath}/resources/UIAssets/indian3.jpg"/>
 								 	</div>
 								 	<div class="playpositionindicator" style="background-color:#DC4444">
 								 	</div>
@@ -158,7 +158,7 @@ body {
 							<div class="content1" style="margin-top:2px;">
 								<div class="card1" style="height:40px;">
 								  	<div class="userimage1">
-								     	<img class="circle responsive-img" src="${pageContext.request.contextPath}/resources/UIAssets/user1.jpeg"/>
+								     	<img class="circle responsive-img" src="${pageContext.request.contextPath}/resources/UIAssets/indian2.jpg"/>
 								 	</div>
 								 	<div class="playpositionindicator" style="background-color:#A1EAFB">
 								 	</div>
@@ -359,7 +359,7 @@ body {
 		    	$('#user-team').append('<p style="color:#ffbf03;height:40px;font-size:3em;text-transform: lowercase;margin-top:-5px;font-family:"Raleway", sans-serif;">team</p>');
 		    	$(data.usersTeam).each(function(index,value){
 		    		var color=colorMap[value.role];
-		    		$('#user-team').append('<a draggable="true" class="player" id='+value.id+'+123  ondragstart="dragPlayer(this, event)"><div class="content1" style="margin-top:2px;"><div class="card1" style="height:40px;"><div class="userimage1"><img class="circle responsive-img" src="${pageContext.request.contextPath}/resources/UIAssets/user1.jpeg"/></div><div  class="profileinfo1"><div class="playpositionindicator" style="background-color:'+color+'"></div><p id='+value.id+' role = '+value.role+'  style="font-size:2em;font-family:Raleway, sans-serif; color:#000000;margin-top:3px;">'+value.player+'</p></div></div></div></a>');
+		    		$('#user-team').append('<a draggable="true" class="player" id='+value.id+'+123  ondragstart="dragPlayer(this, event)"><div class="content1" style="margin-top:2px;"><div class="card1" style="height:40px;"><div class="userimage1"><img class="circle responsive-img" src="${pageContext.request.contextPath}/resources/UIAssets/indian1.jpg"/></div><div  class="profileinfo1"><div class="playpositionindicator" style="background-color:'+color+'"></div><p id='+value.id+' role = '+value.role+'  style="font-size:2em;font-family:Raleway, sans-serif; color:#000000;margin-top:3px;">'+value.player+'</p></div></div></div></a>');
 		    			initialUserTeam.push(value.id);})
 		    	//fetchPlayerList(leagueId,'rosterList',userId);
 		    			fetchCountsMap();
@@ -379,7 +379,7 @@ body {
 				function(index,value){var color=colorMap[value.role];
 					if(value.role.toLowerCase().includes(playerType.toLowerCase())){
 					if(value.player.toLowerCase().includes(searchText.toLowerCase())){
-						$('#rosterList').append('<a draggable="true" class="player" id='+value.id+'+123 ondragstart="dragPlayer(this, event)"><div class="content1" style="margin-top:2px;"><div class="card1" style="height:40px;"><div class="userimage1"><img class="circle responsive-img" src="${pageContext.request.contextPath}/resources/UIAssets/user1.jpeg"/></div><div  class="profileinfo1"><div class="playpositionindicator" style="background-color:'+color+'"></div><p id='+value.id+' role = '+value.role+' style="font-size:2em;font-family:Raleway, sans-serif; color:#000000;margin-top:3px;">'+value.player+'</p></div></div></div></a>');
+						$('#rosterList').append('<a draggable="true" class="player" id='+value.id+'+123 ondragstart="dragPlayer(this, event)"><div class="content1" style="margin-top:2px;"><div class="card1" style="height:40px;"><div class="userimage1"><img class="circle responsive-img" src="${pageContext.request.contextPath}/resources/UIAssets/indian2.jpg"/></div><div  class="profileinfo1"><div class="playpositionindicator" style="background-color:'+color+'"></div><p id='+value.id+' role = '+value.role+' style="font-size:2em;font-family:Raleway, sans-serif; color:#000000;margin-top:3px;">'+value.player+'</p></div></div></div></a>');
 					}}
 				})
 		
@@ -398,7 +398,7 @@ body {
 		    	$(data.Players).each(function(index,value){
 		    		var color=colorMap[value.role];
 		    		//console.log(color);
-		    		$('#'+iD).append('<a draggable="true" class="player" id='+value.id+'+123 ondragstart="dragPlayer(this, event)"><div class="content1" style="margin-top:2px;"><div class="card1" style="height:40px;"><div class="userimage1"><img class="circle responsive-img" src="${pageContext.request.contextPath}/resources/UIAssets/user1.jpeg"/></div><div class="playpositionindicator" style="background-color:'+color+'"></div><div  class="profileinfo1"><p id='+value.id+' role = '+value.role+' style="font-size:2em;font-family:Raleway, sans-serif; color:#000000;margin-top:3px;">'+value.player+'</p></div></div></div></a>');})
+		    		$('#'+iD).append('<a draggable="true" class="player" id='+value.id+'+123 ondragstart="dragPlayer(this, event)"><div class="content1" style="margin-top:2px;"><div class="card1" style="height:40px;"><div class="userimage1"><img class="circle responsive-img" src="${pageContext.request.contextPath}/resources/UIAssets/indian3.jpg"/></div><div class="playpositionindicator" style="background-color:'+color+'"></div><div  class="profileinfo1"><p id='+value.id+' role = '+value.role+' style="font-size:2em;font-family:Raleway, sans-serif; color:#000000;margin-top:3px;">'+value.player+'</p></div></div></div></a>');})
 		    	//console.log(JSON.stringify(data));
 		    	passPlayerList(data);
 		    },

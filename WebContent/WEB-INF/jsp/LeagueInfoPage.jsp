@@ -40,13 +40,13 @@ body {
 		<div class="ticker-wrap">
 			<div id="matchesTicker" class="ticker">
 			  <div class="ticker__item" style="background-color:rgba(255,191,3,0.5);height:100%;width:250px;text-align:center;"><br><br><br><br><br><p>previous matches : </p><br></div>
-			  <div class="ticker__item" style="width:50px;"><br><div class="teamimage"><img class="circle responsive-img" src="${pageContext.request.contextPath}/resources/UIAssets/user1.jpeg"/></div><br><p style="text-align:center;"> MUN</p><p  style="text-align:center;">05</p></div>
+			  <div class="ticker__item" style="width:50px;"><br><div class="teamimage"><img class="circle responsive-img" src="${pageContext.request.contextPath}/resources/UIAssets/bangalore.jpg"/></div><br><p style="text-align:center;"> MUN</p><p  style="text-align:center;">05</p></div>
 			  <div class="ticker__item" style="width:50px;text-align:center;"><p>vs.</p><br><p  style="text-align:center;">13</p></div>
-			  <div class="ticker__item" style="width:50px;"><br><div class="teamimage"><img class="circle responsive-img" src="${pageContext.request.contextPath}/resources/UIAssets/user1.jpeg"/></div><br><p style="text-align:center;"> LIV</p><p  style="text-align:center;">2017</p></div>
+			  <div class="ticker__item" style="width:50px;"><br><div class="teamimage"><img class="circle responsive-img" src="${pageContext.request.contextPath}/resources/UIAssets/delhi.jpg"/></div><br><p style="text-align:center;"> LIV</p><p  style="text-align:center;">2017</p></div>
 			  <div class="ticker__item" style="background-color:#021A42;height:100%;width:10px;text-align:center;"><br><br><br><br><br><br><br><br><br><br><br></div>
-			  <div class="ticker__item" style="width:50px;"><br><div class="teamimage"><img class="circle responsive-img" src="${pageContext.request.contextPath}/resources/UIAssets/user1.jpeg"/></div><br><p style="text-align:center;"> MUN</p><p  style="text-align:center;">06</p></div>
+			  <div class="ticker__item" style="width:50px;"><br><div class="teamimage"><img class="circle responsive-img" src="${pageContext.request.contextPath}/resources/UIAssets/chennai.jpg"/></div><br><p style="text-align:center;"> MUN</p><p  style="text-align:center;">06</p></div>
 			  <div class="ticker__item" style="width:50px;text-align:center;"><p>vs.</p><br><p  style="text-align:center;">30</p></div>
-			  <div class="ticker__item" style="width:50px;"><br><div class="teamimage"><img class="circle responsive-img" src="${pageContext.request.contextPath}/resources/UIAssets/user1.jpeg"/></div><br><p style="text-align:center;"> LIV</p><p  style="text-align:center;">2017</p></div>
+			  <div class="ticker__item" style="width:50px;"><br><div class="teamimage"><img class="circle responsive-img" src="${pageContext.request.contextPath}/resources/UIAssets/mumbai.jpg"/></div><br><p style="text-align:center;"> LIV</p><p  style="text-align:center;">2017</p></div>
 			  <div class="ticker__item" style="background-color:#021A42;height:100%;width:10px;text-align:center;"><br><br><br><br><br><br><br><br><br><br><br></div>
 			  <div class="ticker__item" style="width:50px;"><br><div class="teamimage"><img class="circle responsive-img" src="${pageContext.request.contextPath}/resources/UIAssets/user1.jpeg"/></div><br><p style="text-align:center;"> MUN</p><p  style="text-align:center;">07</p></div>
 			  <div class="ticker__item" style="width:50px;text-align:center;"><p>vs.</p><br><p  style="text-align:center;">20</p></div>
@@ -379,9 +379,9 @@ function fetchGames(leagueId){
 	    				$('#matchesTicker').append('<div class="ticker__item" style="background-color:#ffbf03;height:100%;width:250px;text-align:center;"><br><br><br><br><br><p>previous matches : </p><br></div>');
 	    				prevCounter++;
 	    			}
-	    			$('#matchesTicker').append('<div class="ticker__item" style="width:50px;"><br><div class="teamimage"><img class="circle responsive-img" src="${pageContext.request.contextPath}/resources/UIAssets/user1.jpeg"/></div><br><p style="text-align:center;">'+value.homeTeam+'</p><p  style="text-align:center;">'+value.startTimeMonth+'</p></div>');
+	    			$('#matchesTicker').append('<div class="ticker__item" style="width:50px;"><br><div class="teamimage"><img class="circle responsive-img" src="${pageContext.request.contextPath}/resources/UIAssets/bangalore.jpg"/></div><br><p style="text-align:center;">'+value.homeTeam+'</p><p  style="text-align:center;">'+value.startTimeMonth+'</p></div>');
 	    			$('#matchesTicker').append('<div class="ticker__item" style="width:50px;text-align:center;"><p>vs.</p><br><p  style="text-align:center;">'+value.startTimeDate+'</p></div>');
-	    			$('#matchesTicker').append('<div class="ticker__item" style="width:50px;"><br><div class="teamimage"><img class="circle responsive-img" src="${pageContext.request.contextPath}/resources/UIAssets/user1.jpeg"/></div><br><p style="text-align:center;"> '+value.awayTeam+'</p><p  style="text-align:center;">'+value.startTimeYear+'</p></div>');
+	    			$('#matchesTicker').append('<div class="ticker__item" style="width:50px;"><br><div class="teamimage"><img class="circle responsive-img" src="${pageContext.request.contextPath}/resources/UIAssets/delhi.jpg"/></div><br><p style="text-align:center;"> '+value.awayTeam+'</p><p  style="text-align:center;">'+value.startTimeYear+'</p></div>');
 	    			$('#matchesTicker').append('<div class="ticker__item" style="background-color:#021A42;height:100%;width:10px;text-align:center;"><br><br><br><br><br><br><br><br><br><br><br></div>');
 	    	}})
 	    	$(data.listOfMatches).each(function(index,value){
@@ -391,9 +391,9 @@ function fetchGames(leagueId){
 	    				$('#matchesTicker').append('<div class="ticker__item" style="background-color:#ffbf03;height:100%;width:250px;text-align:center;"><br><br><br><br><br><p>upcoming matches : </p><br></div>');
 	    				upcomingCounter++;
 	    			}
-	    			$('#matchesTicker').append('<div class="ticker__item" style="width:50px;"><br><div class="teamimage"><img class="circle responsive-img" src="${pageContext.request.contextPath}/resources/UIAssets/user1.jpeg"/></div><br><p style="text-align:center;">'+value.homeTeam+'</p><p  style="text-align:center;">'+value.startTimeMonth+'</p></div>');
+	    			$('#matchesTicker').append('<div class="ticker__item" style="width:50px;"><br><div class="teamimage"><img class="circle responsive-img" src="${pageContext.request.contextPath}/resources/UIAssets/chennai.jpg"/></div><br><p style="text-align:center;">'+value.homeTeam+'</p><p  style="text-align:center;">'+value.startTimeMonth+'</p></div>');
 	    			$('#matchesTicker').append('<div class="ticker__item" style="width:50px;text-align:center;"><p>vs.</p><br><p  style="text-align:center;">'+value.startTimeDate+'</p></div>');
-	    			$('#matchesTicker').append('<div class="ticker__item" style="width:50px;"><br><div class="teamimage"><img class="circle responsive-img" src="${pageContext.request.contextPath}/resources/UIAssets/user1.jpeg"/></div><br><p style="text-align:center;"> '+value.awayTeam+'</p><p  style="text-align:center;">'+value.startTimeYear+'</p></div>');
+	    			$('#matchesTicker').append('<div class="ticker__item" style="width:50px;"><br><div class="teamimage"><img class="circle responsive-img" src="${pageContext.request.contextPath}/resources/UIAssets/mumbai.jpg"/></div><br><p style="text-align:center;"> '+value.awayTeam+'</p><p  style="text-align:center;">'+value.startTimeYear+'</p></div>');
 	    			$('#matchesTicker').append('<div class="ticker__item" style="background-color:#021A42;height:100%;width:10px;text-align:center;"><br><br><br><br><br><br><br><br><br><br><br></div>');
 	    	}})
 	    },
@@ -461,7 +461,7 @@ function populateTeam(userId,leagueId)
 	    success: function(data){
 	    	console.log(data);
 	    	$('#populateUserTeam').empty();
-	    	$(data.usersTeam).each(function(index,value){$('#populateUserTeam').append('<div class="card1" style="height:40px;"><div class="userimage1"><img class="circle responsive-img" src="${pageContext.request.contextPath}/resources/UIAssets/user1.jpeg"/></div><div class="profileinfo1"><p style="font-size:2em;font-family:Raleway, sans-serif; color:#000000;margin-top:3px;">'+value.player+'</p></div></div>');})
+	    	$(data.usersTeam).each(function(index,value){$('#populateUserTeam').append('<div class="card1" style="height:40px;"><div class="userimage1"><img class="circle responsive-img" src="${pageContext.request.contextPath}/resources/UIAssets/indian1.jpg"/></div><div class="profileinfo1"><p style="font-size:2em;font-family:Raleway, sans-serif; color:#000000;margin-top:3px;">'+value.player+'</p></div></div>');})
 
 	    },
 	    error: function (jqXHR, textStatus, errorThrown)
