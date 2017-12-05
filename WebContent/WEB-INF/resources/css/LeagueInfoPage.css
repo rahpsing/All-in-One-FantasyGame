@@ -720,3 +720,16 @@ $maincolor: #009688;
 .updategamescores{
 	display:none;
 }
+.textarea{
+	position: absolute;
+	top: 32px;
+	width: 98%;
+	height: 220px;
+}
+.chattext{
+	position: absolute;
+	bottom: -10px;
+	left:0px;
+	width: 50%;
+	height: 40px;
+}

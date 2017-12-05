@@ -163,6 +163,15 @@ body {
 		<div class="chatbox" id="chatBox">
 			<div class="chatheader">chat box</div>
 			<div class="minimisebox" id="minimiseBox"></div>
+			<textarea class="textarea" readonly style="font-family:'Raleway', sans-serif;">dummy
+			</textarea>
+			<input type="text" class="chattext" id="chatText" name="chattextname" placeholder="type message..." style="width:160px;">
+			<button id="submitChat" onclick="" class="waves-effect waves-light btn" style="position:absolute;bottom:5px;right:0px;background-color:#021A42;height:40px;font-size:1em;text-transform: lowercase;padding-bottom:10px;font-family:'Raleway', sans-serif;width:90px;border-radius:10px">submit</button> 
+			<!-- <form action="/action_page.php">
+  				First name: <input type="text" name="fname"><br>
+  				Last name: <input type="text" name="lname"><br>
+  			<input type="submit" value="Submit">
+			</form> -->
 		</div>
 	</div>
 	<div class="bgimage">
